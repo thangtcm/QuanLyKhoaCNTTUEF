@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<center style="padding : 300px;">
+    <h2>Area Import File Excel</h2>
+    <div style="text-align: left; padding-left: 100px;">
+        @using (Html.BeginForm("Import", "Epplus", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.Raw(ViewBag.Error)
+            <span>Excel File</span>
+            <input type="file" name="excelFile" />
+            <br />
+            <input type="submit" value="Import" />
+        }
+    </div>
+</center>

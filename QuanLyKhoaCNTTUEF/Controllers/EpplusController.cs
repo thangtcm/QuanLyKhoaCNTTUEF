@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting.Internal;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using QuanLyKhoaCNTTUEF.Models;
 using System.ComponentModel;
+using System.IO;
 using System.Web;
+using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
@@ -28,35 +31,35 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             {
                 if (excelFile.FileName.EndsWith("xls") || excelFile.FileName.EndsWith("xlsx"))
                 {
-                    string fileName = Path.GetFileName(excelFile.FileName);
-                   /* string path = Path.Combine(HostingEnvironment, $"UploadFiles\\fileName");
+                    string path = Path.GetTempFileName();
                     if (System.IO.File.Exists(path))
                     {
                         System.IO.File.Delete(path);
-                    }*/
-                   // excelFile.SaveAs(path);
+                    }
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        excelFile.CopyToAsync(stream);
+                    }
 
                     //read data from excel file
-                    //FileInfo existingFile = new FileInfo(path);
+                    FileInfo existingFile = new FileInfo(path);
                     List<DataExcel> data = new List<DataExcel>();
                     
-                   // ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                     //int sl = db.Table_Name.ToList().Count;
-                   /*using (ExcelPackage package = new ExcelPackage(existingFile))
+                   using (ExcelPackage package = new ExcelPackage(existingFile))
                     {
-                        ExcelWorksheet worksheet = ExcelPackage.Workbook.Worksheets["Sheet1"];
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets["Sheet1"];
                         int colCount = worksheet.Dimension.End.Column;  //get Column Count
                         int rowCount = worksheet.Dimension.End.Row;     //get row count
                         for (int row = 1; row <= rowCount; row++)
                         {
                             DataExcel dt = new DataExcel();
-                            Table_Name table_ = new Table_Name();
+                            /*Table_Name table_ = new Table_Name();
                             table_.id = row + sl;
                             table_.fullname = worksheet.Cells[row, 2].Value.ToString();
                             db.Table_Name.Add(table_);
-                            db.SaveChanges();
-
-
+                            db.SaveChanges();*/
                             dt.ID = worksheet.Cells[row, 1].Value.ToString();
                             dt.Name = worksheet.Cells[row, 2].Value.ToString();
                             dt.City = worksheet.Cells[row, 3].Value.ToString();
@@ -64,7 +67,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                             data.Add(dt);
                         }
                         ViewBag.data = data;
-                    }*/
+                    }
                     return View("Success");
                 }
                 else
@@ -75,7 +78,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             }
         }
 
-        /*public ActionResult CreateExcel()
+        public ActionResult CreateExcel()
         {
             using (ExcelPackage excel = new ExcelPackage())
             {
@@ -86,11 +89,11 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                 workSheet.DefaultRowHeight = 12;
 
                 workSheet.Row(1).Height = 20;
-                //workSheet.Row(1).Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                workSheet.Row(1).Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 workSheet.Row(1).Style.Font.Bold = true;
 
                 //Create Excel file in Uploads folder of your project
-                //FileInfo excelFile = new FileInfo(Server.MapPath("~/UploadFiles/test.xlsx"));
+                FileInfo excelFile = new FileInfo("~/UploadFiles/test.xlsx");
 
                 //Add header row columns name in string list array
                 List<DataExcel> data = new List<DataExcel>();
@@ -126,15 +129,15 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                     workSheet.Cells[start, 4].Value = dt.Country;
                     start++;
                 }
-
+                var stream = new FileStream("~/UploadFiles/test.xlsx", FileMode.Create);
                 //Save Excel file
                 excel.SaveAs(excelFile);
             }
-            byte[] fileBytes = System.IO.File.ReadAllBytes(Server.MapPath("~/UploadFiles/test.xlsx"));
+            byte[] fileBytes = System.IO.File.ReadAllBytes("~/UploadFiles/test.xlsx");
             string fileName = "test.xlsx";
 
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
-        }*/
+        }
 
         public ActionResult ShowData()
         {

@@ -41,3 +41,5 @@ D:\DuAnUEF\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\refint\QuanLyKho
 D:\DuAnUEF\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\QuanLyKhoaCNTTUEF.pdb
 D:\DuAnUEF\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\QuanLyKhoaCNTTUEF.genruntimeconfig.cache
 D:\DuAnUEF\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\ref\QuanLyKhoaCNTTUEF.dll
+D:\DuAnUEF\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\QuanLyKhoaCNTTUEF.Properties.Resources.resources
+D:\DuAnUEF\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\QuanLyKhoaCNTTUEF.csproj.GenerateResource.cache

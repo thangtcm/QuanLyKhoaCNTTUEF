@@ -1434,11 +1434,19 @@ button.bg-danger:hover {
 	display: inline-block;
 	line-height: 75px;
 }
+
+.fixed-logoimg {
+	max-height: 50px;
+	width: auto;
+	margin-top: 10px;
+}
+
 .header .header-left .logo img {
     max-height: 50px;
 	width: auto;
 	margin-top : 0;
 }
+
 .header-left .logo.logo-small {
     display: none;
 }

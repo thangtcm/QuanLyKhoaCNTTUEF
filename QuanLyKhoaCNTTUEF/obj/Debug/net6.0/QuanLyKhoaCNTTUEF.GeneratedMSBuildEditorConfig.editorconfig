@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\DuAnUEF\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/DuAnUEF/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBwbHVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DuAnUEF/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBwbHVzXFN1Y2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DuAnUEF/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Success";
+}
+
+<center style="padding : 300px;">
+    <h2>Sussces Import Data Excel</h2>
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+        </tr>
+        @foreach (var p in ViewBag.data)
+        {
+            <tr>
+                <th>@p.ID</th>
+                <th>@p.Name</th>
+                <th>@p.City</th>
+                <th>@p.Country</th>
+            </tr>
+        }
+    </table>
+</center>
+

@@ -207,13 +207,16 @@ Version      : 1.0
 	// Small Sidebar
 
 	$(document).on('click', '#toggle_btn', function() {
-		if($('body').hasClass('mini-sidebar')) {
+		if ($('body').hasClass('mini-sidebar')) {
 			$('body').removeClass('mini-sidebar');
+			$('.header .header-left .logo img').css('margin-top', '0');
 			$('.subdrop + ul').slideDown();
 		} else {
 			$('body').addClass('mini-sidebar');
+			$('.header .header-left .logo img').css('margin-top', '10px');
 			$('.subdrop + ul').slideUp();
 		}
+		
 		setTimeout(function(){ 
 			mA.redraw();
 			mL.redraw();
