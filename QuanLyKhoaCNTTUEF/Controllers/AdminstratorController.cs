@@ -38,5 +38,9 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         {
             return View();
         }
+        public ActionResult Group()
+        {
+            return View();
+        }
     }
 }
