@@ -30,7 +30,11 @@ namespace QuanLyKhoaCNTTUEF.Controllers
 
             return View();
         }
-        public ActionResult Event_Management()
+        public ActionResult Event()
+        {
+            return View();
+        }
+        public ActionResult Plan()
         {
             return View();
         }
