@@ -11,14 +11,14 @@ namespace QuanLyKhoaCNTTUEF.Controllers
     {
         public ActionResult Index()
         {
-            string filePaths = Directory.GetCurrentDirectory() + "/UploadFiles";
+           /* string filePaths = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "/UploadFiles", ));
             List<FileModel> files = new List<FileModel>();
-            /*foreach (var filePath in filePaths)
+            foreach (var file in files)
             {
-                files.Add(new FileModel { FileName = Path.GetFileName(filePath) });
+                files.Add(new FileModel { FileName = Path.GetFileName(file) });
             }*/
 
-            return View(files);
+            return View();
         }
         /*public FileResult DownloadFile(string fileName)
         {
