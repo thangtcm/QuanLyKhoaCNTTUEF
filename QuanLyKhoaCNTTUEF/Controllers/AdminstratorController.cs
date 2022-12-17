@@ -2,7 +2,7 @@
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
-    public class AdminstratorController1 : Controller
+    public class AdminstratorController : Controller
     {
         public string Admin(int id)
         {
@@ -28,6 +28,10 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         public ActionResult Index()
         {
 
+            return View();
+        }
+        public ActionResult Event_Management()
+        {
             return View();
         }
     }

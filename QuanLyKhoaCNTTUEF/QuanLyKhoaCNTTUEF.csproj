@@ -17,6 +17,34 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\fonts\feathericon.svg" />
+    <None Include="wwwroot\img\logo.psd" />
+    <None Include="wwwroot\js\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\js\chart.morris.js" />
+    <None Include="wwwroot\js\jquery-3.6.0.min.js" />
+    <None Include="wwwroot\js\jquery-ui.min.js" />
+    <None Include="wwwroot\js\moment.min.js" />
+    <None Include="wwwroot\js\popper.min.js" />
+    <None Include="wwwroot\js\script.js" />
+    <None Include="wwwroot\js\select2.min.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\plugins\datatables\datatables.min.js" />
+    <None Include="wwwroot\plugins\datatables\jquery.dataTables.min.js" />
+    <None Include="wwwroot\plugins\fontawesome\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\plugins\fontawesome\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\plugins\fontawesome\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\plugins\fullcalendar\fullcalendar.min.js" />
+    <None Include="wwwroot\plugins\fullcalendar\jquery.fullcalendar.js" />
+    <None Include="wwwroot\plugins\morris\morris.min.js" />
+    <None Include="wwwroot\plugins\raphael\raphael.min.js" />
+    <None Include="wwwroot\plugins\slimscroll\jquery.slimscroll.min.js" />
+    <None Include="wwwroot\plugins\summernote\dist\summernote-bs4.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

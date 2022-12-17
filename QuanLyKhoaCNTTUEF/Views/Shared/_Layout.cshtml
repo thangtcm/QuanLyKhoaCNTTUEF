@@ -20,31 +20,33 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/">
     <meta property="og:image" content="https://user-cdn.uef.edu.vn/img/slider/bannerhuongnghiep-final-2023-1665029440.jpg">
-    
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/plugins/fontawesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/plugins/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/plugins/datatables/datatables.min.css">
+    <link href="~/css/feathericon.min.css" rel="stylesheet" />
+    <link href="~/plugins/morris/morris.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
-
-    <link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="~/css/feathericon.min.css" />
-    <link type="text/css" rel="stylesheet" href="~/css/style.css" />
-    <link type="text/css" rel="stylesheet" href="~/plugins/fontawesome/css/fontawesome.min.css" />
-    <link type="text/css" rel="stylesheet" href="~/plugins/fontawesome/css/all.min.css" />
-    <link type="text/css" rel="stylesheet" href="~/plugins/morris/morris.css" />
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body>
     @RenderBody()
+
     <div class="main-wrapper">
 
         <div class="header">
 
             <div class="header-left">
-                <a href="Home/index.html" class="logo">
+                <a href="index.html" class="logo">
                     <img src="~/img/logo_small.png" width="50" height="70" alt="logo">
                     <span class="logoclass">Dashboard</span>
                 </a>
-                <a href="Home/index.html" class="logo logo-small">
+                <a href="index.html" class="logo logo-small" style="padding-top: 30px;">
                     <img src="~/img/logo_small.png" alt="Logo" width="30" height="30">
                 </a>
             </div>
@@ -60,107 +62,7 @@
 
             <ul class="nav user-menu">
 
-                <li class="nav-item dropdown noti-dropdown">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="fe fe-bell"></i> <span class="badge badge-pill">3</span>
-                    </a>
-                    <div class="dropdown-menu notifications">
-                        <div class="topnav-dropdown-header">
-                            <span class="notification-title">Notifications</span>
-                            <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-                        </div>
-                        <div class="noti-content">
-                            <ul class="notification-list">
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="~/img/profiles/avatar-02.jpg">
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details">
-                                                    <span class="noti-title">Carlson Tech</span> has
-                                                    approved <span class="noti-title">your estimate</span>
-                                                </p>
-                                                <p class="noti-time">
-                                                    <span class="notification-time">4 mins ago</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="~/img/profiles/avatar-11.jpg">
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details">
-                                                    <span class="noti-title">
-                                                        International Software
-                                                        Inc
-                                                    </span> has sent you a invoice in the amount of <span class="noti-title">$218</span>
-                                                </p>
-                                                <p class="noti-time">
-                                                    <span class="notification-time">6 mins ago</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="~/img/profiles/avatar-17.jpg">
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details">
-                                                    <span class="noti-title">John Hendry</span> sent
-                                                    a cancellation request <span class="noti-title">
-                                                        Apple iPhone
-                                                        XR
-                                                    </span>
-                                                </p>
-                                                <p class="noti-time">
-                                                    <span class="notification-time">8 mins ago</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                                            <span class="avatar avatar-sm">
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="~/img/profiles/avatar-13.jpg">
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details">
-                                                    <span class="noti-title">
-                                                        Mercury Software
-                                                        Inc
-                                                    </span> added a new product <span class="noti-title">
-                                                        Apple
-                                                        MacBook Pro
-                                                    </span>
-                                                </p>
-                                                <p class="noti-time">
-                                                    <span class="notification-time">12 mins ago</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="topnav-dropdown-footer">
-                            <a href="#">View all Notifications</a>
-                        </div>
-                    </div>
-                </li>
-
+            
 
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -226,8 +128,9 @@
                         <li class="submenu">
                             <a href="#"><i class="fas fa-calendar-alt"></i> <span> Quản lý sự kiện  </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="all-booking.html">  Kế hoạch </a></li>
-                                <li><a href="edit-booking.html"> Tiến độ thực hiện </a></li>
+                                <li><a href="kehoach.php">  Kế hoạch </a></li>
+                                <li><a href="quanlysukien.php"> Quản lý sự kiện </a></li>
+                                <li><a href="quanlykehoach.php"> Quản lý kế hoạch </a></li>
                                 <li><a href="add-booking.html"> Đánh giá </a></li>
 
                             </ul>
@@ -247,28 +150,32 @@
                                 <li><a href="all-booking.html">Xuất báo cáo, dữ liệu phục vụ công tác đánh giá cuối năm hoặc các hoạt động khác cho giảng viên</a></li>
 
                             </ul>
+                        </li>  <li class="submenu">
+                            <a href="#"><i class="fas fa-book"></i> <span> Báo cáo, thống kê  </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="all-booking.html">Xuất báo cáo, dữ liệu phục vụ công tác đánh giá cuối năm hoặc các hoạt động khác cho giảng viên</a></li>
+
+                            </ul>
+                        </li>  <li class="submenu">
+                            <a href="#"><i class="fas fa-book"></i> <span> Báo cáo, thống kê  </span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="all-booking.html">Xuất báo cáo, dữ liệu phục vụ công tác đánh giá cuối năm hoặc các hoạt động khác cho giảng viên</a></li>
+
+                            </ul>
                         </li>
-                    </ul>
+                        </ul>
                 </div>
             </div>
         </div>
     </div>
-    
-    <script>
-        $(document).ready(function () {
-            $("button").click(function () {
-                alert("jQuery is working perfectly.");
-            });
-        });
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>\
-    <script type="text/javascript" src="~/plugins/morris/morris.min.js"></script>
-    <script type="text/javascript" src="~/plugins/raphael/raphael.min.js"></script>
-    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript" src="~/js/popper.min.js"></script>
-    <script type="text/javascript" src="~/js/chart.morris.js"></script>
-    <script type="text/javascript" src="~/js/script.js"></script>
-    
+
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables/datatables.min.js"></script>
+    <script src="~/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/plugins/raphael/raphael.min.js"></script>
+    <script src="~/js/script.js"></script>
 </body>
 </html>
