@@ -10,34 +10,112 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">Form FileUpload</h3>
+                    <h3 class="page-title">@ViewData["Title"]</h3>
                 </div>
             </div>
         </div>
 
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title mb-0">Single File Upload</h5>
+                        <h5 class="card-title mb-0">
+                            Thêm kế hoạch
+                        </h5>
                     </div>
                     <div class="card-body">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="">Tên kế hoạch</label>
+                                <input type="text" class="form-control" placeholder="Nhập tên kế hoạch">
+                            </div>
+                        </div>
+
                         <div class="custom-file-container" data-upload-id="myFirstImage">
-                            <label>Upload (Single File) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
-                            <label class="custom-file-container__custom-file">
-                                <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
-                                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                                <span class="custom-file-container__custom-file__custom-file-control"></span>
-                            </label>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label>Nhập file cần cập nhật</label><br />
+                                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+
+                                </div>
+                            </div>
                             <div class="custom-file-container__image-preview"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </div>
                 </div>
             </div>
-          </div>
+            <div class="col-md-9">
+                <div class="card card-table">
+
+                    <div class="card-body booking_card">
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped table table-hover table-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>ID Sự kiện</th>
+                                        <th>Tên kế hoạch</th>
+                                        <th>Ngày trình</th>
+                                        <th>Ngày duyệt</th>
+                                        <th>Người trình</th>
+                                        <th>Người duyệt</th>
+                                        <th>Tình trạng</th>
+                                        <th class="text-right">Chức năng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            KH-KCNTT-NH22230001
+                                        </td>
+                                        <td>
+                                                Tên
+                                        </td>
+
+                                        <td>21-03-2020</td>
+
+                                        <td>21-03-2020</td>
+
+                                        <td>Tên</td>
+                                        <td>Tên</td>
+
+
+
+                                        <td>
+                                            <div class="actions">
+                                                <a href="#" class="btn btn-sm bg-success-light mr-2">
+                                                    Active
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="edit-booking.html"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+          </div>
+
+
 
 
 <script src="~/plugins/fileupload/fileupload.min.js"></script>

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Quản lý sự kiện";
+    ViewData["Title"] = "Quản lý nhiệm vụ";
 }
 
 <div class="page-wrapper">
@@ -9,7 +9,7 @@
                 <div class="col">
                     <div class="mt-5">
                         <h4 class="card-title float-left mt-2">@ViewData["Title"]</h4>
-                        <button type="button" class="btn btn-primary float-right veiwbutton" data-toggle="modal" data-target=".themsukien">Thêm sự kiện</button>
+                        <button type="button" class="btn btn-primary float-right veiwbutton" data-toggle="modal" data-target=".themsukien">Thêm nhiệm vụ</button>
                     </div>
                 </div>
             </div>
@@ -23,8 +23,9 @@
                             <table class="datatable table table-stripped table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Tên sự kiện</th>
+                                        <th>ID Sự kiện</th>
+                                        <th>ID Nhiệm vụ</th>
+                                        <th>Tên nhiệm vụ</th>
                                         <th>Mô tả</th>
                                         <th>Ngày bắt đầu</th>
                                         <th>Ngày kết thúc</th>
@@ -35,13 +36,9 @@
                                 <tbody>
                                     <tr>
                                         <td>KH-KCNTT-NH22230001</td>
+                                        <td>1</td>
 
-                                        <td>
-                                            <h2 class="table-avatar">
-
-                                                <a href="profile.html">Ahihi Demo</a>
-                                            </h2>
-                                        </td>
+                                        <td>Ahihi Demo</td>
                                         <td><textarea class="form-control" disabled>aaaaaaaaaaa</textarea></td>
 
                                         <td>21-03-2020</td>
@@ -97,7 +94,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Thêm sự kiện</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Thêm nhiệm vụ</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -106,8 +103,8 @@
                 <div class="col-12">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
-                            <label for="">Tên sự kiện</label>
-                            <input type="text" class="form-control" placeholder="Nhập tên sự kiện">
+                            <label for="">Tên nhiệm vụ</label>
+                            <input type="text" class="form-control" placeholder="Nhập tên nhiệm vụ">
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12">

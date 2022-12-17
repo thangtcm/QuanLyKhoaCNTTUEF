@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Quản lý sự kiện";
+    ViewData["Title"] = "Quản lý thành viên";
 }
 
 <div class="page-wrapper">
@@ -9,7 +9,7 @@
                 <div class="col">
                     <div class="mt-5">
                         <h4 class="card-title float-left mt-2">@ViewData["Title"]</h4>
-                        <button type="button" class="btn btn-primary float-right veiwbutton" data-toggle="modal" data-target=".themsukien">Thêm sự kiện</button>
+                        <button type="button" class="btn btn-primary float-right veiwbutton" data-toggle="modal" data-target=".themsukien">Thêm thành viên</button>
                     </div>
                 </div>
             </div>
@@ -23,40 +23,36 @@
                             <table class="datatable table table-stripped table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Tên sự kiện</th>
-                                        <th>Mô tả</th>
-                                        <th>Ngày bắt đầu</th>
-                                        <th>Ngày kết thúc</th>
-                                        <th>Tình trạng</th>
+                                        <th>MSSV</th>
+                                        <th>Tên thành viên</th>
+                                        <th>Email</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Chức vụ</th>
                                         <th class="text-right">Chức năng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>KH-KCNTT-NH22230001</td>
+                                        <td>2050502222</td>
 
                                         <td>
-                                            <h2 class="table-avatar">
 
-                                                <a href="profile.html">Ahihi Demo</a>
-                                            </h2>
+                                                Khoa Nguyen
                                         </td>
-                                        <td><textarea class="form-control" disabled>aaaaaaaaaaa</textarea></td>
+                                        <td>fadsfsadf@gmail.com</td>
 
-                                        <td>21-03-2020</td>
-
-                                        <td>22-03-2020</td>
-
-
+                                        <td>03878888888</td>
 
                                         <td>
                                             <div class="actions">
                                                 <a href="#" class="btn btn-sm bg-success-light mr-2">
-                                                    Active
+                                                    Admin
                                                 </a>
                                             </div>
                                         </td>
+
+
+                                        
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
@@ -97,7 +93,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Thêm sự kiện</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Thêm thành viên</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -106,8 +102,8 @@
                 <div class="col-12">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
-                            <label for="">Tên sự kiện</label>
-                            <input type="text" class="form-control" placeholder="Nhập tên sự kiện">
+                            <label for="">Tên thành viên</label>
+                            <input type="text" class="form-control" placeholder="Nhập tên thành viên">
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12">

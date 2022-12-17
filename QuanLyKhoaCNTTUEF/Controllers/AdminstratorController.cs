@@ -42,5 +42,21 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         {
             return View();
         }
+        public ActionResult Task()
+        {
+            return View();
+        }
+        public ActionResult TaskList()
+        {
+            return View();
+        }
+        public ActionResult Member()
+        {
+            return View();
+        }
+        public ActionResult List()
+        {
+            return View();
+        }
     }
 }

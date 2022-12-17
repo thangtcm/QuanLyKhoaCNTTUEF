@@ -27,8 +27,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Member.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXE1lbWJlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Plan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFBsYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Task.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFRhc2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/TaskList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFRhc2tMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Index.cshtml]
