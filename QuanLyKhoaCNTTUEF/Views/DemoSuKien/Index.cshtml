@@ -1,0 +1,155 @@
+﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.SuKien>
+
+@{
+    ViewData["Title"] = "Quản lý sự kiện";
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="mt-5">
+                        <h4 class="card-title float-left mt-2">@ViewData["Title"]</h4>
+                          
+                        <a asp-action="Create" class="btn btn-primary float-right veiwbutton" >Thêm sự kiện</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+
+                    <div class="card-body booking_card">
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped table table-hover table-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                          <th>
+                                            @Html.DisplayNameFor(model => model.TenSuKien)
+                                            </th>
+                                         <th>
+                                            @Html.DisplayNameFor(model => model.MoTa)
+                                            </th>
+                                            <th>
+                                            @Html.DisplayNameFor(model => model.NgayBD)
+                                            </th>
+                                            <th>
+                                            @Html.DisplayNameFor(model => model.NgayKT)
+                                         </th>
+            
+                                        <th>Tình trạng</th>
+                                        <th class="text-right">Chức năng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model) {
+                                    <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IDSuKien)
+                                            </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TenSuKien)
+                                        </td>
+                                        <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => item.MoTa)</textarea></td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NgayBD)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NgayKT)
+                                        </td>
+                                     
+
+
+                                        <td>
+                                            <div class="actions">
+                                                <a href="#" class="btn btn-sm bg-success-light mr-2">
+                                                    Active
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.IDSuKien"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
+                                                    <a class="dropdown-item"  asp-action="Details" asp-route-id="@item.IDSuKien"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                     <div id="delete_asset" class="modal fade delete-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="~/img/sent.png" alt="" width="50" height="46">
+                    <h3 class="delete_class">Chắc chắn xoá?</h3>
+                    <div class="m-t-20">
+                        <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                        <a asp-action="Delete" asp-route-id="@item.IDSuKien" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+
+<div class="modal fade themsukien" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Thêm sự kiện</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label for="">Tên sự kiện</label>
+                            <input type="text" class="form-control" placeholder="Nhập tên sự kiện">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label for="">Mô tả</label>
+                            <textarea type="text" class="form-control" placeholder="Nhập mô tả" cols="3" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label for="">Ngày bắt đầu</label>
+                            <input type="text" class="form-control" placeholder="Nhập ngày bắt đầu">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label for="">Ngày kết thúc</label>
+                            <input type="text" class="form-control" placeholder="Nhập ngày kết thúc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
