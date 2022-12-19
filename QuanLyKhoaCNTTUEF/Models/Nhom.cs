@@ -7,9 +7,9 @@ namespace QuanLyKhoaCNTTUEF.Models
     {
         [Key]
         [Column(TypeName = "varchar(20)")]
-        public int IDSuKien { get; set; }
+        public string IDNhom { get; set; }
         [Column(TypeName = "varchar(50)")]
-        public int IDNhom { get; set; }
+        public string IDSuKien { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string TenNhom { get; set; }
         [Column(TypeName = "nvarchar(150)")]

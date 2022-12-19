@@ -6,8 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//DI for DbContext
 builder.Services.AddDbContext<ConfigDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
+
+//Set up Google API
 builder.Services.AddAuthentication()
         .AddGoogle(opts =>
         {
@@ -33,7 +37,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.Run();

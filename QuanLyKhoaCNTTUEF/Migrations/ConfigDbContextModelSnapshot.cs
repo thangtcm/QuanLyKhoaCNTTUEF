@@ -24,13 +24,13 @@ namespace QuanLyKhoaCNTTUEF.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.ChiTietTask", b =>
                 {
-                    b.Property<string>("IDNhom")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(50)");
-
                     b.Property<string>("IDTask")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("IDNhom")
                         .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("KetQua")
                         .IsRequired()
@@ -38,13 +38,12 @@ namespace QuanLyKhoaCNTTUEF.Migrations
 
                     b.Property<string>("MoTa")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("UserID")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
 
-                    b.HasKey("IDNhom");
+                    b.HasKey("IDTask");
 
                     b.ToTable("ChiTietTask");
                 });
@@ -105,8 +104,7 @@ namespace QuanLyKhoaCNTTUEF.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.KeHoach", b =>
                 {
-                    b.Property<string>("IDSuKien")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("IDKeHoach")
                         .HasColumnType("varchar(20)");
 
                     b.Property<DateTime>("NgayDuyet")
@@ -127,16 +125,18 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("IDSuKien");
+                    b.HasKey("IDKeHoach");
 
                     b.ToTable("KeHoach");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.NguoiDung", b =>
                 {
-                    b.Property<string>("MSSV")
+                    b.Property<int>("MSSV")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MSSV"));
 
                     b.Property<string>("ChucVu")
                         .IsRequired()
@@ -150,10 +150,6 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("UserID")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
                     b.HasKey("MSSV");
 
                     b.ToTable("NguoiDung");
@@ -161,11 +157,10 @@ namespace QuanLyKhoaCNTTUEF.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Nhom", b =>
                 {
-                    b.Property<string>("IDSuKien")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("IDNhom")
                         .HasColumnType("varchar(20)");
 
-                    b.Property<string>("IDNhom")
+                    b.Property<string>("IDSuKien")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
@@ -183,7 +178,7 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("IDSuKien");
+                    b.HasKey("IDNhom");
 
                     b.ToTable("Nhom");
                 });
@@ -191,7 +186,6 @@ namespace QuanLyKhoaCNTTUEF.Migrations
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.SuKien", b =>
                 {
                     b.Property<string>("IDSuKien")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("MoTa")

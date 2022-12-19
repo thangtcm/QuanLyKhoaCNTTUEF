@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using QuanLyKhoaCNTTUEF.Models;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
@@ -12,6 +13,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
     public class DemoSuKienController : Controller
     {
         private readonly ConfigDbContext _context;
+        private int _count = 1;
 
         public DemoSuKienController(ConfigDbContext context)
         {
@@ -20,12 +22,13 @@ namespace QuanLyKhoaCNTTUEF.Controllers
 
         // GET: DemoSuKien
         public async Task<IActionResult> Index()
-        {
-              return View(await _context.SuKien.ToListAsync());
+        { 
+            //_count = _context.SuKien.Count();
+            return View(await _context.SuKien.ToListAsync());
         }
 
         // GET: DemoSuKien/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null || _context.SuKien == null)
             {
@@ -45,6 +48,19 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // GET: DemoSuKien/Create
         public IActionResult Create()
         {
+            //_count = (from x in _context.SuKien select x).Count() + 1;
+            foreach(var x in _context.SuKien)
+            {
+                if(x.IDSuKien == $"SK{String.Format("{0:000}", _count)}".ToString())
+                {
+                    _count++;
+                }
+                else
+                {
+                    break;
+                }    
+            }    
+            ViewData["IDSuKien"] = $"SK{String.Format("{0:000}", _count)}".ToString();
             return View();
         }
 
@@ -55,8 +71,14 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TenSuKien,NgayBD,NgayKT,MoTa")] SuKien suKien)
         {
+            /*_count = (from x in _context.SuKien select x).Count();
+            Console.WriteLine(_count);
+            suKien.IDSuKien = $"SK{String.Format("{0:000}", _count)}".ToString();
+            Console.WriteLine(suKien.IDSuKien);*/
             if (ModelState.IsValid)
             {
+                 //test gán
+                //suKien.IDSuKien = ("SK" + _count).ToString();
                 _context.Add(suKien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -65,7 +87,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         }
 
         // GET: DemoSuKien/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (id == null || _context.SuKien == null)
             {
@@ -85,7 +107,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IDSuKien,TenSuKien,NgayBD,NgayKT,MoTa")] SuKien suKien)
+        public async Task<IActionResult> Edit(string id, [Bind("IDSuKien,TenSuKien,NgayBD,NgayKT,MoTa")] SuKien suKien)
         {
             if (id != suKien.IDSuKien)
             {
@@ -116,15 +138,15 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         }
 
         // GET: DemoSuKien/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null || _context.SuKien == null)
             {
                 return NotFound();
             }
 
-            var suKien = await _context.SuKien
-                .FirstOrDefaultAsync(m => m.IDSuKien == id);
+            var suKien = await _context.SuKien.FirstOrDefaultAsync(m => m.IDSuKien == id);
+            //var suKien = await _context.SuKien.FindAsync(id);
             if (suKien == null)
             {
                 return NotFound();
@@ -136,7 +158,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // POST: DemoSuKien/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.SuKien == null)
             {
@@ -152,7 +174,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SuKienExists(int id)
+        private bool SuKienExists(string id)
         {
           return _context.SuKien.Any(e => e.IDSuKien == id);
         }

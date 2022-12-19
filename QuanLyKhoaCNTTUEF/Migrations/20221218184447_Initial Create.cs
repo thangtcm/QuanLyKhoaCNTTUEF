@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QuanLyKhoaCNTTUEF.Migrations
 {
     /// <inheritdoc />
-    public partial class Database : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,15 +15,15 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                 name: "ChiTietTask",
                 columns: table => new
                 {
-                    IDNhom = table.Column<string>(type: "varchar(50)", nullable: false),
-                    UserID = table.Column<string>(type: "varchar(50)", nullable: false),
-                    IDTask = table.Column<string>(type: "varchar(50)", nullable: false),
-                    MoTa = table.Column<string>(type: "nvarchar(150)", nullable: false),
+                    IDTask = table.Column<string>(type: "varchar(20)", nullable: false),
+                    IDNhom = table.Column<string>(type: "varchar(20)", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    MoTa = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     KetQua = table.Column<string>(type: "nvarchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChiTietTask", x => x.IDNhom);
+                    table.PrimaryKey("PK_ChiTietTask", x => x.IDTask);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,7 +52,7 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                 name: "KeHoach",
                 columns: table => new
                 {
-                    IDSuKien = table.Column<string>(type: "varchar(20)", nullable: false),
+                    IDKeHoach = table.Column<string>(type: "varchar(20)", nullable: false),
                     TenKeHoach = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     NgayTrinh = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NgayDuyet = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -61,15 +61,15 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_KeHoach", x => x.IDSuKien);
+                    table.PrimaryKey("PK_KeHoach", x => x.IDKeHoach);
                 });
 
             migrationBuilder.CreateTable(
                 name: "NguoiDung",
                 columns: table => new
                 {
-                    MSSV = table.Column<string>(type: "varchar(50)", nullable: false),
-                    UserID = table.Column<string>(type: "varchar(50)", nullable: false),
+                    MSSV = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     HoVaTen = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     ChucVu = table.Column<string>(type: "nvarchar(50)", nullable: false)
@@ -83,8 +83,8 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                 name: "Nhom",
                 columns: table => new
                 {
-                    IDSuKien = table.Column<string>(type: "varchar(20)", nullable: false),
-                    IDNhom = table.Column<string>(type: "varchar(50)", nullable: false),
+                    IDNhom = table.Column<string>(type: "varchar(20)", nullable: false),
+                    IDSuKien = table.Column<string>(type: "varchar(50)", nullable: false),
                     TenNhom = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     MoTa = table.Column<string>(type: "nvarchar(150)", nullable: false),
                     NgayTao = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -92,7 +92,7 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Nhom", x => x.IDSuKien);
+                    table.PrimaryKey("PK_Nhom", x => x.IDNhom);
                 });
 
             migrationBuilder.CreateTable(
