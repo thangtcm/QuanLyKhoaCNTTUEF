@@ -8,14 +8,21 @@ namespace QuanLyKhoaCNTTUEF.Models
     {
         [Key]
         [Column(TypeName = "varchar(20)")]
-        public int IDSuKien { get; set; }
+        public string IDSuKien { get; set; }
+
         [Column(TypeName = "nvarchar(50)")]
         [DisplayName("Tên sự kiện")]
+        [Required(ErrorMessage = "This field is required.")]
         public string TenSuKien { get; set; }
+
         [DisplayName("Ngày bắt đầu")]
+        [Required(ErrorMessage = "This field is required.")]
         public DateTime NgayBD { get; set; }
+
         [DisplayName("Ngày kết thúc")]
+        [Required(ErrorMessage = "This field is required.")]
         public DateTime NgayKT { get; set; }
+
         [Column(TypeName = "nvarchar(50)")]
         [DisplayName("Mô tả")]
         public string MoTa { get; set; }

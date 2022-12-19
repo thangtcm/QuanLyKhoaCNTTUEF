@@ -29,7 +29,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             }
             catch(Exception ex)
             {
-                ViewBag.Message = "Error while uploading the file.";
+                ViewBag.Message = "Error while uploading the file. " + ex;
             }
             return View();
         }

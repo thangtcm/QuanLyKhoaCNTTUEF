@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Quản lý sự kiện";
+    var count = 0;
 }
 
 <div class="page-wrapper">
@@ -26,19 +27,20 @@
                             <table class="datatable table table-stripped table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
+                                        <th>Thứ tự</th>
                                         <th>ID</th>
-                                          <th>
+                                        <th>
                                             @Html.DisplayNameFor(model => model.TenSuKien)
-                                            </th>
-                                         <th>
+                                        </th>
+                                        <th>
                                             @Html.DisplayNameFor(model => model.MoTa)
-                                            </th>
-                                            <th>
+                                        </th>
+                                        <th>
                                             @Html.DisplayNameFor(model => model.NgayBD)
-                                            </th>
-                                            <th>
+                                        </th>
+                                        <th>
                                             @Html.DisplayNameFor(model => model.NgayKT)
-                                         </th>
+                                        </th>
             
                                         <th>Tình trạng</th>
                                         <th class="text-right">Chức năng</th>
@@ -47,9 +49,15 @@
                                 <tbody>
                                     @foreach (var item in Model) {
                                     <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.IDSuKien)
-                                            </td>
+                                        <td>
+                                            @count
+                                            @{
+                                                count++;
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IDSuKien)
+                                        </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.TenSuKien)
                                         </td>
@@ -77,25 +85,29 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.IDSuKien"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
                                                     <a class="dropdown-item"  asp-action="Details" asp-route-id="@item.IDSuKien"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>
+                                                    <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.IDSuKien"><i class="fas fa-pencil-alt m-r-5"></i> Xóa</a>
+                                              <!--    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset">
+                                                        <i class="fas fa-trash-alt m-r-5"></i> Xoá
+
+                                                              </a>-->
                                                 </div>
-                                            </div>
+                                                <div id="delete_asset" class="modal fade delete-modal" role="dialog">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body text-center">
+                                                                <img src="~/img/sent.png" alt="" width="50" height="46">
+                                                                <h3 class="delete_class">Chắc chắn xoá?</h3>
+                                                                <div class="m-t-20">
+                                                                    <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                                                                    <a asp-action="Delete" asp-route-id="@item.IDSuKien" class="btn btn-danger">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
                                         </td>
                                     </tr>
-                                     <div id="delete_asset" class="modal fade delete-modal" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body text-center">
-                    <img src="~/img/sent.png" alt="" width="50" height="46">
-                    <h3 class="delete_class">Chắc chắn xoá?</h3>
-                    <div class="m-t-20">
-                        <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                        <a asp-action="Delete" asp-route-id="@item.IDSuKien" class="btn btn-danger">Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
                                     }
                                 </tbody>
                             </table>
@@ -104,6 +116,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
    
 </div>
