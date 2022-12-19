@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.SuKien>
-
 @{
     ViewData["Title"] = "Quản lý sự kiện";
-    var count = 0;
 }
 
 <div class="page-wrapper">
@@ -19,15 +17,36 @@
             </div>
         </div>
         <div class="row">
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <form asp-action="Index" method="get">
+                        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                            <div class="input-group">
+                                <input type="search" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Nhập từ bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                                <div class="input-group-append">
+                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              @*  <form asp-action="Index" method="get">
+                    <div class="form-group">
+                        <label for="SearchString">Tìm kiếm bằng tên sự kiện : </label>
+                        <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                        <input type="submit" value="Search" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>*@
             <div class="col-sm-12">
                 <div class="card card-table">
-
                     <div class="card-body booking_card">
                         <div class="table-responsive">
                             <table class="datatable table table-stripped table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Thứ tự</th>
+                                        <th>#</th>
                                         <th>ID</th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.TenSuKien)
@@ -50,10 +69,7 @@
                                     @foreach (var item in Model) {
                                     <tr>
                                         <td>
-                                            @count
-                                            @{
-                                                count++;
-                                            }
+                                            @Html.DisplayFor(modelItem => item.IDSuKien).ToString().Substring(0,10)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.IDSuKien)

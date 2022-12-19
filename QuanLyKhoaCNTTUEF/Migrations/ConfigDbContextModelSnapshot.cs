@@ -188,6 +188,18 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                     b.Property<string>("IDSuKien")
                         .HasColumnType("varchar(20)");
 
+                    b.Property<string>("IDNguoiCapNhat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IDNguoiTao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IDNguoiXoa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MoTa")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
@@ -195,12 +207,27 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                     b.Property<DateTime>("NgayBD")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("NgayCapNhat")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("NgayKT")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("NgayTao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("NgayXoa")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TenSuKien")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("XoaTam")
+                        .HasColumnType("int");
+
+                    b.Property<int>("trangthai")
+                        .HasColumnType("int");
 
                     b.HasKey("IDSuKien");
 

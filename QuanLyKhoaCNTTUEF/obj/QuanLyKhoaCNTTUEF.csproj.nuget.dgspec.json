@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj": {}
+    "C:\\Users\\YAN\\Dropbox\\YAN shared workspace\\PC-NZXT\\MVC CODE PROJECT\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj": {}
   },
   "projects": {
-    "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj": {
+    "C:\\Users\\YAN\\Dropbox\\YAN shared workspace\\PC-NZXT\\MVC CODE PROJECT\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
+        "projectUniqueName": "C:\\Users\\YAN\\Dropbox\\YAN shared workspace\\PC-NZXT\\MVC CODE PROJECT\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
         "projectName": "QuanLyKhoaCNTTUEF",
-        "projectPath": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
-        "packagesPath": "C:\\Users\\couni\\.nuget\\packages\\",
-        "outputPath": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\obj\\",
+        "projectPath": "C:\\Users\\YAN\\Dropbox\\YAN shared workspace\\PC-NZXT\\MVC CODE PROJECT\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
+        "packagesPath": "C:\\Users\\YAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\YAN\\Dropbox\\YAN shared workspace\\PC-NZXT\\MVC CODE PROJECT\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\couni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\YAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -101,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

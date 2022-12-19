@@ -30,7 +30,7 @@
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="IDSuKien" class="control-label"></label>
-                                <input asp-for="IDSuKien" class="form-control" value="@ViewData["IDSuKien"]" readonly />
+                                <input asp-for="IDSuKien"  class="form-control" value="@ViewData["IDSuKien"]" readonly />
                                 <span asp-validation-for="IDSuKien" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -53,6 +53,22 @@
                                                 <textarea asp-for="MoTa" class="form-control" placeholder="Nhập mô tả" cols="4" rows="4"> </textarea>
                                 <span asp-validation-for="MoTa" class="text-danger"></span>
                             </div>
+                            <input asp-for="IDNguoiCapNhat"  class="form-control" value="1"  />
+                            <span asp-validation-for="IDNguoiCapNhat" class="text-danger"></span>
+                            <input asp-for="IDNguoiTao" class="form-control" value="1" />
+                            <span asp-validation-for="IDNguoiTao" class="text-danger"></span>
+                            <input asp-for="IDNguoiXoa" class="form-control" value="1" />
+                            <span asp-validation-for="IDNguoiXoa" class="text-danger"></span>
+                            <input asp-for="NgayCapNhat" class="form-control" />
+                            <span asp-validation-for="NgayCapNhat" class="text-danger"></span>
+                            <input asp-for="NgayTao" class="form-control"  />
+                            <span asp-validation-for="NgayTao" class="text-danger"></span>
+                            <input asp-for="NgayXoa" class="form-control" />
+                            <span asp-validation-for="NgayXoa" class="text-danger"></span>
+                            <input asp-for="XoaTam" class="form-control" value="1" />
+                            <span asp-validation-for="XoaTam" class="text-danger"></span>
+                            <input asp-for="trangthai" class="form-control" value="1" />
+                            <span asp-validation-for="trangthai" class="text-danger"></span>
                             <div class="form-group">
                                 <input type="submit" value="Create" class="btn btn-primary" />
                             </div>

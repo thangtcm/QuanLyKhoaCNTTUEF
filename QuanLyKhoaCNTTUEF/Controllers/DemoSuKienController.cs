@@ -51,6 +51,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             //_count = (from x in _context.SuKien select x).Count() + 1;
             foreach(var x in _context.SuKien)
             {
+                // random string
                 if(x.IDSuKien == $"SK{String.Format("{0:000}", _count)}".ToString())
                 {
                     _count++;
@@ -61,6 +62,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                 }    
             }    
             ViewData["IDSuKien"] = $"SK{String.Format("{0:000}", _count)}".ToString();
+            Console.WriteLine(ViewData["IDSuKien"]);
             return View();
         }
 
@@ -69,7 +71,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TenSuKien,NgayBD,NgayKT,MoTa")] SuKien suKien)
+        public async Task<IActionResult> Create([Bind("IDSuKien,TenSuKien,NgayBD,NgayKT,MoTa,IDNguoiCapNhat,IDNguoiTao,IDNguoiXoa,NgayCapNhat,NgayTao,NgayXoa,XoaTam,trangthai")] SuKien suKien)
         {
             /*_count = (from x in _context.SuKien select x).Count();
             Console.WriteLine(_count);
@@ -83,6 +85,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(suKien);
         }
 
