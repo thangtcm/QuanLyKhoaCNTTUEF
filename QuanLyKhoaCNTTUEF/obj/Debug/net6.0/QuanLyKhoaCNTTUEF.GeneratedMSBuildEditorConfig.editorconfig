@@ -5,116 +5,137 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = QuanLyKhoaCNTTUEF
 build_property.RootNamespace = QuanLyKhoaCNTTUEF
-build_property.ProjectDir = C:\Users\YAN\Dropbox\YAN shared workspace\PC-NZXT\MVC CODE PROJECT\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\
+build_property.ProjectDir = D:\EventFitProject\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\YAN\Dropbox\YAN shared workspace\PC-NZXT\MVC CODE PROJECT\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF
+build_property.MSBuildProjectDirectory = D:\EventFitProject\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Event.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Event.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXEV2ZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Group.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Group.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXEdyb3VwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Index.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/List.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Member.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Member.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXE1lbWJlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Plan.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Plan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFBsYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Task.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Task.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFRhc2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/TaskList.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/TaskList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFRhc2tMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Create.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVtb1N1S2llblxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Delete.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVtb1N1S2llblxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Details.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVtb1N1S2llblxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Edit.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVtb1N1S2llblxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Index.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/DemoSuKien/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVtb1N1S2llblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Index.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBwbHVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Success.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBwbHVzXFN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Index.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Privacy.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/Error.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_MenuBar.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_MenuBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51QmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Meta.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Meta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Style.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Style.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdHlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/UploadFiles/Index.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/UploadFiles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkRmlsZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/_ViewImports.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/_ViewStart.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/YAN/Dropbox/YAN shared workspace/PC-NZXT/MVC CODE PROJECT/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Layout.cshtml]
+[D:/EventFitProject/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-y7wcxk7esm

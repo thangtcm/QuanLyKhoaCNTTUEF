@@ -21,10 +21,20 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         }
 
         // GET: DemoSuKien
-        public async Task<IActionResult> Index()
-        { 
-            //_count = _context.SuKien.Count();
-            return View(await _context.SuKien.ToListAsync());
+        public async Task<IActionResult> Index(string SearchString)
+        {
+            ViewData["MaxEvent"] = (from x in _context.SuKien select x).Count();
+            ViewData["CurrentFilter"] = SearchString; // Search hiện tại
+
+            var sk = from m in _context.SuKien
+                     select m;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                sk = sk.Where(s => s.TenSuKien!.Contains(SearchString));
+            }
+
+            return View(await sk.ToListAsync());
         }
 
         // GET: DemoSuKien/Details/5
@@ -73,14 +83,8 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IDSuKien,TenSuKien,NgayBD,NgayKT,MoTa,IDNguoiCapNhat,IDNguoiTao,IDNguoiXoa,NgayCapNhat,NgayTao,NgayXoa,XoaTam,trangthai")] SuKien suKien)
         {
-            /*_count = (from x in _context.SuKien select x).Count();
-            Console.WriteLine(_count);
-            suKien.IDSuKien = $"SK{String.Format("{0:000}", _count)}".ToString();
-            Console.WriteLine(suKien.IDSuKien);*/
             if (ModelState.IsValid)
             {
-                 //test gán
-                //suKien.IDSuKien = ("SK" + _count).ToString();
                 _context.Add(suKien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

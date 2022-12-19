@@ -1,7 +1,7 @@
 ﻿@model QuanLyKhoaCNTTUEF.Models.SuKien
 
 @{
-    ViewData["Title"] = "Sự Kiện - Xóa " + @Html.DisplayNameFor(model => model.IDSuKien);
+    ViewData["Title"] = "Quản Lý Sự Kiện - Xóa Sự Kiện " ;
 }
 
 <h1>Delete</h1>
@@ -10,10 +10,15 @@
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
-            @{
-                @ViewData["Title"]
-            }
-        </div>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="mt-5">
+                            <h4 class="card-title float-left mt-2">@ViewData["Title"] @Html.DisplayFor(model => model.TenSuKien)</h4>
+                            <a asp-action="Index" class="btn btn-primary float-right veiwbutton">Quay về</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <dl class="row">
             <dt class = "col-sm-2">
                 @Html.DisplayNameFor(model => model.TenSuKien)
