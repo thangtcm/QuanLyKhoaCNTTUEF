@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.SuKien>
+
 @{
     ViewData["Title"] = "Quản lý sự kiện";
+    var count =1;
 }
 
 <div class="page-wrapper">
@@ -17,7 +19,6 @@
             </div>
         </div>
         <div class="row">
-
             <div class="row">
                 <div class="col-sm-3">
                     <form asp-action="Index" method="get">
@@ -30,23 +31,23 @@
                             </div>
                         </div>
                     </form>
-                </div>
-              @*  <form asp-action="Index" method="get">
+             @*   <form asp-action="Index" method="get">
                     <div class="form-group">
                         <label for="SearchString">Tìm kiếm bằng tên sự kiện : </label>
                         <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
                         <input type="submit" value="Search" class="btn btn-primary" />
                     </div>
-                </form>
-            </div>*@
+                </form>*@
+            </div>
             <div class="col-sm-12">
                 <div class="card card-table">
+
                     <div class="card-body booking_card">
                         <div class="table-responsive">
                             <table class="datatable table table-stripped table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>Thứ tự</th>
                                         <th>ID</th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.TenSuKien)
@@ -69,21 +70,24 @@
                                     @foreach (var item in Model) {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.IDSuKien).ToString().Substring(0,10)
+                                            @count
+                                            @{
+                                                count++;
+                                            }
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.IDSuKien)
+                                                    @item.IDSuKien
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.TenSuKien)
+                                            @item.TenSuKien
                                         </td>
                                         <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => item.MoTa)</textarea></td>
 
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.NgayBD)
+                                            @item.NgayBD
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.NgayKT)
+                                            @item.NgayKT
                                         </td>
                                      
 
