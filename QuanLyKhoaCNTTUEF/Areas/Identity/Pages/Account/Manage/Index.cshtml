@@ -1,0 +1,89 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+<div class="page-wrapper" style="min-height: 941px;">
+    <div class="content container-fluid">
+        <div class="page-header mt-5">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">@ViewData["Title"]</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-action="Index">Dashboard</a></li>
+                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <partial name="_StatusMessage" for="StatusMessage" />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                                <img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h4 class="user-name mb-3">David Alvarez</h4>
+                            <h6 class="text-muted mt-1">Manager</h6>
+                            <div class="user-Location mt-1">
+                                <i class="fas fa-map-marker-alt"></i> Florida, United
+                                States
+                            </div>
+                            <div class="about-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </div>
+                        </div>
+                        <div class="col-auto profile-btn">
+                            <a href="" class="btn btn-primary">
+                                Message
+                            </a>
+                            <a href="edit-profile.html" class="btn btn-primary">
+                                Edit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-menu">
+                    @{
+                        
+                        <partial name="_ManageNav" />
+                    }
+                </div>
+                <div class="tab-content profile-tab-cont">
+                    <div class="tab-pane fade show active" id="per_details_tab">
+                        <div class="card">
+                            <div class="card-body">
+                                <form id="profile-form" method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-floating">
+                                        <label asp-for="Username" class="form-label"></label>
+                                        <input asp-for="Username" class="form-control" disabled />
+                                    </div>
+                                    <div class="form-floating">
+                                        <label asp-for="Input.UserName" class="form-label"></label>
+                                        <input asp-for="Input.UserName" class="form-control" />
+                                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-floating">
+                                        <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                                        <input asp-for="Input.PhoneNumber" class="form-control" />
+                                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                    
+                                    <br>
+                                    <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

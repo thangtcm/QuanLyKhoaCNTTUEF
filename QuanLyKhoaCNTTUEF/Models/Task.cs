@@ -11,12 +11,12 @@ namespace QuanLyKhoaCNTTUEF.Models
         [Column(TypeName = "varchar(50)")]
         public int IDTask { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        public string TenTask { get; set; }
+        public string? TenTask { get; set; }
         [Column(TypeName = "nvarchar(150)")]
-        public string MoTa { get; set; }
+        public string? MoTa { get; set; }
         public DateTime NgayBD { get; set; }
         public DateTime NgayKT { get; set; }
         [Column(TypeName = "nvarchar(50)")]
-        public string TrangThai { get; set; }
+        public int TrangThai { get; set; }
     }
 }

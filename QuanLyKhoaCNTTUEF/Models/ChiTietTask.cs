@@ -10,14 +10,14 @@ namespace QuanLyKhoaCNTTUEF.Models
         public int IDTask { get; set; }
 
         [Column(TypeName = "varchar(20)")]
-        public string IDNhom { get; set; }
+        public string? IDNhom { get; set; }
 
-        public int UserID { get; set; }
+        public string? UserID { get; set; }
 
         [Column(TypeName = "nvarchar(200)")]
-        public string MoTa { get; set; }
+        public string? MoTa { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        public string KetQua { get; set; }
+        public string? KetQua { get; set; }
     }
 }

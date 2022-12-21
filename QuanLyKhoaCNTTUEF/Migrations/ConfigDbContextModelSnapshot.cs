@@ -17,10 +17,10 @@ namespace QuanLyKhoaCNTTUEF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.1")
+                .HasAnnotation("ProductVersion", "6.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.ChiTietTask", b =>
                 {
@@ -29,19 +29,16 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("IDNhom")
-                        .IsRequired()
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("KetQua")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("MoTa")
-                        .IsRequired()
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IDTask");
 
@@ -55,15 +52,12 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("DiaChiHienTai")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("HoVaTen")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("IDGiaoVien")
@@ -83,14 +77,12 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Nganh")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("NgaySinh")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SoDienThoai")
-                        .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("UserID")
@@ -114,45 +106,17 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NguoiDuyet")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("NguoiTrinh")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("TenKeHoach")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("IDKeHoach");
 
                     b.ToTable("KeHoach");
-                });
-
-            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.NguoiDung", b =>
-                {
-                    b.Property<int>("MSSV")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MSSV"));
-
-                    b.Property<string>("ChucVu")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("HoVaTen")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("MSSV");
-
-                    b.ToTable("NguoiDung");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Nhom", b =>
@@ -161,11 +125,9 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("IDSuKien")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("MoTa")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime>("NgayCapNhat")
@@ -175,7 +137,6 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TenNhom")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("IDNhom");
@@ -189,19 +150,15 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("IDNguoiCapNhat")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IDNguoiTao")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IDNguoiXoa")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MoTa")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("NgayBD")
@@ -223,10 +180,10 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("XoaTam")
+                    b.Property<int>("TrangThai")
                         .HasColumnType("int");
 
-                    b.Property<int>("trangthai")
+                    b.Property<int>("XoaTam")
                         .HasColumnType("int");
 
                     b.HasKey("IDSuKien");
@@ -245,7 +202,6 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("MoTa")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime>("NgayBD")
@@ -255,7 +211,6 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TenTask")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("TrangThai")

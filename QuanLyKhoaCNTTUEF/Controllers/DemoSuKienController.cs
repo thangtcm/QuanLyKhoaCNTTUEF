@@ -59,18 +59,21 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         public IActionResult Create()
         {
             //_count = (from x in _context.SuKien select x).Count() + 1;
-            foreach(var x in _context.SuKien)
+            if (_context.SuKien != null)
             {
-                // random string
-                if(x.IDSuKien == $"SK{String.Format("{0:000}", _count)}".ToString())
+                foreach (var x in _context.SuKien)
                 {
-                    _count++;
+                    // random string
+                    if (x.IDSuKien == $"SK{String.Format("{0:000}", _count)}".ToString())
+                    {
+                        _count++;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                else
-                {
-                    break;
-                }    
-            }    
+            }
             ViewData["IDSuKien"] = $"SK{String.Format("{0:000}", _count)}".ToString();
             Console.WriteLine(ViewData["IDSuKien"]);
             return View();
@@ -183,7 +186,9 @@ namespace QuanLyKhoaCNTTUEF.Controllers
 
         private bool SuKienExists(string id)
         {
-          return _context.SuKien.Any(e => e.IDSuKien == id);
+            if(_context.SuKien is not null)
+                return _context.SuKien.Any(e => e.IDSuKien == id);
+            return false;
         }
     }
 }
