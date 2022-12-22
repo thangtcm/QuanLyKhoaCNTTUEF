@@ -13,6 +13,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
     public class DemoTask : Controller
     {
         private readonly ConfigDbContext _context;
+        private int _count = 1;
 
         public DemoTask(ConfigDbContext context)
         {
@@ -27,7 +28,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         }
 
         // GET: DemoTask/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null || _context.Task == null)
             {
@@ -47,6 +48,22 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // GET: DemoTask/Create
         public IActionResult Create()
         {
+            if (_context.Task != null)
+            {
+                foreach (var x in _context.Task)
+                {
+                    // random string
+                    if (x.IDTask == $"TASK{String.Format("{0:000}", _count)}".ToString())
+                    {
+                        _count++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            ViewData["IDTask"] = $"TASK{String.Format("{0:000}", _count)}".ToString();
             return View();
         }
 
@@ -55,7 +72,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IDSuKien,IDTask,TenTask,MoTa,NgayBD,NgayKT,TrangThai")] Task task)
+        public async Task<IActionResult> Create([Bind("IDSuKien,IDTask,TenTask,MoTa,NgayBD,NgayKT,TrangThai,ChiTiet,DanhGia")] Task task)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +104,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IDSuKien,IDTask,TenTask,MoTa,NgayBD,NgayKT,TrangThai")] Task task)
+        public async Task<IActionResult> Edit(string id, [Bind("IDSuKien,IDTask,TenTask,MoTa,NgayBD,NgayKT,TrangThai")] Task task)
         {
             if (id != task.IDSuKien)
             {
@@ -118,7 +135,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         }
 
         // GET: DemoTask/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null || _context.Task == null)
             {
@@ -154,7 +171,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TaskExists(int id)
+        private bool TaskExists(string id)
         {
           return _context.Task.Any(e => e.IDSuKien == id);
         }

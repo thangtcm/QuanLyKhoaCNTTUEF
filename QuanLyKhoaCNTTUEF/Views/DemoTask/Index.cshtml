@@ -96,6 +96,9 @@
                                             @Html.DisplayNameFor(model => model.MoTa)
                                         </th>
                                         <th>
+                                            @Html.DisplayNameFor(model => model.ChiTiet)
+                                        </th>
+                                        <th>
                                             @Html.DisplayNameFor(model => model.NgayBD)
                                         </th>
                                         <th>
@@ -127,6 +130,9 @@
                                             </td>
                                             <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => item.MoTa)</textarea></td>
 
+                                            <td><span>@Html.DisplayFor(modelItem => item.ChiTiet)</span></td>
+
+                                            <td>
                                             <td>
                                                 @item.NgayBD
                                             </td>

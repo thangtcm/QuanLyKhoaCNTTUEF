@@ -8,10 +8,10 @@ namespace QuanLyKhoaCNTTUEF.Models
         [Key]
         [Column(TypeName = "varchar(20)")]
         [Display(Name ="ID Sự kiện")]
-        public int IDSuKien { get; set; }
+        public string IDSuKien { get; set; }
         [Column(TypeName = "varchar(50)")]
         [Display(Name = "ID Task")]
-        public int IDTask { get; set; }
+        public string IDTask { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         [Display(Name = "Tên Task")]
         public string? TenTask { get; set; }
