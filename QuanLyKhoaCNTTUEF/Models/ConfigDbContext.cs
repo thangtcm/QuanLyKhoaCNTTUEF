@@ -6,7 +6,6 @@ namespace QuanLyKhoaCNTTUEF.Models
     {
         public ConfigDbContext(DbContextOptions<ConfigDbContext> options):base(options)
         {
-
         }
         public DbSet<SuKien>? SuKien { get; set; }
         public DbSet<KeHoach>? KeHoach { get; set; }
