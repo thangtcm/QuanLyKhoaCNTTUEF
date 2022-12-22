@@ -1,0 +1,20 @@
+﻿<html lang="en,vi">
+<head>
+    @{
+        await Html.RenderPartialAsync("_Meta");
+        await Html.RenderPartialAsync("_Style");
+    }
+</head>
+
+<body>
+    @{
+        await Html.RenderPartialAsync("_MenuBar");
+    }
+    @RenderBody()
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

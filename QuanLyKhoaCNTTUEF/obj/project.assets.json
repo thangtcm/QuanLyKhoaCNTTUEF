@@ -10837,11 +10837,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
+      "projectUniqueName": "D:\\EventFitProject\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
       "projectName": "QuanLyKhoaCNTTUEF",
-      "projectPath": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
+      "projectPath": "D:\\EventFitProject\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
       "packagesPath": "C:\\Users\\couni\\.nuget\\packages\\",
-      "outputPath": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\obj\\",
+      "outputPath": "D:\\EventFitProject\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

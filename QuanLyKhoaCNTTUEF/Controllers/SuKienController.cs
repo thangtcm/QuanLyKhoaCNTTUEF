@@ -6,16 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using NuGet.Protocol;
 using QuanLyKhoaCNTTUEF.Models;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
-    public class DemoSuKienController : Controller
+    public class SuKienController : Controller
     {
         private readonly ConfigDbContext _context;
         private int _count = 1;
 
-        public DemoSuKienController(ConfigDbContext context)
+        public SuKienController(ConfigDbContext context)
         {
             _context = context;
         }
@@ -44,9 +45,13 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             {
                 return NotFound();
             }
-
             var suKien = await _context.SuKien
                 .FirstOrDefaultAsync(m => m.IDSuKien == id);
+            List<Nhom> lst = new List<Nhom>();
+            if(_context.Nhom is not null)
+                lst = _context.Nhom.Where(s => s.IDSuKien == id).ToList();
+            ViewData["Group"] = lst;
+            
             if (suKien == null)
             {
                 return NotFound();
@@ -190,5 +195,26 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                 return _context.SuKien.Any(e => e.IDSuKien == id);
             return false;
         }
+
+         public async Task<PartialViewResult> _ViewGroup()
+         {
+             var group = from m in _context.Nhom
+                      select m;
+             return PartialView(await group.ToListAsync());
+         }  
+    /*   public async Task<string> AAGet(string id)
+        {
+            string html = "<ul>";
+            List<Nhom> lst = new List<Nhom>();
+
+            lst = _context.Nhom.Where(s => s.IDSuKien == id).ToList();
+
+            for(int i=0; i<lst.Count; i++)
+            {
+                html += "<li>" + lst[i].TenNhom + "</li>";
+            }
+            html += "</ul>";
+            return html;
+        }*/
     }
 }
