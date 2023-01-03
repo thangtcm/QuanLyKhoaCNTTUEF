@@ -25,7 +25,6 @@ namespace QuanLyKhoaCNTTUEF.Models
 
         [Column(TypeName = "nvarchar(50)")]
         [DisplayName("Mô tả")]
-        [Required(ErrorMessage = "This field is required.")]
         public string? MoTa { get; set; }
 
         [DisplayName("Trạng thái")]

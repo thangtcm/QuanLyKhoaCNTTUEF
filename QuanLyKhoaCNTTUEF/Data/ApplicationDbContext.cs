@@ -10,6 +10,5 @@ namespace QuanLyKhoaCNTTUEF.Data
             : base(options)
         {
         }
-       
     }
 }

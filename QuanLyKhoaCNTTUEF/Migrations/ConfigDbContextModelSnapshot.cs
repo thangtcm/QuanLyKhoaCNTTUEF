@@ -197,12 +197,6 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(20)");
 
-                    b.Property<string>("ChiTiet")
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("DanhGia")
-                        .HasColumnType("nvarchar(150)");
-
                     b.Property<string>("IDTask")
                         .IsRequired()
                         .HasColumnType("varchar(50)");

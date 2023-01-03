@@ -565,8 +565,8 @@ button.bg-danger:hover {
 }
 
 .btn-primary {
-	background-color: #009688;
-	border: 1px solid #009688;
+	background-color: #007bff;
+	border: 1px solid #007bff;
 }
 
 	.btn-primary:hover,
@@ -1801,7 +1801,7 @@ button.bg-danger:hover {
 }
 
 .breadcrumb-item.active {
-	color: #333;
+	color: #6c757d;
 }
 
 .user-menu .dropdown-menu {
@@ -4548,6 +4548,19 @@ section.pricing {
 
 h3.page-sub-title {
 	font-size: 20px;
+}
+
+.page-sub-header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.page-sub-header .breadcrumb {
+	margin-left: auto;
 }
 
 .activity-list {
