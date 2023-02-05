@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "EditMembers";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-wrapper" style="min-height: 941px;">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            <div>
+                                <h2>@Model.Group?.TenNhom</h2>
+                                <div>
+                                    @{
+                                        if (Model.Members is not null)
+                                        {
+                                            @foreach (var member in Model.Members)
+                                            {
+                                                if (Model.SelectedMemberIDs is not null)
+                                                {
+                                                    <div>
+                                                        <input type="checkbox" name="SelectedMemberIDs" value="@member.Id"
+                                                        @(Model.SelectedMemberIDs.Contains(member.Id) ? "checked" : "") />
+                                                        <label>@member.FirtName @member.MiddleName @member.LastName</label>
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                </div>
+                                <button type="submit">Save</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

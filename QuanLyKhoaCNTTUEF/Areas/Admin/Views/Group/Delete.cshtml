@@ -1,4 +1,4 @@
-﻿@model QuanLyKhoaCNTTUEF.Models.Nhom
+﻿@model QuanLyKhoaCNTTUEF.Models.Group
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,10 +12,10 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IDSuKien)
+            @Html.DisplayNameFor(model => model.EventID)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IDSuKien)
+            @Html.DisplayFor(model => model.EventID)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TenNhom)
@@ -44,7 +44,7 @@
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="IDNhom" />
+        <input type="hidden" asp-for="GroupID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

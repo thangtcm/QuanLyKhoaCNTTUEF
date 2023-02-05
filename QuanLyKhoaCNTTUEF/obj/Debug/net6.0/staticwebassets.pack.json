@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\feathericon.min.css"
     },
     {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\css\\newstyle.css",
+      "PackagePath": "staticwebassets\\css\\newstyle.css"
+    },
+    {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\css\\select2.min.css",
       "PackagePath": "staticwebassets\\css\\select2.min.css"
     },

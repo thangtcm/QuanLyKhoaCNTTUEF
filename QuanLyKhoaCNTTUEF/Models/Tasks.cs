@@ -8,7 +8,8 @@ namespace QuanLyKhoaCNTTUEF.Models
         [Key]
         [Column(TypeName = "varchar(20)")]
         public int IDSuKien { get; set; }
-        [Column(TypeName = "varchar(50)")]
+
+        [Column(TypeName = "varchar(20)")]
         public int IDTask { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string? TenTask { get; set; }

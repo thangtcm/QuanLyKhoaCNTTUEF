@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using QuanLyKhoaCNTTUEF.Data;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         public IndexModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -59,12 +60,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Số Điện Thoại")]
             public string PhoneNumber { get; set; }
 
-            [MaxLength(20)]
             [Display(Name = "Tên Hiển Thị")]
             public string UserName { get; set; }
         }
 
-        private async Task LoadAsync(IdentityUser user)
+        private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
@@ -73,8 +73,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                UserName = userName,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                UserName = userName
             };
         }
 
@@ -83,7 +83,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Không tải được tài khoản ID = '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             await LoadAsync(user);
@@ -95,7 +95,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Không có tài khoản ID: '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -110,17 +110,14 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account.Manage
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    StatusMessage = "Lỗi cập nhật số điện thoại.";
+                    StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
             }
-
-            Console.Write(Input.UserName);
-            user.UserName = Input.UserName;
-            await _userManager.UpdateAsync(user);
+            var setUserNameResult = await _userManager.SetUserNameAsync(user, Input.UserName);
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Hồ sơ của bạn đã cập nhật";
+            StatusMessage = "Hồ sơ của bạn đã được cập nhật";
             return RedirectToPage();
         }
     }

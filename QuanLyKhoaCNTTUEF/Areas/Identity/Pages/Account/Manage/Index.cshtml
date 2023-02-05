@@ -4,6 +4,7 @@
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
+
 <div class="page-wrapper" style="min-height: 941px;">
     <div class="content container-fluid">
         <div class="page-header mt-5">
@@ -51,7 +52,7 @@
                 </div>
                 <div class="profile-menu">
                     @{
-                        
+
                         <partial name="_ManageNav" />
                     }
                 </div>
@@ -75,7 +76,7 @@
                                         <input asp-for="Input.PhoneNumber" class="form-control" />
                                         <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                                     </div>
-                                    
+
                                     <br>
                                     <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
                                 </form>

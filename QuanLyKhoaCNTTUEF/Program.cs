@@ -3,7 +3,6 @@ using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using QuanLyKhoaCNTTUEF.Data;
-using QuanLyKhoaCNTTUEF.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,7 @@ if (builder.Environment.IsDevelopment())
     .AddRazorRuntimeCompilation();
 }
 
-//Build thông báo
+//Build thï¿½ng bï¿½o
 builder.Services.AddNotyf(config =>
 {
     config.DurationInSeconds = 5;
@@ -28,13 +27,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-//DI for DbContext
-builder.Services.AddDbContext<ConfigDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 
 //Set up Google API
 builder.Services.AddAuthentication()

@@ -4,7 +4,6 @@
     ViewData["Title"] = "Đăng ký";
 }
 
-
 <div class="page-wrapper" style="min-height: 941px;">
     <div class="content container-fluid">
         <div class="page-header">
@@ -38,10 +37,10 @@
                     </div>
                     <div class="form-floating">
                         <label asp-for="Input.UserName" class="form-label"></label>
-                        <input asp-for="Input.UserName" class="form-control" autocomplete="Nhập username bạn cần đăng ký" />
+                        <input asp-for="Input.UserName" class="form-control" autocomplete="email" />
                         <span asp-validation-for="Input.UserName" class="text-danger"></span>
                     </div>
-                    <button type="submit" class="w-100 btn btn-lg btn-primary">Đăng ký</button>
+                    <button type="submit" class="mt-4 w-100 btn btn-lg btn-primary">Đăng ký</button>
                 </form>
             </div>
         </div>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
+using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
@@ -13,9 +14,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
     [Area("Admin")]
     public class TasksController : Controller
     {
-        private readonly ConfigDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public TasksController(ConfigDbContext context)
+        public TasksController(ApplicationDbContext context)
         {
             _context = context;
         }

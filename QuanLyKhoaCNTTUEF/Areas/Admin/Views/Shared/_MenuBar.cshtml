@@ -3,11 +3,11 @@
 <div class="header">
 
     <div class="header-left">
-        <a href="index.html" class="logo">
+        <a asp-controller="Home" asp-action="Index" class="logo">
             <img src="~/img/logo_small.png" width="50" height="70" alt="logo">
             <span class="logoclass">Dashboard</span>
         </a>
-        <a href="index.html" class="logo logo-small" style="padding-top: 30px;">
+        <a asp-controller="Home" asp-action="Index" class="logo logo-small" style="padding-top: 30px;">
             <img src="~/img/logo_small.png" alt="Logo" width="30" height="30">
         </a>
     </div>
@@ -59,7 +59,7 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="active">
-                    <a href="index.html"><i class="fas fa-home"></i> <span>Trang chủ</span></a>
+                    <a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> <span>Trang chủ</span></a>
                 </li>
                 <li class="list-divider"></li>
                 <li class="submenu">

@@ -1,0 +1,25 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace QuanLyKhoaCNTTUEF.Models
+{
+    public class Plan
+    {
+        [Key]
+        [Column(TypeName = "varchar(20)")]
+        public string? IDKeHoach { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string? TenKeHoach { get; set; }
+
+        public DateTime NgayTrinh { get; set; }
+
+        public DateTime NgayDuyet { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string? NguoiTrinh { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string? NguoiDuyet { get; set; }
+    }
+}

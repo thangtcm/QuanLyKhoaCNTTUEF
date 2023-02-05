@@ -13,15 +13,25 @@ internal static class DownloadFileControllerHelpers
             //Setting column names as Property names
             dataTable.Columns.Add(prop.Name);
         }
-        foreach (T item in items)
+        if (Props != null)
         {
-            var values = new object[Props.Length];
-            for (int i = 0; i < Props.Length; i++)
+            foreach (T item in items)
             {
-                //inserting property values to datatable rows
-                values[i] = Props[i].GetValue(item, null);
+                if (item != null)
+                {
+                    var values = new object[Props.Length];
+                    for (int i = 0; i < Props.Length; i++)
+                    {
+                        var value = Props[i].GetValue(item, null);
+                        if (value != null)
+                        {
+                            //inserting property values to datatable rows
+                            values[i] = value;
+                        }
+                    }
+                    dataTable.Rows.Add(values);
+                }
             }
-            dataTable.Rows.Add(values);
         }
         //put a breakpoint here and check datatable
         return dataTable;
