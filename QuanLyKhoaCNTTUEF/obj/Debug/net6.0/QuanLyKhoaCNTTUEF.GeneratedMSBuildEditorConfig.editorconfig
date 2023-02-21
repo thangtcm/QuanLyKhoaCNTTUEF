@@ -256,8 +256,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_Meta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfTWV0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_Style.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3R5bGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_ViewImports.cshtml]
@@ -310,6 +318,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/TaskList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFRhc2tMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Chat/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Index.cshtml]

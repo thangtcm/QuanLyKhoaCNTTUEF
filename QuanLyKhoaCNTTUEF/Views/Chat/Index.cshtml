@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using QuanLyKhoaCNTTUEF.Data;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Chat Student Ho Chi Minh City University of Economics and Finance";
+}
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="mt-5">
+                        <h4 class="card-title float-left mt-2">@ViewData["Title"]</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="col-lg-12">
+
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="control-label">User</label>
+                        <input class="form-control" id="userInput" value="@User.Identity?.Name" readonly />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Message</label>
+                        <input class="form-control" id="messageInput" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="sendButton"  value="Send" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col-6">
+            <ul id="messagesList"></ul>
+        </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <ul class="nav user-menu">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </li>
+            </ul>
+        </div>
+    }
+</div>

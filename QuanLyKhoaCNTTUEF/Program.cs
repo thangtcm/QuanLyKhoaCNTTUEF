@@ -3,6 +3,7 @@ using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using QuanLyKhoaCNTTUEF.Data;
+using QuanLyKhoaCNTTUEF.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,9 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddRazorPages()
     .AddRazorRuntimeCompilation();
 }
+builder.Services.AddSignalR();
 
-//Build th�ng b�o
+//Build thông báo
 builder.Services.AddNotyf(config =>
 {
     config.DurationInSeconds = 5;
@@ -62,12 +64,13 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.User.RequireUniqueEmail = false;
 });
 
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     // Cookie settings
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-
+    options.Cookie.SameSite = SameSiteMode.None;
     options.LoginPath = "/Identity/Account/Login";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
@@ -93,6 +96,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
+app.UseCookiePolicy();
 app.UseAuthorization();
 
 app.UseNotyf();
@@ -105,5 +109,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+app.MapHub<ChatHub>("/ChatHub");
 
 app.Run();

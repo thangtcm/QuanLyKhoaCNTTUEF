@@ -39,7 +39,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             }
 
             var task = await _context.Task
-                .FirstOrDefaultAsync(m => m.IDSuKien == id);
+                .FirstOrDefaultAsync(m => m.EventID == id);
             if (task == null)
             {
                 return NotFound();
@@ -91,9 +91,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IDSuKien,IDTask,TenTask,MoTa,NgayBD,NgayKT,TrangThai")] Tasks task)
+        public async Task<IActionResult> Edit(int? id, [Bind("IDSuKien,IDTask,TenTask,MoTa,NgayBD,NgayKT,TrangThai")] Tasks task)
         {
-            if (id != task.IDSuKien)
+            if (id != task.EventID)
             {
                 return NotFound();
             }
@@ -107,7 +107,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TaskExists(task.IDSuKien))
+                    if (!TaskExists(task.EventID))
                     {
                         return NotFound();
                     }
@@ -130,7 +130,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             }
 
             var task = await _context.Task
-                .FirstOrDefaultAsync(m => m.IDSuKien == id);
+                .FirstOrDefaultAsync(m => m.EventID == id);
             if (task == null)
             {
                 return NotFound();
@@ -142,7 +142,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // POST: Admin/Tasks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (_context.Task == null)
             {
@@ -161,7 +161,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         private bool TaskExists(int id)
         {
             if (_context.Task is not null)
-                return _context.Task.Any(e => e.IDSuKien == id);
+                return _context.Task.Any(e => e.EventID == id);
             else
                 return false;       
         }

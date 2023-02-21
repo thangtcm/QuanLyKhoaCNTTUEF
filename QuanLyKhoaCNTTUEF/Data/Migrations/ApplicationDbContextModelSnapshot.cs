@@ -17,7 +17,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.13")
+                .HasAnnotation("ProductVersion", "6.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -311,8 +311,14 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Event", b =>
                 {
-                    b.Property<string>("EventID")
-                        .HasColumnType("varchar(20)");
+                    b.Property<int?>("EventID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("EventID"), 1L, 1);
+
+                    b.Property<int>("IDKeHoach")
+                        .HasColumnType("int");
 
                     b.Property<string>("IDNguoiCapNhat")
                         .HasColumnType("nvarchar(max)");
@@ -353,16 +359,21 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
                     b.HasKey("EventID");
 
+                    b.HasIndex("IDKeHoach");
+
                     b.ToTable("Event");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
                 {
-                    b.Property<string>("GroupID")
-                        .HasColumnType("varchar(20)");
+                    b.Property<int?>("GroupID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<string>("EventID")
-                        .HasColumnType("varchar(20)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("GroupID"), 1L, 1);
+
+                    b.Property<int?>("EventID")
+                        .HasColumnType("int");
 
                     b.Property<string>("MoTa")
                         .HasColumnType("nvarchar(150)");
@@ -388,8 +399,8 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("GroupID")
-                        .HasColumnType("varchar(20)");
+                    b.Property<int?>("GroupID")
+                        .HasColumnType("int");
 
                     b.HasKey("UserID", "GroupID");
 
@@ -400,8 +411,11 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Plan", b =>
                 {
-                    b.Property<string>("IDKeHoach")
-                        .HasColumnType("varchar(20)");
+                    b.Property<int>("IDKeHoach")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDKeHoach"), 1L, 1);
 
                     b.Property<DateTime>("NgayDuyet")
                         .HasColumnType("datetime2");
@@ -425,13 +439,14 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Tasks", b =>
                 {
-                    b.Property<string>("IDSuKien")
+                    b.Property<int>("IDTask")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("int");
 
-                    b.Property<string>("IDTask")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDTask"), 1L, 1);
+
+                    b.Property<int>("EventID")
+                        .HasColumnType("int");
 
                     b.Property<string>("MoTa")
                         .HasColumnType("nvarchar(150)");
@@ -443,13 +458,15 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TenTask")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("TrangThai")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("IDSuKien");
+                    b.HasKey("IDTask");
+
+                    b.HasIndex("EventID");
 
                     b.ToTable("Task");
                 });
@@ -505,6 +522,17 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Event", b =>
+                {
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", "Plan")
+                        .WithMany("Events")
+                        .HasForeignKey("IDKeHoach")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Plan");
+                });
+
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
                 {
                     b.HasOne("QuanLyKhoaCNTTUEF.Models.Event", "Event")
@@ -533,6 +561,17 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Navigation("Group");
                 });
 
+            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Tasks", b =>
+                {
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+                });
+
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Data.ApplicationUser", b =>
                 {
                     b.Navigation("MembersGroups");
@@ -546,6 +585,11 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
                 {
                     b.Navigation("MembersGroups");
+                });
+
+            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Plan", b =>
+                {
+                    b.Navigation("Events");
                 });
 #pragma warning restore 612, 618
         }

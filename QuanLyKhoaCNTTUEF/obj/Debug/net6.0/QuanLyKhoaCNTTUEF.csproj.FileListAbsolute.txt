@@ -298,7 +298,6 @@ D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCor
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Components.Forms.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Components.Server.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Components.Web.dll
-D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.CookiePolicy.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Cors.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
@@ -314,7 +313,6 @@ D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCor
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Html.Abstractions.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Http.Abstractions.dll
-D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Http.Connections.Common.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Http.Connections.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Http.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Http.Extensions.dll
@@ -356,10 +354,8 @@ D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCor
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.Session.dll
-D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.SignalR.Common.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.SignalR.Core.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.SignalR.dll
-D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.StaticFiles.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.WebSockets.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.AspNetCore.WebUtilities.dll
@@ -381,7 +377,6 @@ D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.Extension
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.Extensions.DependencyInjection.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
-D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.Extensions.Features.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.Extensions.FileProviders.Composite.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\Microsoft.Extensions.FileProviders.Physical.dll
@@ -573,3 +568,14 @@ D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.Views.dll
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\AspNetCoreHero.ToastNotification.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\libman.json
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Client.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Common.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.Extensions.Features.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\System.IO.Pipelines.dll

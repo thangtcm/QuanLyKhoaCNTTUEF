@@ -30,16 +30,32 @@
             <div class="col-lg-12">
                 <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-floating">
-                        <label asp-for="Input.Email" class="form-label"></label>
-                        <input asp-for="Input.Email" class="form-control" autocomplete="email" />
+                    <div class="form-outline mb-4">
+                        <input asp-for ="Input.Email" type="email" id="typeEmail" class="form-control" readonly/>
+                        <label class="form-label" for="typeEmail">Email</label>
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
-                    <div class="form-floating">
-                        <label asp-for="Input.UserName" class="form-label"></label>
-                        <input asp-for="Input.UserName" class="form-control" autocomplete="email" />
+                    <div class="form-outline mb-4">
+                        <input asp-for="Input.UserName" type="text" id="typeUserName" class="form-control" />
+                        <label class="form-label" for="typeUserName">UserName</label>
                         <span asp-validation-for="Input.UserName" class="text-danger"></span>
                     </div>
+                    <div class="form-outline mb-4">
+                        <input asp-for="Input.FirstName" type="text" id="typeFirstName" class="form-control" />
+                        <label class="form-label" for="typeFirstName">Họ</label>
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input asp-for="Input.MiddleName" type="text" id="MiddleName" class="form-control" />
+                        <label class="form-label" for="MiddleName">Tên Đệm</label>
+                        <span asp-validation-for="Input.MiddleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input asp-for="Input.LastName" type="text" id="LastName" class="form-control" />
+                        <label class="form-label" for="LastName">Tên</label>
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+
                     <button type="submit" class="mt-4 w-100 btn btn-lg btn-primary">Đăng ký</button>
                 </form>
             </div>

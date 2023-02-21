@@ -72,10 +72,29 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Plan",
+                columns: table => new
+                {
+                    IDKeHoach = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TenKeHoach = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    NgayTrinh = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    NgayDuyet = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    NguoiTrinh = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    NguoiDuyet = table.Column<string>(type: "nvarchar(50)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plan", x => x.IDKeHoach);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Event",
                 columns: table => new
                 {
-                    EventID = table.Column<string>(type: "varchar(20)", nullable: false),
+                    EventID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IDKeHoach = table.Column<int>(type: "int", nullable: false),
                     TenSuKien = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     NgayBD = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NgayKT = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -92,47 +111,21 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Event", x => x.EventID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Plan",
-                columns: table => new
-                {
-                    IDKeHoach = table.Column<string>(type: "varchar(20)", nullable: false),
-                    TenKeHoach = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    NgayTrinh = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    NgayDuyet = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    NguoiTrinh = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    NguoiDuyet = table.Column<string>(type: "nvarchar(50)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Plan", x => x.IDKeHoach);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Task",
-                columns: table => new
-                {
-                    IDSuKien = table.Column<string>(type: "varchar(20)", nullable: false),
-                    IDTask = table.Column<string>(type: "varchar(20)", nullable: false),
-                    TenTask = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    MoTa = table.Column<string>(type: "nvarchar(150)", nullable: true),
-                    NgayBD = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    NgayKT = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TrangThai = table.Column<string>(type: "nvarchar(50)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Task", x => x.IDSuKien);
+                    table.ForeignKey(
+                        name: "FK_Event_Plan_IDKeHoach",
+                        column: x => x.IDKeHoach,
+                        principalTable: "Plan",
+                        principalColumn: "IDKeHoach",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Group",
                 columns: table => new
                 {
-                    GroupID = table.Column<string>(type: "varchar(20)", nullable: false),
-                    EventID = table.Column<string>(type: "varchar(20)", nullable: true),
+                    GroupID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EventID = table.Column<int>(type: "int", nullable: true),
                     TenNhom = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     MoTa = table.Column<string>(type: "nvarchar(150)", nullable: true),
                     NgayTao = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -149,11 +142,35 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Task",
+                columns: table => new
+                {
+                    IDTask = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EventID = table.Column<int>(type: "int", nullable: false),
+                    TenTask = table.Column<string>(type: "varchar(50)", nullable: true),
+                    MoTa = table.Column<string>(type: "nvarchar(150)", nullable: true),
+                    NgayBD = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    NgayKT = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TrangThai = table.Column<string>(type: "nvarchar(50)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Task", x => x.IDTask);
+                    table.ForeignKey(
+                        name: "FK_Task_Event_EventID",
+                        column: x => x.EventID,
+                        principalTable: "Event",
+                        principalColumn: "EventID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MembersGroups",
                 columns: table => new
                 {
                     UserID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    GroupID = table.Column<string>(type: "varchar(20)", nullable: false)
+                    GroupID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -173,6 +190,11 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Event_IDKeHoach",
+                table: "Event",
+                column: "IDKeHoach");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Group_EventID",
                 table: "Group",
                 column: "EventID");
@@ -181,6 +203,11 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 name: "IX_MembersGroups_GroupID",
                 table: "MembersGroups",
                 column: "GroupID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Task_EventID",
+                table: "Task",
+                column: "EventID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -195,9 +222,6 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 name: "MembersGroups");
 
             migrationBuilder.DropTable(
-                name: "Plan");
-
-            migrationBuilder.DropTable(
                 name: "Task");
 
             migrationBuilder.DropTable(
@@ -205,6 +229,9 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Event");
+
+            migrationBuilder.DropTable(
+                name: "Plan");
 
             migrationBuilder.DropColumn(
                 name: "City",

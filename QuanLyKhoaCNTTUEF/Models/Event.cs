@@ -8,11 +8,16 @@ namespace QuanLyKhoaCNTTUEF.Models
     public class Event
     {
         [Key]
-        [Column(TypeName = "varchar(20)")]
-        public string? EventID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? EventID { get; set; }
 
-        [Column(TypeName = "nvarchar(50)")]
+        [Required]
+        public int IDKeHoach { get; set; }
+        [ForeignKey("IDKeHoach")]
+        public Plan? Plan { get; set; }
+
         [DisplayName("Tên sự kiện")]
+        [Column(TypeName = "nvarchar(50)")]
         [Required(ErrorMessage = "This field is required.")]
         public string? TenSuKien { get; set; }
 

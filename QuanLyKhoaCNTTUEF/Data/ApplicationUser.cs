@@ -13,6 +13,9 @@ namespace QuanLyKhoaCNTTUEF.Data
 
         public string? LastName { get; set; }
 
+        //public string? UrlAvartar { get; set; }
+
+        //public bool? NeedChat { get; set; }
         public List<MembersGroups>? MembersGroups { get; set; }
     }
 }

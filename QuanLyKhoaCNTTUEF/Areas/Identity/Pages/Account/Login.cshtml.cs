@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using QuanLyKhoaCNTTUEF.Data;
+using System.ComponentModel;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
 {
@@ -129,7 +130,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Có sự cố xảy ra, có vẻ tài khoản của bạn chưa được đăng ký hoặc mật khẩu không đúng, vui lòng kiểm tra lại.");
                     return Page();
                 }
             }

@@ -2,6 +2,6 @@
 {
     public class ViewSuKien
     {
-        public string? GetID { get; set; }
+        public int? GetID { get; set; }
     }
 }

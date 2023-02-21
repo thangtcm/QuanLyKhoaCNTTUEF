@@ -6,8 +6,8 @@ namespace QuanLyKhoaCNTTUEF.Models
     public class Plan
     {
         [Key]
-        [Column(TypeName = "varchar(20)")]
-        public string? IDKeHoach { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IDKeHoach { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
         public string? TenKeHoach { get; set; }
@@ -21,5 +21,7 @@ namespace QuanLyKhoaCNTTUEF.Models
 
         [Column(TypeName = "nvarchar(50)")]
         public string? NguoiDuyet { get; set; }
+
+        public List<Event>? Events { get; set; }
     }
 }

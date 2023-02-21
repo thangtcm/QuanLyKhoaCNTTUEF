@@ -9,9 +9,7 @@ namespace QuanLyKhoaCNTTUEF.Models
         public string? UserID { get; set; }
         [ForeignKey("UserID")]
         public virtual ApplicationUser? ApplicationUser { get; set; }
-
-        [Column(TypeName = "varchar(20)")]
-        public string? GroupID { get; set; }
+        public int? GroupID { get; set; }
         [ForeignKey("GroupID")]
         public Group? Group { get; set; }
     }

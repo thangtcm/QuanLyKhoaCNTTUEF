@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyKhoaCNTTUEF.Models
@@ -6,12 +7,14 @@ namespace QuanLyKhoaCNTTUEF.Models
     public class Tasks
     {
         [Key]
-        [Column(TypeName = "varchar(20)")]
-        public int IDSuKien { get; set; }
-
-        [Column(TypeName = "varchar(20)")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IDTask { get; set; }
-        [Column(TypeName = "nvarchar(50)")]
+
+        public int EventID { get; set; }
+        [ForeignKey("EventID")]
+        public Event? Event { get; set; }
+
+        [Column(TypeName = "varchar(50)")]
         public string? TenTask { get; set; }
         [Column(TypeName = "nvarchar(150)")]
         public string? MoTa { get; set; }

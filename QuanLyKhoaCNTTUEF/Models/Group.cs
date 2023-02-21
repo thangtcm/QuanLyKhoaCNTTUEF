@@ -6,11 +6,10 @@ namespace QuanLyKhoaCNTTUEF.Models
     public class Group
     {
         [Key]
-        [Column(TypeName = "varchar(20)")]
-        public string? GroupID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? GroupID { get; set; }
 
-        [Column(TypeName = "varchar(20)")]
-        public string? EventID { get; set; }
+        public int? EventID { get; set; }
         [ForeignKey("EventID")]
         public Event? Event { get; set; }
 

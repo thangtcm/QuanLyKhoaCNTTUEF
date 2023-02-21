@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\QuanLyKhoaCNTTUEF.bundle.scp.css"
     },
     {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\css\\StyleSheet.css",
+      "PackagePath": "staticwebassets\\css\\StyleSheet.css"
+    },
+    {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\css\\bootstrap-datetimepicker.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap-datetimepicker.min.css"
     },
@@ -21,10 +25,6 @@
       "PackagePath": "staticwebassets\\css\\feathericon.min.css"
     },
     {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\css\\newstyle.css",
-      "PackagePath": "staticwebassets\\css\\newstyle.css"
-    },
-    {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\css\\select2.min.css",
       "PackagePath": "staticwebassets\\css\\select2.min.css"
     },
@@ -35,6 +35,10 @@
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\css\\style2.css",
+      "PackagePath": "staticwebassets\\css\\style2.css"
     },
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\favicon.ico",
@@ -83,6 +87,10 @@
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\avatar.jpg",
       "PackagePath": "staticwebassets\\img\\avatar.jpg"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\background.png",
+      "PackagePath": "staticwebassets\\img\\background.png"
     },
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\hotel_logo.png",
@@ -169,6 +177,10 @@
       "PackagePath": "staticwebassets\\js\\chart.morris.js"
     },
     {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\js\\chat.js",
+      "PackagePath": "staticwebassets\\js\\chat.js"
+    },
+    {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\js\\jquery-3.6.0.min.js",
       "PackagePath": "staticwebassets\\js\\jquery-3.6.0.min.js"
     },
@@ -191,6 +203,14 @@
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\js\\select2.min.js",
       "PackagePath": "staticwebassets\\js\\select2.min.js"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\js\\signalr\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\js\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\js\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\js\\signalr\\dist\\browser\\signalr.min.js"
     },
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\js\\site.js",

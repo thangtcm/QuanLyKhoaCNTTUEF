@@ -172,10 +172,7 @@
                                                         <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.EventID"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
                                                         <a class="dropdown-item" asp-action="Details" asp-route-id="@item.EventID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
                                                         <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.EventID"><i class="fas fa-pencil-alt m-r-5"></i> Xóa</a>
-                                              <!--    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset">
-                                                        <i class="fas fa-trash-alt m-r-5"></i> Xoá
-
-                                                              </a>-->
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset" data-id="@item.EventID"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>
                                                 </div>
                                                 <div id="delete_asset" class="modal fade delete-modal" role="dialog">
                                                     <div class="modal-dialog modal-dialog-centered">
@@ -185,12 +182,18 @@
                                                                 <h3 class="delete_class">Chắc chắn xoá?</h3>
                                                                 <div class="m-t-20">
                                                                     <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                                                                    <a asp-action="Delete" asp-route-id="@item.EventID" class="btn btn-danger">Delete</a>
+                                                                        <form asp-action="DeleteConfirmed" asp-controller="Event" method="post">
+                                                                            <input type="hidden" name="id" value="@item.EventID" />
+                                                                            <input type="submit" value="Delete" class="btn btn-danger" />
+                                                                            @Html.AntiForgeryToken()
+                                                                        </form>
+                                                                    @*<a asp-action="TestDelete" asp-route-id="@item.EventID" class="btn btn-danger">Delete</a>*@
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>  
                                         </td>
                                     </tr>

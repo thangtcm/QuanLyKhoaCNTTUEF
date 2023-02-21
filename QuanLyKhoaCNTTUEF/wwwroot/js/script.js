@@ -339,3 +339,25 @@ Version      : 1.0
 		return true;
 	});
 })(jQuery);
+
+
+//set the event ID in the modal form when the delete button is clicked:
+$(document).ready(function () {
+	$('.btn-delete').click(function () {
+		var eventId = $(this).data('eventid');
+		$('#deleteModal').modal('show');
+		$('#btnConfirmDelete').click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/DemoSuKien/Delete",
+				data: { "id": eventId },
+				success: function (result) {
+					location.reload();
+				},
+				error: function (xhr, status, error) {
+					console.error(error);
+				}
+			});
+		});
+	});
+});

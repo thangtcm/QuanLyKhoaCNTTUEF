@@ -33,7 +33,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         }
 
         // GET: Nhoms/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Group == null)
             {
@@ -52,22 +52,22 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // GET: Nhoms/Create
         public IActionResult Create()
         {
-            if (_context.Group != null)
-            {
-                foreach (var x in _context.Group)
-                {
-                    // random string
-                    Console.WriteLine($"GR{string.Format("{0:000}", _count)}".ToString() + " Và " + x.EventID);
-                    if (x.GroupID == $"GR{string.Format("{0:000}", _count)}".ToString())
-                    {
-                        _count++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
+            //if (_context.Group != null)
+            //{
+            //    foreach (var x in _context.Group)
+            //    {
+            //        // random string
+            //        Console.WriteLine($"GR{string.Format("{0:000}", _count)}".ToString() + " Và " + x.EventID);
+            //        if (x.GroupID == $"GR{string.Format("{0:000}", _count)}".ToString())
+            //        {
+            //            _count++;
+            //        }
+            //        else
+            //        {
+            //            break;
+            //        }
+            //    }
+            //}
             /*  if (_context.SuKien is not null)
                 {
                     var sukien = _context.SuKien.Find(IDSuKien);
@@ -102,7 +102,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         }
 
         // GET: Nhoms/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Group == null)
             {
@@ -122,7 +122,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("GroupID,EventID,TenNhom,MoTa,NgayTao,NgayCapNhat")] Group @group)
+        public async Task<IActionResult> Edit(int? id, [Bind("GroupID,EventID,TenNhom,MoTa,NgayTao,NgayCapNhat")] Group @group)
         {
             if (id != @group.GroupID)
             {
@@ -152,7 +152,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View(@group);
         }
 
-        public IActionResult EditMembers(string id)
+        public IActionResult EditMembers(int? id)
         {
             var group = _context.Group?.Include(g => g.MembersGroups).SingleOrDefault(g => g.GroupID == id);
             if (group == null)
@@ -170,7 +170,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditMembers(string id, MemberGroupViewModel vm)
+        public async Task<IActionResult> EditMembers(int? id, MemberGroupViewModel vm)
         {
             if (!ModelState.IsValid)
             {
@@ -197,7 +197,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
                 // GET: Nhoms/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Group == null)
             {
@@ -217,7 +217,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // POST: Nhoms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (_context.Group == null)
             {
@@ -233,7 +233,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool NhomExists(string id)
+        private bool NhomExists(int? id)
         {
             if (_context.Group is not null)
                 return _context.Group.Any(e => e.GroupID == id);

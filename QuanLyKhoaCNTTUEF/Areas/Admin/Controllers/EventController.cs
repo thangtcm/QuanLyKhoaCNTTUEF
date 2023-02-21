@@ -1,6 +1,7 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using OfficeOpenXml;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
@@ -39,7 +40,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         }
 
         // GET: DemoSuKien/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Event == null)
             {
@@ -68,21 +69,21 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         public IActionResult Create()
         {
             //_count = (from x in _context.SuKien select x).Count() + 1;
-            if (_context.Event != null)
-            {
-                foreach (var x in _context.Event)
-                {
-                    // random string
-                    if (x.EventID == $"SK{string.Format("{0:000}", _count)}".ToString())
-                    {
-                        _count++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
+            //if (_context.Event != null)
+            //{
+            //    foreach (var x in _context.Event)
+            //    {
+            //        random string
+            //        if (x.EventID == $"SK{string.Format("{0:000}", _count)}".ToString())
+            //        {
+            //            _count++;
+            //        }
+            //        else
+            //        {
+            //            break;
+            //        }
+            //    }
+            //}
             ViewData["IDSuKien"] = $"SK{string.Format("{0:000}", _count)}".ToString();
             Console.WriteLine(ViewData["IDSuKien"]);
             return View();
@@ -107,7 +108,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         }
 
         // GET: DemoSuKien/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Event == null)
             {
@@ -127,7 +128,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EventID,TenSuKien,NgayBD,NgayKT,MoTa,TrangThai,XoaTam,IDNguoiTao,NgayTao,IDNguoiCapNhat,NgayCapNhat,IDNguoiXoa,NgayXoa")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("EventID,TenSuKien,NgayBD,NgayKT,MoTa,TrangThai,XoaTam,IDNguoiTao,NgayTao,IDNguoiCapNhat,NgayCapNhat,IDNguoiXoa,NgayXoa")] Event @event)
         {
             if (id != @event.EventID)
             {
@@ -157,8 +158,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View(@event);
         }
 
-        // GET: DemoSuKien/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Event/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Event == null)
             {
@@ -175,10 +176,10 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View(@event);
         }
 
-        // POST: DemoSuKien/Delete/5
+        // POST: Event/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Event == null)
             {
@@ -194,7 +195,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SuKienExists(string id)
+        private bool SuKienExists(int? id)
         {
             if (_context.Event is not null)
                 return _context.Event.Any(e => e.EventID == id);

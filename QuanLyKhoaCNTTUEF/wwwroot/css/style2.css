@@ -1,0 +1,65 @@
+﻿
+.btn-golfgreen {
+    background-color: #009688;
+    border: 1px solid #009688;
+}
+
+.btn-golfgreen:hover,
+.btn-golfgreen:focus,
+.btn-golfgreen.active,
+.btn-golfgreen:active,
+.open > .dropdown-toggle.btn-golfgreen {
+    background: #009688;
+    border-color: #009688;
+}
+
+.btn-golfgreen.active.focus,
+.btn-golfgreen.active:focus,
+.btn-golfgreen.active:hover,
+.btn-golfgreen.focus:active,
+.btn-golfgreen:active:focus,
+.btn-golfgreen:active:hover,
+.open > .dropdown-toggle.btn-golfgreen.focus,
+.open > .dropdown-toggle.btn-golfgreen:focus,
+.open > .dropdown-toggle.btn-golfgreen:hover {
+    background-color: #009688;
+    border: 1px solid #009688
+}
+
+.btn-golfgreen.active:not(:disabled):not(.disabled),
+.btn-golfgreen:active:not(:disabled):not(.disabled),
+.show > .btn-golfgreen.dropdown-toggle {
+    background-color: #009688;
+    border-color: #009688;
+    color: #fff;
+    background: #eccd8e;
+    border-color: #eccd8e;
+}
+
+.btn-golfgreen.active:focus:not(:disabled):not(.disabled),
+.btn-golfgreen:active:focus:not(:disabled):not(.disabled),
+.show > .btn-golfgreen.dropdown-toggle:focus {
+    box-shadow: unset;
+}
+
+.btn-golfgreen.disabled, .btn-golfgreen:disabled {
+    background-color: #009688;
+    border-color: #009688;
+    color: #fff;
+}
+
+
+.fa-google {
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.body-background {
+   background-image: url(../img/background.png); 
+   background-repeat: no-repeat; 
+   background-attachment: fixed; 
+   background-size: cover;
+}

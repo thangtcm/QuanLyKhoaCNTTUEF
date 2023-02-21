@@ -88,6 +88,16 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
 
             [Required]
             public string UserName { get; set; }
+
+            [Required]
+            public string FirstName { get; set; }
+
+            [Required]
+            public string MiddleName { get; set; }
+
+            [Required]
+            public string LastName { get; set; }
+
         }
         
         public IActionResult OnGet() => RedirectToPage("./Login");
@@ -158,6 +168,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
                 var user = CreateUser();
 
                 user.UserName = Input.UserName;
+                user.FirtName = Input.FirstName;
+                user.MiddleName = Input.MiddleName;
+                user.LastName = Input.LastName;
                // await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
@@ -196,7 +209,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
+            
             ProviderDisplayName = info.ProviderDisplayName;
             ReturnUrl = returnUrl;
             return Page();
