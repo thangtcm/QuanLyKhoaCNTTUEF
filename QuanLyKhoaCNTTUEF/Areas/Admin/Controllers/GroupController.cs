@@ -6,6 +6,7 @@ using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
@@ -238,6 +239,32 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             if (_context.Group is not null)
                 return _context.Group.Any(e => e.GroupID == id);
             return false;
+        }
+        public ActionResult DowloadData(string filename)
+        {
+            if (_context.Group is null)
+                return NotFound();
+            var customers = _context.Group.ToList();
+            try
+            {
+                _toastNotification.Success("Tải Dữ Liệu Thành Công");
+                var stream = new MemoryStream();
+                using (var package = new ExcelPackage(stream))
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                    worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
+                    worksheet.Cells.AutoFitColumns();
+                    package.Save();
+                }
+                stream.Position = 0;
+                string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+            }
+            catch (Exception ex)
+            {
+                _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
+                return NotFound();
+            }
         }
     }
 }

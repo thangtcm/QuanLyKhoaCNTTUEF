@@ -11,10 +11,6 @@ namespace QuanLyKhoaCNTTUEF.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? EventID { get; set; }
 
-        [Required]
-        public int IDKeHoach { get; set; }
-        [ForeignKey("IDKeHoach")]
-        public Plan? Plan { get; set; }
 
         [DisplayName("Tên sự kiện")]
         [Column(TypeName = "nvarchar(50)")]
@@ -48,5 +44,6 @@ namespace QuanLyKhoaCNTTUEF.Models
         public DateTime NgayXoa { get; set; }
 
         public List<Group>? Groups { get; set; }
+        public List<Tasks>? Tasks { get; set; }
     }
 }

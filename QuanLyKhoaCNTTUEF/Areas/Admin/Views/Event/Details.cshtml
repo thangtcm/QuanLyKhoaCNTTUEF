@@ -78,10 +78,10 @@
                                         <div class="page-header">
                                             <div class="row align-items-center">
                                                 <div class="col">
-                                                    <h3 class="page-title">Students</h3>
+                                                    <h3 class="page-title">Danh sách Nhóm</h3>
                                                 </div>
                                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                                    <a href="#" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
+                                                    <a asp-controller="Group" asp-action="DowloadData" asp-route-filename="Group" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
                                                     <a asp-controller="Group" asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
                                                 </div>
                                             </div>
@@ -167,11 +167,11 @@
                                         <div class="page-header">
                                             <div class="row align-items-center">
                                                 <div class="col">
-                                                    <h3 class="page-title">Students</h3>
+                                                    <h3 class="page-title">Danh sách Task</h3>
                                                 </div>
                                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                                    <a href="#" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
-                                                    <a asp-controller="Group" asp-action="GetIDSuKien" asp-route-id="@Html.DisplayFor(model => model.TenSuKien)" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
+                                                    <a asp-controller="Tasks" asp-action="DowloadData" asp-route-filename="Tasks" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
+                                                    <a asp-controller="Tasks" asp-action="GetIDSuKien" asp-route-id="@Html.DisplayFor(model => model.TenSuKien)" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,10 +188,10 @@
                                                 </thead>
                                                 <tbody>
                                                     @{
-                                                        if (Model.Groups is not null)
+                                                        if (Model.Tasks is not null)
                                                         {
                                                             var indexTask = 0;
-                                                            foreach (var item in Model.Groups)
+                                                            foreach (var item in Model.Tasks)
                                                             {
                                                                 <tr>
                                                                     <td>
@@ -201,8 +201,9 @@
                                                                             indexTask++;
                                                                         }
                                                                     </td>
-                                                                    <td>@item.TenNhom</td>
-                                                                    <td>@item.NgayTao</td>
+                                                                    <td>@item.TenTask</td>
+                                                                    <td>@item.NgayBD</td>
+                                                                    <td>@item.NgayKT</td>
                                                                     <td>
                                                                         <div class="actions">
                                                                             <a href="#" class="btn btn-sm bg-success-light mr-2">
@@ -214,9 +215,9 @@
                                                                         <div class="dropdown dropdown-action">
                                                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                                                             <div class="dropdown-menu dropdown-menu-right">
-                                                                                <a class="dropdown-item" asp-controller="Nhoms" asp-action="Edit" asp-route-id="@item.GroupID"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
-                                                                                <a class="dropdown-item" asp-controller="Nhoms" asp-action="Details" asp-route-id="@item.GroupID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
-                                                                                <a class="dropdown-item" asp-controller="Nhoms" asp-action="Delete" asp-route-id="@item.GroupID"><i class="fas fa-pencil-alt m-r-5"></i> Xóa</a>
+                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Edit" asp-route-id="@item.IDTask"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
+                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Details" asp-route-id="@item.IDTask"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
+                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Delete" asp-route-id="@item.IDTask"><i class="fas fa-pencil-alt m-r-5"></i> Xóa</a>
                                                                             </div>
                                                                             <div id="delete_asset" class="modal fade delete-modal" role="dialog">
                                                                                 <div class="modal-dialog modal-dialog-centered">
@@ -226,7 +227,7 @@
                                                                                             <h3 class="delete_class">Chắc chắn xoá?</h3>
                                                                                             <div class="m-t-20">
                                                                                                 <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                                                                                                <a asp-controller="Nhoms" asp-action="Delete" asp-route-id="@item.GroupID" class="btn btn-danger">Delete</a>
+                                                                                                <a asp-controller="Nhoms" asp-action="Delete" asp-route-id="@item.IDTask" class="btn btn-danger">Delete</a>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuanLyKhoaCNTTUEF.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class KhoaTao : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -94,7 +94,6 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 {
                     EventID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IDKeHoach = table.Column<int>(type: "int", nullable: false),
                     TenSuKien = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     NgayBD = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NgayKT = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -106,17 +105,17 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     IDNguoiCapNhat = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NgayCapNhat = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IDNguoiXoa = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NgayXoa = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    NgayXoa = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PlanIDKeHoach = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Event", x => x.EventID);
                     table.ForeignKey(
-                        name: "FK_Event_Plan_IDKeHoach",
-                        column: x => x.IDKeHoach,
+                        name: "FK_Event_Plan_PlanIDKeHoach",
+                        column: x => x.PlanIDKeHoach,
                         principalTable: "Plan",
-                        principalColumn: "IDKeHoach",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IDKeHoach");
                 });
 
             migrationBuilder.CreateTable(
@@ -190,9 +189,9 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Event_IDKeHoach",
+                name: "IX_Event_PlanIDKeHoach",
                 table: "Event",
-                column: "IDKeHoach");
+                column: "PlanIDKeHoach");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Group_EventID",

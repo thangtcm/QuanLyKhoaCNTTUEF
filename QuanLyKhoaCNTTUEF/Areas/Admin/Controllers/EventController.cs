@@ -50,6 +50,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             var @event = await _context.Event
                 .AsNoTracking()
                 .Include(m => m.Groups)
+                .Include(m => m.Tasks)
                 .SingleOrDefaultAsync(m => m.EventID == id);
 
             if (@event == null)
@@ -101,7 +102,6 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 _context.Add(@event);
                 await _context.SaveChangesAsync();
                 _toastNotification.Success("Tạo Sự Kiện Thành Công");
-                return RedirectToAction(nameof(Index));
             }
             
             return View(@event);

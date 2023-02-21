@@ -12,8 +12,8 @@ using QuanLyKhoaCNTTUEF.Data;
 namespace QuanLyKhoaCNTTUEF.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230221061803_Initial Create")]
-    partial class InitialCreate
+    [Migration("20230221094353_UpdateTask")]
+    partial class UpdateTask
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -319,9 +319,6 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("EventID"), 1L, 1);
 
-                    b.Property<int>("IDKeHoach")
-                        .HasColumnType("int");
-
                     b.Property<string>("IDNguoiCapNhat")
                         .HasColumnType("nvarchar(max)");
 
@@ -349,6 +346,9 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<DateTime>("NgayXoa")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("PlanIDKeHoach")
+                        .HasColumnType("int");
+
                     b.Property<string>("TenSuKien")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
@@ -361,7 +361,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
                     b.HasKey("EventID");
 
-                    b.HasIndex("IDKeHoach");
+                    b.HasIndex("PlanIDKeHoach");
 
                     b.ToTable("Event");
                 });
@@ -526,13 +526,9 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Event", b =>
                 {
-                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", "Plan")
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", null)
                         .WithMany("Events")
-                        .HasForeignKey("IDKeHoach")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Plan");
+                        .HasForeignKey("PlanIDKeHoach");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
@@ -566,7 +562,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Tasks", b =>
                 {
                     b.HasOne("QuanLyKhoaCNTTUEF.Models.Event", "Event")
-                        .WithMany()
+                        .WithMany("Tasks")
                         .HasForeignKey("EventID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -582,6 +578,8 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Event", b =>
                 {
                     b.Navigation("Groups");
+
+                    b.Navigation("Tasks");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
