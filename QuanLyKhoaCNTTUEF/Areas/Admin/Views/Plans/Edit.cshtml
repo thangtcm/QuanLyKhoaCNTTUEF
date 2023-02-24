@@ -5,49 +5,85 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="page-wrapper" style="min-height: 941px;">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="mt-5">
+                        <h4 class="card-title float-left mt-2">@ViewData["Title"]</h4>
+                        <a asp-action="Index" class="btn btn-primary float-right veiwbutton">Quay Về</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
 
-<h4>Plan</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IDKeHoach" />
-            <div class="form-group">
-                <label asp-for="TenKeHoach" class="control-label"></label>
-                <input asp-for="TenKeHoach" class="form-control" />
-                <span asp-validation-for="TenKeHoach" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NgayTrinh" class="control-label"></label>
-                <input asp-for="NgayTrinh" class="form-control" />
-                <span asp-validation-for="NgayTrinh" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NgayDuyet" class="control-label"></label>
-                <input asp-for="NgayDuyet" class="form-control" />
-                <span asp-validation-for="NgayDuyet" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NguoiTrinh" class="control-label"></label>
-                <input asp-for="NguoiTrinh" class="form-control" />
-                <span asp-validation-for="NguoiTrinh" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NguoiDuyet" class="control-label"></label>
-                <input asp-for="NguoiDuyet" class="form-control" />
-                <span asp-validation-for="NguoiDuyet" class="text-danger"></span>
-            </div>
+                <div class="card">
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                    <div class="card-body">
+                        <div class="col">
+                            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="IDKeHoach" />
+                                <div class="form-group">
+                                    <label asp-for="TenKeHoach" class="control-label"></label>
+                                    <input asp-for="TenKeHoach" class="form-control" />
+                                    <span asp-validation-for="TenKeHoach" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PdfFiles" class="control-label"></label>
+                                    <input type="file" asp-for="PdfFiles" name="PdfFiles" id="pdfFile" multiple class="form-control-file form-control" accept="application/pdf" onchange="loadPdf()" />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NgayTrinh" class="control-label"></label>
+                                    <input asp-for="NgayTrinh" class="form-control" />
+                                    <span asp-validation-for="NgayTrinh" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NgayDuyet" class="control-label"></label>
+                                    <input asp-for="NgayDuyet" class="form-control" />
+                                    <span asp-validation-for="NgayDuyet" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NguoiTrinh" class="control-label"></label>
+                                    <input asp-for="NguoiTrinh" class="form-control" />
+                                    <span asp-validation-for="NguoiTrinh" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NguoiDuyet" class="control-label"></label>
+                                    <input asp-for="NguoiDuyet" class="form-control" />
+                                    <span asp-validation-for="NguoiDuyet" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Save" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col">
+                            <embed id="pdfViewer" type="application/pdf" width="100%" height="auto" />
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
+@section Scripts
+    {
+    <script>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        function loadPdf() {
+            var pdfViewer = document.getElementById('pdfViewer');
+            var file = document.getElementById('pdfFile').files[0];
+            var url = URL.createObjectURL(file);
+            pdfViewer.height = "1000px"
+            pdfViewer.src = url;
+        }
+
+    </script>
+}
+
 

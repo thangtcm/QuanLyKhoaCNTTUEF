@@ -112,26 +112,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/sPlans/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3Ncc1BsYW5zXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/sPlans/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3Ncc1BsYW5zXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/sPlans/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3Ncc1BsYW5zXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/sPlans/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3Ncc1BsYW5zXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/sPlans/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3Ncc1BsYW5zXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFza3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

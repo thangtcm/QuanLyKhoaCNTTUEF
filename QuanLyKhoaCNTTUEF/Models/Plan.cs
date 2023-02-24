@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using QuanLyKhoaCNTTUEF.Models.Files;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyKhoaCNTTUEF.Models
@@ -25,13 +26,5 @@ namespace QuanLyKhoaCNTTUEF.Models
         public List<PdfFile>? PdfFiles { get; set; }
 
         public List<Event>? Events { get; set; }
-    }
-
-    public class PdfFile
-    {
-        public int Id { get; set; }
-        public string? FileName { get; set; }
-        public DateTime DateCreate { get; set; }
-        public string? FilePath { get; set; }
     }
 }

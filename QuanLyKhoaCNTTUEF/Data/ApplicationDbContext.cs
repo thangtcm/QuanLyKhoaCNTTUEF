@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using QuanLyKhoaCNTTUEF.Models;
+using QuanLyKhoaCNTTUEF.Models.Files;
 
 namespace QuanLyKhoaCNTTUEF.Data
 {
@@ -32,6 +33,7 @@ namespace QuanLyKhoaCNTTUEF.Data
         public DbSet<Tasks>? Task { get; set; }
         public DbSet<DetailTask>? DetailTask { get; set; }
         public DbSet<DanhSachThongTin>? DanhSachThongTin { get; set; }
+        public DbSet<PdfFile>? PdfFile { get; set; }
     }
 
     public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
