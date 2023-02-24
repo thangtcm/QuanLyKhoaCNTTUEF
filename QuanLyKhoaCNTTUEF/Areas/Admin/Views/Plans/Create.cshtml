@@ -4,11 +4,6 @@
     ViewData["Title"] = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h1>Create</h1>
-
-<h4>Plan</h4>
-<hr />
 <div class="page-wrapper" style="min-height: 941px;">
     <div class="content container-fluid">
         <div class="page-header">
@@ -27,7 +22,7 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <div class="col-md-4">
+                        <div class="col">
                             <form asp-action="Create" method="post" enctype="multipart/form-data">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
@@ -36,8 +31,8 @@
                                     <span asp-validation-for="TenKeHoach" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="PathFilePDF" class="control-label"></label>
-                                    <input type="file" id="PathFilePDF" name="PdfFile" class="form-control" />
+                                    <label asp-for="PdfFiles" class="control-label"></label>
+                                    <input type="file" asp-for="PdfFiles" name="pdfFile" id="pdfFile" multiple class="form-control-file form-control" accept="application/pdf" onchange="loadPdf()" />
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="NgayTrinh" class="control-label"></label>
@@ -65,9 +60,28 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="col">
+                            <embed id="pdfViewer" type="application/pdf" width ="100%" height="auto" />
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
+        
     </div>
 </div>
+@section Scripts
+{
+    <script>
+        
+        function loadPdf() {
+            var pdfViewer = document.getElementById('pdfViewer');
+            var file = document.getElementById('pdfFile').files[0];
+            var url = URL.createObjectURL(file);
+            pdfViewer.height = "1000px"
+            pdfViewer.src = url;
+        }
+
+    </script>
+}

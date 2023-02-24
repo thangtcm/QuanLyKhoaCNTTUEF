@@ -22,8 +22,16 @@ namespace QuanLyKhoaCNTTUEF.Models
         [Column(TypeName = "nvarchar(50)")]
         public string? NguoiDuyet { get; set; }
 
-        public string? PathFilePDF { get; set; }
+        public List<PdfFile>? PdfFiles { get; set; }
 
         public List<Event>? Events { get; set; }
+    }
+
+    public class PdfFile
+    {
+        public int Id { get; set; }
+        public string? FileName { get; set; }
+        public DateTime DateCreate { get; set; }
+        public string? FilePath { get; set; }
     }
 }

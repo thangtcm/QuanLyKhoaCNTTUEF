@@ -17,12 +17,12 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
     public class PlansController : Controller
     {
         private readonly ApplicationDbContext _context;
-        readonly IBufferedFileUploadService _bufferedFileUploadService;
+        IHostingEnvironment? _hostingEnvironment = null;
 
-        public PlansController(ApplicationDbContext context, IBufferedFileUploadService bufferedFileUploadService)
+        public PlansController(ApplicationDbContext context, IHostingEnvironment? hostingEnvironment)
         {
             _context = context;
-            _bufferedFileUploadService = bufferedFileUploadService;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Admin/Plans
@@ -49,18 +49,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View(plan);
         }
 
-        // GET: Admin/Plans/ViewPdf/5
-        public IActionResult ViewPdf(int? id)
-        {
-            var plan = _context.Plan?.Find(id);
-            if (plan == null)
-            {
-                return NotFound();
-            }
-            var filePath = plan.PathFilePDF;
-            var stream = new FileStream(filePath, FileMode.Open);
-            return new FileStreamResult(stream, "application/pdf");
-        }
+        
 
         // GET: Admin/Plans/Create
         public IActionResult Create()
@@ -73,23 +62,34 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IDKeHoach,TenKeHoach,NgayTrinh,NgayDuyet,NguoiTrinh,NguoiDuyet")] Plan plan, IFormFile pdfFile)
+        public async Task<IActionResult> Create([Bind("IDKeHoach,TenKeHoach,NgayTrinh,NgayDuyet,NguoiTrinh,NguoiDuyet")] Plan plan, List<IFormFile> PDFFiles)
         {
             if (ModelState.IsValid)
             {
-                if (pdfFile != null && pdfFile.Length > 0)
-                {
-                    var fileName = Path.GetFileName(pdfFile.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdf", fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await pdfFile.CopyToAsync(stream);
-                    }
-
-                    plan.PathFilePDF = Path.Combine("pdf", fileName);
-                }
                 _context.Add(plan);
+                await _context.SaveChangesAsync();
+                foreach (var pdfFile in PDFFiles)
+                {
+                    if(pdfFile.FileName.EndsWith("pdf"))
+                    {
+                        var filesPath = Path.Combine(_hostingEnvironment?.WebRootPath, "files");
+                        var fileName = Path.GetFileName(pdfFile.FileName);
+                        var filePath = Path.Combine(_hostingEnvironment?.WebRootPath, filesPath, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await pdfFile.CopyToAsync(stream);
+                        }
+
+                        plan?.PdfFiles?.Add(new PdfFile
+                        {
+                            FileName = fileName,
+                            DateCreate = DateTime.Now,
+                            FilePath = filePath
+                        });
+                    }    
+                }
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -117,7 +117,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IDKeHoach,TenKeHoach,NgayTrinh,NgayDuyet,NguoiTrinh,NguoiDuyet,PdfFileName,PdfFilePath")] Plan plan, IFormFile pdfFile)
+        public async Task<IActionResult> Edit(int id, [Bind("IDKeHoach,TenKeHoach,NgayTrinh,NgayDuyet,NguoiTrinh,NguoiDuyet")] Plan plan, List<IFormFile> PDFFiles)
         {
             if (id != plan.IDKeHoach)
             {
@@ -128,17 +128,26 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 try
                 {
-                    if (pdfFile != null && pdfFile.Length > 0)
+                    if (PDFFiles != null)
                     {
-                        var fileName = Path.GetFileName(pdfFile.FileName);
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdf", fileName);
-
-                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        foreach (var pdfFile in PDFFiles)
                         {
-                            await pdfFile.CopyToAsync(stream);
-                        }
+                            var filesPath = Path.Combine(_hostingEnvironment?.WebRootPath, "files");
+                            var fileName = Path.GetFileName(pdfFile.FileName);
+                            var filePath = Path.Combine(_hostingEnvironment?.WebRootPath, filesPath, fileName);
 
-                        plan.PathFilePDF = Path.Combine("pdf", fileName);
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await pdfFile.CopyToAsync(stream);
+                            }
+
+                            plan?.PdfFiles?.Add(new PdfFile
+                            {
+                                FileName = fileName,
+                                DateCreate = DateTime.Now,
+                                FilePath = filePath
+                            });
+                        }
                     }
                     _context.Update(plan);
                     await _context.SaveChangesAsync();
@@ -189,6 +198,13 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             var plan = await _context.Plan.FindAsync(id);
             if (plan != null)
             {
+                if(plan.PdfFiles != null)
+                {
+                    foreach (var filepdf in plan.PdfFiles)
+                    {
+                        plan.PdfFiles.Remove(filepdf);
+                    }
+                }    
                 _context.Plan.Remove(plan);
             }
             

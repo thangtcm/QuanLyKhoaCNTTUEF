@@ -45,6 +45,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\CV - Hứa Đại Tầm (1).pdf",
+      "PackagePath": "staticwebassets\\files\\CV - Hứa Đại Tầm (1).pdf"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\CV-NGUYỄN-THÀNH-CÔNG_INTERN-REACTJS.pdf",
+      "PackagePath": "staticwebassets\\files\\CV-NGUYỄN-THÀNH-CÔNG_INTERN-REACTJS.pdf"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\CV_intern_FE Lê Hoài Ân.pdf",
+      "PackagePath": "staticwebassets\\files\\CV_intern_FE Lê Hoài Ân.pdf"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\Nguyen-Van-Phong-TopCV.vn-160223.154634.pdf",
+      "PackagePath": "staticwebassets\\files\\Nguyen-Van-Phong-TopCV.vn-160223.154634.pdf"
+    },
+    {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\fonts\\MaterialIcons-Regular.eot",
       "PackagePath": "staticwebassets\\fonts\\MaterialIcons-Regular.eot"
     },
