@@ -53,31 +53,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // GET: Nhoms/Create
         public IActionResult Create()
         {
-            //if (_context.Group != null)
-            //{
-            //    foreach (var x in _context.Group)
-            //    {
-            //        // random string
-            //        Console.WriteLine($"GR{string.Format("{0:000}", _count)}".ToString() + " Và " + x.EventID);
-            //        if (x.GroupID == $"GR{string.Format("{0:000}", _count)}".ToString())
-            //        {
-            //            _count++;
-            //        }
-            //        else
-            //        {
-            //            break;
-            //        }
-            //    }
-            //}
-            /*  if (_context.SuKien is not null)
-                {
-                    var sukien = _context.SuKien.Find(IDSuKien);
-                    ViewData["IDSuKien"] = sukien;
-                }    */
-
             ViewData["IDNhom"] = $"GR{string.Format("{0:000}", _count)}".ToString();
-            
-            ViewData["SuKien"] = new SelectList(_context.Event, "IDSuKien", "TenSuKien");
+            ViewData["EventID"] = new SelectList(_context.Event, "EventID", "TenSuKien");
             ViewData["IDSuKien"] = TempData["IDSuKien"];
             return View();
         }

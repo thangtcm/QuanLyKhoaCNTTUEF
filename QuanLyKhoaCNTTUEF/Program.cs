@@ -3,6 +3,8 @@ using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using QuanLyKhoaCNTTUEF.Data;
+using QuanLyKhoaCNTTUEF.Data.Interfaces;
+using QuanLyKhoaCNTTUEF.Data.Services;
 using QuanLyKhoaCNTTUEF.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);

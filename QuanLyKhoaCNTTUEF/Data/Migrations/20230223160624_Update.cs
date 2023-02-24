@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuanLyKhoaCNTTUEF.Data.Migrations
 {
-    public partial class KhoaTao : Migration
+    public partial class Update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -81,7 +81,8 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     NgayTrinh = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NgayDuyet = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NguoiTrinh = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    NguoiDuyet = table.Column<string>(type: "nvarchar(50)", nullable: true)
+                    NguoiDuyet = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    PathFilePDF = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

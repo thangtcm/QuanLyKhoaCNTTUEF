@@ -1,5 +1,6 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using OfficeOpenXml;
@@ -13,7 +14,6 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
     public class EventController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private int _count = 1;
         private readonly INotyfService _toastNotification;
         public EventController(ApplicationDbContext context, INotyfService toastNotification)
         {
@@ -69,24 +69,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // GET: DemoSuKien/Create
         public IActionResult Create()
         {
-            //_count = (from x in _context.SuKien select x).Count() + 1;
-            //if (_context.Event != null)
-            //{
-            //    foreach (var x in _context.Event)
-            //    {
-            //        random string
-            //        if (x.EventID == $"SK{string.Format("{0:000}", _count)}".ToString())
-            //        {
-            //            _count++;
-            //        }
-            //        else
-            //        {
-            //            break;
-            //        }
-            //    }
-            //}
-            ViewData["IDSuKien"] = $"SK{string.Format("{0:000}", _count)}".ToString();
-            Console.WriteLine(ViewData["IDSuKien"]);
+            
             return View();
         }
 

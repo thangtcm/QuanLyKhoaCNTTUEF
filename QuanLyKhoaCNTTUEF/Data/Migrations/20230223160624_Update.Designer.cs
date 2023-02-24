@@ -12,8 +12,8 @@ using QuanLyKhoaCNTTUEF.Data;
 namespace QuanLyKhoaCNTTUEF.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230221094353_UpdateTask")]
-    partial class UpdateTask
+    [Migration("20230223160624_Update")]
+    partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -430,6 +430,9 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
                     b.Property<string>("NguoiTrinh")
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PathFilePDF")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenKeHoach")
                         .HasColumnType("nvarchar(50)");

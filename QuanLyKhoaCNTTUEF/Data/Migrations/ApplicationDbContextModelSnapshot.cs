@@ -429,6 +429,9 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<string>("NguoiTrinh")
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("PathFilePDF")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TenKeHoach")
                         .HasColumnType("nvarchar(50)");
 

@@ -29,17 +29,16 @@
                                 <input asp-for="GroupID" class="form-control" value="@ViewData["IDNhom"]" readonly />
                                 <span asp-validation-for="GroupID" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label asp-for="EventID" class="control-label" hidden></label>
                                 <input asp-for="EventID" class="form-control" value="@ViewData["IDSuKien"]" readonly />
                                 <span asp-validation-for="EventID" class="text-danger"></span>
-                             </div>
-                            <!--<div class="form-group">
-                                <label asp-for="IDSuKien" class="control-label"></label>
-                                <select class="custom-select" asp-for="IDSuKien" asp-items="ViewBag.SuKien">
-                                    <option value="@ViewData["IDSuKien"]" disabled selected>Chọn Sự Kiện</option>
-                                </select>
-                            </div>-->
+                             </div>*@
+                            
+                            <div class="form-group">
+                                <label asp-for="EventID" class="control-label"></label>
+                                <select asp-for="EventID" class="form-control" asp-items="ViewBag.EventID"></select>
+                            </div>
                             <div class="form-group">
                                 <label asp-for="TenNhom" class="control-label"></label>
                                 <input asp-for="TenNhom" class="form-control" />
