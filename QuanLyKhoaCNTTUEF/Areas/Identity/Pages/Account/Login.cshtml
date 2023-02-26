@@ -15,90 +15,99 @@
     }
 
 </head>
-<body class="body-background">
+<body>
 
     <div class="main-wrapper login-body">
         <div class="login-wrapper">
-            <div class="container">
-                <section class="w-100 p-4 d-flex justify-content-center pb-4 ">
-                    <form id ="account" method="post" class="position-relative">
-						<div class="text-center">
-							<img src="~/img/logo.png"
-							  style="width: 200px;" alt="logo">
-							<p class="mt-1 mb-3 pb-1">Sử dụng mail UEF để đăng nhập</p>
-						  </div>
-						<!-- Email input -->
-                        <div class="form-outline form-group">
-                            <input type="email" asp-for="Input.Email" class="form-control bg-white" id="formEmail" autocomplete="username" aria-required="true" />
-                            <label class="form-label" for="formEmail">Email / Mã số sinh viên</label>
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-						</div>
-					  
-						<!-- Password input -->
-                        <div class="form-outline form-group">
-                            <input type="password" asp-for="Input.Password" class="form-control bg-white" id="formPassword" autocomplete="current-password" aria-required="true" />
-                            <label class="form-label text-red" for="formPassword">Mật khẩu</label>
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-						</div>
-					  
-						<!-- 2 column grid layout for inline styling -->
-                        <div class="row form-group">
-						    <div class="col d-flex justify-content-center">
-						    <!-- Checkbox -->
-						    <div class="form-check">
-                                    <label asp-for="Input.RememberMe" class="form-label">
-                                    <input class="form-check-input" asp-for="Input.RememberMe"/>
-                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                </label>
-						    </div>
-						    </div>
-					  
-						    <div class="col">
-						        <!-- Simple link -->
-                                <a href="forgot-password.html">Forgot Password?</a>
-						    </div>
-						</div>
-					  
-						<!-- Submit button -->
-                        <button id="login-submit" type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-                    </form>
-						<!-- Register buttons -->
-						<div class="text-center">
-                            <p class="mb-1">or sign up with:</p>
-                            <div class="social-login">
-                                @{
-                                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                                    {
-                                        <div>
-                                            <span>Hệ thống Đăng Nhập Bằng Google Đang Bảo Trì</span>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="social-login">
-                                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                                <div>
-                                                    <p>
-                                                        @{
-                                                            if (Model.ExternalLogins is not null)
-                                                            {
-                                                                @foreach (var provider in Model.ExternalLogins)
-                                                                {
-                                                                    <button type="submit" class="btn btn-link btn-floating google mx-1" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-google" style="font-size: 20px;"></i></button>
-                                                                }
-                                                            }
-                                                        }
-
-                                                    </p>
+            <section class="vh-100 gradient-custom overflow-hidden">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5 position-relative">
+                            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                            <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+                            <div id="radius-shape-3" class="position-absolute shadow-5-strong"></div>
+                            <div id="radius-shape-4" class="position-absolute shadow-5-strong"></div>
+                            <div class="card shadow-lg bg-white" style="border-radius: 2rem;">
+                                <div class="card-body p-5 text-center">
+                                    <div class="mt-md-4">
+                                        <img class="pb-3" src="~/img/logo.png" style="width: 60%;" alt="logo">
+                                        <p style="color : #7A7E7E" class="account-subtitle pb-4">Sử dụng tài khoản UEF để đăng nhập</p>
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <form id="account" method="post" style="width: 70%; margin: 0 auto;">
+                                            <div class="form-group form-outline form-outline-strongcyan">
+                                                <input asp-for="Input.Email" id="formEmail" class="form-control" autocomplete="username" aria-required="true" />
+                                                <label asp-for="Input.Email" for="formEmail" class="form-label">Email / Mã số sinh viên</label>
+                                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group form-outline form-outline-strongcyan">
+                                                <input asp-for="Input.Password" id="formsPassword" class="form-control" autocomplete="current-password" aria-required="true" />
+                                                <label asp-for="Input.Password" for="formsPassword" class="form-label">Password</label>
+                                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                            </div>
+                                            <!-- <div class="form-group form-outline">
+                                                <input type="checkbox" class="form-check-input" id="formRememberMe" asp-for="Input.RememberMe" />
+                                                <label asp-for="Input.RememberMe" for="formRememberMe" class="form-label">Ghi nhớ mật khẩu</label>
+                                            </div> -->
+                                            <div class="row mb-4">
+                                                <div class="col d-flex text-left">
+                                                    <!-- Checkbox -->
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" asp-for="Input.RememberMe" id="form2Example31" checked />
+                                                        <label class="form-check-label" asp-for="Input.RememberMe" for="form2Example31"> @Html.DisplayNameFor(m => m.Input.RememberMe) </label>
+                                                    </div>
                                                 </div>
-                                            </form>
+
+                                                <div class="col text-right">
+                                                    <!-- Simple link -->
+                                                    <a asp-controller="Account" asp-action="ForgotPassword">Forgot password?</a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button id="login-submit" type="submit" class="btn btn-lg btn-strongcyan" style="width:70%">Log in</button>
+                                            </div>
+                                        </form>
+                                        <div class="login-or">
+                                            <span class="or-line"></span>
+                                            <span class="span-or">or</span>
                                         </div>
-                                    }
-                                }
+                                        <div class="social-login">
+                                            @{
+                                                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                                                {
+                                                    <div>
+                                                        <span>Hệ thống Đăng Nhập Bằng Google Đang Bảo Trì</span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="text-center">
+                                                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                                            <div>
+                                                                <p>
+                                                                    @{
+                                                                        if (Model.ExternalLogins is not null)
+                                                                        {
+                                                                            @foreach (var provider in Model.ExternalLogins)
+                                                                            {
+                                                                                <button type="submit" class="btn btn-link btn-floating mx-1" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-google" style="font-size: 20px; color: red;"></i></button>
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                </p>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                </section>
-            </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
     @{

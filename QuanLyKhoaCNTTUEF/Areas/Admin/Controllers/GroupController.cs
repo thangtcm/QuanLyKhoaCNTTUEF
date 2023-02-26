@@ -10,6 +10,7 @@ using OfficeOpenXml;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
+using static Microsoft.IO.RecyclableMemoryStreamManager;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
@@ -53,9 +54,25 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // GET: Nhoms/Create
         public IActionResult Create()
         {
-            ViewData["IDNhom"] = $"GR{string.Format("{0:000}", _count)}".ToString();
-            ViewData["EventID"] = new SelectList(_context.Event, "EventID", "TenSuKien");
-            ViewData["IDSuKien"] = TempData["IDSuKien"];
+            int selectedEventId = (int?)TempData["IDSuKien"] ?? 0;
+
+            var events = _context.Event
+            .Select(e => new SelectListItem
+            {
+                Value = e.EventID.ToString(),
+                Text = e.TenSuKien,
+                Selected = e.EventID == selectedEventId
+            })
+            .ToList();
+
+                events.Insert(0, new SelectListItem
+                {
+                    Value = "0",
+                    Text = "-- Chọn sự kiện --",
+                    Selected = selectedEventId == 0
+                });
+
+            ViewData["EventID"] = events;
             return View();
         }
 

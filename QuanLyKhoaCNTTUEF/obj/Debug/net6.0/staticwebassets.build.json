@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OAnHflG0lLNAWrx4sWuDDFbOIzTck9k/lzLO6KGAnKE=",
+  "Hash": "6Seq6pFYuk1ejMtZXlZdHu7en7A2VCitijXMnJHXziY=",
   "Source": "QuanLyKhoaCNTTUEF",
   "BasePath": "_content/QuanLyKhoaCNTTUEF",
   "Mode": "Default",
@@ -1409,6 +1409,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\files\\CV_intern_FE Lê Hoài Ân.pdf"
+    },
+    {
+      "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf",
+      "SourceId": "QuanLyKhoaCNTTUEF",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\",
+      "BasePath": "_content/QuanLyKhoaCNTTUEF",
+      "RelativePath": "files/KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf"
     },
     {
       "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\TAI LIEU ON TAP BANG A - KHOI LAP TRINH.pdf",
