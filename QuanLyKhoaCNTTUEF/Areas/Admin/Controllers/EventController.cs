@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -57,11 +58,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewSuKien _eventcontext = new()
-            {
-                GetID = id
-            };
             TempData["IDSuKien"] = id;
+            HttpContext.Session.SetInt32("SelectedEventId", (int)id);
             return View(@event);
         }
 

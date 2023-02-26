@@ -209,6 +209,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                     foreach (var filepdf in plan.PdfFiles)
                     {
                         plan.PdfFiles.Remove(filepdf);
+                        _context.PdfFile.Remove(filepdf);
                     }
                 }    
                 _context.Plan.Remove(plan);
