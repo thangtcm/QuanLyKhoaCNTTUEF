@@ -69,11 +69,19 @@
       "PackagePath": "staticwebassets\\files\\Chapter-04.pdf"
     },
     {
+<<<<<<< HEAD
       "Id": "D:\\DuAn\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf",
       "PackagePath": "staticwebassets\\files\\KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf"
     },
     {
       "Id": "D:\\DuAn\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\TAI LIEU ON TAP BANG A - KHOI LAP TRINH.pdf",
+=======
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf",
+      "PackagePath": "staticwebassets\\files\\KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\TAI LIEU ON TAP BANG A - KHOI LAP TRINH.pdf",
+>>>>>>> 76416d0b107a22e2327e21ca09ec23c6d763b566
       "PackagePath": "staticwebassets\\files\\TAI LIEU ON TAP BANG A - KHOI LAP TRINH.pdf"
     },
     {
