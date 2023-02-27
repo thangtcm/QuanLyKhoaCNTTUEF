@@ -30,13 +30,12 @@
                             <div class="card shadow-lg bg-white" style="border-radius: 2rem;">
                                 <div class="card-body p-5 text-center">
                                     <div class="mt-md-4">
-<<<<<<< HEAD
                                         <img class="pb-2" src="~/img/logo.png" style="width: 60%;" alt="logo">
                                         <p style="color : #7A7E7E; font-style: italic; font-size: 0.8rem;" class="account-subtitle pb-4">Sử dụng tài khoản UEF để đăng nhập</p>
-=======
+
                                         <img class="pb-3" src="~/img/logo.png" style="width: 60%;" alt="logo">
                                         <p style="color : #7A7E7E" class="account-subtitle pb-4">Sử dụng tài khoản UEF để đăng nhập</p>
->>>>>>> 76416d0b107a22e2327e21ca09ec23c6d763b566
+
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <form id="account" method="post" style="width: 70%; margin: 0 auto;">
                                             <div class="form-group form-outline form-outline-strongcyan">
@@ -53,26 +52,24 @@
                                                 <input type="checkbox" class="form-check-input" id="formRememberMe" asp-for="Input.RememberMe" />
                                                 <label asp-for="Input.RememberMe" for="formRememberMe" class="form-label">Ghi nhớ mật khẩu</label>
                                             </div> -->
-<<<<<<< HEAD
+
                                             <div class="row mb-4" style="margin-top: -15px;">
-=======
+
                                             <div class="row mb-4">
->>>>>>> 76416d0b107a22e2327e21ca09ec23c6d763b566
+
                                                 <div class="col d-flex text-left">
                                                     <!-- Checkbox -->
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" asp-for="Input.RememberMe" id="form2Example31" checked />
-<<<<<<< HEAD
+
                                                         <label style="font-size: 0.8rem" class="form-check-label" asp-for="Input.RememberMe" for="form2Example31"> @Html.DisplayNameFor(m => m.Input.RememberMe) </label>
-=======
+
                                                         <label class="form-check-label" asp-for="Input.RememberMe" for="form2Example31"> @Html.DisplayNameFor(m => m.Input.RememberMe) </label>
->>>>>>> 76416d0b107a22e2327e21ca09ec23c6d763b566
                                                     </div>
                                                 </div>
 
                                                 <div class="col text-right">
                                                     <!-- Simple link -->
-<<<<<<< HEAD
                                                     <a style="font-size: 0.8rem" asp-controller="Account" asp-action="ForgotPassword">Quên Mật Khẩu?</a>
                                                 </div>
                                             </div>
@@ -80,22 +77,19 @@
                                                 <button id="login-submit" type="submit" class="btn btn-lg btn-strongcyan mt-3" style="width: 70%; border-radius: 19px; font-size: 0.7rem; text-transform: none;">
                                                     Đăng Nhập
                                                 </button>
-=======
                                                     <a asp-controller="Account" asp-action="ForgotPassword">Forgot password?</a>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <button id="login-submit" type="submit" class="btn btn-lg btn-strongcyan" style="width:70%">Log in</button>
->>>>>>> 76416d0b107a22e2327e21ca09ec23c6d763b566
                                             </div>
                                         </form>
                                         <div class="login-or">
                                             <span class="or-line"></span>
-<<<<<<< HEAD
+
                                             <span class="span-or" style="font-size: 0.8rem">or</span>
-=======
+
                                             <span class="span-or">or</span>
->>>>>>> 76416d0b107a22e2327e21ca09ec23c6d763b566
                                         </div>
                                         <div class="social-login">
                                             @{
@@ -116,15 +110,11 @@
                                                                         {
                                                                             @foreach (var provider in Model.ExternalLogins)
                                                                             {
-<<<<<<< HEAD
                                                                                 <button type="submit" class="btn btn-link btn-floating mx-1" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-google" style="font-size: 32px; color: red;"></i></button>
-=======
-                                                                                <button type="submit" class="btn btn-link btn-floating mx-1" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-google" style="font-size: 20px; color: red;"></i></button>
->>>>>>> 76416d0b107a22e2327e21ca09ec23c6d763b566
+
                                                                             }
                                                                         }
                                                                     }
-
                                                                 </p>
                                                             </div>
                                                         </form>
