@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuanLyKhoaCNTTUEF.Data;
 
@@ -11,9 +12,10 @@ using QuanLyKhoaCNTTUEF.Data;
 namespace QuanLyKhoaCNTTUEF.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230226143814_SeedRoleSQL")]
+    partial class SeedRoleSQL
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,36 +53,36 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "39d5b150-357b-4356-8ec9-c00e28153305",
-                            ConcurrencyStamp = "94059fac-2063-49f0-9f02-a8f6bc82d832",
+                            Id = "1de5e3e1-3cb1-4b45-9cba-3aed4f4c8eb3",
+                            ConcurrencyStamp = "43b0dd4e-94d0-4208-b2e6-5b8169fa4818",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         },
                         new
                         {
-                            Id = "c23e6684-a979-4822-a020-5770f4763ce0",
-                            ConcurrencyStamp = "71c4493d-4450-412c-8e81-6f46e9084b1d",
+                            Id = "cde6fc7b-7fd4-4554-8cfc-066b519667e4",
+                            ConcurrencyStamp = "e6c3a625-ad72-4549-a779-76172dc7475d",
                             Name = "Manager",
                             NormalizedName = "Manager"
                         },
                         new
                         {
-                            Id = "9eadac84-d369-463f-99fa-fff167eb72c9",
-                            ConcurrencyStamp = "b7163dc2-700c-4f5f-9c95-657d633b92ee",
+                            Id = "127e40ee-e806-481a-a87a-95e302849617",
+                            ConcurrencyStamp = "70e6c1b0-9068-415b-8acf-326ffc8934ed",
                             Name = "Teacher",
                             NormalizedName = "Teacher"
                         },
                         new
                         {
-                            Id = "e43f1469-a4b4-4dbe-b42a-013c1008fe9b",
-                            ConcurrencyStamp = "a3aead75-4aca-4b63-b616-0b05f2cdaae6",
+                            Id = "c2d5956d-480e-45bc-9374-35e3d241b52d",
+                            ConcurrencyStamp = "a68e8adc-1099-430c-a7eb-a459ce2dd23f",
                             Name = "Staff",
                             NormalizedName = "Staff"
                         },
                         new
                         {
-                            Id = "a4b20055-2306-4973-9695-b8f7d599d4d8",
-                            ConcurrencyStamp = "18889e7f-7193-4c51-aa63-907d4c6f994b",
+                            Id = "8186f41d-df04-4576-815a-f479fa1b342f",
+                            ConcurrencyStamp = "6c92f060-e610-4821-b49e-5ea9b55ba5be",
                             Name = "Student",
                             NormalizedName = "Student"
                         });
@@ -219,7 +221,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("FirtName")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -259,9 +261,6 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
-
-                    b.Property<string>("UrlAvartar")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)

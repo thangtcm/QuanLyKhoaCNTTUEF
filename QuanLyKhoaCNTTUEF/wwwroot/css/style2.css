@@ -88,8 +88,8 @@
 #radius-shape-1 {
     height: 220px;
     width: 220px;
-    top: -60px;
-    left: -130px;
+    top: -80px;
+    left: -100px;
     background: radial-gradient(#0C8075, #05fa4a);
     overflow: hidden;
 }
@@ -109,7 +109,7 @@
     height: 100px;
     width: 100px;
     bottom: 170px;
-    left: -50px;
+    left: -40px;
     background: radial-gradient(#0C8075, #05fa4a);
     overflow: hidden;
 }

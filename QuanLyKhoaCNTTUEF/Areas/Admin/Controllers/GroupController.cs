@@ -18,7 +18,6 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
     public class GroupController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private int _count = 1;
         private readonly INotyfService _toastNotification;
         public GroupController(ApplicationDbContext context, INotyfService toastNotification)
         {
@@ -84,7 +83,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GroupID,EventID,TenNhom,MoTa,NgayTao,NgayCapNhat")] Group @group)
         {
-            @group.Event = (Event?)ViewData["IDSuKien"];
+            //@group.Event = (Event?)ViewData["IDSuKien"];
             if (ModelState.IsValid)
             {
                 _context.Add(@group);

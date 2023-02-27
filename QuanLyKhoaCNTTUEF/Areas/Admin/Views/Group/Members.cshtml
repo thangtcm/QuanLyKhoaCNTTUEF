@@ -20,7 +20,7 @@
                                     <div>
                                         <input type="checkbox" name="SelectedMemberIDs" value="@member.Id"
                                         @(Model.SelectedMemberIDs.Contains(member.Id) ? "checked" : "") />
-                                        <label>@member.FirtName @member.MiddleName @member.LastName</label>
+                                        <label>@member.FullName</label>
                                         </div>
                                 }
                             }

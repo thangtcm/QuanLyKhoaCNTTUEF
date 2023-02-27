@@ -7,15 +7,24 @@ namespace QuanLyKhoaCNTTUEF.Data
     {
         public string? City { get; set; }
 
-        public string? FirtName { get; set; }
+        public string? FirstName { get; set; }
 
         public string? MiddleName { get; set; }
 
         public string? LastName { get; set; }
 
-        //public string? UrlAvartar { get; set; }
+        public string? UrlAvartar { get; set; }
 
         //public bool? NeedChat { get; set; }
+        public string FullName
+        {
+            get { return $"{FirstName} {MiddleName} {LastName}"; }
+        }
         public List<MembersGroups>? MembersGroups { get; set; }
+    }
+
+    public class ApplicationRole : IdentityRole
+    {
+
     }
 }

@@ -30,8 +30,8 @@
                             <div class="card shadow-lg bg-white" style="border-radius: 2rem;">
                                 <div class="card-body p-5 text-center">
                                     <div class="mt-md-4">
-                                        <img class="pb-3" src="~/img/logo.png" style="width: 60%;" alt="logo">
-                                        <p style="color : #7A7E7E" class="account-subtitle pb-4">Sử dụng tài khoản UEF để đăng nhập</p>
+                                        <img class="pb-2" src="~/img/logo.png" style="width: 60%;" alt="logo">
+                                        <p style="color : #7A7E7E; font-style: italic; font-size: 0.8rem;" class="account-subtitle pb-4">Sử dụng tài khoản UEF để đăng nhập</p>
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <form id="account" method="post" style="width: 70%; margin: 0 auto;">
                                             <div class="form-group form-outline form-outline-strongcyan">
@@ -48,27 +48,29 @@
                                                 <input type="checkbox" class="form-check-input" id="formRememberMe" asp-for="Input.RememberMe" />
                                                 <label asp-for="Input.RememberMe" for="formRememberMe" class="form-label">Ghi nhớ mật khẩu</label>
                                             </div> -->
-                                            <div class="row mb-4">
+                                            <div class="row mb-4" style="margin-top: -15px;">
                                                 <div class="col d-flex text-left">
                                                     <!-- Checkbox -->
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" asp-for="Input.RememberMe" id="form2Example31" checked />
-                                                        <label class="form-check-label" asp-for="Input.RememberMe" for="form2Example31"> @Html.DisplayNameFor(m => m.Input.RememberMe) </label>
+                                                        <label style="font-size: 0.8rem" class="form-check-label" asp-for="Input.RememberMe" for="form2Example31"> @Html.DisplayNameFor(m => m.Input.RememberMe) </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="col text-right">
                                                     <!-- Simple link -->
-                                                    <a asp-controller="Account" asp-action="ForgotPassword">Forgot password?</a>
+                                                    <a style="font-size: 0.8rem" asp-controller="Account" asp-action="ForgotPassword">Quên Mật Khẩu?</a>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <button id="login-submit" type="submit" class="btn btn-lg btn-strongcyan" style="width:70%">Log in</button>
+                                                <button id="login-submit" type="submit" class="btn btn-lg btn-strongcyan mt-3" style="width: 70%; border-radius: 19px; font-size: 0.7rem; text-transform: none;">
+                                                    Đăng Nhập
+                                                </button>
                                             </div>
                                         </form>
                                         <div class="login-or">
                                             <span class="or-line"></span>
-                                            <span class="span-or">or</span>
+                                            <span class="span-or" style="font-size: 0.8rem">or</span>
                                         </div>
                                         <div class="social-login">
                                             @{
@@ -89,7 +91,7 @@
                                                                         {
                                                                             @foreach (var provider in Model.ExternalLogins)
                                                                             {
-                                                                                <button type="submit" class="btn btn-link btn-floating mx-1" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-google" style="font-size: 20px; color: red;"></i></button>
+                                                                                <button type="submit" class="btn btn-link btn-floating mx-1" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-google" style="font-size: 32px; color: red;"></i></button>
                                                                             }
                                                                         }
                                                                     }

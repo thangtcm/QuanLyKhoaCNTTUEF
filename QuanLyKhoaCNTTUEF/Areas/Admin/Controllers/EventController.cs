@@ -16,10 +16,12 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly INotyfService _toastNotification;
-        public EventController(ApplicationDbContext context, INotyfService toastNotification)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public EventController(ApplicationDbContext context, INotyfService toastNotification, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _toastNotification = toastNotification;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         // GET: DemoSuKien
@@ -67,7 +69,12 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // GET: DemoSuKien/Create
         public IActionResult Create()
         {
-            
+            var user = _httpContextAccessor?.HttpContext?.User;
+            if (user?.Identity?.IsAuthenticated is false)
+            {
+                return RedirectToAction("ERROR", "Home", new { Area = "" });
+            }
+
             return View();
         }
 
@@ -127,7 +134,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 {
                     if (!SuKienExists(@event.EventID))
                     {
-                        return NotFound();
+                        return RedirectToAction("Details", "Event");
                     }
                     else
                     {

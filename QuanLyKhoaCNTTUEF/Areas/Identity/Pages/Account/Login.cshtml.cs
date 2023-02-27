@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using QuanLyKhoaCNTTUEF.Data;
 using System.ComponentModel;
+using System.Security.Claims;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
 {
@@ -82,7 +83,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Ghi nhớ?")]
             public bool RememberMe { get; set; }
         }
 
@@ -113,6 +114,28 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                //add
+                var user = await _signInManager.UserManager.FindByNameAsync(Input.Email);
+                if (user == null)
+                {
+                    var claims = new List<Claim>
+                    {
+                        new Claim("amr", "pwd")
+                    };
+
+                    var roles = await _signInManager.UserManager.GetRolesAsync(user);
+
+                    if (roles.Any())
+                    {
+                        //"Manager,User"
+                        var roleClaim = string.Join(",", roles);
+                        claims.Add(new Claim("Roles", roleClaim));
+                    }
+
+                    await _signInManager.SignInWithClaimsAsync(user, Input.RememberMe, claims);
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return Page();
+                }
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {

@@ -1,7 +1,9 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using QuanLyKhoaCNTTUEF.Core;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Data.Services;
 using QuanLyKhoaCNTTUEF.Models;
@@ -17,6 +19,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             _context = context;
         }
 
+        [Authorize(Policy = Constants.Roles.Administrator)]
         public IActionResult Index()
         {
             return View();

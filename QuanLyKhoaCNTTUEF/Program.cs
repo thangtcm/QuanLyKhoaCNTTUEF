@@ -3,10 +3,13 @@ using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using QuanLyKhoaCNTTUEF.Core;
+using QuanLyKhoaCNTTUEF.Core.Repositories;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Data.Interfaces;
 using QuanLyKhoaCNTTUEF.Data.Services;
 using QuanLyKhoaCNTTUEF.Hubs;
+using QuanLyKhoaCNTTUEF.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,9 +43,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+AddAuthorizationPolicies();
+
+AddScoped();
 
 //Set up Google API
 builder.Services.AddAuthentication()
@@ -64,8 +71,8 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredUniqueChars = 1;
 
     // Lockout settings.
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+    options.Lockout.MaxFailedAccessAttempts = 10;
     options.Lockout.AllowedForNewUsers = true;
 
     // User settings.
@@ -79,7 +86,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     // Cookie settings
     options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     options.Cookie.SameSite = SameSiteMode.None;
     options.LoginPath = "/Identity/Account/Login";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
@@ -122,3 +129,27 @@ app.MapRazorPages();
 app.MapHub<ChatHub>("/ChatHub");
 
 app.Run();
+
+
+void AddAuthorizationPolicies()
+{
+    builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("EmployeeOnly", policy => policy.RequireClaim("EmployeeNumber"));
+    });
+
+    builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy(Constants.Policies.RequireAdmin, policy => policy.RequireRole(Constants.Roles.Administrator));
+        options.AddPolicy(Constants.Policies.RequireManager, policy => policy.RequireRole(Constants.Roles.Manager));
+        options.AddPolicy(Constants.Policies.RequireTeacher, policy => policy.RequireRole(Constants.Roles.Teacher));
+        options.AddPolicy(Constants.Policies.RequireStaff, policy => policy.RequireRole(Constants.Roles.Staff));
+    });
+}
+
+void AddScoped()
+{
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
+    builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+    builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+}

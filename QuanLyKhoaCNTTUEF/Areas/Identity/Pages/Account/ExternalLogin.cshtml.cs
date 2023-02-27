@@ -168,7 +168,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
                 var user = CreateUser();
 
                 user.UserName = Input.UserName;
-                user.FirtName = Input.FirstName;
+                user.FirstName = Input.FirstName;
                 user.MiddleName = Input.MiddleName;
                 user.LastName = Input.LastName;
                // await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
