@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Data.Interfaces;
-using QuanLyKhoaCNTTUEF.Data.Services;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.Models.Files;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IWebHostEnvironment;
@@ -209,7 +208,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                     foreach (var filepdf in plan.PdfFiles)
                     {
                         plan.PdfFiles.Remove(filepdf);
-                        _context.PdfFile.Remove(filepdf);
+                        _context?.PdfFile?.Remove(filepdf);
                     }
                 }    
                 _context.Plan.Remove(plan);

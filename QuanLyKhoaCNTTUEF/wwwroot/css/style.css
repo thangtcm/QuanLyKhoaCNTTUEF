@@ -8280,3 +8280,9 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button {
 	border-radius: 0;
 	padding-left: 0;
 }
+
+/* Auto center top bottom */
+.mtb-center {
+	margin-top: auto;
+	margin-bottom: auto;
+}

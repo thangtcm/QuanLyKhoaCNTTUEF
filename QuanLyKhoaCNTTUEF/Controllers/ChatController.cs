@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyKhoaCNTTUEF.Core;
 using QuanLyKhoaCNTTUEF.Data;
-using QuanLyKhoaCNTTUEF.Data.Services;
 using QuanLyKhoaCNTTUEF.Models;
 
 namespace QuanLyKhoaCNTTUEF.Controllers

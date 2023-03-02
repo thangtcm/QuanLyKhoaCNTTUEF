@@ -124,10 +124,10 @@
                     <div class="user-text">
                         <h6>@UserManager.GetUserAsync(User).Result.FullName</h6>
                         @*<h6>@User.Identity?.Name!</h6>*@
-                        @if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
+                        @*@if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
                         {
                             <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="text-muted mb-0">Administrator</a>
-                        }
+                        }*@
                     </div>
                 </div>
                 <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">My Profile</a>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Dashboard()
+        {
+            return View();
+        }
+
         // GET: Nhoms/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -53,25 +59,42 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // GET: Nhoms/Create
         public IActionResult Create()
         {
-            int selectedEventId = (int?)TempData["IDSuKien"] ?? 0;
+            var selectList = new SelectList(_context.Event, "EventID", "TenSuKien");
 
-            var events = _context.Event
-            .Select(e => new SelectListItem
+            
+            // Lấy giá trị của TempData["IDSuKien"]
+            var idSuKien = TempData["IDSuKien"] as int?;
+
+            // Kiểm tra nếu giá trị có tồn tại và khác 0
+            if (idSuKien.HasValue && idSuKien.Value != 0)
             {
-                Value = e.EventID.ToString(),
-                Text = e.TenSuKien,
-                Selected = e.EventID == selectedEventId
-            })
-            .ToList();
-
-                events.Insert(0, new SelectListItem
+                var suKien = _context?.Event?.Find(idSuKien);
+                if(suKien is null)
                 {
-                    Value = "0",
-                    Text = "-- Chọn sự kiện --",
-                    Selected = selectedEventId == 0
-                });
+                    ViewData["EventID"] = selectList;
+                    return View();
+                }
+                // Tạo một SelectListItem cho mục bạn muốn đưa lên đầu tiên
+                var selectedItem = new SelectListItem { Value = idSuKien.Value.ToString(), Text = suKien?.TenSuKien?.ToString() };
+                selectedItem.Selected = true;
 
-            ViewData["EventID"] = events;
+                // Chèn mục mới vào vị trí đầu tiên của danh sách
+                //selectList = new SelectList(selectList.Prepend(selectedItem), "Value", "Text");
+                var newSelectList = new SelectList(selectList.Where(x => x.Value != selectedItem.Value), "Value", "Text");
+
+                // Thêm mục mới vào đầu danh sách
+                newSelectList = new SelectList(newSelectList.Prepend(selectedItem), "Value", "Text");
+
+                // Lưu SelectList mới vào ViewData
+                ViewData["EventID"] = newSelectList;
+            }
+            else
+            {
+                // Lưu SelectList vào ViewData
+                ViewData["EventID"] = selectList;
+            }    
+
+            
             return View();
         }
 

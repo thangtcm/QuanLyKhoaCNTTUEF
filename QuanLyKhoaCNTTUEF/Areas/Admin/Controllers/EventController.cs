@@ -1,5 +1,7 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -17,13 +19,16 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         private readonly ApplicationDbContext _context;
         private readonly INotyfService _toastNotification;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public EventController(ApplicationDbContext context, INotyfService toastNotification, IHttpContextAccessor httpContextAccessor)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public EventController(ApplicationDbContext context, INotyfService toastNotification, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _toastNotification = toastNotification;
             _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
         }
 
+        [Authorize("")]
         // GET: DemoSuKien
         public async Task<IActionResult> Index(string SearchString)
         {
@@ -61,18 +66,22 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 return NotFound();
             }
             TempData["IDSuKien"] = id;
-            HttpContext.Session.SetInt32("SelectedEventId", (int)id);
             return View(@event);
         }
 
-
-        // GET: DemoSuKien/Create
         public IActionResult Create()
         {
-            var user = _httpContextAccessor?.HttpContext?.User;
-            if (user?.Identity?.IsAuthenticated is false)
+            try
             {
-                return RedirectToAction("ERROR", "Home", new { Area = "" });
+                var user = _httpContextAccessor?.HttpContext?.User;
+                if (user?.Identity?.IsAuthenticated is false)
+                {
+                    return RedirectToAction("ERROR", "Home", new { Area = "" });
+                }
+            }
+            catch
+            {
+
             }
 
             return View();
@@ -83,16 +92,83 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventID,TenSuKien,NgayBD,NgayKT,MoTa,TrangThai,XoaTam,IDNguoiTao,NgayTao,IDNguoiCapNhat,NgayCapNhat,IDNguoiXoa,NgayXoa")] Event @event)
+        public async Task<IActionResult> Create(Event @event)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _context.Add(@event);
                 await _context.SaveChangesAsync();
                 _toastNotification.Success("Tạo Sự Kiện Thành Công");
             }
-            
+            catch
+            {
+                _toastNotification.Success("Có lỗi xảy ra!!!");
+            }
             return View(@event);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ImportDataExcel(IFormFile fileExcel)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            
+            if (fileExcel == null || fileExcel.Length == 0)
+            {
+                ViewBag.Error = "Please Select a excel file";
+                return View("Index");
+            }
+            else
+            {
+                if (fileExcel.FileName.EndsWith("xls") || fileExcel.FileName.EndsWith("xlsx"))
+                {
+                    string path = Path.GetTempFileName();
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await fileExcel.CopyToAsync(stream);
+                    }
+
+                    //read data from excel file
+                    FileInfo existingFile = new FileInfo(path);
+                    List<DataExcel> data = new List<DataExcel>();
+
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    //int sl = db.Table_Name.ToList().Count;
+                    using (ExcelPackage package = new ExcelPackage(existingFile))
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets["Sheet1"];
+                        int colCount = worksheet.Dimension.End.Column;  //get Column Count
+                        int rowCount = worksheet.Dimension.End.Row;     //get row count
+                        for (int row = 2; row <= rowCount; row++)
+                        {
+                            DataExcel dt = new();
+                            Event @event = new()
+                            {
+                                TenSuKien = worksheet.Cells[row, 2].Value.ToString(),
+                                NgayBD = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
+                                NgayKT = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
+                                MoTa = worksheet.Cells[row, 4].Value.ToString(),
+                                IDNguoiTao = user.FullName,
+                                NgayTao = DateTime.Now,
+                                IDNguoiCapNhat = user.FullName,
+                                NgayCapNhat = DateTime.Now
+                            };
+                            _context.Add(@event);
+                        }
+                        ViewBag.data = data;
+                    }
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Error = "Please Select a excel file";
+                    return View("Index");
+                }
+            }
         }
 
         // GET: DemoSuKien/Edit/5

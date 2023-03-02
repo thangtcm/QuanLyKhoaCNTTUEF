@@ -52,7 +52,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                         ExcelWorksheet worksheet = package.Workbook.Worksheets["Sheet1"];
                         int colCount = worksheet.Dimension.End.Column;  //get Column Count
                         int rowCount = worksheet.Dimension.End.Row;     //get row count
-                        for (int row = 1; row <= rowCount; row++)
+                        for (int row = 2; row <= rowCount; row++)
                         {
                             DataExcel dt = new DataExcel();
                             /*Table_Name table_ = new Table_Name();

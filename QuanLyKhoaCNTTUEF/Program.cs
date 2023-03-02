@@ -7,7 +7,6 @@ using QuanLyKhoaCNTTUEF.Core;
 using QuanLyKhoaCNTTUEF.Core.Repositories;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Data.Interfaces;
-using QuanLyKhoaCNTTUEF.Data.Services;
 using QuanLyKhoaCNTTUEF.Hubs;
 using QuanLyKhoaCNTTUEF.Repositories;
 
@@ -46,7 +45,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<UserManager<ApplicationUser>>();
 AddAuthorizationPolicies();
 
 AddScoped();
