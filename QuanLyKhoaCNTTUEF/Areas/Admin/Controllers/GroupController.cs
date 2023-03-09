@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Identity;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +6,6 @@ using OfficeOpenXml;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
-using static Microsoft.IO.RecyclableMemoryStreamManager;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
@@ -36,7 +30,36 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
         public async Task<IActionResult> Dashboard()
         {
-            return View();
+            //List<EventViewModel> groupDashboard= new List<EventViewModel>();
+            var @event = await _context.Event.AsNoTracking().Include(x => x.Groups).ToListAsync();
+
+            //foreach (Event item in @event)
+            //{
+            //    EventViewModel model = new EventViewModel();
+            //    model.EventName = item.TenSuKien;
+
+            //    if (item.Groups is not null)
+            //    {
+            //        var count = 0;
+            //        foreach (var item2 in item.Groups)
+            //        {
+            //            if (count == 4)
+            //                break;
+            //            GroupViewModel group = new GroupViewModel();
+            //            group.EventID = item2.EventID;
+            //            group.GroupID = item2.GroupID;
+            //            group.CreateDate = item2.NgayTao;
+            //            group.UpdateDate = item2.NgayCapNhat;
+            //            group.Decreption = item2.MoTa;
+
+            //            model.Groups = (GroupViewModel)group;
+            //            count++;
+            //        }
+            //    }
+            //    groupDashboard.Add(model);
+            //}
+
+            return View(@event);
         }
 
         // GET: Nhoms/Details/5

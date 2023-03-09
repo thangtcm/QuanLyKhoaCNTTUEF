@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Dashboardss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcRGFzaGJvYXJkc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -62,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Index1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcSW5kZXgxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Members.cshtml]

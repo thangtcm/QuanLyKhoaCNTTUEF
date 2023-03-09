@@ -7,22 +7,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using OfficeOpenXml;
+using OfficeOpenXml.Table;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
+using System.Data;
+using System.IO;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class EventController : Controller
     {
+        //private readonly ApplicationDbContext _context;
         private readonly ApplicationDbContext _context;
         private readonly INotyfService _toastNotification;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<ApplicationUser> _userManager;
-        public EventController(ApplicationDbContext context, INotyfService toastNotification, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
+        public EventController(ApplicationDbContext _context, INotyfService toastNotification, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
         {
-            _context = context;
+            //_context = context;
+            this._context = _context;
             _toastNotification = toastNotification;
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
@@ -50,10 +55,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // GET: DemoSuKien/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Event == null)
-            {
-                return NotFound();
-            }
+            //var isExists = await _context.Event.isExists(q => q.EventID == id);
+            //if (!isExists)
+            //{
+            //    return NotFound();
+            //}
 
             var @event = await _context.Event
                 .AsNoTracking()
@@ -71,18 +77,18 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            try
-            {
-                var user = _httpContextAccessor?.HttpContext?.User;
-                if (user?.Identity?.IsAuthenticated is false)
-                {
-                    return RedirectToAction("ERROR", "Home", new { Area = "" });
-                }
-            }
-            catch
-            {
+            //try
+            //{
+            //    var user = _httpContextAccessor?.HttpContext?.User;
+            //    if (user?.Identity?.IsAuthenticated is false)
+            //    {
+            //        return RedirectToAction("ERROR", "Home", new { Area = "" });
+            //    }
+            //}
+            //catch
+            //{
 
-            }
+            //}
 
             return View();
         }
@@ -102,7 +108,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             }
             catch
             {
-                _toastNotification.Success("Có lỗi xảy ra!!!");
+                _toastNotification.Error("Có lỗi xảy ra!!!");
             }
             return View(@event);
         }
@@ -150,11 +156,12 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                                 TenSuKien = worksheet.Cells[row, 2].Value.ToString(),
                                 NgayBD = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
                                 NgayKT = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
-                                MoTa = worksheet.Cells[row, 4].Value.ToString(),
+                                MoTa = worksheet.Cells[row, 5].Value.ToString(),
+                                NgayTao = DateTime.Parse(worksheet.Cells[row, 6].Value.ToString()),
+                                NgayCapNhat = DateTime.Parse(worksheet.Cells[row, 7].Value.ToString()),
                                 IDNguoiTao = user.FullName,
-                                NgayTao = DateTime.Now,
-                                IDNguoiCapNhat = user.FullName,
-                                NgayCapNhat = DateTime.Now
+                                IDNguoiCapNhat = user.FullName
+                                
                             };
                             _context.Add(@event);
                         }
@@ -265,26 +272,56 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 return _context.Event.Any(e => e.EventID == id);
             return false;
         }
-
-        public ActionResult DowloadData(string filename)
+        public ActionResult ExcelExport()
         {
-            if (_context.Event is null)
-                return NotFound();
-            var customers = _context.Event.ToList();
+            List<Event> EventData = _context.Event.ToList();
+
             try
             {
-                _toastNotification.Success("Tải Dữ Liệu Thành Công");
-                var stream = new MemoryStream();
-                using (var package = new ExcelPackage(stream))
+
+                DataTable Dt = new DataTable();
+                Dt.Columns.Add("ID", typeof(string));
+                Dt.Columns.Add("Tên Sự Kiện", typeof(string));
+                Dt.Columns.Add("Ngày Bắt Đầu", typeof(string));
+                Dt.Columns.Add("Ngày Kết Thúc", typeof(string));
+                Dt.Columns.Add("Mô Tả", typeof(string));
+                Dt.Columns.Add("Ngày Tạo", typeof(string));
+                Dt.Columns.Add("Ngày Cập Nhật", typeof(string));
+                
+                foreach (var data in EventData)
                 {
-                    var worksheet = package.Workbook.Worksheets.Add("Sheet1");
-                    worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
-                    worksheet.Cells.AutoFitColumns();
-                    package.Save();
+                    DataRow row = Dt.NewRow();
+                    row[0] = data.EventID;
+                    row[1] = data.TenSuKien;
+                    row[2] = data.NgayBD.ToString("dd/M/yyyy");
+                    row[3] = data.NgayKT.ToString("dd/M/yyyy");
+                    row[4] = data.MoTa;
+                    row[5] = data.NgayTao.ToString("dd/M/yyyy");
+                    row[6] = data.NgayCapNhat.ToString("dd/M/yyyy");
+                    Dt.Rows.Add(row);
+
                 }
-                stream.Position = 0;
-                string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
-                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+
+                var memoryStream = new MemoryStream();
+                using (var excelPackage = new ExcelPackage(memoryStream))
+                {
+                    var worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+                    worksheet.Cells["A1"].LoadFromDataTable(Dt, true, TableStyles.None);
+                    worksheet.Cells["A1:AN1"].Style.Font.Bold = true;
+                    worksheet.DefaultRowHeight = 18;
+
+
+                    worksheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    worksheet.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    worksheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                    worksheet.DefaultColWidth = 20;
+                    worksheet.Cells["B:G"].AutoFitColumns();
+
+                    excelPackage.Save();
+                    memoryStream.Position = 0;
+                    string excelname = $"SuKien - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+                    return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+                }
             }
             catch (Exception ex)
             {
@@ -292,5 +329,32 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 return NotFound();
             }
         }
+
+        //public ActionResult DowloadData(string filename)
+        //{
+        //    if (_context.Event is null)
+        //        return NotFound();
+        //    var customers = _context.Event.ToList();
+        //    try
+        //    {
+        //        _toastNotification.Success("Tải Dữ Liệu Thành Công");
+        //        var stream = new MemoryStream();
+        //        using (var package = new ExcelPackage(stream))
+        //        {
+        //            var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+        //            worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
+        //            worksheet.Cells.AutoFitColumns();
+        //            package.Save();
+        //        }
+        //        stream.Position = 0;
+        //        string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+        //        return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
+        //        return NotFound();
+        //    }
+        //}
     }
 }
