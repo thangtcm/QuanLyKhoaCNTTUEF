@@ -6,8 +6,6 @@
    // IEnumerable<Nhom>? Group = ViewData["Group"] as IEnumerable<Nhom>;
 }
 
-<h1>Details</h1>
-
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -215,9 +213,9 @@
                                                                         <div class="dropdown dropdown-action">
                                                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                                                             <div class="dropdown-menu dropdown-menu-right">
-                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Edit" asp-route-id="@item.IDTask"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
-                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Details" asp-route-id="@item.IDTask"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
-                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Delete" asp-route-id="@item.IDTask"><i class="fas fa-pencil-alt m-r-5"></i> Xóa</a>
+                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Edit" asp-route-id="@item.TaskID"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
+                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Details" asp-route-id="@item.TaskID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
+                                                                                <a class="dropdown-item" asp-controller="Tasks" asp-action="Delete" asp-route-id="@item.TaskID"><i class="fas fa-pencil-alt m-r-5"></i> Xóa</a>
                                                                             </div>
                                                                             <div id="delete_asset" class="modal fade delete-modal" role="dialog">
                                                                                 <div class="modal-dialog modal-dialog-centered">
@@ -227,7 +225,7 @@
                                                                                             <h3 class="delete_class">Chắc chắn xoá?</h3>
                                                                                             <div class="m-t-20">
                                                                                                 <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                                                                                                <a asp-controller="Nhoms" asp-action="Delete" asp-route-id="@item.IDTask" class="btn btn-danger">Delete</a>
+                                                                                                <a asp-controller="Nhoms" asp-action="Delete" asp-route-id="@item.TaskID" class="btn btn-danger">Delete</a>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>

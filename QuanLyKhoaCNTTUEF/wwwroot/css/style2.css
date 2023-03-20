@@ -138,6 +138,39 @@
     --mdb-btn-active-color: #fff
 }
 
-    .btn-strongcyan:first-child:hover, .btn-strongcyan:focus-visible, .btn-strongcyan:hover, :not(.btn-check) + .btn-strongcyan:hover {
-        box-shadow: 0 8px 9px -4px rgba(59,113,202,.3),0 4px 18px 0 rgba(59,113,202,.2)
-    }
+.btn-strongcyan:first-child:hover, .btn-strongcyan:focus-visible, .btn-strongcyan:hover, :not(.btn-check) + .btn-strongcyan:hover {
+    box-shadow: 0 8px 9px -4px rgba(59,113,202,.3),0 4px 18px 0 rgba(59,113,202,.2)
+}
+
+.card {
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+
+.card_hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.card_checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.card-body .card-checked {
+    opacity: 0;
+}
+
+.card_checkbox:checked ~ .card-body .card-checked {
+    opacity: 1;
+}
+
+.text-dimgray {
+    color: #636262 !important;
+}

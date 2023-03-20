@@ -1,0 +1,35 @@
+﻿@using QuanLyKhoaCNTTUEF.ViewModel;
+@model MemberGroupViewModel
+
+
+<div class="page-wrapper" style="min-height: 941px;">
+    <div class="content container-fluid">
+
+        @using (Html.BeginForm())
+        {
+            <div>
+                <h2>@Model.Group?.TenNhom</h2>
+                <div>
+                    @{
+                        if(Model.Members is not null)
+                        {
+                            @foreach (var member in Model.Members)
+                            {
+                                if (Model.SelectedMemberIDs is not null)
+                                {
+                                    <div>
+                                        <input type="checkbox" name="SelectedMemberIDs" value="@member.Id"
+                                        @(Model.SelectedMemberIDs.Contains(member.Id) ? "checked" : "") />
+                                        <label>@member.FullName</label>
+                                        </div>
+                                }
+                            }
+                        }
+                    }
+                    
+                </div>
+                <button type="submit">Save</button>
+            </div>
+        }
+    </div>
+</div>

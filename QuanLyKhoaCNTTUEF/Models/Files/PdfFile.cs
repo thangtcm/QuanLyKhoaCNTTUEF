@@ -12,8 +12,8 @@ namespace QuanLyKhoaCNTTUEF.Models.Files
         public string? FileName { get; set; }
         public DateTime DateUpload { get; set; }
         public string? FilePath { get; set; }
-        public int IDKeHoach { get; set;}
-        [ForeignKey("IDKeHoach")]
-        public Plan? Plan { get; set; }
+        public int? PlanID { get; set;}
+        [ForeignKey("PlanID")]
+        public virtual Plan? Plan { get; set; }
     }
 }

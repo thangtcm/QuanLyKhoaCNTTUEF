@@ -17,7 +17,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.14")
+                .HasAnnotation("ProductVersion", "6.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -51,36 +51,36 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c54f5bae-41d2-4f5f-b152-0fdbbe9fd1bd",
-                            ConcurrencyStamp = "689adbbc-d7a5-41c1-9e27-eefabdc2f500",
+                            Id = "9e4410a3-6cd4-4f4e-b0fb-30dd0c5ce710",
+                            ConcurrencyStamp = "ccf79de8-3bd7-4cc0-b7b6-bd6e9835b29b",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         },
                         new
                         {
-                            Id = "f98efae4-27c3-429f-8ee0-81a3e18574d4",
-                            ConcurrencyStamp = "afa7da52-1506-46a4-9ef0-80515e3be5f8",
+                            Id = "e3006648-5c5f-4b36-9494-624d5ebe0b51",
+                            ConcurrencyStamp = "8ed026a5-0ad8-4bce-a27e-edbdc7dfcd6d",
                             Name = "Manager",
                             NormalizedName = "Manager"
                         },
                         new
                         {
-                            Id = "a3ce8d44-02e8-4eed-83f8-778d4b445f33",
-                            ConcurrencyStamp = "e64a0ccc-0dbb-4a2a-a61b-7c89ad5ea763",
+                            Id = "bca1cce5-2700-44d0-8c36-821631315ff3",
+                            ConcurrencyStamp = "33410e02-eb1a-4890-a308-ae4a93297cb0",
                             Name = "Teacher",
                             NormalizedName = "Teacher"
                         },
                         new
                         {
-                            Id = "65592b81-8aea-4127-97ac-d94911a52acb",
-                            ConcurrencyStamp = "eacc1350-51ed-442e-8c74-0dd5b8e52146",
+                            Id = "24c9ea65-513e-483b-b0fe-6df7cc75ed23",
+                            ConcurrencyStamp = "d94f71f7-46cb-41f8-b729-35a0b2508077",
                             Name = "Staff",
                             NormalizedName = "Staff"
                         },
                         new
                         {
-                            Id = "886fb0f1-b228-43a4-a91d-fe466c6f6166",
-                            ConcurrencyStamp = "7aee3d91-e327-4ff8-93d7-45ff19855e75",
+                            Id = "1f0d9424-6371-418b-a96e-3fea6a4ce8ef",
+                            ConcurrencyStamp = "3167a319-d53e-4a1a-b860-040033efb7e7",
                             Name = "Student",
                             NormalizedName = "Student"
                         });
@@ -278,6 +278,108 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b19f1b24-5ac9-4c8d-9b7c-5e5d5f5cfb1e",
+                            Email = "user1@example.com",
+                            EmailConfirmed = true,
+                            FirstName = "Trần",
+                            LastName = "Thắng",
+                            LockoutEnabled = true,
+                            MiddleName = "Cao Minh",
+                            NormalizedEmail = "USER1@EXAMPLE.COM",
+                            NormalizedUserName = "USER1@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ5WZP5+Za5U6aQ2OYN5WQ2Jy+JHZZv7PzKj8k0rFhCtPmKd6JW+8K5UyNqU5MvLg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ZD5UZJQK6Q5W6N7O6RBRF6DB2Q2G2AIJ",
+                            TwoFactorEnabled = false,
+                            UrlAvartar = "/img/Admin.png",
+                            UserName = "user1@example.com"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b19f1b24-5ac9-4c8d-9b7c-5e5d5f5cfb1e",
+                            Email = "user2@example.com",
+                            EmailConfirmed = true,
+                            FirstName = "Lê",
+                            LastName = "Duyên",
+                            LockoutEnabled = true,
+                            MiddleName = "Thảo",
+                            NormalizedEmail = "USER2@EXAMPLE.COM",
+                            NormalizedUserName = "USER2@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ5WZP5+Za5U6aQ2OYN5WQ2Jy+JHZZv7PzKj8k0rFhCtPmKd6JW+8K5UyNqU5MvLg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ZD5UZJQK6Q5W6N7O6RBRF6DB2Q2G2AIJ",
+                            TwoFactorEnabled = false,
+                            UrlAvartar = "/img/Duyen.png",
+                            UserName = "user2@example.com"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b19f1b24-5ac9-4c8d-9b7c-5e5d5f5cfb1e",
+                            Email = "user4@example.com",
+                            EmailConfirmed = true,
+                            FirstName = "Lê",
+                            LastName = "Đình",
+                            LockoutEnabled = true,
+                            MiddleName = "Ngọc Đình",
+                            NormalizedEmail = "USER4@EXAMPLE.COM",
+                            NormalizedUserName = "USER4@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ5WZP5+Za5U6aQ2OYN5WQ2Jy+JHZZv7PzKj8k0rFhCtPmKd6JW+8K5UyNqU5MvLg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ZD5UZJQK6Q5W6N7O6RBRF6DB2Q2G2AIJ",
+                            TwoFactorEnabled = false,
+                            UrlAvartar = "/img/DinhDinh.png",
+                            UserName = "user4@example.com"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b19f1b24-5ac9-4c8d-9b7c-5e5d5f5cfb1e",
+                            Email = "user5@example.com",
+                            EmailConfirmed = true,
+                            FirstName = "Nguyễn",
+                            LastName = "Khoa",
+                            LockoutEnabled = true,
+                            MiddleName = "Tuấn",
+                            NormalizedEmail = "USER5@EXAMPLE.COM",
+                            NormalizedUserName = "USER5@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ5WZP5+Za5U6aQ2OYN5WQ2Jy+JHZZv7PzKj8k0rFhCtPmKd6JW+8K5UyNqU5MvLg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ZD5UZJQK6Q5W6N7O6RBRF6DB2Q2G2AIJ",
+                            TwoFactorEnabled = false,
+                            UrlAvartar = "/img/Khoa.png",
+                            UserName = "user5@example.com"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b19f1b24-5ac9-4c8d-9b7c-5e5d5f5cfb1e",
+                            Email = "user3@example.com",
+                            EmailConfirmed = true,
+                            FirstName = "Hồ",
+                            LastName = "Khánh",
+                            LockoutEnabled = true,
+                            MiddleName = "Lâm Gia",
+                            NormalizedEmail = "USER2@EXAMPLE.COM",
+                            NormalizedUserName = "USER3@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ5WZP5+Za5U6aQ2OYN5WQ2Jy+JHZZv7PzKj8k0rFhCtPmKd6JW+8K5UyNqU5MvLg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ZD5UZJQK6Q5W6N7O6RBRF6DB2Q2G2AIJ",
+                            TwoFactorEnabled = false,
+                            UrlAvartar = "/img/Khanh.png",
+                            UserName = "user3@example.com"
+                        });
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.DanhSachThongTin", b =>
@@ -331,23 +433,46 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.DetailTask", b =>
                 {
-                    b.Property<string>("IDTask")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("int");
 
-                    b.Property<string>("IDNhom")
-                        .HasColumnType("varchar(20)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AssignedGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AssignedMemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GroupID")
+                        .HasColumnType("int");
 
                     b.Property<string>("KetQua")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("MemberGroupID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MembersGroupID")
+                        .HasColumnType("int");
 
                     b.Property<string>("MoTa")
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(MAX)");
+
+                    b.Property<int>("TaskID")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IDTask");
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupID");
+
+                    b.HasIndex("MemberGroupID");
+
+                    b.HasIndex("TaskID");
 
                     b.ToTable("DetailTask");
                 });
@@ -387,7 +512,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<DateTime>("NgayXoa")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PlanIDKeHoach")
+                    b.Property<int?>("PlanID")
                         .HasColumnType("int");
 
                     b.Property<string>("TenSuKien")
@@ -402,7 +527,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
                     b.HasKey("EventID");
 
-                    b.HasIndex("PlanIDKeHoach");
+                    b.HasIndex("PlanID");
 
                     b.ToTable("Event");
                 });
@@ -424,12 +549,12 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IDKeHoach")
+                    b.Property<int?>("PlanID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IDKeHoach");
+                    b.HasIndex("PlanID");
 
                     b.ToTable("PdfFile");
                 });
@@ -466,26 +591,45 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.MembersGroups", b =>
                 {
-                    b.Property<string>("UserID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("MemberGroupID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberGroupID"), 1L, 1);
+
+                    b.Property<DateTime?>("DateAssigned")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("GroupID")
                         .HasColumnType("int");
 
-                    b.HasKey("UserID", "GroupID");
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TaskID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("MemberGroupID");
 
                     b.HasIndex("GroupID");
+
+                    b.HasIndex("TaskID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("MembersGroups");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Plan", b =>
                 {
-                    b.Property<int>("IDKeHoach")
+                    b.Property<int?>("PlanID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDKeHoach"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("PlanID"), 1L, 1);
 
                     b.Property<DateTime>("NgayDuyet")
                         .HasColumnType("datetime2");
@@ -502,20 +646,23 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<string>("TenKeHoach")
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("IDKeHoach");
+                    b.HasKey("PlanID");
 
                     b.ToTable("Plan");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Tasks", b =>
                 {
-                    b.Property<int>("IDTask")
+                    b.Property<int>("TaskID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDTask"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskID"), 1L, 1);
 
                     b.Property<int>("EventID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GroupID")
                         .HasColumnType("int");
 
                     b.Property<string>("MoTa")
@@ -527,16 +674,17 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<DateTime>("NgayKT")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("TenTask")
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("TrangThai")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("IDTask");
+                    b.HasKey("TaskID");
 
                     b.HasIndex("EventID");
+
+                    b.HasIndex("GroupID");
 
                     b.ToTable("Task");
                 });
@@ -592,20 +740,43 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.DetailTask", b =>
+                {
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupID");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.MembersGroups", "MembersGroups")
+                        .WithMany()
+                        .HasForeignKey("MemberGroupID");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Tasks", "Task")
+                        .WithMany()
+                        .HasForeignKey("TaskID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("MembersGroups");
+
+                    b.Navigation("Task");
+                });
+
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Event", b =>
                 {
-                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", null)
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", "Plan")
                         .WithMany("Events")
-                        .HasForeignKey("PlanIDKeHoach");
+                        .HasForeignKey("PlanID");
+
+                    b.Navigation("Plan");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Files.PdfFile", b =>
                 {
                     b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", "Plan")
                         .WithMany("PdfFiles")
-                        .HasForeignKey("IDKeHoach")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PlanID");
 
                     b.Navigation("Plan");
                 });
@@ -623,19 +794,21 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 {
                     b.HasOne("QuanLyKhoaCNTTUEF.Models.Group", "Group")
                         .WithMany("MembersGroups")
-                        .HasForeignKey("GroupID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GroupID");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Tasks", "Task")
+                        .WithMany()
+                        .HasForeignKey("TaskID");
 
                     b.HasOne("QuanLyKhoaCNTTUEF.Data.ApplicationUser", "ApplicationUser")
                         .WithMany("MembersGroups")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserID");
 
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Group");
+
+                    b.Navigation("Task");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Tasks", b =>
@@ -645,6 +818,10 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .HasForeignKey("EventID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Group", null)
+                        .WithMany("Tasks")
+                        .HasForeignKey("GroupID");
 
                     b.Navigation("Event");
                 });
@@ -664,6 +841,8 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
                 {
                     b.Navigation("MembersGroups");
+
+                    b.Navigation("Tasks");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Plan", b =>

@@ -20,7 +20,7 @@ namespace QuanLyKhoaCNTTUEF.Data
         {
             get { return $"{FirstName} {MiddleName} {LastName}"; }
         }
-        public List<MembersGroups>? MembersGroups { get; set; }
+        public virtual ICollection<MembersGroups>? MembersGroups { get; set; }
     }
 
     public class ApplicationRole : IdentityRole

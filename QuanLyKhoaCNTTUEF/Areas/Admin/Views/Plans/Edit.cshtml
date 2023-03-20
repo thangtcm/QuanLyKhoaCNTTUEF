@@ -26,7 +26,7 @@
                         <div class="col">
                             <form asp-action="Edit" method="post" enctype="multipart/form-data">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <input type="hidden" asp-for="IDKeHoach" />
+                                <input type="hidden" asp-for="PlanID" />
                                 <div class="form-group">
                                     <label asp-for="TenKeHoach" class="control-label"></label>
                                     <input asp-for="TenKeHoach" class="form-control" />
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="PdfFiles" class="control-label"></label>
-                                    <input type="file" asp-for="PdfFiles" name="PdfFiles" id="pdfFile" multiple class="form-control-file form-control" accept="application/pdf" onchange="loadPdf()" />
+                                    <input type="file" asp-for="PdfFiles" name="PdfFiles" id="pdfFile" class="form-control-file form-control" accept="application/pdf" onchange="loadPdf()" />
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="NgayTrinh" class="control-label"></label>

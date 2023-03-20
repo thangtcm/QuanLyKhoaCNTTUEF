@@ -11,12 +11,12 @@
     <h4>Tasks</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        @*<dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Event)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Event.TenSuKien)
-        </dd>
+        </dd>*@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TenTask)
         </dt>
@@ -42,14 +42,14 @@
             @Html.DisplayFor(model => model.NgayKT)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TrangThai)
+            @Html.DisplayNameFor(model => model.Status)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TrangThai)
+            @Html.DisplayFor(model => model.Status)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IDTask">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.TaskID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

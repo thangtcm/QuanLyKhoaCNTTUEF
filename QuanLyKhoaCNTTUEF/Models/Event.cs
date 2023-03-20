@@ -11,6 +11,9 @@ namespace QuanLyKhoaCNTTUEF.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? EventID { get; set; }
 
+        public int? PlanID { get; set; }
+        [ForeignKey("PlanID")]
+        public virtual Plan? Plan { get; set; }
 
         [DisplayName("Tên sự kiện")]
         [Column(TypeName = "nvarchar(50)")]
@@ -30,7 +33,6 @@ namespace QuanLyKhoaCNTTUEF.Models
         public string? MoTa { get; set; }
 
         [DisplayName("Trạng thái")]
-        [Required(ErrorMessage = "This field is required.")]
         public int TrangThai { get; set; }
         public int XoaTam { get; set; }
         public string? IDNguoiTao { get; set; }
@@ -43,7 +45,7 @@ namespace QuanLyKhoaCNTTUEF.Models
         [DisplayName("Ngày xoá")]
         public DateTime NgayXoa { get; set; }
 
-        public List<Group>? Groups { get; set; }
-        public List<Tasks>? Tasks { get; set; }
+        public virtual ICollection<Group>? Groups { get; set; }
+        public virtual ICollection<Tasks>? Tasks { get; set; }
     }
 }

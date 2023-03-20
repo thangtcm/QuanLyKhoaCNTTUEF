@@ -20,46 +20,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             _toastNotification = toastNotification;
         }
 
-        // GET: Nhoms
         public async Task<IActionResult> Index()
         {
-            if (_context.Group is not null)
-                return View(await _context.Group.ToListAsync());
-            return View();
-        }
+            var eventsWithTop4Groups = await _context.Event.AsNoTracking().Include(x => x.Groups).ToListAsync();
 
-        public async Task<IActionResult> Dashboard()
-        {
-            //List<EventViewModel> groupDashboard= new List<EventViewModel>();
-            var @event = await _context.Event.AsNoTracking().Include(x => x.Groups).ToListAsync();
-
-            //foreach (Event item in @event)
-            //{
-            //    EventViewModel model = new EventViewModel();
-            //    model.EventName = item.TenSuKien;
-
-            //    if (item.Groups is not null)
-            //    {
-            //        var count = 0;
-            //        foreach (var item2 in item.Groups)
-            //        {
-            //            if (count == 4)
-            //                break;
-            //            GroupViewModel group = new GroupViewModel();
-            //            group.EventID = item2.EventID;
-            //            group.GroupID = item2.GroupID;
-            //            group.CreateDate = item2.NgayTao;
-            //            group.UpdateDate = item2.NgayCapNhat;
-            //            group.Decreption = item2.MoTa;
-
-            //            model.Groups = (GroupViewModel)group;
-            //            count++;
-            //        }
-            //    }
-            //    groupDashboard.Add(model);
-            //}
-
-            return View(@event);
+            return View(eventsWithTop4Groups);
         }
 
         // GET: Nhoms/Details/5
@@ -79,6 +44,29 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
             return View(@group);
         }
+
+        public async Task<IActionResult> Members(int? id)
+        {
+            if (id == null || _context.Group == null)
+            {
+                return NotFound();
+            }
+
+            var @group = await _context.Group
+                .FirstOrDefaultAsync(m => m.GroupID == id);
+            if (@group == null)
+            {
+                return NotFound();
+            }
+            var members = await _context.Group.AsNoTracking()
+                .Include(x => x.Event)
+                .Include(x => x.MembersGroups!)
+                    .ThenInclude(x => x.ApplicationUser)
+                .FirstOrDefaultAsync();
+            //var membergroup = _context.Group.Where(x => x.MembersGroups.Any(x => x.GroupID== groupid)).ToList();
+            return View(members);
+        }
+
         // GET: Nhoms/Create
         public IActionResult Create()
         {
@@ -115,9 +103,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 // Lưu SelectList vào ViewData
                 ViewData["EventID"] = selectList;
-            }    
-
-            
+            }
             return View();
         }
 
@@ -127,15 +113,21 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GroupID,EventID,TenNhom,MoTa,NgayTao,NgayCapNhat")] Group @group)
+        public async Task<IActionResult> Create(Group @group)
         {
-            //@group.Event = (Event?)ViewData["IDSuKien"];
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(@group);
-                await _context.SaveChangesAsync();
-                _toastNotification.Success("Tạo Nhóm Thành Công");
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(@group);
+                    await _context.SaveChangesAsync();
+                    _toastNotification.Success("Tạo Nhóm Thành Công");
+                    return RedirectToAction("Details", "Event", new { id = @group.EventID });
+                }
+            }    
+            catch(Exception ex)
+            {
+                _toastNotification.Error(ex.ToString());
             }
             ViewData["SuKien"] = new SelectList(_context.Event, "IDSuKien", "TenSuKien", @group.EventID);
             return View(@group);
@@ -162,33 +154,39 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("GroupID,EventID,TenNhom,MoTa,NgayTao,NgayCapNhat")] Group @group)
+        public async Task<IActionResult> Edit(int? id, Group @group)
         {
             if (id != @group.GroupID)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    _context.Update(@group);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!NhomExists(@group.GroupID))
+                    try
                     {
-                        return NotFound();
+                        _context.Update(@group);
+                        await _context.SaveChangesAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!NhomExists(@group.GroupID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
+                    return RedirectToAction("Details", "Event", new { id = @group.EventID });
                 }
-                return RedirectToAction(nameof(Index));
+            }catch(Exception ex)
+            {
+                _toastNotification.Error(ex.ToString());
             }
+            
             return View(@group);
         }
 
@@ -236,6 +234,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        
                 // GET: Nhoms/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

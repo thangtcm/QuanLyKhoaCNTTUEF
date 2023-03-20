@@ -45,36 +45,12 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\B01_AD03_LeThaoDuyen_205052073.pdf",
-      "PackagePath": "staticwebassets\\files\\B01_AD03_LeThaoDuyen_205052073.pdf"
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles10-08-2023.pdf",
+      "PackagePath": "staticwebassets\\files\\PdfFiles10-08-2023.pdf"
     },
     {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\B01_AD05_LeThaoDuyen_205052073.pdf",
-      "PackagePath": "staticwebassets\\files\\B01_AD05_LeThaoDuyen_205052073.pdf"
-    },
-    {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\CV_intern_FE Lê Hoài Ân.pdf",
-      "PackagePath": "staticwebassets\\files\\CV_intern_FE Lê Hoài Ân.pdf"
-    },
-    {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\Chapter 01 Introduction to Objects.pdf",
-      "PackagePath": "staticwebassets\\files\\Chapter 01 Introduction to Objects.pdf"
-    },
-    {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\Chapter-04 (1).pdf",
-      "PackagePath": "staticwebassets\\files\\Chapter-04 (1).pdf"
-    },
-    {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\Chapter-04.pdf",
-      "PackagePath": "staticwebassets\\files\\Chapter-04.pdf"
-    },
-    {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf",
-      "PackagePath": "staticwebassets\\files\\KTCT-KHÔNG-ĐƯỢC-10-NGHĨ-HỌC-LUÔN.pdf"
-    },
-    {
-      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\TAI LIEU ON TAP BANG A - KHOI LAP TRINH.pdf",
-      "PackagePath": "staticwebassets\\files\\TAI LIEU ON TAP BANG A - KHOI LAP TRINH.pdf"
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles18-09-2023.pdf",
+      "PackagePath": "staticwebassets\\files\\PdfFiles18-09-2023.pdf"
     },
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\fonts\\MaterialIcons-Regular.eot",
@@ -113,8 +89,32 @@
       "PackagePath": "staticwebassets\\fonts\\feathericond41d.eot"
     },
     {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\Admin.png",
+      "PackagePath": "staticwebassets\\img\\Admin.png"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\DinhDinh.png",
+      "PackagePath": "staticwebassets\\img\\DinhDinh.png"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\Duyen.png",
+      "PackagePath": "staticwebassets\\img\\Duyen.png"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\Khanh.png",
+      "PackagePath": "staticwebassets\\img\\Khanh.png"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\Khoa.png",
+      "PackagePath": "staticwebassets\\img\\Khoa.png"
+    },
+    {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\New Text Document.txt",
       "PackagePath": "staticwebassets\\img\\New Text Document.txt"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\Vector.png",
+      "PackagePath": "staticwebassets\\img\\Vector.png"
     },
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\avatar.jpg",

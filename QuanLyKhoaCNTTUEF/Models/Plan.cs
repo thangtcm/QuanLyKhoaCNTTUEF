@@ -9,7 +9,7 @@ namespace QuanLyKhoaCNTTUEF.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IDKeHoach { get; set; }
+        public int? PlanID { get; set; }
 
         [DisplayName("Tên Kế Hoạch")]
         [Column(TypeName = "nvarchar(50)")]
@@ -29,8 +29,8 @@ namespace QuanLyKhoaCNTTUEF.Models
         [Column(TypeName = "nvarchar(50)")]
         public string? NguoiDuyet { get; set; }
 
-        public List<PdfFile>? PdfFiles { get; set; }
+        public virtual ICollection<PdfFile>? PdfFiles { get; set; }
 
-        public List<Event>? Events { get; set; }
+        public virtual ICollection<Event>? Events { get; set; }
     }
 }

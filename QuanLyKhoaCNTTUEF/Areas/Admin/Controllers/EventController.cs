@@ -105,6 +105,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 _context.Add(@event);
                 await _context.SaveChangesAsync();
                 _toastNotification.Success("Tạo Sự Kiện Thành Công");
+                return RedirectToAction(nameof(Index));
             }
             catch
             {

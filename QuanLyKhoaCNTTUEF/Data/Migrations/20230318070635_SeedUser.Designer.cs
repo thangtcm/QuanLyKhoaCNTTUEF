@@ -12,14 +12,14 @@ using QuanLyKhoaCNTTUEF.Data;
 namespace QuanLyKhoaCNTTUEF.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230223160624_Update")]
-    partial class Update
+    [Migration("20230318070635_SeedUser")]
+    partial class SeedUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.14")
+                .HasAnnotation("ProductVersion", "6.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -49,6 +49,43 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "067eb158-f812-4491-9be9-0f141cd9c35a",
+                            ConcurrencyStamp = "310bfeb6-780e-46e3-ae2b-df95ca180176",
+                            Name = "Administrator",
+                            NormalizedName = "Administrator"
+                        },
+                        new
+                        {
+                            Id = "a7cf0dcf-bb35-4250-90e7-46f64eb60973",
+                            ConcurrencyStamp = "f04619c9-f81d-47c6-8d72-0266de16362b",
+                            Name = "Manager",
+                            NormalizedName = "Manager"
+                        },
+                        new
+                        {
+                            Id = "afe1f6ec-b5e3-4b18-b8ae-02f3536e76df",
+                            ConcurrencyStamp = "0a592259-33c9-431f-a040-4c04bce1e8d8",
+                            Name = "Teacher",
+                            NormalizedName = "Teacher"
+                        },
+                        new
+                        {
+                            Id = "8e521788-f42d-4ce2-98c9-fe8a3020d5b3",
+                            ConcurrencyStamp = "3d1d3238-90f3-4d69-b6bd-99370e87d694",
+                            Name = "Staff",
+                            NormalizedName = "Staff"
+                        },
+                        new
+                        {
+                            Id = "0c48841e-ee61-4427-9133-e70396f8fcd1",
+                            ConcurrencyStamp = "0d727cde-ba7f-4dd5-a2eb-f9fc20c6ec6f",
+                            Name = "Student",
+                            NormalizedName = "Student"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -184,11 +221,13 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirtName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -197,7 +236,8 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("MiddleName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -221,6 +261,9 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
+
+                    b.Property<string>("UrlAvartar")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -290,23 +333,46 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.DetailTask", b =>
                 {
-                    b.Property<string>("IDTask")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("int");
 
-                    b.Property<string>("IDNhom")
-                        .HasColumnType("varchar(20)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AssignedGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AssignedMemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GroupID")
+                        .HasColumnType("int");
 
                     b.Property<string>("KetQua")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("MemberGroupID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MembersGroupID")
+                        .HasColumnType("int");
 
                     b.Property<string>("MoTa")
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(MAX)");
+
+                    b.Property<int>("TaskID")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IDTask");
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupID");
+
+                    b.HasIndex("MemberGroupID");
+
+                    b.HasIndex("TaskID");
 
                     b.ToTable("DetailTask");
                 });
@@ -346,7 +412,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<DateTime>("NgayXoa")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PlanIDKeHoach")
+                    b.Property<int?>("PlanID")
                         .HasColumnType("int");
 
                     b.Property<string>("TenSuKien")
@@ -361,9 +427,36 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
                     b.HasKey("EventID");
 
-                    b.HasIndex("PlanIDKeHoach");
+                    b.HasIndex("PlanID");
 
                     b.ToTable("Event");
+                });
+
+            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Files.PdfFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateUpload")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PlanID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlanID");
+
+                    b.ToTable("PdfFile");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
@@ -378,7 +471,7 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MoTa")
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime>("NgayCapNhat")
                         .HasColumnType("datetime2");
@@ -398,26 +491,45 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.MembersGroups", b =>
                 {
-                    b.Property<string>("UserID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("MemberGroupID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberGroupID"), 1L, 1);
+
+                    b.Property<DateTime?>("DateAssigned")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("GroupID")
                         .HasColumnType("int");
 
-                    b.HasKey("UserID", "GroupID");
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TaskID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("MemberGroupID");
 
                     b.HasIndex("GroupID");
+
+                    b.HasIndex("TaskID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("MembersGroups");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Plan", b =>
                 {
-                    b.Property<int>("IDKeHoach")
+                    b.Property<int?>("PlanID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDKeHoach"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("PlanID"), 1L, 1);
 
                     b.Property<DateTime>("NgayDuyet")
                         .HasColumnType("datetime2");
@@ -431,26 +543,26 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<string>("NguoiTrinh")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("PathFilePDF")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("TenKeHoach")
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("IDKeHoach");
+                    b.HasKey("PlanID");
 
                     b.ToTable("Plan");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Tasks", b =>
                 {
-                    b.Property<int>("IDTask")
+                    b.Property<int>("TaskID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDTask"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskID"), 1L, 1);
 
                     b.Property<int>("EventID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GroupID")
                         .HasColumnType("int");
 
                     b.Property<string>("MoTa")
@@ -462,16 +574,17 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                     b.Property<DateTime>("NgayKT")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("TenTask")
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("TrangThai")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("IDTask");
+                    b.HasKey("TaskID");
 
                     b.HasIndex("EventID");
+
+                    b.HasIndex("GroupID");
 
                     b.ToTable("Task");
                 });
@@ -527,11 +640,45 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.DetailTask", b =>
+                {
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupID");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.MembersGroups", "MembersGroups")
+                        .WithMany()
+                        .HasForeignKey("MemberGroupID");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Tasks", "Task")
+                        .WithMany()
+                        .HasForeignKey("TaskID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("MembersGroups");
+
+                    b.Navigation("Task");
+                });
+
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Event", b =>
                 {
-                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", null)
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", "Plan")
                         .WithMany("Events")
-                        .HasForeignKey("PlanIDKeHoach");
+                        .HasForeignKey("PlanID");
+
+                    b.Navigation("Plan");
+                });
+
+            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Files.PdfFile", b =>
+                {
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Plan", "Plan")
+                        .WithMany("PdfFiles")
+                        .HasForeignKey("PlanID");
+
+                    b.Navigation("Plan");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
@@ -547,19 +694,21 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                 {
                     b.HasOne("QuanLyKhoaCNTTUEF.Models.Group", "Group")
                         .WithMany("MembersGroups")
-                        .HasForeignKey("GroupID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GroupID");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Tasks", "Task")
+                        .WithMany()
+                        .HasForeignKey("TaskID");
 
                     b.HasOne("QuanLyKhoaCNTTUEF.Data.ApplicationUser", "ApplicationUser")
                         .WithMany("MembersGroups")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserID");
 
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Group");
+
+                    b.Navigation("Task");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Tasks", b =>
@@ -569,6 +718,10 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
                         .HasForeignKey("EventID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Models.Group", null)
+                        .WithMany("Tasks")
+                        .HasForeignKey("GroupID");
 
                     b.Navigation("Event");
                 });
@@ -588,11 +741,15 @@ namespace QuanLyKhoaCNTTUEF.Data.Migrations
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Group", b =>
                 {
                     b.Navigation("MembersGroups");
+
+                    b.Navigation("Tasks");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Plan", b =>
                 {
                     b.Navigation("Events");
+
+                    b.Navigation("PdfFiles");
                 });
 #pragma warning restore 612, 618
         }

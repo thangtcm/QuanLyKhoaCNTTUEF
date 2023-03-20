@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +43,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
             var plan = await _context.Plan
                 .Include(p => p.PdfFiles)
-                .FirstOrDefaultAsync(m => m.IDKeHoach == id);
+                .FirstOrDefaultAsync(m => m.PlanID == id);
             if (plan == null)
             {
                 return NotFound();
@@ -64,7 +65,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IDKeHoach,TenKeHoach,NgayTrinh,NgayDuyet,NguoiTrinh,NguoiDuyet")] Plan plan, List<IFormFile> PdfFiles)
+        public async Task<IActionResult> Create(Plan plan, List<IFormFile> PdfFiles)
         {
             if (ModelState.IsValid)
             {
@@ -74,9 +75,12 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 {
                     if (pdfFile.FileName.EndsWith("pdf"))
                     {
-                        var filesPath = Path.Combine(_hostingEnvironment?.WebRootPath, "files");
-                        var fileName = Path.GetFileName(pdfFile.FileName);
-                        var filePath = Path.Combine(_hostingEnvironment?.WebRootPath, filesPath, fileName);
+                        var folder = "files/";
+                        var fileName = Path.GetFileName(pdfFile.Name + DateTime.Now.ToString("dd-mm-yyyy") + ".pdf");
+                        var filesPath = folder + fileName;
+
+                        var filePath = Path.Combine(_hostingEnvironment?.WebRootPath, filesPath);
+
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await pdfFile.CopyToAsync(stream);
@@ -86,8 +90,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                         {
                             FileName = fileName,
                             DateUpload = DateTime.Now,
-                            FilePath = filePath,
-                            IDKeHoach = plan.IDKeHoach
+                            FilePath = "/" + filesPath,
+                            PlanID = plan.PlanID
                         };
                         _context.Add(pdfFileInfo);
                     }
@@ -119,9 +123,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IDKeHoach,TenKeHoach,NgayTrinh,NgayDuyet,NguoiTrinh,NguoiDuyet")] Plan plan, List<IFormFile> PdfFiles)
+        public async Task<IActionResult> Edit(int id, Plan plan, List<IFormFile> PdfFiles)
         {
-            if (id != plan.IDKeHoach)
+            if (id != plan.PlanID)
             {
                 return NotFound();
             }
@@ -136,9 +140,12 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                         {
                             if (pdfFile.FileName.EndsWith("pdf"))
                             {
-                                var filesPath = Path.Combine(_hostingEnvironment?.WebRootPath, "files");
-                                var fileName = Path.GetFileName(pdfFile.FileName);
-                                var filePath = Path.Combine(_hostingEnvironment?.WebRootPath, filesPath, fileName);
+                                var folder = "files/";
+                                var fileName = Path.GetFileName(pdfFile.Name + DateTime.Now.ToString("dd-mm-yyyy") + ".pdf");
+                                var filesPath = folder + fileName;
+
+                                var filePath = Path.Combine(_hostingEnvironment?.WebRootPath, filesPath);
+
                                 using (var stream = new FileStream(filePath, FileMode.Create))
                                 {
                                     await pdfFile.CopyToAsync(stream);
@@ -148,8 +155,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                                 {
                                     FileName = fileName,
                                     DateUpload = DateTime.Now,
-                                    FilePath = filePath,
-                                    IDKeHoach = id
+                                    FilePath = "/" + filesPath,
+                                    PlanID = plan.PlanID
                                 };
                                 _context.Add(pdfFileInfo);
                             }
@@ -159,7 +166,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PlanExists(plan.IDKeHoach))
+                    if (!PlanExists((int)plan.PlanID))
                     {
                         return NotFound();
                     }
@@ -182,7 +189,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             }
 
             var plan = await _context.Plan
-                .FirstOrDefaultAsync(m => m.IDKeHoach == id);
+                .FirstOrDefaultAsync(m => m.PlanID == id);
             if (plan == null)
             {
                 return NotFound();
@@ -220,7 +227,19 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
         private bool PlanExists(int id)
         {
-          return _context.Plan.Any(e => e.IDKeHoach == id);
+          return _context.Plan.Any(e => e.PlanID == id);
+        }
+
+        private async Task<string> UploadFile(string folderPath, IFormFile file)
+        {
+
+            folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
+
+            string serverFolder = Path.Combine(_hostingEnvironment?.WebRootPath, folderPath);
+
+            await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+
+            return "/" + folderPath;
         }
     }
 }

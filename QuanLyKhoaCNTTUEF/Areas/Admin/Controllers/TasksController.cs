@@ -40,7 +40,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
             var tasks = await _context.Task
                 .Include(t => t.Event)
-                .FirstOrDefaultAsync(m => m.IDTask == id);
+                .FirstOrDefaultAsync(m => m.TaskID == id);
             if (tasks == null)
             {
                 return NotFound();
@@ -52,7 +52,40 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // GET: Admin/Tasks/Create
         public IActionResult Create()
         {
-            ViewData["EventID"] = new SelectList(_context.Event, "EventID", "TenSuKien");
+            var selectList = new SelectList(_context.Event, "EventID", "TenSuKien");
+
+
+            // Lấy giá trị của TempData["IDSuKien"]
+            var idSuKien = TempData["IDSuKien"] as int?;
+
+            // Kiểm tra nếu giá trị có tồn tại và khác 0
+            if (idSuKien.HasValue && idSuKien.Value != 0)
+            {
+                var suKien = _context?.Event?.Find(idSuKien);
+                if (suKien is null)
+                {
+                    ViewData["EventID"] = selectList;
+                    return View();
+                }
+                // Tạo một SelectListItem cho mục bạn muốn đưa lên đầu tiên
+                var selectedItem = new SelectListItem { Value = idSuKien.Value.ToString(), Text = suKien?.TenSuKien?.ToString() };
+                selectedItem.Selected = true;
+
+                // Chèn mục mới vào vị trí đầu tiên của danh sách
+                //selectList = new SelectList(selectList.Prepend(selectedItem), "Value", "Text");
+                var newSelectList = new SelectList(selectList.Where(x => x.Value != selectedItem.Value), "Value", "Text");
+
+                // Thêm mục mới vào đầu danh sách
+                newSelectList = new SelectList(newSelectList.Prepend(selectedItem), "Value", "Text");
+
+                // Lưu SelectList mới vào ViewData
+                ViewData["EventID"] = newSelectList;
+            }
+            else
+            {
+                // Lưu SelectList vào ViewData
+                ViewData["EventID"] = selectList;
+            }
             return View();
         }
 
@@ -61,14 +94,22 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IDTask,EventID,TenTask,MoTa,NgayBD,NgayKT,TrangThai")] Tasks tasks)
+        public async Task<IActionResult> Create(Tasks tasks)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(tasks);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Details", "Event", new { id = tasks.EventID });
+                if (ModelState.IsValid)
+                {
+                    _context.Add(tasks);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Details", "Event", new { id = tasks.EventID });
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
             ViewData["EventID"] = new SelectList(_context.Event, "EventID", "TenSuKien", tasks.EventID);
             return View(tasks);
 
@@ -98,7 +139,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IDTask,EventID,TenTask,MoTa,NgayBD,NgayKT,TrangThai")] Tasks tasks)
         {
-            if (id != tasks.IDTask)
+            if (id != tasks.TaskID)
             {
                 return NotFound();
             }
@@ -112,7 +153,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TasksExists(tasks.IDTask))
+                    if (!TasksExists(tasks.TaskID))
                     {
                         return NotFound();
                     }
@@ -137,7 +178,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
             var tasks = await _context.Task
                 .Include(t => t.Event)
-                .FirstOrDefaultAsync(m => m.IDTask == id);
+                .FirstOrDefaultAsync(m => m.TaskID == id);
             if (tasks == null)
             {
                 return NotFound();
@@ -167,7 +208,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
         private bool TasksExists(int id)
         {
-          return _context.Task.Any(e => e.IDTask == id);
+          return _context.Task.Any(e => e.TaskID == id);
         }
         public ActionResult DowloadData(string filename)
         {

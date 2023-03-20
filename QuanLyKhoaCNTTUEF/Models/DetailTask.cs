@@ -6,18 +6,23 @@ namespace QuanLyKhoaCNTTUEF.Models
     public class DetailTask
     {
         [Key]
-        [Column(TypeName = "varchar(20)")]
-        public int IDTask { get; set; }
-
-        [Column(TypeName = "varchar(20)")]
-        public string? IDNhom { get; set; }
-
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public int TaskID { get; set; }
+        [ForeignKey("TaskID")]
+        public virtual Tasks? Task { get; set; }
+        public int? GroupID { get; set; }
+        [ForeignKey("GroupID")]
+        public virtual Group? Group { get; set; }
         public string? UserID { get; set; }
-
-        [Column(TypeName = "nvarchar(200)")]
+        public int? MembersGroupID { get; set; }
+        [ForeignKey("MemberGroupID")]
+        public virtual MembersGroups? MembersGroups { get; set; }
+        public int AssignedGroupId { get; set; }
+        public int AssignedMemberId { get; set; }
+        [Column(TypeName = "nvarchar(MAX)")]
         public string? MoTa { get; set; }
-
-        [Column(TypeName = "nvarchar(50)")]
+        [Column(TypeName = "nvarchar(100)")]
         public string? KetQua { get; set; }
     }
 }

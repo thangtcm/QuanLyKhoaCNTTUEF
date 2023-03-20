@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int? idPlan = -1;
 }
 
 <h1>Index</h1>
@@ -124,8 +125,10 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                        idPlan = item.PlanID;
+                                        var target = "delete_asset" + item.PlanID;
                                         <tr>
-                                            <td>@Html.DisplayFor(modelItem => item.IDKeHoach)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.PlanID)</td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.TenKeHoach)
                                             </td>
@@ -154,25 +157,24 @@
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.IDKeHoach"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
-                                                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.IDKeHoach"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
-                                                        <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.IDKeHoach"><i class="fas fa-pencil-alt m-r-5"></i> Xóa</a>
-                                                        @*<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset" data-id="@item.IDKeHoach"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>*@
+                                                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.PlanID"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
+                                                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.PlanID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>
                                                     </div>
-                                                    <div id="delete_asset" class="modal fade delete-modal" role="dialog">
+                                                    <div id="@target" class="modal fade delete-modal" role="dialog">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-body text-center">
                                                                     <img src="~/img/sent.png" alt="" width="50" height="46">
                                                                     <h3 class="delete_class">Chắc chắn xoá?</h3>
                                                                     <div class="m-t-20">
-                                                                        <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                                                                        <form asp-action="DeleteConfirmed" asp-controller="Event" method="post">
-                                                                            <input type="hidden" name="id" value="@item.IDKeHoach" />
-                                                                            <input type="submit" value="Delete" class="btn btn-danger" />
-                                                                            @Html.AntiForgeryToken()
+                                                                        <form asp-action="Delete" asp-route-id="@idPlan" method="post">
+                                                                            <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+                                                                            <div class="form-group">
+                                                                                <input type="submit" value="Delete" class="btn btn-danger" id="delete-button" />
+                                                                                <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                                                                            </div>
                                                                         </form>
-                                                                        @*<a asp-action="TestDelete" asp-route-id="@item.EventID" class="btn btn-danger">Delete</a>*@
                                                                     </div>
                                                                 </div>
                                                             </div>

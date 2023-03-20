@@ -11,7 +11,7 @@ namespace QuanLyKhoaCNTTUEF.Models
 
         public int? EventID { get; set; }
         [ForeignKey("EventID")]
-        public Event? Event { get; set; }
+        public virtual Event? Event { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
         public string? TenNhom { get; set; }
@@ -21,6 +21,7 @@ namespace QuanLyKhoaCNTTUEF.Models
         public DateTime NgayTao { get; set; }
         public DateTime NgayCapNhat { get; set; }
 
-        public List<MembersGroups>? MembersGroups { get; set; }
+        public virtual ICollection<MembersGroups>? MembersGroups { get; set; }
+        public virtual ICollection<Tasks>? Tasks { get; set; }
     }
 }
