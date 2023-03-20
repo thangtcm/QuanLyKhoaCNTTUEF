@@ -150,7 +150,6 @@ G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\System.Data.Dat
 G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\System.Data.dll
 G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\System.Diagnostics.Contracts.dll
 G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\System.Diagnostics.Debug.dll
-G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\System.Diagnostics.DiagnosticSource.dll
 G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\System.Diagnostics.EventLog.dll
 G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\System.Diagnostics.FileVersionInfo.dll
 G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\refs\System.Diagnostics.Process.dll
@@ -1735,3 +1734,4 @@ D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\refint\QuanLyKhoaCNTTUEF
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\QuanLyKhoaCNTTUEF.pdb
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\QuanLyKhoaCNTTUEF.genruntimeconfig.cache
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\ref\QuanLyKhoaCNTTUEF.dll
+G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

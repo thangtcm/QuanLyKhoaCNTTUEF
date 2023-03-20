@@ -24,10 +24,22 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         }
 
         // GET: Admin/Tasks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var applicationDbContext = _context.Task.Include(t => t.Event);
-            return View(await applicationDbContext.ToListAsync());
+            //var applicationDbContext = _context.Task.Include(t => t.Event);
+            //return View(await applicationDbContext.ToListAsync());
+            ViewData["MaxTask"] = _context.Task is not null ? _context.Task.Count() : 0;
+            ViewData["CurrentFilter"] = SearchString; // Search hiện tại
+
+            var sk = from m in _context.Task
+                     select m;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                sk = sk.Where(s => s.TenTask!.Contains(SearchString));
+            }
+
+            return View(await sk.ToListAsync());
         }
 
         // GET: Admin/Tasks/Details/5

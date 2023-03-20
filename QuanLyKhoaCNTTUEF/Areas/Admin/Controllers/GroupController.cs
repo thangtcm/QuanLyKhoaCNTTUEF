@@ -25,6 +25,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             var eventsWithTop4Groups = await _context.Event.AsNoTracking().Include(x => x.Groups).ToListAsync();
 
             return View(eventsWithTop4Groups);
+
         }
 
         // GET: Nhoms/Details/5
