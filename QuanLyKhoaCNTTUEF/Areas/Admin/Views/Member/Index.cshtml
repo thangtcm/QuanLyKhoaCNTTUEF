@@ -1,4 +1,4 @@
-﻿@model QuanLyKhoaCNTTUEF.Models.Group
+﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.MembersGroups>
 
 @{
     ViewData["Title"] = "Management Members";
@@ -14,19 +14,19 @@
                     <h3 class="page-title">@ViewData["Title"]</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
-                        <li class="breadcrumb-item active">@Model.TenNhom</li>
+                        <li class="breadcrumb-item active">@ViewBag.GroupName</li>
                     </ul>
                 </div>
                 <div class="col-auto">
                     <a asp-action="DowloadData" asp-route-filename="SuKien" class="btn btn-primary me-1" role="button">
                         <i class="fas fa-download"> Download</i>
                     </a>
-@*                    <a asp-action="Create" class="btn btn-primary me-1" role="button">
-                        
-                    </a>*@
-                    <button type="button" class="btn btn-primary me-1" data-toggle="modal" data-target=".model-addmember" data-url="@Url.Action("Create", new {id = Model.GroupID})">
+                    <a asp-action="Create" asp-route-id="@ViewBag.GroupID" class="btn btn-primary me-1" role="button">
                         <i class="fas fa-plus"></i>
-                    </button>
+                    </a>
+                    @*<button type="button" class="btn btn-primary me-1" data-toggle="modal" data-target=".model-addmember" data-url="@Url.Action("EditMember", new {id = ViewBag.GroupID})">
+                        <i class="fas fa-plus"></i>
+                    </button>*@
                 </div>
             </div>
         </div>
@@ -34,10 +34,10 @@
             @{
                 if (Model is not null)
                 {
-                    foreach (var item in Model.MembersGroups!)
+                    foreach (var item in Model)
                     {
                         idmember = item.MemberGroupID;
-                        var target = "edit_asset" + item.MemberGroupID;
+                        var target = "delete_asset" + item.MemberGroupID;
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="m-3 card card_hover shadow-sm center" style="border-radius: 1rem;">
                                 <input class="card_checkbox" type="checkbox" id="1" value="1">
@@ -52,10 +52,13 @@
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                            aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="@Url.Action("EditMember","Member", new {id = idmember})" type="button" data-toggle="modal" data-target="#@target">
+                                                    @*<a class="dropdown-item" href="@Url.Action("EditMember","Member", new {id = idmember})" type="button" data-toggle="modal" data-target="#@target">
                                                         <i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa
+                                                    </a>*@
+                                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@idmember">
+                                                        <i class="fas fa-trash-alt m-r-5"></i>Chỉnh Sửa
                                                     </a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset">
+                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target">
                                                         <i class="fas fa-trash-alt m-r-5"></i>Xóa thành viên
                                                     </a>
                                                 </div>
@@ -71,6 +74,10 @@
 
                                     <h5 class="card-title">@item.ApplicationUser?.FullName</h5>
                                     <p class="card-text text-dimgray">Mã số sinh viên: 5</p>
+                                    @{
+                                        var taskName = (item.Task is not null) ? @item.Task.TenTask : "Chưa có";
+                                    }
+                                    <p class="card-text text-dimgray">Nhiệm vụ: @taskName</p>
                                     <p class="card-text mb-4 text-dimgray">Chức vụ: Trưởng nhóm</p>
                                     <div class="row align-items-center">
                                         <div class="col-sm-2 col-lg-2 col-xl-2"></div>
@@ -86,13 +93,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="@target" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+                        <div id="@target" class="modal fade delete-modal" role="dialog">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    @await Html.PartialAsync("EditMember", item)
+                                    <div class="modal-body text-center">
+                                        <img src="~/img/sent.png" alt="" width="50" height="46">
+                                        <h3 class="delete_class">Chắc chắn xoá?</h3>
+                                        <div class="m-t-20">
+                                            <form asp-action="Delete" asp-route-id="@idmember" method="post">
+                                                <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+                                                <div class="form-group">
+                                                    <input type="submit" value="Delete" class="btn btn-danger" id="delete-button" />
+                                                    <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        //<div id="@target" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+                        //    <div class="modal-dialog modal-dialog-centered">
+                        //        <div class="modal-content">
+                        //            @await Html.PartialAsync("EditMember", item)
+                        //        </div>
+                        //    </div>
+                        //</div>
                     }
                 }
 

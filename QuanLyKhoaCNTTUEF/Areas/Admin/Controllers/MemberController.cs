@@ -31,14 +31,18 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var members = await _context.Group.AsNoTracking()
-                .Include(m => m.MembersGroups!)
-                    .ThenInclude(m => m.ApplicationUser)
-                .Include(m => m.MembersGroups!)
-                    .ThenInclude(m => m.Task)
-                .FirstOrDefaultAsync(g => g.GroupID == id);
-            if (members == null)
+            var group = await _context.Group.FindAsync(id);
+            var members = await _context.MembersGroups.AsNoTracking()
+                .Include(u => u.ApplicationUser)
+                .Include(m => m.Task)
+                .Include(m => m.Group)
+                    .ThenInclude(m => m!.Tasks)
+                .Where(g => g.GroupID == id).ToListAsync();
+            if (members == null || group is null)
                 NotFound();
+            ViewData["GroupName"] = group!.TenNhom;
+            ViewData["GroupID"] = id;
+
             return View(members);
         }
 
@@ -132,9 +136,10 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             }
             
             var group = membersGroups.GroupID;
-            ViewData["UserID"] = membersGroups?.ApplicationUser!.FullName;
-           // ViewData["GroupID"] = new SelectList(_context.Group, "GroupID", "GroupID", membersGroups?.GroupID);
-            ViewData["GroupID"] = ViewData["GroupID"] ?? new SelectList(_context.Group, "GroupID", "GroupID", membersGroups?.GroupID);
+            //var user = _context.Users.Where(u => membersGroups.UserID == u.Id).FirstOrDefault();
+            //ViewData["UserID"] = user.NameAndId;
+            // ViewData["GroupID"] = new SelectList(_context.Group, "GroupID", "GroupID", membersGroups?.GroupID);
+            ViewData["GroupID"] = group;
             ViewData["TaskID"] = new SelectList(_context.Task, "TaskID", "TaskID", _context.Group.Include(m => m.Tasks).FirstOrDefault(m => m.GroupID == group));
             //membersGroups = await _context.MembersGroups.Include(u => u.UserID).Include(u => u.TaskID).Include(u => u.GroupID)
             //    .FirstOrDefaultAsync(u => u.MemberGroupID == id);
@@ -154,10 +159,13 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var group = membersGroups.GroupID;
-            ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", membersGroups.UserID);
-            ViewData["GroupID"] = new SelectList(_context.Group, "GroupID", "GroupID", membersGroups.GroupID);
-            ViewData["TaskID"] = new SelectList(_context.Task, "TaskID", "TaskID", _context.Group.Include(m => m.Tasks).FirstOrDefault(m => m.GroupID == group));
+            var group = membersGroups.GroupID!;
+            var user = _context.Users.Where(u => membersGroups.UserID == u.Id).FirstOrDefault();
+            ViewData["UserID"] = user!.Id;
+            ViewData["UserName"] = user.NameAndId;
+            ViewData["GroupID"] = _context?.Group?.Where(u => u.GroupID == group).FirstOrDefault()?.GroupID;
+            ViewData["GroupName"] = _context?.Group?.Where(u => u.GroupID == group).FirstOrDefault()?.TenNhom;
+            ViewData["TaskID"] = new SelectList(_context?.Task, "TaskID", "TenTask", _context?.Group.Include(m => m.Tasks).FirstOrDefault(m => m.GroupID == group));
             return View(membersGroups);
         }
 
@@ -178,23 +186,17 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 _context.Update(membersGroups);
                 _toastNotification.Success("Chỉnh sửa thành viên thành công");
                 await _context.SaveChangesAsync();
+                return RedirectToAction("Index", new { id = membersGroups.GroupID });
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!MembersGroupsExists(membersGroups.MemberGroupID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                _toastNotification.Error(ex.Message);
             }
             //return RedirectToAction(nameof(Index));
-            ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", membersGroups.UserID);
-            ViewData["GroupID"] = new SelectList(_context.Group, "GroupID", "GroupID", membersGroups.GroupID);
-            ViewData["TaskID"] = new SelectList(_context.Task, "TaskID", "TaskID", membersGroups.TaskID);
-            return View(membersGroups);
+            //ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", membersGroups.UserID);
+            //ViewData["GroupID"] = new SelectList(_context.Group, "GroupID", "GroupID", membersGroups.GroupID);
+            //ViewData["TaskID"] = new SelectList(_context.Task, "TaskID", "TaskID", membersGroups.TaskID);
+            return RedirectToAction("Index", new { id = membersGroups.GroupID});
         }
 
         // GET: Admin/Member/Delete/5
@@ -234,7 +236,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", new { id = membersGroups?.GroupID });
         }
 
         private bool MembersGroupsExists(int id)

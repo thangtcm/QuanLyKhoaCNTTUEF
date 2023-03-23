@@ -9,26 +9,25 @@
 </div>
 <div class="modal-body">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col">
     
-    <form id="edit-member-form" method="post">
-        <div class="form-group">
-            <label class="control-label">Thành viên:</label>
-            <input class="form-control" value="@Model.ApplicationUser!.FullName" readonly />
-            <span class="text-danger"></span>
+            <form id="edit-member-form" method="post">
+                <div class="form-group">
+                    <label class="control-label">Thành viên:</label>
+                    <input class="form-control" value="@Model.ApplicationUser!.FullName" readonly />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Thành viên:</label>
+                    <input class="form-control" value="@ViewBag.GroupID" readonly />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TaskID" class="control-label"></label>
+                    @Html.DropDownListFor(model => model.Group!.Tasks, (SelectList)ViewBag.TaskList, new { @class = "form-control" })
+                </div>
+            </form>
         </div>
-        <div class="form-control">
-            <label asp-for="GroupID" class="control-label"></label>
-            <select asp-for="GroupID" class="form-control" asp-items="ViewBag.GroupID"></select>
-            <span asp-validation-for="GroupID" class="text-danger"></span>
-        </div>
-        <div class="form-control">
-            <label asp-for="TaskID" class="control-label"></label>
-            <select asp-for="TaskID" class="form-control" asp-items="ViewBag.TaskID"></select>
-            <span asp-validation-for="TaskID" class="text-danger"></span>
-        </div>
-    </form>
-    </div>
     </div>
 </div>
 <div class="modal-footer">
