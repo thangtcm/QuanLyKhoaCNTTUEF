@@ -1,0 +1,112 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<QuanLyKhoaCNTTUEF.Data.ApplicationUser>
+
+<div class="modal fade model-addmember" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Quản Lý Thành Viên</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body table-responsive">
+                <form id="addMembersForm">
+
+                <h4>Thêm thành viên</h4>
+                <select id="mySelect" class="js-select2 w-100" multiple data-placeholder="Choose anything">
+                    <option value="O2" data-badge="">Option2 (ID: 205051813)</option>
+                    <option value="O1" data-badge="">Option1</option>
+                    <option value="O3" data-badge="">Option3</option>
+                    <option value="O4" data-badge="">Option4</option>
+                    <option value="O5" data-badge="">Option5</option>
+                    <option value="O6" data-badge="">Option6</option>
+                    <option value="O7" data-badge="">Option7</option>
+                    <option value="O8" data-badge="">Option8</option>
+                    <option value="O9" data-badge="">Option9</option>
+                    <option value="O10" data-badge="">Option10</option>
+                    <option value="O11" data-badge="">Option11</option>
+                    <option value="O12" data-badge="">Option12</option>
+                    <option value="O13" data-badge="">Option13</option>
+                </select>
+                <table id="table-show" class="table table-hover table-stripped table-center">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Họ và tên</th>
+                            <th>Chức Năng</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-item">
+                        <!-- Add item được chọn -->
+                    </tbody>
+                </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" id="addMembersButton" class="btn btn-primary">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+        <script>
+
+            $(".js-select2").select2({
+                closeOnSelect: false,
+                //allowHtml: true,
+                tags: false, // создает новые опции на лету
+                allowClear: true,
+                templateSelection: function (selected, allSelected) {
+                    if (allSelected.length === 0) {
+                        return "Choose anything";
+                    } else {
+                        var selectedLabels = $.map(allSelected, function (option) {
+                            return $(option.element).text();
+                        });
+                        return selectedLabels.join(", ");
+                    }
+                }
+            });
+
+            const myTable = document.getElementById("table-show");
+            const myTableBody = document.getElementById("table-item");
+            const mySelect = document.getElementById("mySelect");
+            // Lắng nghe sự kiện 'change' từ select2 thay vì từ phần tử select
+            $(".js-select2").on("change", function () {
+                myTableBody.innerHTML = "";
+                const selectedOptions = Array.from(this.selectedOptions);
+                selectedOptions.forEach(function (option, index) {
+                    const row = myTableBody.insertRow();
+                    const indexCell = row.insertCell();
+                    const nameCell = row.insertCell();
+                    const deleteCell = row.insertCell();
+                    indexCell.innerText = index + 1;
+                    nameCell.innerText = option.text;
+                    const deleteButton = document.createElement("a");
+                    deleteButton.href = "#!";
+                    deleteButton.classList.add("btn", "btn-danger", "btn-sm");
+                    const deleteIcon = document.createElement("i");
+                    deleteIcon.classList.add("fas", "fa-times");
+                    deleteButton.appendChild(deleteIcon);
+                    deleteButton.addEventListener("click", function () {
+                        option.selected = false;
+                        row.remove();
+                        $(".js-select2").trigger("change"); // Cập nhật lại danh sách khi xóa một mục
+
+                    });
+                    deleteCell.appendChild(deleteButton);
+                });
+
+            });
+
+        </script>
+}

@@ -16,7 +16,7 @@
                             <h3 class="page-title float-left mt-2">@ViewData["Title"]</h3>
                             <ul class="breadcrumb float-right mt-3">
                                 <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
-                                <li class="breadcrumb-item text-secondary">Quản Lý Sự Kiện</li>
+                                <li class="breadcrumb-item text-secondary">@ViewData["Title"]</li>
                             </ul>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="datatable table table-stripped table table-hover table-center mb-0">
+                            <table class="datatable table table-stripped table-hover table-center mb-0">
                                 <thead>
                                     <tr>
                                         <th>Thứ tự</th>
@@ -176,7 +176,7 @@
                                                         <a class="dropdown-item" asp-action="Details" asp-route-id="@item.EventID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>
                                                 </div>
-                                                    <div id="@target" class="modal fade delete-modal" role="dialog">
+                                                <div id="@target" class="modal fade delete-modal" role="dialog">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-body text-center">

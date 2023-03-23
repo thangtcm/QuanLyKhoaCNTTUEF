@@ -20,6 +20,11 @@ namespace QuanLyKhoaCNTTUEF.Data
         {
             get { return $"{FirstName} {MiddleName} {LastName}"; }
         }
+
+        public string NameAndId
+        {
+            get { return $"{FullName} (ID: {Id})"; }
+        }
         public virtual ICollection<MembersGroups>? MembersGroups { get; set; }
     }
 

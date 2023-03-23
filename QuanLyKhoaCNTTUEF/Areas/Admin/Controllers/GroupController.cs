@@ -46,27 +46,27 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View(@group);
         }
 
-        public async Task<IActionResult> Members(int? id)
-        {
-            if (id == null || _context.Group == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Members(int? id)
+        //{
+        //    if (id == null || _context.Group == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var @group = await _context.Group
-                .FirstOrDefaultAsync(m => m.GroupID == id);
-            if (@group == null)
-            {
-                return NotFound();
-            }
-            var members = await _context.Group.AsNoTracking()
-                .Include(x => x.Event)
-                .Include(x => x.MembersGroups!)
-                    .ThenInclude(x => x.ApplicationUser)
-                .FirstOrDefaultAsync();
-            //var membergroup = _context.Group.Where(x => x.MembersGroups.Any(x => x.GroupID== groupid)).ToList();
-            return View(members);
-        }
+        //    var @group = await _context.Group
+        //        .FirstOrDefaultAsync(m => m.GroupID == id);
+        //    if (@group == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var members = await _context.Group.AsNoTracking()
+        //        .Include(x => x.Event)
+        //        .Include(x => x.MembersGroups!)
+        //            .ThenInclude(x => x.ApplicationUser)
+        //        .FirstOrDefaultAsync();
+        //    //var membergroup = _context.Group.Where(x => x.MembersGroups.Any(x => x.GroupID== groupid)).ToList();
+        //    return View(members);
+        //}
 
         // GET: Nhoms/Create
         public IActionResult Create()

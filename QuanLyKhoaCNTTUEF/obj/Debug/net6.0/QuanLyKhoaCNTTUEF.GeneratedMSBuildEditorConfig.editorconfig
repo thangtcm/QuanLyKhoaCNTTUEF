@@ -5,408 +5,437 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = QuanLyKhoaCNTTUEF
 build_property.RootNamespace = QuanLyKhoaCNTTUEF
-build_property.ProjectDir = G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\
+build_property.ProjectDir = D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = G:\MVC\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF
+build_property.MSBuildProjectDirectory = D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF
 build_property._RazorSourceGeneratorDebug = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Create.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Delete.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Details.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Edit.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Event/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Create.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Delete.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Details.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Edit.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/EditMembers.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/EditMembers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcRWRpdE1lbWJlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Members.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/Members.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcTWVtYmVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/MembersBackup.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Group/MembersBackup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR3JvdXBcTWVtYmVyc0JhY2t1cC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Home/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Create.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Member/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVtYmVyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Member/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVtYmVyXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Member/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVtYmVyXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Member/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVtYmVyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Member/EditMember.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVtYmVyXEVkaXRNZW1iZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Member/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Member/_AddMember.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWVtYmVyXF9BZGRNZW1iZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGxhbnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Delete.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGxhbnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Details.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGxhbnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Edit.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGxhbnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Plans/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGxhbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/Error.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_LoginPartial.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_MenuBar.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_MenuBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9NZW51QmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_Meta.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_Meta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9NZXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_Style.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_Style.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9TdHlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Create.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFza3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Delete.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFza3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Details.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFza3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Edit.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFza3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Tasks/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFza3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/UserRole/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/UserRole/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclJvbGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/_ViewImports.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/_ViewStart.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Lockout.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Login.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Logout.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Register.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_Meta.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_Meta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfTWV0YS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_Style.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_Style.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3R5bGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Error.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/_ViewImports.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/_ViewStart.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Event.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Event.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXEV2ZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Group.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Group.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXEdyb3VwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/List.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Member.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Member.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXE1lbWJlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Plan.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Plan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFBsYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Task.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/Task.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFRhc2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/TaskList.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Adminstrator/TaskList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5zdHJhdG9yXFRhc2tMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Chat/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Chat/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBwbHVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Success.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Epplus/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBwbHVzXFN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Privacy.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/Error.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_LoginPartial.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_MenuBar.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_MenuBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51QmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Meta.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Meta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Style.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Style.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdHlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/UploadFiles/Index.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/UploadFiles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkRmlsZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/_ViewImports.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/_ViewStart.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-wdx0vdsfk8
 
-[G:/MVC/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Layout.cshtml]
+[D:/QuanLyKhoaCNTTUEF/QuanLyKhoaCNTTUEF/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-y7wcxk7esm

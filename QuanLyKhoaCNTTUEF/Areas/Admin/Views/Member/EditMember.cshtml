@@ -1,0 +1,81 @@
+﻿@model QuanLyKhoaCNTTUEF.Models.MembersGroups
+@{
+   
+}
+
+<div class="modal-header">
+    <h4 class="modal-title">Chỉnh sửa thành viên</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-4">
+    
+    <form id="edit-member-form" method="post">
+        <div class="form-group">
+            <label class="control-label">Thành viên:</label>
+            <input class="form-control" value="@Model.ApplicationUser!.FullName" readonly />
+            <span class="text-danger"></span>
+        </div>
+        <div class="form-control">
+            <label asp-for="GroupID" class="control-label"></label>
+            <select asp-for="GroupID" class="form-control" asp-items="ViewBag.GroupID"></select>
+            <span asp-validation-for="GroupID" class="text-danger"></span>
+        </div>
+        <div class="form-control">
+            <label asp-for="TaskID" class="control-label"></label>
+            <select asp-for="TaskID" class="form-control" asp-items="ViewBag.TaskID"></select>
+            <span asp-validation-for="TaskID" class="text-danger"></span>
+        </div>
+    </form>
+    </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+    <button type="submit" class="btn btn-primary" form="edit-member-form">Lưu lại</button>
+</div>
+@*<h4>MembersGroups</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditMember">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MemberGroupID" />
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <select asp-for="UserID" class="form-control" asp-items="ViewBag.UserID"></select>
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupID" class="control-label"></label>
+                <select asp-for="GroupID" class="form-control" asp-items="ViewBag.GroupID"></select>
+                <span asp-validation-for="GroupID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskID" class="control-label"></label>
+                <select asp-for="TaskID" class="form-control" asp-items="ViewBag.TaskID"></select>
+                <span asp-validation-for="TaskID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateAssigned" class="control-label"></label>
+                <input asp-for="DateAssigned" class="form-control" />
+                <span asp-validation-for="DateAssigned" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+*@
