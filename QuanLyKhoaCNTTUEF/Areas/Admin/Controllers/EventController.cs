@@ -53,14 +53,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         }
 
         // GET: DemoSuKien/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string groupName = null, string taskName = null)
         {
-            //var isExists = await _context.Event.isExists(q => q.EventID == id);
-            //if (!isExists)
-            //{
-            //    return NotFound();
-            //}
-
             var @event = await _context.Event
                 .AsNoTracking()
                 .Include(m => m.Groups)
@@ -71,7 +65,22 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
+            // Lọc theo tên nhóm nếu có
+            if (!string.IsNullOrEmpty(groupName))
+            {
+                @event.Groups = @event.Groups.Where(g => g.TenNhom.Contains(groupName)).ToList();
+            }
+
+            // Lọc theo tên task nếu có
+            if (!string.IsNullOrEmpty(taskName))
+            {
+                @event.Tasks = @event.Tasks.Where(t => t.TenTask.Contains(taskName)).ToList();
+            }
+
             TempData["IDSuKien"] = id;
+            ViewBag.GroupName = groupName;
+            ViewBag.TaskName = taskName;
             return View(@event);
         }
 
@@ -330,7 +339,116 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 return NotFound();
             }
         }
+        public ActionResult ExcelExportGroup()
+        {
+            List<Group> GroupData = _context.Group.ToList();
 
+            try
+            {
+
+                DataTable Dt = new DataTable();
+                Dt.Columns.Add("Group ID", typeof(string));
+                Dt.Columns.Add("Event ID", typeof(string));
+                Dt.Columns.Add("Tên nhóm", typeof(string));
+                Dt.Columns.Add("Mô Tả", typeof(string));
+                Dt.Columns.Add("Ngày Tạo", typeof(string));
+                Dt.Columns.Add("Ngày Cập Nhật", typeof(string));
+
+                foreach (var data in GroupData)
+                {
+                    DataRow row = Dt.NewRow();
+                    row[0] = data.GroupID;
+                    row[1] = data.EventID;
+                    row[2] = data.TenNhom;
+                    row[3] = data.MoTa;
+                    row[4] = data.NgayTao.ToString("dd/M/yyyy");
+                    row[5] = data.NgayCapNhat.ToString("dd/M/yyyy");
+                    Dt.Rows.Add(row);
+
+                }
+
+                var memoryStream = new MemoryStream();
+                using (var excelPackage = new ExcelPackage(memoryStream))
+                {
+                    var worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+                    worksheet.Cells["A1"].LoadFromDataTable(Dt, true, TableStyles.None);
+                    worksheet.Cells["A1:AN1"].Style.Font.Bold = true;
+                    worksheet.DefaultRowHeight = 18;
+
+
+                    worksheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    worksheet.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    worksheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                    worksheet.DefaultColWidth = 20;
+                    worksheet.Cells["B:G"].AutoFitColumns();
+
+                    excelPackage.Save();
+                    memoryStream.Position = 0;
+                    string excelname = $"Group - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+                    return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+                }
+            }
+            catch (Exception ex)
+            {
+                _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
+                return NotFound();
+            }
+        }
+        public ActionResult ExcelExportTask()
+        {
+            List<Tasks> TaskData = _context.Task.ToList();
+
+            try
+            {
+
+                DataTable Dt = new DataTable();
+                Dt.Columns.Add("Group ID", typeof(string));
+                Dt.Columns.Add("Event ID", typeof(string));
+                Dt.Columns.Add("Tên nhóm", typeof(string));
+                Dt.Columns.Add("Mô Tả", typeof(string));
+                Dt.Columns.Add("Ngày Tạo", typeof(string));
+                Dt.Columns.Add("Ngày Cập Nhật", typeof(string));
+
+                foreach (var data in TaskData)
+                {
+                    DataRow row = Dt.NewRow();
+                    row[0] = data.TaskID;
+                    row[1] = data.EventID;
+                    row[2] = data.TenTask;
+                    row[3] = data.MoTa;
+                    row[4] = data.NgayBD.ToString("dd/M/yyyy");
+                    row[5] = data.NgayKT.ToString("dd/M/yyyy");
+                    Dt.Rows.Add(row);
+
+                }
+
+                var memoryStream = new MemoryStream();
+                using (var excelPackage = new ExcelPackage(memoryStream))
+                {
+                    var worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+                    worksheet.Cells["A1"].LoadFromDataTable(Dt, true, TableStyles.None);
+                    worksheet.Cells["A1:AN1"].Style.Font.Bold = true;
+                    worksheet.DefaultRowHeight = 18;
+
+
+                    worksheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    worksheet.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    worksheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                    worksheet.DefaultColWidth = 20;
+                    worksheet.Cells["B:G"].AutoFitColumns();
+
+                    excelPackage.Save();
+                    memoryStream.Position = 0;
+                    string excelname = $"Task - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+                    return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+                }
+            }
+            catch (Exception ex)
+            {
+                _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
+                return NotFound();
+            }
+        }
         //public ActionResult DowloadData(string filename)
         //{
         //    if (_context.Event is null)

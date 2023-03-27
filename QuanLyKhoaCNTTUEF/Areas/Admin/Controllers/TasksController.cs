@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
+using OfficeOpenXml.Table;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 
@@ -17,8 +20,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly INotyfService _toastNotification;
-        public TasksController(ApplicationDbContext context, INotyfService toastNotification)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public TasksController(ApplicationDbContext context, INotyfService toastNotification, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
             _toastNotification = toastNotification;
         }
@@ -117,11 +123,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                     return RedirectToAction("Details", "Event", new { id = tasks.EventID });
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
             ViewData["EventID"] = new SelectList(_context.Event, "EventID", "TenSuKien", tasks.EventID);
             return View(tasks);
 
@@ -213,40 +219,130 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 _context.Task.Remove(tasks);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TasksExists(int id)
         {
-          return _context.Task.Any(e => e.TaskID == id);
+            return _context.Task.Any(e => e.TaskID == id);
         }
-        public ActionResult DowloadData(string filename)
+        //public ActionResult DowloadData(string filename)
+        //{
+        //    if (_context.Task is null)
+        //        return NotFound();
+        //    var customers = _context.Task.ToList();
+        //    try
+        //    {
+        //        _toastNotification.Success("Tải Dữ Liệu Thành Công");
+        //        var stream = new MemoryStream();
+        //        using (var package = new ExcelPackage(stream))
+        //        {
+        //            var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+        //            worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
+        //            worksheet.Cells.AutoFitColumns();
+        //            package.Save();
+        //        }
+        //        stream.Position = 0;
+        //        string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+        //        return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
+        //        return NotFound();
+        //    }
+        //}
+        [HttpPost]
+        public async Task<ActionResult> ImportDataExcel(IFormFile fileExcel)
         {
-            if (_context.Task is null)
-                return NotFound();
-            var customers = _context.Task.ToList();
-            try
+            var user = await _userManager.GetUserAsync(User);
+
+            if (fileExcel == null || fileExcel.Length == 0)
             {
-                _toastNotification.Success("Tải Dữ Liệu Thành Công");
-                var stream = new MemoryStream();
-                using (var package = new ExcelPackage(stream))
-                {
-                    var worksheet = package.Workbook.Worksheets.Add("Sheet1");
-                    worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
-                    worksheet.Cells.AutoFitColumns();
-                    package.Save();
-                }
-                stream.Position = 0;
-                string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
-                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+                ViewBag.Error = "Please Select a excel file";
+                return View("Index");
             }
-            catch (Exception ex)
+            else
             {
-                _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
-                return NotFound();
+                if (fileExcel.FileName.EndsWith("xls") || fileExcel.FileName.EndsWith("xlsx"))
+                {
+                    string path = Path.GetTempFileName();
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await fileExcel.CopyToAsync(stream);
+                    }
+
+                    //read data from excel file
+                    FileInfo existingFile = new FileInfo(path);
+                    List<DataExcel> data = new List<DataExcel>();
+
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    //int sl = db.Table_Name.ToList().Count;
+                    using (ExcelPackage package = new ExcelPackage(existingFile))
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets["Sheet1"];
+                        int colCount = worksheet.Dimension.End.Column;  //get Column Count
+                        int rowCount = worksheet.Dimension.End.Row;     //get row count
+                        for (int row = 2; row <= rowCount; row++)
+                        {
+                            DataExcel dt = new();
+                            Plan @plan = new()
+                            {
+                                TenKeHoach = worksheet.Cells[row, 2].Value.ToString(),
+                                NgayTrinh = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
+                                NgayDuyet = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
+                                NguoiTrinh = worksheet.Cells[row, 6].Value.ToString(),
+                                NguoiDuyet = worksheet.Cells[row, 7].Value.ToString(),
+
+
+                            };
+                            _context.Add(@plan);
+                        }
+                        ViewBag.data = data;
+                    }
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Error = "Please Select a excel file";
+                    return View("Index");
+                }
             }
         }
+
+
+        //public ActionResult DowloadData(string filename)
+        //{
+        //    if (_context.Task is null)
+        //        return NotFound();
+        //    var customers = _context.Task.ToList();
+        //    try
+        //    {
+        //        _toastNotification.Success("Tải Dữ Liệu Thành Công");
+        //        var stream = new MemoryStream();
+        //        using (var package = new ExcelPackage(stream))
+        //        {
+        //            var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+        //            worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
+        //            worksheet.Cells.AutoFitColumns();
+        //            package.Save();
+        //        }
+        //        stream.Position = 0;
+        //        string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+        //        return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
+        //        return NotFound();
+        //    }
+        //}
     }
 }

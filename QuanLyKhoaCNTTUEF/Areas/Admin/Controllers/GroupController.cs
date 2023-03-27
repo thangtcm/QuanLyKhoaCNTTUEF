@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
+using OfficeOpenXml.Table;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
+using System.Data;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
@@ -280,31 +282,60 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 return _context.Group.Any(e => e.GroupID == id);
             return false;
         }
-        public ActionResult DowloadData(string filename)
-        {
-            if (_context.Group is null)
-                return NotFound();
-            var customers = _context.Group.ToList();
-            try
-            {
-                _toastNotification.Success("Tải Dữ Liệu Thành Công");
-                var stream = new MemoryStream();
-                using (var package = new ExcelPackage(stream))
-                {
-                    var worksheet = package.Workbook.Worksheets.Add("Sheet1");
-                    worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
-                    worksheet.Cells.AutoFitColumns();
-                    package.Save();
-                }
-                stream.Position = 0;
-                string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
-                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
-            }
-            catch (Exception ex)
-            {
-                _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
-                return NotFound();
-            }
-        }
+        //public ActionResult ExcelExport()
+        //{
+        //    List<Group> GroupData = _context.Group.ToList();
+
+        //    try
+        //    {
+
+        //        DataTable Dt = new DataTable();
+        //        Dt.Columns.Add("Group ID", typeof(string));
+        //        Dt.Columns.Add("Event ID", typeof(string));
+        //        Dt.Columns.Add("Tên nhóm", typeof(string));
+        //        Dt.Columns.Add("Mô Tả", typeof(string));
+        //        Dt.Columns.Add("Ngày Tạo", typeof(string));
+        //        Dt.Columns.Add("Ngày Cập Nhật", typeof(string));
+
+        //        foreach (var data in GroupData)
+        //        {
+        //            DataRow row = Dt.NewRow();
+        //            row[0] = data.GroupID;
+        //            row[1] = data.EventID;
+        //            row[2] = data.TenNhom;
+        //            row[3] = data.MoTa;
+        //            row[4] = data.NgayTao.ToString("dd/M/yyyy");
+        //            row[5] = data.NgayCapNhat.ToString("dd/M/yyyy");
+        //            Dt.Rows.Add(row);
+
+        //        }
+
+        //        var memoryStream = new MemoryStream();
+        //        using (var excelPackage = new ExcelPackage(memoryStream))
+        //        {
+        //            var worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+        //            worksheet.Cells["A1"].LoadFromDataTable(Dt, true, TableStyles.None);
+        //            worksheet.Cells["A1:AN1"].Style.Font.Bold = true;
+        //            worksheet.DefaultRowHeight = 18;
+
+
+        //            worksheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+        //            worksheet.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+        //            worksheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+        //            worksheet.DefaultColWidth = 20;
+        //            worksheet.Cells["B:G"].AutoFitColumns();
+
+        //            excelPackage.Save();
+        //            memoryStream.Position = 0;
+        //            string excelname = $"XXX - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+        //            return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
+        //        return NotFound();
+        //    }
+        //}
     }
 }

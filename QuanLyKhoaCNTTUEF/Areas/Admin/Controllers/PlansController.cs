@@ -304,8 +304,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                                 TenKeHoach = worksheet.Cells[row, 2].Value.ToString(),
                                 NgayTrinh = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
                                 NgayDuyet = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
-                                NguoiTrinh = worksheet.Cells[row, 6].Value.ToString(),
-                                NguoiDuyet = worksheet.Cells[row, 7].Value.ToString(),
+                                NguoiTrinh = worksheet.Cells[row, 5].Value.ToString(),
+                                NguoiDuyet = worksheet.Cells[row, 6].Value.ToString(),
 
 
                             };

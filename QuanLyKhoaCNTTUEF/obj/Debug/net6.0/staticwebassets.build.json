@@ -1,6 +1,14 @@
 {
   "Version": 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+  "Hash": "dmWDsI51yCPndiazt6iu4o73X4oYEwsTRupwSPSnyhY=",
+=======
   "Hash": "dMpdnHgtoS9orrIj5PrFq70AfupN6PscCDT0e4LyVj4=",
+>>>>>>> f0705617410f5a9edfd9ccdbaaf2cafd420d2ad4
+=======
+  "Hash": "dMpdnHgtoS9orrIj5PrFq70AfupN6PscCDT0e4LyVj4=",
+>>>>>>> f0705617410f5a9edfd9ccdbaaf2cafd420d2ad4
   "Source": "QuanLyKhoaCNTTUEF",
   "BasePath": "_content/QuanLyKhoaCNTTUEF",
   "Mode": "Default",
@@ -1360,7 +1368,32 @@
       "OriginalItemSpec": "wwwroot\\files\\PdfFiles20-49-2023.pdf"
     },
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
+      "Identity": "G:\\MVC\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles27-16-2023.pdf",
+=======
       "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\fonts\\feathericon.eot",
+>>>>>>> f0705617410f5a9edfd9ccdbaaf2cafd420d2ad4
+      "SourceId": "QuanLyKhoaCNTTUEF",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\",
+      "BasePath": "_content/QuanLyKhoaCNTTUEF",
+      "RelativePath": "files/PdfFiles27-16-2023.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\PdfFiles27-16-2023.pdf"
+    },
+    {
+      "Identity": "G:\\MVC\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\fonts\\feathericon.eot",
+=======
+      "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\fonts\\feathericon.eot",
+>>>>>>> f0705617410f5a9edfd9ccdbaaf2cafd420d2ad4
       "SourceId": "QuanLyKhoaCNTTUEF",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\",
