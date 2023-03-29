@@ -92,9 +92,38 @@
                                                                 </div>
                                                             </div>
                                                         </form>
-                                                   
-                                                    <a asp-action="ExcelExportGroup" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
-                                                    <a asp-controller="Group" asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn bg-primary btn-outline-primary text-white me-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-plus"></i>  Options
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" asp-controller="Group" asp-action="Create" ><i class="fas fa-plus"></i> Create a group</a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#createmulti"><i class="fas fa-plus"></i> Create multi group</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="createmulti" class="modal fade delete-modal" role="dialog">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body text-center">
+                                                                    <label>Tạo nhiều nhóm bằng file Excel</label>
+                                                                    <form asp-controller="Group" asp-action="ImportDataExcel" method="post" enctype="multipart/form-data">
+                                                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                                        <div class="form-group">
+                                                                            <input type="hidden" name="id" value="@Html.DisplayFor(model => model.EventID)" />
+                                                                            <label class="control-label"></label>
+                                                            
+                                                                            <input type="file" name="fileExcel" class="form-control-file form-control" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="submit" value="ImportDataExcel" class="btn btn-primary" />
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a asp-controller="Group" asp-action="ExcelExportGroup" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
+                                                    @*<a asp-controller="Group" asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>*@
                                                 </div>
                                             </div>
                                         </div>
@@ -192,8 +221,36 @@
                                                             </div>
                                                         </div>
                                                     </form>
-                                                    <a asp-action="ExcelExportTask" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
-                                                    <a asp-controller="Tasks" asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn bg-primary btn-outline-primary text-white me-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-plus"></i>  Options
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" asp-controller="Tasks" asp-action="Create"><i class="fas fa-plus"></i> Create a task</a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#createmultitask"><i class="fas fa-plus"></i> Create multi tasks</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="createmultitask" class="modal fade delete-modal" role="dialog">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body text-center">
+                                                                    <label>Tạo nhiều task bằng file Excel</label>
+                                                                    <form asp-controller="Tasks" asp-action="ImportDataExcel" method="post" enctype="multipart/form-data">
+                                                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                                        <div class="form-group">
+                                                                            <input type="hidden" name="id" value="@Html.DisplayFor(model => model.EventID)" />
+                                                                            <label class="control-label"></label>
+
+                                                                            <input type="file" name="fileExcel" class="form-control-file form-control" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="submit" value="ImportDataExcel" class="btn btn-primary" />
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                    <a asp-controller="Group" asp-action="ExcelExportGroup" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
                                                 </div>
                                             </div>
                                         </div>

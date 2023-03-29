@@ -1,4 +1,5 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly INotyfService _toastNotification;
-        public GroupController(ApplicationDbContext context, INotyfService toastNotification)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public GroupController(ApplicationDbContext context, INotyfService toastNotification, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
             _toastNotification = toastNotification;
         }
 
@@ -282,6 +285,116 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 return _context.Group.Any(e => e.GroupID == id);
             return false;
         }
+        public ActionResult ExcelExportGroup()
+        {
+            List<Group> GroupData = _context.Group.ToList();
+
+            try
+            {
+
+                DataTable Dt = new DataTable();
+                Dt.Columns.Add("Group ID", typeof(string));
+                Dt.Columns.Add("Tên nhóm", typeof(string));
+                Dt.Columns.Add("Mô Tả", typeof(string));
+                foreach (var data in GroupData)
+                {
+                    DataRow row = Dt.NewRow();
+                    row[0] = data.GroupID;
+                    row[1] = data.TenNhom;
+                    row[2] = data.MoTa;
+                    //row[4] = data.NgayTao.ToString("dd/M/yyyy");
+                    //row[5] = data.NgayCapNhat.ToString("dd/M/yyyy");
+                    Dt.Rows.Add(row);
+
+                }
+
+                var memoryStream = new MemoryStream();
+                using (var excelPackage = new ExcelPackage(memoryStream))
+                {
+                    var worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+                    worksheet.Cells["A1"].LoadFromDataTable(Dt, true, TableStyles.None);
+                    worksheet.Cells["A1:AN1"].Style.Font.Bold = true;
+                    worksheet.DefaultRowHeight = 18;
+
+
+                    worksheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                    worksheet.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    worksheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                    worksheet.DefaultColWidth = 20;
+                    worksheet.Cells["B:G"].AutoFitColumns();
+
+                    excelPackage.Save();
+                    memoryStream.Position = 0;
+                    string excelname = $"Group - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
+                    return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
+                }
+            }
+            catch (Exception ex)
+            {
+                _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ImportDataExcel(IFormFile fileExcel, int? id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (fileExcel == null || fileExcel.Length == 0)
+            {
+                ViewBag.Error = "Please Select a excel file";
+                return View("Index");
+            }
+            else
+            {
+                if (fileExcel.FileName.EndsWith("xls") || fileExcel.FileName.EndsWith("xlsx"))
+                {
+                    string path = Path.GetTempFileName();
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await fileExcel.CopyToAsync(stream);
+                    }
+
+                    //read data from excel file
+                    FileInfo existingFile = new FileInfo(path);
+                    List<DataExcel> data = new List<DataExcel>();
+
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    //int sl = db.Table_Name.ToList().Count;
+                    using (ExcelPackage package = new ExcelPackage(existingFile))
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets["Sheet1"];
+                        int colCount = worksheet.Dimension.End.Column;  //get Column Count
+                        int rowCount = worksheet.Dimension.End.Row;     //get row count
+                        for (int row = 2; row <= rowCount; row++)
+                        {
+                            DataExcel dt = new();
+                            Group @group = new()
+                            {
+                                TenNhom = worksheet.Cells[row, 2].Value.ToString(),
+                                MoTa = worksheet.Cells[row, 3].Value.ToString(),
+                                EventID = id
+                            };
+                            _context.Add(@group);
+                        }
+                        ViewBag.data = data;
+                    }
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Error = "Please Select a excel file";
+                    return View("Index");
+                }
+            }
+        }
+    
         //public ActionResult ExcelExport()
         //{
         //    List<Group> GroupData = _context.Group.ToList();

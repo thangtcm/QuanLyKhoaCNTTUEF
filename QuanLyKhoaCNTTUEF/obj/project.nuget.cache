@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Z27XZK4pwY8lr/Mw8chDB+KoKCb95u50Eu2rLk17IQ/+V6Wu9oKhB0ntrCeLIIhOZSqGKDliRiSw2LsnM4QS4Q==",
+  "dgSpecHash": "EPYdwl6UjTFtxSmhZB+7tVvUViteaZPS8hXGcOKfWJn1ETNOXRjd0fmrpX9Y11S6tvK5r5H9FkEcrg+kJskp7w==",
   "success": true,
   "projectFilePath": "G:\\MVC\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF.csproj",
   "expectedPackageFiles": [
@@ -85,6 +85,7 @@
     "C:\\Users\\YAN\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.8.0\\microsoft.identitymodel.protocols.openidconnect.6.8.0.nupkg.sha512",
     "C:\\Users\\YAN\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "C:\\Users\\YAN\\.nuget\\packages\\microsoft.io.recyclablememorystream\\2.2.1\\microsoft.io.recyclablememorystream.2.2.1.nupkg.sha512",
+    "C:\\Users\\YAN\\.nuget\\packages\\microsoft.net.sdk.razor\\3.1.32\\microsoft.net.sdk.razor.3.1.32.nupkg.sha512",
     "C:\\Users\\YAN\\.nuget\\packages\\microsoft.net.stringtools\\17.3.2\\microsoft.net.stringtools.17.3.2.nupkg.sha512",
     "C:\\Users\\YAN\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\YAN\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
