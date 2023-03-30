@@ -42,7 +42,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             ViewData["CurrentFilter"] = SearchString; // Search hiện tại
 
             var sk = from m in _context.Event
+                     where m.TrangThai == 1 // Lấy những sự kiện  được duyệt
                      select m;
+            var e = from x in _context.Event
+                     where x.TrangThai == 0 // Lấy những sự kiện chưa được duyệt
+                     select x;
 
             if (!string.IsNullOrEmpty(SearchString))
             {
@@ -51,7 +55,19 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
             return View(await sk.ToListAsync());
         }
+        [HttpPost]
+        public async Task<IActionResult> Index(int approveId)
+        {
+            var ev = await _context.Event.FindAsync(approveId);
+            if (ev != null)
+            {
+                ev.TrangThai = 1;
+                _context.Update(ev);
+                await _context.SaveChangesAsync();
+            }
 
+            return RedirectToAction(nameof(Index));
+        }
         // GET: DemoSuKien/Details/5
         public async Task<IActionResult> Details(int? id, string groupName = null, string taskName = null)
         {

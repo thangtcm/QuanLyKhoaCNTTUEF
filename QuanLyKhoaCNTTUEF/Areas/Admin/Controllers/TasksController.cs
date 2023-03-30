@@ -46,7 +46,19 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
             return View(await sk.ToListAsync());
         }
+        public async Task<IActionResult> MoveTasksToGroup(int eventid)
+        {
+            var tasks = await _context.Task.Where(t => t.EventID != eventid).ToListAsync();
 
+            foreach (var task in tasks)
+            {
+                task.EventID = eventid;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
         // GET: Admin/Tasks/Details/5
         public async Task<IActionResult> Details(int? id)
         {
