@@ -20,7 +20,7 @@ namespace QuanLyKhoaCNTTUEF.Repositories
 
         public ApplicationUser GetUser(string? id)
         {
-            return _context?.Users?.FirstOrDefault(u => u.Id == id);
+            return _context.Users!.FirstOrDefault(u => u.Id == id);
         }
 
         public ApplicationUser UpdateUser(ApplicationUser user)

@@ -16,12 +16,6 @@ namespace QuanLyKhoaCNTTUEF.Models
         public int? GroupID { get; set; }
         [ForeignKey("GroupID")]
         public virtual Group? Group { get; set; }
-        public int? TaskID { get; set; }
-        [ForeignKey("TaskID")]
-        public virtual Tasks? Task { get; set; }
         public string? RoleName { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? DateAssigned { get; set; }
     }
 }

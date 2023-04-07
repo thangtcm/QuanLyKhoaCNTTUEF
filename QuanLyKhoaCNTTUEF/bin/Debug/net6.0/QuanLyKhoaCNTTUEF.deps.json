@@ -20,7 +20,7 @@
       "NETCOREAPP3_0_OR_GREATER",
       "NETCOREAPP3_1_OR_GREATER"
     ],
-    "languageVersion": "preview",
+    "languageVersion": "10.0",
     "platform": "",
     "allowUnsafe": false,
     "warningsAsErrors": false,
@@ -40,11 +40,10 @@
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.15",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.15",
           "Microsoft.AspNetCore.Identity.UI": "6.0.13",
-          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.11",
+          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "6.0.15",
           "Microsoft.AspNetCore.SignalR.Client": "6.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.15",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.15",
-          "Microsoft.NET.Sdk.Razor": "3.1.32",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.13",
           "Microsoft.AspNetCore.Antiforgery": "6.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "6.0.0.0",
@@ -147,6 +146,7 @@
           "Microsoft.Extensions.Http": "6.0.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "6.0.0.0",
           "Microsoft.Extensions.Localization": "6.0.0.0",
+          "Microsoft.Extensions.Logging.Abstractions.Reference": "6.0.0.0",
           "Microsoft.Extensions.Logging.Configuration": "6.0.0.0",
           "Microsoft.Extensions.Logging.Console": "6.0.0.0",
           "Microsoft.Extensions.Logging.Debug": "6.0.0.0",
@@ -559,42 +559,42 @@
           "lib/net6.0/Microsoft.AspNetCore.Identity.UI.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Razor.Extensions/6.0.11": {
+      "Microsoft.AspNetCore.Mvc.Razor.Extensions/6.0.15": {
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "6.0.11",
-          "Microsoft.CodeAnalysis.Razor": "6.0.11"
+          "Microsoft.AspNetCore.Razor.Language": "6.0.15",
+          "Microsoft.CodeAnalysis.Razor": "6.0.15"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll": {
-            "assemblyVersion": "6.0.11.0",
-            "fileVersion": "6.0.1122.52304"
+            "assemblyVersion": "6.0.15.0",
+            "fileVersion": "6.0.1523.12404"
           }
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.Extensions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.11": {
+      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.15": {
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Razor.Extensions": "6.0.11",
-          "Microsoft.CodeAnalysis.Razor": "6.0.11",
+          "Microsoft.AspNetCore.Mvc.Razor.Extensions": "6.0.15",
+          "Microsoft.CodeAnalysis.Razor": "6.0.15",
           "Microsoft.Extensions.DependencyModel": "6.0.0"
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll": {
-            "assemblyVersion": "6.0.11.0",
-            "fileVersion": "6.0.1122.52304"
+            "assemblyVersion": "6.0.15.0",
+            "fileVersion": "6.0.1523.12404"
           }
         },
         "compile": {
           "lib/net6.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Razor.Language/6.0.11": {
+      "Microsoft.AspNetCore.Razor.Language/6.0.15": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {
-            "assemblyVersion": "6.0.11.0",
-            "fileVersion": "6.0.1122.52304"
+            "assemblyVersion": "6.0.15.0",
+            "fileVersion": "6.0.1523.12404"
           }
         },
         "compile": {
@@ -1076,16 +1076,16 @@
           "lib/netcoreapp3.1/Microsoft.CodeAnalysis.Features.dll": {}
         }
       },
-      "Microsoft.CodeAnalysis.Razor/6.0.11": {
+      "Microsoft.CodeAnalysis.Razor/6.0.15": {
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "6.0.11",
+          "Microsoft.AspNetCore.Razor.Language": "6.0.15",
           "Microsoft.CodeAnalysis.CSharp": "4.0.0",
           "Microsoft.CodeAnalysis.Common": "4.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.CodeAnalysis.Razor.dll": {
-            "assemblyVersion": "6.0.11.0",
-            "fileVersion": "6.0.1122.52304"
+            "assemblyVersion": "6.0.15.0",
+            "fileVersion": "6.0.1523.12404"
           }
         },
         "compile": {
@@ -1782,9 +1782,6 @@
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.1122.52304"
           }
-        },
-        "compile": {
-          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Options/6.0.0": {
@@ -1888,7 +1885,6 @@
           "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {}
         }
       },
-      "Microsoft.NET.Sdk.Razor/3.1.32": {},
       "Microsoft.NET.StringTools/17.3.2": {
         "dependencies": {
           "System.Memory": "4.5.5",
@@ -2003,9 +1999,9 @@
       },
       "Microsoft.VisualStudio.Web.CodeGeneration.Templating/6.0.13": {
         "dependencies": {
-          "Microsoft.AspNetCore.Razor.Language": "6.0.11",
+          "Microsoft.AspNetCore.Razor.Language": "6.0.15",
           "Microsoft.CodeAnalysis.CSharp": "4.0.0",
-          "Microsoft.CodeAnalysis.Razor": "6.0.11",
+          "Microsoft.CodeAnalysis.Razor": "6.0.15",
           "Microsoft.VisualStudio.Web.CodeGeneration.Utils": "6.0.13",
           "NuGet.Packaging": "6.3.1",
           "System.Configuration.ConfigurationManager": "6.0.0",
@@ -3802,6 +3798,12 @@
         },
         "compileOnly": true
       },
+      "Microsoft.Extensions.Logging.Abstractions.Reference/6.0.0.0": {
+        "compile": {
+          "Microsoft.Extensions.Logging.Abstractions.dll": {}
+        },
+        "compileOnly": true
+      },
       "Microsoft.Extensions.Logging.Configuration/6.0.0.0": {
         "compile": {
           "Microsoft.Extensions.Logging.Configuration.dll": {}
@@ -4979,26 +4981,26 @@
       "path": "microsoft.aspnetcore.identity.ui/6.0.13",
       "hashPath": "microsoft.aspnetcore.identity.ui.6.0.13.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Mvc.Razor.Extensions/6.0.11": {
+    "Microsoft.AspNetCore.Mvc.Razor.Extensions/6.0.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YC6wjTqfh6Mf5zyxKqPKlLZ6Xe/lDIJVLnwEMC5LirsEGPLWqc+8SDs/nrc7G9BKBJpodHRzJuSSJIgLh50Qww==",
-      "path": "microsoft.aspnetcore.mvc.razor.extensions/6.0.11",
-      "hashPath": "microsoft.aspnetcore.mvc.razor.extensions.6.0.11.nupkg.sha512"
+      "sha512": "sha512-85SEHslbMJ1wdAzJhSZGETNs8+t+m3HWrNgZiPZVnNMyfJyBa+Lezbv/7o9Vqfk8uk4YCHpB7+Vhaggv+Wl9Jg==",
+      "path": "microsoft.aspnetcore.mvc.razor.extensions/6.0.15",
+      "hashPath": "microsoft.aspnetcore.mvc.razor.extensions.6.0.15.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.11": {
+    "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Tec9CjO+5iZuPPK4bp/FKHMOC2YJml1ZwHlymX6JkWGsDvkTae2f4dxtFyxlP6jkEG1tKExb20YHcRCtncCmJA==",
-      "path": "microsoft.aspnetcore.mvc.razor.runtimecompilation/6.0.11",
-      "hashPath": "microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.11.nupkg.sha512"
+      "sha512": "sha512-bQIg+O0YVxIksqGJ8z8exZTgY8+5p0BLCAUd4G5O4/ro0trZN94K2tRKi2CPiKvyF0RwSzsCqyjD6U2CXgviAw==",
+      "path": "microsoft.aspnetcore.mvc.razor.runtimecompilation/6.0.15",
+      "hashPath": "microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.15.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Razor.Language/6.0.11": {
+    "Microsoft.AspNetCore.Razor.Language/6.0.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SPjSZIL7JFI5XbVfRMPG/fHLr/xfumSrmN+IOimyIf71WQQ8u2hpaE5+VvpcgjJ5VrJMhfDEhdEAB+Nj/S16dQ==",
-      "path": "microsoft.aspnetcore.razor.language/6.0.11",
-      "hashPath": "microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512"
+      "sha512": "sha512-AzJIbL5XPxfgFas691Yjm3r+NUyM633xAlA4uAzmcbtVmGReAzUjLJAZiAi/onBrX3s8aeKNrw7OuHvtmYGmHw==",
+      "path": "microsoft.aspnetcore.razor.language/6.0.15",
+      "hashPath": "microsoft.aspnetcore.razor.language.6.0.15.nupkg.sha512"
     },
     "Microsoft.AspNetCore.SignalR.Client/6.0.13": {
       "type": "package",
@@ -5105,12 +5107,12 @@
       "path": "microsoft.codeanalysis.features/4.0.0",
       "hashPath": "microsoft.codeanalysis.features.4.0.0.nupkg.sha512"
     },
-    "Microsoft.CodeAnalysis.Razor/6.0.11": {
+    "Microsoft.CodeAnalysis.Razor/6.0.15": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-40M7AHKPKvOw3LnWsaKmHitk0taBZ8982zoZBQstYzsfdH+tcIdeOewRHvuej23T7HV6d8se9MZdKC9O2I78vQ==",
-      "path": "microsoft.codeanalysis.razor/6.0.11",
-      "hashPath": "microsoft.codeanalysis.razor.6.0.11.nupkg.sha512"
+      "sha512": "sha512-bOAWJdc8xNccElwQPo2RnhcWq1iK+r+qtlATQ+dfJF1S/2OvmBV5Kq8vQIS7LLjb9+4gfomPNvDFAY9heBqyFA==",
+      "path": "microsoft.codeanalysis.razor/6.0.15",
+      "hashPath": "microsoft.codeanalysis.razor.6.0.15.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Scripting.Common/4.0.0": {
       "type": "package",
@@ -5426,13 +5428,6 @@
       "sha512": "sha512-T5ahjOqWFMTSb9wFHKFNAcGXm35BxbUbwARtAPLSSPPFehcLz5mwDsKO1RR9R2aZ2Lk1BNQC7Ja63onOBE6rpA==",
       "path": "microsoft.io.recyclablememorystream/2.2.1",
       "hashPath": "microsoft.io.recyclablememorystream.2.2.1.nupkg.sha512"
-    },
-    "Microsoft.NET.Sdk.Razor/3.1.32": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-9/DyCcwqIjP70i44qVR1Az/5+teybsaGpqgUdadU9++N0YeSTpZCBxczTgaKN+zArzC2/8uvHDKdqqvHoCK4Kg==",
-      "path": "microsoft.net.sdk.razor/3.1.32",
-      "hashPath": "microsoft.net.sdk.razor.3.1.32.nupkg.sha512"
     },
     "Microsoft.NET.StringTools/17.3.2": {
       "type": "package",
@@ -6796,6 +6791,11 @@
       "sha512": ""
     },
     "Microsoft.Extensions.Localization/6.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.Logging.Abstractions.Reference/6.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

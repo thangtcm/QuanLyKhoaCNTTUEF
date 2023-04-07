@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.MembersGroups>
 
-@{
+@*@{
     ViewData["Title"] = "Management Members";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     var idmember = -1;
@@ -23,10 +23,6 @@
                     </a>
                     <a asp-action="Create" asp-route-id="@ViewBag.GroupID" class="btn btn-primary me-1" role="button">
                         <i class="fas fa-plus"></i>
-                    </a>
-                    @*<button type="button" class="btn btn-primary me-1" data-toggle="modal" data-target=".model-addmember" data-url="@Url.Action("EditMember", new {id = ViewBag.GroupID})">
-                        <i class="fas fa-plus"></i>
-                    </button>*@
                 </div>
             </div>
         </div>
@@ -52,9 +48,6 @@
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                            aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    @*<a class="dropdown-item" href="@Url.Action("EditMember","Member", new {id = idmember})" type="button" data-toggle="modal" data-target="#@target">
-                                                        <i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa
-                                                    </a>*@
                                                     <a class="dropdown-item" asp-action="Edit" asp-route-id="@idmember">
                                                         <i class="fas fa-trash-alt m-r-5"></i>Chỉnh Sửa
                                                     </a>
@@ -74,10 +67,7 @@
 
                                     <h5 class="card-title">@item.ApplicationUser?.FullName</h5>
                                     <p class="card-text text-dimgray">Mã số sinh viên: 5</p>
-                                    @{
-                                        var taskName = (item.Task is not null) ? @item.Task.TenTask : "Chưa có";
-                                    }
-                                    <p class="card-text text-dimgray">Nhiệm vụ: @taskName</p>
+                                   
                                     <p class="card-text mb-4 text-dimgray">Chức vụ: Trưởng nhóm</p>
                                     <div class="row align-items-center">
                                         <div class="col-sm-2 col-lg-2 col-xl-2"></div>
@@ -126,7 +116,7 @@
 
         </div>
     </div>
-</div>
+</div>*@
 
 @*@section Scripts {
     <script>
@@ -140,3 +130,4 @@
         });
     </script>
 }*@
+

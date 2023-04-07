@@ -24,21 +24,6 @@
                     <div class="card-body">
                         <form asp-action="Create">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            @*<div class="form-group">
-                                <label asp-for="EventID" class="control-label" hidden></label>
-                                <input asp-for="EventID" class="form-control" value="@ViewData["IDSuKien"]" readonly />
-                                <span asp-validation-for="EventID" class="text-danger"></span>
-                             </div>*@
-                            @*<select asp-for="EventID" name="EventID"  class="form-control">
-                            @foreach (var eventItem in ViewBag.EventList)
-                            {
-                            <option value="@eventItem.Value @(eventItem.Selected ? "selected" : "")">@eventItem.Text</option>
-                            }
-                            </select>*@
-                           @*<div class="form-group">
-                                <label asp-for="EventID" class="control-label"></label>@*asp-items="ViewBag.EventID"
-                                
-                            </div>*@
                             <div class="form-group">
                                 <label asp-for="EventID" class="control-label"></label>
                                 <select asp-for="EventID" class="form-control" asp-items="ViewBag.EventID"></select>
@@ -49,9 +34,9 @@
                                 <span asp-validation-for="TenNhom" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="MoTa" class="control-label"></label>
-                                <input asp-for="MoTa" class="form-control" />
-                                <span asp-validation-for="MoTa" class="text-danger"></span>
+                                <label asp-for="Description" class="control-label"></label>
+                                <input asp-for="Description" class="form-control" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="NgayTao" class="control-label"></label>
@@ -64,6 +49,12 @@
                                 <span asp-validation-for="NgayCapNhat" class="text-danger"></span>
                             </div>
                             <div class="form-group">
+                                <label class="control-label">Chọn trưởng nhóm</label>
+                                <select name="userId" id="mySelect" class="js-select2 w-100 form-control" asp-items="ViewBag.UserId">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <input type="submit" value="Create" class="btn btn-primary" />
                             </div>
                         </form>
@@ -73,3 +64,15 @@
         </div>
     </div>
 </div>
+@section Scripts
+{
+<script>
+    $(".js-select2").select2({
+        closeOnSelect: false,
+        placeholder: "Choose Anything",
+        allowHtml: true,
+        tags: false, // создает новые опции на лету
+        allowClear: true,
+    });
+</script>
+}

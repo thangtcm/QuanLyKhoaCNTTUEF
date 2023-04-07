@@ -50,24 +50,24 @@
                                                 <label asp-for="Input.RememberMe" for="formRememberMe" class="form-label">Ghi nhớ mật khẩu</label>
                                             </div> -->
 
-                                            <div class="row mb-4" style="margin-top: -15px;">
-
                                             <div class="row mb-4">
 
                                                 <div class="col d-flex text-left">
                                                     <!-- Checkbox -->
-                                                    <div class="form-check">
+                                                    <div class="form-group">
                                                         <input class="form-check-input" type="checkbox" asp-for="Input.RememberMe" id="form2Example31" checked />
 
                                                         <label style="font-size: 0.8rem" class="form-check-label" asp-for="Input.RememberMe" for="form2Example31"> @Html.DisplayNameFor(m => m.Input.RememberMe) </label>
 
-                                                        <label class="form-check-label" asp-for="Input.RememberMe" for="form2Example31"> @Html.DisplayNameFor(m => m.Input.RememberMe) </label>
+                                                        @*<label class="form-check-label" asp-for="Input.RememberMe" for="form2Example31"> @Html.DisplayNameFor(m => m.Input.RememberMe) </label>*@
                                                     </div>
                                                 </div>
 
                                                 <div class="col text-right">
                                                     <!-- Simple link -->
-                                                    <a style="font-size: 0.8rem" asp-controller="Account" asp-action="ForgotPassword">Quên Mật Khẩu?</a>
+                                                    <div class="form-group">
+                                                        <a style="font-size: 0.8rem" asp-controller="Account" asp-action="ForgotPassword">Quên Mật Khẩu?</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">

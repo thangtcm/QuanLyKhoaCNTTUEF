@@ -17,7 +17,7 @@ namespace QuanLyKhoaCNTTUEF.Models
         public string? TenNhom { get; set; }
 
         [Column(TypeName = "nvarchar(1000)")]
-        public string? MoTa { get; set; }
+        public string? Description { get; set; }
         public DateTime NgayTao { get; set; }
         public DateTime NgayCapNhat { get; set; }
 

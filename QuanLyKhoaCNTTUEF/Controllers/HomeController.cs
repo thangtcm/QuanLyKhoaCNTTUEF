@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QuanLyKhoaCNTTUEF.Models;
 using System.Diagnostics;
+using static QuanLyKhoaCNTTUEF.Core.Constants;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
@@ -8,11 +10,12 @@ namespace QuanLyKhoaCNTTUEF.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-
+        [Authorize(Policy = Policies.RequireAdmin)]
         public IActionResult Index()
         {
             return View();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
@@ -41,23 +42,10 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
             if (!string.IsNullOrEmpty(SearchString))
             {
-                sk = sk.Where(s => s.TenTask!.Contains(SearchString));
+                sk = sk.Where(s => s.TaskName!.Contains(SearchString));
             }
 
             return View(await sk.ToListAsync());
-        }
-        public async Task<IActionResult> MoveTasksToGroup(int eventid)
-        {
-            var tasks = await _context.Task.Where(t => t.EventID != eventid).ToListAsync();
-
-            foreach (var task in tasks)
-            {
-                task.EventID = eventid;
-            }
-
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
         }
         // GET: Admin/Tasks/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -158,6 +146,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["EventID"] = new SelectList(_context.Event, "EventID", "TenSuKien", tasks.EventID);
+            ViewData["GroupList"] = new SelectList(_context.Group, "GroupID", "TenNhom");
             return View(tasks);
         }
 
@@ -166,17 +155,21 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IDTask,EventID,TenTask,MoTa,NgayBD,NgayKT,TrangThai")] Tasks tasks)
+        public async Task<IActionResult> Edit(int id, Tasks tasks)
         {
             if (id != tasks.TaskID)
             {
                 return NotFound();
             }
 
+            if (!tasks.GroupID.HasValue || tasks.GroupID == null)
+                tasks.GroupID = null;
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    
                     _context.Update(tasks);
                     await _context.SaveChangesAsync();
                 }
@@ -191,9 +184,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Event", new { id = tasks.EventID });
             }
-            ViewData["EventID"] = new SelectList(_context.Event, "EventID", "TenSuKien", tasks.EventID);
+            //ViewData["EventID"] = new SelectList(_context.Event, "EventID", "TenSuKien", tasks.EventID);
             return View(tasks);
         }
 
@@ -219,7 +212,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // POST: Admin/Tasks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (_context.Task == null)
             {
@@ -235,36 +228,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TasksExists(int id)
+        private bool TasksExists(int? id)
         {
             return _context.Task.Any(e => e.TaskID == id);
         }
-        //public ActionResult DowloadData(string filename)
-        //{
-        //    if (_context.Task is null)
-        //        return NotFound();
-        //    var customers = _context.Task.ToList();
-        //    try
-        //    {
-        //        _toastNotification.Success("Tải Dữ Liệu Thành Công");
-        //        var stream = new MemoryStream();
-        //        using (var package = new ExcelPackage(stream))
-        //        {
-        //            var worksheet = package.Workbook.Worksheets.Add("Sheet1");
-        //            worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
-        //            worksheet.Cells.AutoFitColumns();
-        //            package.Save();
-        //        }
-        //        stream.Position = 0;
-        //        string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
-        //        return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
-        //        return NotFound();
-        //    }
-        //}
+
         [HttpPost]
         public async Task<ActionResult> ImportDataExcel(IFormFile fileExcel)
         {
@@ -344,8 +312,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 {
                     DataRow row = Dt.NewRow();
                     row[0] = data.TaskID;
-                    row[1] = data.TenTask;
-                    row[2] = data.MoTa;
+                    row[1] = data.TaskName;
+                    row[2] = data.Description;
                     Dt.Rows.Add(row);
 
                 }
@@ -378,7 +346,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             }
         }
         [HttpPost]
-        public async Task<ActionResult> ImportDataExcel(IFormFile fileExcel, int id)
+        public async Task<ActionResult> ImportDataExcel(IFormFile fileExcel, int? id)
         {
             var user = await _userManager.GetUserAsync(User);
             if(id == null)
@@ -419,8 +387,8 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                             DataExcel dt = new();
                             Tasks @tasks = new()
                             {
-                                TenTask = worksheet.Cells[row, 2].Value.ToString(),
-                                MoTa = worksheet.Cells[row, 3].Value.ToString(),
+                                TaskName = worksheet.Cells[row, 2].Value.ToString(),
+                                Description = worksheet.Cells[row, 3].Value.ToString(),
                                 EventID = id
                             };
                             _context.Add(@tasks);

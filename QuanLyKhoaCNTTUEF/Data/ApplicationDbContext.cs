@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using QuanLyKhoaCNTTUEF.Core;
-using QuanLyKhoaCNTTUEF.Data.Migrations;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.Models.Files;
 
@@ -18,11 +17,6 @@ namespace QuanLyKhoaCNTTUEF.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            /*builder.Entity<MembersGroups>().HasKey(am => new
-            {
-                am.UserID,
-                am.GroupID,
-            });*/
             //builder.Entity<MembersGroups>().HasOne(am => am.Group).WithMany(am => am.MembersGroups).HasForeignKey(am => am.GroupID);
             //builder.Entity<MembersGroups>().HasOne(am => am.ApplicationUser).WithMany(am => am.MembersGroups).HasForeignKey(am => am.UserID);
             base.OnModelCreating(builder);
@@ -38,19 +32,18 @@ namespace QuanLyKhoaCNTTUEF.Data
         public DbSet<Group>? Group { get; set; }
         public DbSet<Tasks>? Task { get; set; }
         public DbSet<MembersGroups>? MembersGroups { get; set; }
-        public DbSet<DetailTask>? DetailTask { get; set; }
-        public DbSet<DanhSachThongTin>? DanhSachThongTin { get; set; }
-        
+        //public DbSet<GroupTask>? GroupTasks { get; set; }
+        public DbSet<TaskAssignments>? Task_Assignments { get; set; }
 
         private static void SeedRoles(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>().HasData
             (
-                new IdentityRole() { Name = Constants.Roles.Administrator, NormalizedName = Constants.Roles.Administrator },
-                new IdentityRole() { Name = Constants.Roles.Manager, NormalizedName = Constants.Roles.Manager },
-                new IdentityRole() { Name = Constants.Roles.Teacher, NormalizedName = Constants.Roles.Teacher },
-                new IdentityRole() { Name = Constants.Roles.Staff, NormalizedName = Constants.Roles.Staff },
-                new IdentityRole() { Name = Constants.Roles.Student, NormalizedName = Constants.Roles.Student }
+                new IdentityRole() { Name = Constants.Roles.Administrator, NormalizedName = Constants.Roles.Administrator, ConcurrencyStamp = null },
+                new IdentityRole() { Name = Constants.Roles.Manager, NormalizedName = Constants.Roles.Manager, ConcurrencyStamp = null },
+                new IdentityRole() { Name = Constants.Roles.Teacher, NormalizedName = Constants.Roles.Teacher, ConcurrencyStamp = null },
+                new IdentityRole() { Name = Constants.Roles.Staff, NormalizedName = Constants.Roles.Staff , ConcurrencyStamp = null },
+                new IdentityRole() { Name = Constants.Roles.Student, NormalizedName = Constants.Roles.Student, ConcurrencyStamp = null }
             );
         }
 

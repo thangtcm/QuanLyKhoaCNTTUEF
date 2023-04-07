@@ -21,7 +21,7 @@ namespace QuanLyKhoaCNTTUEF.Models
         public int AssignedGroupId { get; set; }
         public int AssignedMemberId { get; set; }
         [Column(TypeName = "nvarchar(MAX)")]
-        public string? MoTa { get; set; }
+        public string? Description { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string? KetQua { get; set; }
     }

@@ -106,13 +106,13 @@
                                             @Html.DisplayNameFor(model => model.TenSuKien)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.MoTa)
+                                            @Html.DisplayNameFor(model => model.Description)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.NgayBD)
+                                            @Html.DisplayNameFor(model => model.StartTime)
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.NgayKT)
+                                            @Html.DisplayNameFor(model => model.EndTime)
                                         </th>
             
                                         <th>Tình trạng</th>
@@ -136,13 +136,13 @@
                                         <td>
                                             @item.TenSuKien
                                         </td>
-                                        <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => item.MoTa)</textarea></td>
+                                        <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => item.Description)</textarea></td>
 
                                         <td>
-                                            @item.NgayBD
+                                            @item.StartTime
                                         </td>
                                         <td>
-                                            @item.NgayKT
+                                            @item.EndTime
                                         </td>
                                      
 
@@ -233,13 +233,13 @@
                                 @Html.DisplayNameFor(model => model.TenSuKien)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.MoTa)
+                                @Html.DisplayNameFor(model => model.Description)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.NgayBD)
+                                @Html.DisplayNameFor(model => model.StartTime)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.NgayKT)
+                                @Html.DisplayNameFor(model => model.EndTime)
                             </th>
 
                             <th>Tình trạng</th>
@@ -264,13 +264,13 @@
                                 <td>
                                     @e.TenSuKien
                                 </td>
-                                <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => e.MoTa)</textarea></td>
+                                <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => e.Description)</textarea></td>
 
                                 <td>
-                                    @e.NgayBD
+                                    @e.StartTime
                                 </td>
                                 <td>
-                                    @e.NgayKT
+                                    @e.EndTime
                                 </td>
 
 

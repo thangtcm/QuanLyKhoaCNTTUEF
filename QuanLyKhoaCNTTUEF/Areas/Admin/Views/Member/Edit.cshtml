@@ -40,19 +40,14 @@
                                     <span asp-validation-for="GroupID" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="TaskID" class="control-label"></label>
-                                    <select asp-for="TaskID" class="form-control" asp-items="ViewBag.TaskID"></select>
-                                    <span asp-validation-for="TaskID" class="text-danger"></span>
+                                    <label  class="control-label"></label>
+                                    <select class="form-control" name="TaskID" asp-items="@ViewBag.TaskList"></select>
+                                    <span class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="RoleName" class="control-label"></label>
                                     <input asp-for="RoleName" class="form-control" />
                                     <span asp-validation-for="RoleName" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="DateAssigned" class="control-label"></label>
-                                    <input asp-for="DateAssigned" class="form-control" />
-                                    <span asp-validation-for="DateAssigned" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Save" class="btn btn-primary" />

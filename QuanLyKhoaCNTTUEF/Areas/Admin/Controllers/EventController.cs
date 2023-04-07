@@ -33,7 +33,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             _userManager = userManager;
         }
 
-        [Authorize("")]
+        //[Authorize("")]
         // GET: DemoSuKien
         public async Task<IActionResult> Index(string SearchString)
         {
@@ -56,9 +56,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View(await sk.ToListAsync());
         }
         [HttpPost]
-        public async Task<IActionResult> Index(int approveId)
+        public async Task<IActionResult> Index(int? approveId)
         {
-            var ev = await _context.Event.FindAsync(approveId);
+            var ev = await _context.Event!.FindAsync(approveId);
             if (ev != null)
             {
                 ev.TrangThai = 1;
@@ -69,7 +69,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
         // GET: DemoSuKien/Details/5
-        public async Task<IActionResult> Details(int? id, string groupName = null, string taskName = null)
+        public async Task<IActionResult> Details(int? id, string? groupName = null, string? taskName = null)
         {
             var @event = await _context.Event
                 .AsNoTracking()
@@ -85,13 +85,13 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             // Lọc theo tên nhóm nếu có
             if (!string.IsNullOrEmpty(groupName))
             {
-                @event.Groups = @event.Groups.Where(g => g.TenNhom.Contains(groupName)).ToList();
+                @event.Groups = @event.Groups.Where(g => g.TenNhom!.Contains(groupName)).ToList();
             }
 
             // Lọc theo tên task nếu có
             if (!string.IsNullOrEmpty(taskName))
             {
-                @event.Tasks = @event.Tasks.Where(t => t.TenTask.Contains(taskName)).ToList();
+                @event.Tasks = @event.Tasks.Where(t => t.TaskName!.Contains(taskName)).ToList();
             }
 
             TempData["IDSuKien"] = id;
@@ -180,9 +180,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                             Event @event = new()
                             {
                                 TenSuKien = worksheet.Cells[row, 2].Value.ToString(),
-                                NgayBD = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
-                                NgayKT = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
-                                MoTa = worksheet.Cells[row, 5].Value.ToString(),
+                                StartTime = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
+                                EndTime = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
+                                Description = worksheet.Cells[row, 5].Value.ToString(),
                                 NgayTao = DateTime.Parse(worksheet.Cells[row, 6].Value.ToString()),
                                 NgayCapNhat = DateTime.Parse(worksheet.Cells[row, 7].Value.ToString()),
                                 IDNguoiTao = user.FullName,
@@ -225,7 +225,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventID,TenSuKien,NgayBD,NgayKT,MoTa,TrangThai,XoaTam,IDNguoiTao,NgayTao,IDNguoiCapNhat,NgayCapNhat,IDNguoiXoa,NgayXoa")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("EventID,TenSuKien,StartTime,EndTime,Description,TrangThai,XoaTam,IDNguoiTao,NgayTao,IDNguoiCapNhat,NgayCapNhat,IDNguoiXoa,NgayXoa")] Event @event)
         {
             if (id != @event.EventID)
             {
@@ -319,9 +319,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                     DataRow row = Dt.NewRow();
                     row[0] = data.EventID;
                     row[1] = data.TenSuKien;
-                    row[2] = data.NgayBD.ToString("dd/M/yyyy");
-                    row[3] = data.NgayKT.ToString("dd/M/yyyy");
-                    row[4] = data.MoTa;
+                    row[2] = data.StartTime.ToString("dd/M/yyyy");
+                    row[3] = data.EndTime.ToString("dd/M/yyyy");
+                    row[4] = data.Description;
                     row[5] = data.NgayTao.ToString("dd/M/yyyy");
                     row[6] = data.NgayCapNhat.ToString("dd/M/yyyy");
                     Dt.Rows.Add(row);

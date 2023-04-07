@@ -44,7 +44,7 @@ namespace QuanLyKhoaCNTTUEF.Repository
 
         public virtual TEntity GetByID(object id)
         {
-            return dbSet.Find(id);
+            return dbSet!.Find(id);
         }
 
         public virtual void Create(TEntity entity)

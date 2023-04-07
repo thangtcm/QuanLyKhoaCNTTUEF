@@ -8,16 +8,19 @@ namespace QuanLyKhoaCNTTUEF.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TaskID { get; set; }
-        public int EventID { get; set; }
+        public int? TaskID { get; set; }
+        public int? EventID { get; set; }
         [ForeignKey("EventID")]
         public virtual Event? Event { get; set; }
         [Column(TypeName = "varchar(50)")]
-        public string? TenTask { get; set; }
+        public string? TaskName { get; set; }
         [Column(TypeName = "nvarchar(150)")]
-        public string? MoTa { get; set; }
-        public DateTime NgayBD { get; set; }
-        public DateTime NgayKT { get; set; }
-        public int? Status { get; set; }
+        public string? Description { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public bool Status { get; set; }
+        public int? GroupID { get; set; }
+        [ForeignKey("GroupID")]
+        public virtual Group? Group { get; set; }
     }
 }

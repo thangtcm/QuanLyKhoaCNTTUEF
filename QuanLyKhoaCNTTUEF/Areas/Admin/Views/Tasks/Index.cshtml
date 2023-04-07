@@ -17,16 +17,16 @@
                 @Html.DisplayNameFor(model => model.Event)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TenTask)
+                @Html.DisplayNameFor(model => model.TaskName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MoTa)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NgayBD)
+                @Html.DisplayNameFor(model => model.StartTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NgayKT)
+                @Html.DisplayNameFor(model => model.EndTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
@@ -38,19 +38,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Event.TenSuKien)
+                @Html.DisplayFor(modelItem => item.Event!.TenSuKien)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TenTask)
+                @Html.DisplayFor(modelItem => item.TaskName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MoTa)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NgayBD)
+                @Html.DisplayFor(modelItem => item.StartTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NgayKT)
+                @Html.DisplayFor(modelItem => item.EndTime)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

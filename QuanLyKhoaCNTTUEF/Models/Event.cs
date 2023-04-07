@@ -22,15 +22,15 @@ namespace QuanLyKhoaCNTTUEF.Models
 
         [DisplayName("Ngày bắt đầu")]
         [Required(ErrorMessage = "This field is required.")]
-        public DateTime NgayBD { get; set; }
+        public DateTime StartTime { get; set; }
 
         [DisplayName("Ngày kết thúc")]
         [Required(ErrorMessage = "This field is required.")]
-        public DateTime NgayKT { get; set; }
+        public DateTime EndTime { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
         [DisplayName("Mô tả")]
-        public string? MoTa { get; set; }
+        public string? Description { get; set; }
 
         [DisplayName("Trạng thái")]
         public int TrangThai { get; set; }

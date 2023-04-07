@@ -9,6 +9,8 @@ using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
 using System.Data;
+using System.Diagnostics;
+using System.Diagnostics.Metrics;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
@@ -33,45 +35,75 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
         }
 
-        // GET: Nhoms/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Group == null)
             {
                 return NotFound();
             }
+            var group = await _context.Group.FindAsync(id);
+            var members = await _context.MembersGroups.AsNoTracking()
+                .Include(u => u.ApplicationUser)
+                .Where(g => g.GroupID == id).ToListAsync();
+            if (group == null || members == null)
+                NotFound();
+            ViewData["GroupName"] = group!.TenNhom;
+            ViewData["GroupID"] = id;
 
-            var @group = await _context.Group
-                .FirstOrDefaultAsync(m => m.GroupID == id);
-            if (@group == null)
+            return View(members);
+        }
+
+        // GET: Admin/Member/Create
+        public async Task<IActionResult> AddMember(int? id)
+        {
+            if (id == null || _context.Group == null)
             {
                 return NotFound();
             }
+            var group = await _context.Group.FindAsync(id);
+            if (group == null)
+            {
+                return NotFound();
+            }
+            var members = await _context.MembersGroups
+                .Where(m => m.GroupID == id)
+                .Select(m => m.UserID)
+                .ToListAsync();
+            var nonMembers = await _context.Users.Where(u => !members.Contains(u.Id)).ToListAsync();
 
-            return View(@group);
+            ViewData["UserId"] = new SelectList(nonMembers, "Id", "NameAndId");
+            ViewData["GroupName"] = group.TenNhom;
+            ViewData["GroupID"] = id;
+            var grouptask = await _context.Group.AsNoTracking().Include(u => u.Tasks).FirstOrDefaultAsync(u => u.GroupID == id);
+            var tasks = grouptask?.Tasks.ToList();
+            ViewData["TaskID"] = new SelectList(tasks, "TaskID", "TaskID");
+            return View();
         }
 
-        //public async Task<IActionResult> Members(int? id)
-        //{
-        //    if (id == null || _context.Group == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var @group = await _context.Group
-        //        .FirstOrDefaultAsync(m => m.GroupID == id);
-        //    if (@group == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var members = await _context.Group.AsNoTracking()
-        //        .Include(x => x.Event)
-        //        .Include(x => x.MembersGroups!)
-        //            .ThenInclude(x => x.ApplicationUser)
-        //        .FirstOrDefaultAsync();
-        //    //var membergroup = _context.Group.Where(x => x.MembersGroups.Any(x => x.GroupID== groupid)).ToList();
-        //    return View(members);
-        //}
+        // POST: Admin/Member/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddMember(int? id, List<string> userId)
+        {
+            try
+            {
+                foreach (var item in userId)
+                {
+                    var member = new MembersGroups { GroupID = id, UserID = item, RoleName = "Member" };
+                    _context.Add(member);
+                }
+                await _context.SaveChangesAsync();
+                _toastNotification.Success("Thêm thành viên thành công");
+                return RedirectToAction("Details", "Group", new { id });
+            }
+            catch (Exception ex)
+            {
+                _toastNotification.Error(ex.Message);
+            }
+            return RedirectToAction("Details", "Group", new { id });
+        }
 
         // GET: Nhoms/Create
         public IActionResult Create()
@@ -81,7 +113,9 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             
             // Lấy giá trị của TempData["IDSuKien"]
             var idSuKien = TempData["IDSuKien"] as int?;
+            var nonMembers = _context.Users.ToList();
 
+            ViewData["UserId"] = new SelectList(nonMembers, "Id", "NameAndId");
             // Kiểm tra nếu giá trị có tồn tại và khác 0
             if (idSuKien.HasValue && idSuKien.Value != 0)
             {
@@ -119,13 +153,20 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Group @group)
+        public async Task<IActionResult> Create(Group @group, string userId)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                        
                     _context.Add(@group);
+                    await _context.SaveChangesAsync();
+                    if (userId is not null)
+                    {
+                        var member = new MembersGroups { GroupID = @group.GroupID, UserID = userId, RoleName = "Leader" };
+                        _context.Add(member);
+                    }
                     await _context.SaveChangesAsync();
                     _toastNotification.Success("Tạo Nhóm Thành Công");
                     return RedirectToAction("Details", "Event", new { id = @group.EventID });
@@ -196,53 +237,119 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View(@group);
         }
 
-        public IActionResult EditMembers(int? id)
+        public async Task<IActionResult> EditMember(int? id)
         {
-            var group = _context.Group?.Include(g => g.MembersGroups).SingleOrDefault(g => g.GroupID == id);
-            if (group == null)
+            if (id == null || _context.MembersGroups == null)
             {
                 return NotFound();
             }
-            var allMembers = _context.Users.ToList();
-            var vm = new MemberGroupViewModel
+
+            var membersGroups = await _context.MembersGroups.FindAsync(id);
+            if (membersGroups == null)
             {
-                Group = group,
-                Members = allMembers,
-                SelectedMemberIDs = group.MembersGroups?.Select(gm => gm.UserID ?? "").ToList()
-            };
-            return View(vm);
+                return NotFound();
+            }
+            var group = membersGroups.GroupID!;
+            var user = _context.Users.Where(u => membersGroups.UserID == u.Id).FirstOrDefault();
+            ViewData["UserID"] = user!.Id;
+            ViewData["UserName"] = user.NameAndId;
+            ViewData["GroupID"] = _context?.Group?.Where(u => u.GroupID == group).FirstOrDefault()?.GroupID;
+            ViewData["GroupName"] = _context?.Group?.Where(u => u.GroupID == group).FirstOrDefault()?.TenNhom;
+            var unassignedTaskNames = await _context!.Task
+            .Where(gt => gt.GroupID == group && !_context.Task_Assignments.Any(ta => ta.TaskID == gt.TaskID)
+            )
+            //.Join(_context.Task,
+            //    gt => gt.TaskID,
+            //    t => t.TaskID,
+            //    (gt, t) => new { GroupTask = gt, Task = t })
+            //.Where(gt => !_context.Task_Assignments.Any(ta => ta.TaskID == gt.Task.TaskID && gt.GroupTask.Group!.MembersGroups
+            //.Any(mg => mg.MemberGroupID == ta.MemberID)))
+            .Select(t => new SelectListItem
+            {
+                Value = t.TaskID.ToString(),
+                Text = t.TaskName
+            })
+            .ToListAsync();
+
+            var currentTask = await _context.Task_Assignments
+                .Where(ta => ta.MemberGroupID == membersGroups.MemberGroupID)
+                .Select(ta => ta.Tasks)
+                .FirstOrDefaultAsync();
+
+            unassignedTaskNames.Insert(0, new SelectListItem
+            {
+                Value = "",
+                Text = "Choose Task".ToString()
+            });
+            var taskList = unassignedTaskNames;
+            if (currentTask != null)
+            {
+                taskList = taskList.Concat(new[]
+                {
+                    new SelectListItem
+                    {
+                        Value = currentTask.TaskID.ToString(),
+                        Text = currentTask.TaskName
+                    }
+                }).ToList();
+            }
+
+            ViewData["TaskList"] = new SelectList(taskList, "Value", "Text", currentTask?.TaskID.ToString());
+            
+            return View(membersGroups);
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditMembers(int? id, MemberGroupViewModel vm)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditMember(int id, MembersGroups membersGroups, int TaskID, DateTime StartTime , DateTime EndTime)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(vm);
-            }
-            var group = _context.Group?.Include(g => g.MembersGroups).SingleOrDefault(g => g.GroupID == id);
-            if (group == null)
+            if (id != membersGroups.MemberGroupID)
             {
                 return NotFound();
             }
-            group.MembersGroups?.Clear();
-            if (vm.SelectedMemberIDs != null)
+            try
             {
-                foreach (var memberID in vm.SelectedMemberIDs)
+                if (TaskID != 0)
                 {
-                    group.MembersGroups?.Add(new MembersGroups
+                    var assignTask = _context.Task_Assignments
+                        .Where(m => m.MembersGroups!.GroupID == membersGroups.GroupID && m.MemberGroupID == membersGroups.MemberGroupID)
+                        .Include(m => m.MembersGroups)
+                        .FirstOrDefault();
+                    Console.WriteLine("ss      " +  assignTask);
+                    if (assignTask != null)
                     {
-                        GroupID = group.GroupID,
-                        UserID = memberID
-                    });
+                        assignTask.TaskID = TaskID;
+                        assignTask.StartTime= StartTime;
+                        assignTask.EndTime = EndTime;
+                        _context.Update(assignTask);
+                    }
+                    else
+                    {
+                        var newAssignTask = new TaskAssignments
+                        {
+                            MemberGroupID = membersGroups.MemberGroupID,
+                            TaskID = TaskID,
+                            StartTime = StartTime,
+                            EndTime = EndTime
+                        };
+                        _context.Add(newAssignTask);
+                    }    
                 }
+                _context.Update(membersGroups);
+                await _context.SaveChangesAsync();
+                _toastNotification.Success("Chỉnh sửa thông tin thành viên thành công");
+                return RedirectToAction("Details", new { id = membersGroups.GroupID });
             }
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            catch (Exception ex)
+            {
+                _toastNotification.Error("Đã có lỗi xảy ra");
+                Console.WriteLine(ex.Message);
+            }
+            return RedirectToAction("Details", new { id = membersGroups.GroupID });
         }
 
-        
-                // GET: Nhoms/Delete/5
+
+        // GET: Nhoms/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Group == null)
@@ -301,7 +408,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                     DataRow row = Dt.NewRow();
                     row[0] = data.GroupID;
                     row[1] = data.TenNhom;
-                    row[2] = data.MoTa;
+                    row[2] = data.Description;
                     //row[4] = data.NgayTao.ToString("dd/M/yyyy");
                     //row[5] = data.NgayCapNhat.ToString("dd/M/yyyy");
                     Dt.Rows.Add(row);
@@ -377,7 +484,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                             Group @group = new()
                             {
                                 TenNhom = worksheet.Cells[row, 2].Value.ToString(),
-                                MoTa = worksheet.Cells[row, 3].Value.ToString(),
+                                Description = worksheet.Cells[row, 3].Value.ToString(),
                                 EventID = id
                             };
                             _context.Add(@group);
@@ -394,61 +501,5 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                 }
             }
         }
-    
-        //public ActionResult ExcelExport()
-        //{
-        //    List<Group> GroupData = _context.Group.ToList();
-
-        //    try
-        //    {
-
-        //        DataTable Dt = new DataTable();
-        //        Dt.Columns.Add("Group ID", typeof(string));
-        //        Dt.Columns.Add("Event ID", typeof(string));
-        //        Dt.Columns.Add("Tên nhóm", typeof(string));
-        //        Dt.Columns.Add("Mô Tả", typeof(string));
-        //        Dt.Columns.Add("Ngày Tạo", typeof(string));
-        //        Dt.Columns.Add("Ngày Cập Nhật", typeof(string));
-
-        //        foreach (var data in GroupData)
-        //        {
-        //            DataRow row = Dt.NewRow();
-        //            row[0] = data.GroupID;
-        //            row[1] = data.EventID;
-        //            row[2] = data.TenNhom;
-        //            row[3] = data.MoTa;
-        //            row[4] = data.NgayTao.ToString("dd/M/yyyy");
-        //            row[5] = data.NgayCapNhat.ToString("dd/M/yyyy");
-        //            Dt.Rows.Add(row);
-
-        //        }
-
-        //        var memoryStream = new MemoryStream();
-        //        using (var excelPackage = new ExcelPackage(memoryStream))
-        //        {
-        //            var worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
-        //            worksheet.Cells["A1"].LoadFromDataTable(Dt, true, TableStyles.None);
-        //            worksheet.Cells["A1:AN1"].Style.Font.Bold = true;
-        //            worksheet.DefaultRowHeight = 18;
-
-
-        //            worksheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
-        //            worksheet.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-        //            worksheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-        //            worksheet.DefaultColWidth = 20;
-        //            worksheet.Cells["B:G"].AutoFitColumns();
-
-        //            excelPackage.Save();
-        //            memoryStream.Position = 0;
-        //            string excelname = $"XXX - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
-        //            return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
-        //        return NotFound();
-        //    }
-        //}
     }
 }

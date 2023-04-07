@@ -48,7 +48,7 @@
                 var count = 0;
                 <div class="row">
                 @{
-                    foreach (var group in eventID.Groups)
+                    foreach (var group in eventID.Groups!)
                     {
                         if (count == 4)
                             break;
@@ -65,7 +65,7 @@
                                 <div class="card board1 fill" style="border-radius: 15px;">
                                     <div class="card-body">
                                         <div class="clearfix mb-2">
-                                            <label class="float-left font-weight-bold">ID Sự kiện:&ensp;</label>@group.GroupID
+                                            <label class="float-left font-weight-bold">ID Sự kiện:&ensp;</label>@group?.GroupID
                                             <div class="float-right">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
@@ -82,29 +82,29 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h5 class="card-title text-cyan pb-2" style="text-align: left;">@group.TenNhom</h5>
+                                        <h5 class="card-title text-cyan pb-2" style="text-align: left;">@group?.TenNhom</h5>
                                         <div class="row">
                                             <div class="col-sm-6 align-items-center">
                                                 <h6 class="card-text">Ngày tạo:</h6>
                                             </div>
-                                            <p class="pl-4 col" style="margin-bottom: 0;">@group.NgayTao.ToString("dd/MM/yyyy")</p>
+                                            <p class="pl-4 col" style="margin-bottom: 0;">@group?.NgayTao.ToString("dd/MM/yyyy")</p>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6 align-items-center">
                                                 <h6 class="card-text">Ngày cập nhật:</h6>
                                             </div>
-                                            <p class="pl-4 col" style="margin-bottom: 0;">@group.NgayCapNhat.ToString("dd/MM/yyyy")</p>
+                                            <p class="pl-4 col" style="margin-bottom: 0;">@group?.NgayCapNhat.ToString("dd/MM/yyyy")</p>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6 align-items-center">
                                                 <h6 class="card-text">ID Nhóm:</h6>
                                             </div>
-                                            <p class="pl-4 col">@group.GroupID</p>
+                                            <p class="pl-4 col">@group?.GroupID</p>
                                         </div>
                                         <div class="row">
                                             <h6 class="card-text col-sm-3 align-items-center mtb-center">Mô tả: </h6>
 
-                                            <p class="text-truncate pl-1 col mtb-center" style="color: gray!important;">@group.MoTa</p>
+                                            <p class="text-truncate pl-1 col mtb-center" style="color: gray!important;">@group?.Description</p>
                                         </div>
                                         <div class="row align-items-center pt-3">
                                             <div class="col col-sm-4">

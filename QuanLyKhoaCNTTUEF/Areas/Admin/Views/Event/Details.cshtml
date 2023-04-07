@@ -33,22 +33,22 @@
                 @Html.DisplayFor(model => model.TenSuKien)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NgayBD)
+                @Html.DisplayNameFor(model => model.StartTime)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NgayBD)
+                @Html.DisplayFor(model => model.StartTime)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.NgayKT)
+                @Html.DisplayNameFor(model => model.EndTime)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.NgayKT)
+                @Html.DisplayFor(model => model.EndTime)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MoTa)
+                @Html.DisplayNameFor(model => model.Description)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MoTa)
+                @Html.DisplayFor(model => model.Description)
 
             </dd>
 
@@ -280,9 +280,9 @@
                                                                             indexTask++;
                                                                         }
                                                                     </td>
-                                                                    <td>@item.TenTask</td>
-                                                                    <td>@item.NgayBD</td>
-                                                                    <td>@item.NgayKT</td>
+                                                                    <td>@item.TaskName</td>
+                                                                    <td>@item.StartTime</td>
+                                                                    <td>@item.EndTime</td>
                                                                     <td>
                                                                         <div class="actions">
                                                                             <a href="#" class="btn btn-sm bg-success-light mr-2">
