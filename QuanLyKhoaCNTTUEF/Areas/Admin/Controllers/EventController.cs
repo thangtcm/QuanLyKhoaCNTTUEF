@@ -42,11 +42,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             ViewData["CurrentFilter"] = SearchString; // Search hiện tại
 
             var sk = from m in _context.Event
-                     where m.TrangThai == 1 // Lấy những sự kiện  được duyệt
+                     //where m.TrangThai == 1 // Lấy những sự kiện  được duyệt
                      select m;
-            var e = from x in _context.Event
-                     where x.TrangThai == 0 // Lấy những sự kiện chưa được duyệt
-                     select x;
+            //var e = from x in _context.Event
+            //         where x.TrangThai == 0 // Lấy những sự kiện chưa được duyệt
+            //         select x;
 
             if (!string.IsNullOrEmpty(SearchString))
             {
