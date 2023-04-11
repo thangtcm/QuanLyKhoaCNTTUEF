@@ -64,7 +64,7 @@
                             <a class="nav-link" data-toggle="tab" href="#List_Task_Tab">Danh Sách Task</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#per_details_tab">Danh Sách</a>
+                            <a class="nav-link" data-toggle="tab" href="#List_Assign_Task">Danh Sách Assign Task</a>
                         </li>
                     </ul>
                 </div>
@@ -320,6 +320,100 @@
                                                             }
                                                         }
                                                         
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="List_Assign_Task" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card card-table">
+                                    <div class="card-body booking_card">
+                                        <div class="page-header">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <h3 class="page-title">Danh sách Assign Task</h3>
+                                                </div>
+                                                <div class="col-auto text-end float-end ms-auto download-grp">
+                                                    <form>
+                                                        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-12">
+                                                            <div class="input-group">
+                                                                <input type="text" name="groupName" value="@ViewBag.GroupName" placeholder="Nhập từ bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                                                                <div class="input-group-append">
+                                                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn bg-primary btn-outline-primary text-white me-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-plus"></i>  Options
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" asp-controller="Tasks" asp-action="Create"><i class="fas fa-plus"></i> Create a task</a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#createmultitask"><i class="fas fa-plus"></i> Create multi tasks</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="createmultitask" class="modal fade delete-modal" role="dialog">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body text-center">
+                                                                    <label>Tạo nhiều task bằng file Excel</label>
+                                                                    <form asp-controller="Tasks" asp-action="ImportDataExcel" method="post" enctype="multipart/form-data">
+                                                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                                        <div class="form-group">
+                                                                            <input type="hidden" name="id" value="@Html.DisplayFor(model => model.EventID)" />
+                                                                            <label class="control-label"></label>
+
+                                                                            <input type="file" name="fileExcel" class="form-control-file form-control" />
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <input type="submit" value="Upload file" class="btn btn-primary" />
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a asp-controller="Tasks" asp-action="ExcelExportTask" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="datatable table table-stripped table table-hover table-bordered table-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Thứ tự</th>
+                                                        <th>Tên Task</th>
+                                                        <th>Tên Group</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @{
+                                                        if (ViewBag.AssignTask is not null)
+                                                        {
+                                                            var indexTask = 0;
+                                                            foreach (var item in (List<Tasks>)ViewBag.AssignTask)
+                                                            {
+                                                                <tr>
+                                                                    <td>
+                                                                        @{
+                                                                            @indexTask
+                                                                            ;
+                                                                            indexTask++;
+                                                                        }
+                                                                    </td>
+                                                                    <td>@item.TaskName</td>
+                                                                    <td>@item.Group!.TenNhom</td>
+                                                                </tr>
+                                                            }
+                                                        }
+
                                                     }
                                                 </tbody>
                                             </table>
