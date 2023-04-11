@@ -233,66 +233,6 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return _context.Task.Any(e => e.TaskID == id);
         }
 
-        [HttpPost]
-        public async Task<ActionResult> ImportDataExcel(IFormFile fileExcel)
-        {
-            var user = await _userManager.GetUserAsync(User);
-
-            if (fileExcel == null || fileExcel.Length == 0)
-            {
-                ViewBag.Error = "Please Select a excel file";
-                return View("Index");
-            }
-            else
-            {
-                if (fileExcel.FileName.EndsWith("xls") || fileExcel.FileName.EndsWith("xlsx"))
-                {
-                    string path = Path.GetTempFileName();
-                    if (System.IO.File.Exists(path))
-                    {
-                        System.IO.File.Delete(path);
-                    }
-                    using (var stream = new FileStream(path, FileMode.Create))
-                    {
-                        await fileExcel.CopyToAsync(stream);
-                    }
-
-                    //read data from excel file
-                    FileInfo existingFile = new FileInfo(path);
-                    List<DataExcel> data = new List<DataExcel>();
-
-                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-                    //int sl = db.Table_Name.ToList().Count;
-                    using (ExcelPackage package = new ExcelPackage(existingFile))
-                    {
-                        ExcelWorksheet worksheet = package.Workbook.Worksheets["Sheet1"];
-                        int colCount = worksheet.Dimension.End.Column;  //get Column Count
-                        int rowCount = worksheet.Dimension.End.Row;     //get row count
-                        for (int row = 2; row <= rowCount; row++)
-                        {
-                            DataExcel dt = new();
-                            Tasks @task = new()
-                            {
-                                TaskName = worksheet.Cells[row, 2].Value.ToString(),
-                                Description = worksheet.Cells[row, 3].Value.ToString(),
-
-
-                            };
-                            _context.Add(@task);
-                        }
-                        ViewBag.data = data;
-                    }
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    ViewBag.Error = "Please Select a excel file";
-                    return View("Index");
-                }
-            }
-        }
-
         public ActionResult ExcelExportTask()
         {
             List<Tasks> TaskData = _context.Task.ToList();
