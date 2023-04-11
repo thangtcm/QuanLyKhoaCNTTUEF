@@ -12,6 +12,7 @@ using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
 using System.Data;
+using System.Globalization;
 using System.IO;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
@@ -52,21 +53,22 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 sk = sk.Where(s => s.TenSuKien!.Contains(SearchString));
             }
+
             return View(await sk.ToListAsync());
         }
-        [HttpPost]
-        public async Task<IActionResult> Index(int? approveId)
-        {
-            var ev = await _context.Event!.FindAsync(approveId);
-            if (ev != null)
-            {
-                ev.TrangThai = 1;
-                _context.Update(ev);
-                await _context.SaveChangesAsync();
-            }
+        //[HttpPost]
+        //public async Task<IActionResult> Index(int? approveId)
+        //{
+        //    var ev = await _context.Event!.FindAsync(approveId);
+        //    if (ev != null)
+        //    {
+        //        ev.TrangThai = 1;
+        //        _context.Update(ev);
+        //        await _context.SaveChangesAsync();
+        //    }
 
-            return RedirectToAction(nameof(Index));
-        }
+        //    return RedirectToAction(nameof(Index));
+        //}
         // GET: DemoSuKien/Details/5
         public async Task<IActionResult> Details(int? id, string? groupName = null, string? taskName = null)
         {
@@ -175,20 +177,28 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                         int rowCount = worksheet.Dimension.End.Row;     //get row count
                         for (int row = 2; row <= rowCount; row++)
                         {
-                            //DataExcel dt = new();
-                            Event event_temp = new()
+                            DataExcel dt = new();
+                            DateTime date;
+                            Event @event = new()
                             {
-                                TenSuKien = worksheet.Cells[row, 2].Value.ToString(),
-                                StartTime = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
-                                EndTime = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
-                                Description = worksheet.Cells[row, 5].Value.ToString(),
-                                NgayTao = DateTime.Parse(worksheet.Cells[row, 6].Value.ToString()),
-                                NgayCapNhat = DateTime.Parse(worksheet.Cells[row, 6].Value.ToString()),
+                                TenSuKien = worksheet.Cells[row, 2].Value?.ToString(),
+                                Description = worksheet.Cells[row, 5].Value?.ToString(),
+                                NgayTao = DateTime.Now,
+                                NgayCapNhat = DateTime.Now,
                                 IDNguoiTao = user.FullName,
-                                IDNguoiCapNhat = user.FullName
-                                
+                                IDNguoiCapNhat = user.FullName,
+                                TrangThai = 0,
+                                XoaTam = 0
                             };
-                            _context.Add(event_temp);
+                            if(DateTime.TryParse(worksheet.Cells[row, 3].Value?.ToString(), out date))
+                            {
+                                @event.StartTime = date;
+                            }
+                            if (DateTime.TryParse(worksheet.Cells[row, 4].Value?.ToString(), out date))
+                            {
+                                @event.EndTime = date;
+                            }
+                            _context.Add(@event);
                         }
                         ViewBag.data = data;
                     }

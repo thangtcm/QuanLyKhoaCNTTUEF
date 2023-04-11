@@ -271,12 +271,17 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                         for (int row = 2; row <= rowCount; row++)
                         {
                             DataExcel dt = new();
-                            Tasks @task = new()
+                            Plan @plan = new()
                             {
-                                TaskName = worksheet.Cells[row, 3].Value.ToString(),
-                                Description = worksheet.Cells[row, 4].Value.ToString(),
+                                TenKeHoach = worksheet.Cells[row, 2].Value.ToString(),
+                                NgayTrinh = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
+                                NgayDuyet = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
+                                NguoiTrinh = worksheet.Cells[row, 6].Value.ToString(),
+                                NguoiDuyet = worksheet.Cells[row, 7].Value.ToString(),
+
+
                             };
-                            _context.Add(@task);
+                            _context.Add(@plan);
                         }
                         ViewBag.data = data;
                     }
