@@ -98,6 +98,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             TempData["IDSuKien"] = id;
             ViewBag.GroupName = groupName;
             ViewBag.TaskName = taskName;
+            ViewBag.AssignTask = _context.Task.Where(x => x.GroupID != null).ToList();
             return View(@event);
         }
 

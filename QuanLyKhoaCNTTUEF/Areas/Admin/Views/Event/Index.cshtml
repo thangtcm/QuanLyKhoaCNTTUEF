@@ -47,26 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card board1 fill">
-                    <div class="card-body">
-                        <div class="dash-widget-header">
-                            <div>
-                                <h3 class="card_widget_header">180</h3>
-                                <h6 class="text-muted">Available Rooms</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
-                                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <div class="row">
                 <div class="col-sm-3">
@@ -88,25 +69,16 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Students</h3>
+                                    <h3 class="page-title">Sự kiện</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <form>
-                                        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-12">
-                                            <div class="input-group">
-                                                <input type="text" name="groupName" value="@ViewBag.GroupName" placeholder="Nhập từ bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
-                                                <div class="input-group-append">
-                                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                               
                                     <div class="btn-group">
                                         <button type="button" class="btn bg-primary btn-outline-primary text-white me-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-plus"></i>  Options
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" asp-action="Create"><i class="fas fa-plus"></i> Create a group</a>
+                                            <a class="dropdown-item" asp-action="Create"><i class="fas fa-plus"></i> Create a event</a>
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#createmulti"><i class="fas fa-plus"></i> Create multi group</a>
                                         </div>
                                     </div>
@@ -114,7 +86,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-body text-center">
-                                                    <label>Tạo nhiều nhóm bằng file Excel</label>
+                                                    <label>Tạo nhiều sự kiện bằng file Excel</label>
                                                     <form asp-action="ImportDataExcel" method="post" enctype="multipart/form-data">
                                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                                         <div class="form-group">
@@ -123,7 +95,7 @@
                                                             <input type="file" name="fileExcel" class="form-control-file form-control" />
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="submit" value="ImportDataExcel" class="btn btn-primary" />
+                                                            <input type="submit" value="Upload file" class="btn btn-primary" />
                                                         </div>
                                                     </form>
                                                 </div>
