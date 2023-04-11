@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.Tasks>
 
 @{
-    ViewData["Title"] = "Quản lý Plan";
+    ViewData["Title"] = "Quản lý Task";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     int? idTask = -1;
 }
@@ -32,8 +32,8 @@
                     <div class="card-body">
                         <div class="dash-widget-header">
                             <div>
-                                <h3 class="card_widget_header">@ViewData["MaxPlan"]</h3>
-                                <h6 class="text-muted">Số lượng Plan</h6>
+                                <h3 class="card_widget_header">@ViewData["MaxTask"]</h3>
+                                <h6 class="text-muted">Số lượng Task</h6>
                             </div>
                             <div class="ml-auto mt-md-3 mt-lg-0">
                                 <span class="opacity-7 text-muted">
@@ -71,10 +71,10 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Plan</h3>
+                                    <h3 class="page-title">Task</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <a asp-action="ExcelExport" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
+                                    <a asp-action="ExcelExportTask" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
                                     <a asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
@@ -123,13 +123,14 @@
                                                 @Html.DisplayFor(modelItem => item.EndTime)
                                             </td>
                                             @{
-                                                if (item.Status!=null)
+                                                if (item.Status is false)
                                                 {
-                                                    <td class="text-primary">@Html.DisplayFor(modelItem => item.Status)</td>
+                                                    <td class="text-primary">Đang Xét Duyệt</td>
+
                                                 }
                                                 else
                                                 {
-                                                    <td class="text-primary">Đang Xét Duyệt</td>
+                                                    <td class="text-primary">Đã duyệt</td>
                                                 }
 
                                             }
@@ -138,8 +139,8 @@
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.PlanID"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
-                                                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.PlanID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
+                                                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.TaskID"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
+                                                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.TaskID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>
                                                     </div>
                                                     <div id="@target" class="modal fade delete-modal" role="dialog">
@@ -149,7 +150,7 @@
                                                                     <img src="~/img/sent.png" alt="" width="50" height="46">
                                                                     <h3 class="delete_class">Chắc chắn xoá?</h3>
                                                                     <div class="m-t-20">
-                                                                        <form asp-action="Delete" asp-route-id="@idPlan" method="post">
+                                                                        <form asp-action="Delete" asp-route-id="@idTask" method="post">
                                                                             <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
                                                                             <div class="form-group">
                                                                                 <input type="submit" value="Delete" class="btn btn-danger" id="delete-button" />
