@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.Plan>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quản lý kế hoạch";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     int? idPlan = -1;
 }
@@ -18,7 +18,7 @@
                             <h3 class="page-title float-left mt-2">@ViewData["Title"]</h3>
                             <ul class="breadcrumb float-right mt-3">
                                 <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
-                                <li class="breadcrumb-item text-secondary">Quản Lý Sự Kiện</li>
+                                <li class="breadcrumb-item text-secondary">Quản lý kế hoạch</li>
                             </ul>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                         <div class="dash-widget-header">
                             <div>
                                 <h3 class="card_widget_header">@ViewData["MaxPlan"]</h3>
-                                <h6 class="text-muted">Số lượng Sự Kiện</h6>
+                                <h6 class="text-muted">Số lượng kế hoạch</h6>
                             </div>
                             <div class="ml-auto mt-md-3 mt-lg-0">
                                 <span class="opacity-7 text-muted">
@@ -49,26 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card board1 fill">
-                    <div class="card-body">
-                        <div class="dash-widget-header">
-                            <div>
-                                <h3 class="card_widget_header">180</h3>
-                                <h6 class="text-muted">Available Rooms</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
-                                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
         <div class="row">
             <div class="col-sm-3">
@@ -90,7 +71,7 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Students</h3>
+                                    <h3 class="page-title">Kế hoạch</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a asp-action="ExcelExport" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
