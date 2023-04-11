@@ -15,7 +15,6 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         {
             _logger = logger;
         }
-        [Authorize(Roles = $"{Roles.Administrator}, {Roles.Manager}")]
         public IActionResult Index()
         {
             return View();
