@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using QuanLyKhoaCNTTUEF.Core.Repositories;
@@ -7,6 +8,7 @@ using QuanLyKhoaCNTTUEF.Data;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class UserController : Controller
     {

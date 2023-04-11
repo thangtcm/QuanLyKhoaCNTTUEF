@@ -42,40 +42,21 @@
                                 <span asp-validation-for="EndTime" class="text-danger"></span>
                             </div>
                             <div class="form-group">
+                                <label asp-for="PlanID" class="control-label"></label>
+                                <select asp-for="PlanID" class="form-control" asp-items="@ViewBag.PlanList">
+                                    <option value="">Chọn Kế Hoạch</option>
+                                </select>
+                                <span asp-validation-for="PlanID" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
                                 <label asp-for="Description" class="control-label"></label>
                                                 <textarea asp-for="Description" class="form-control" placeholder="Nhập mô tả" cols="4" rows="4"> </textarea>
                                 <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
-                            <input type="hidden" asp-for="IDNguoiCapNhat"  class="form-control" value="1"  />
-                            <span type="hidden" asp-validation-for="IDNguoiCapNhat" class="text-danger"></span>
-                            <input type="hidden" asp-for="IDNguoiTao" class="form-control" value="1" />
-                            <span type="hidden" asp-validation-for="IDNguoiTao" class="text-danger"></span>
-                            <input type="hidden" asp-for="IDNguoiXoa" class="form-control" value="1" />
-                            <span type="hidden" asp-validation-for="IDNguoiXoa" class="text-danger"></span>
-                            <input type="hidden" asp-for="NgayCapNhat" class="form-control" value="@DateTime.Now"/>
-                            <span type="hidden" asp-validation-for="NgayCapNhat" class="text-danger"></span>
-                            <input type="hidden" asp-for="NgayTao" class="form-control" value="@DateTime.Now" />
-                            <span type="hidden" asp-validation-for="NgayTao" class="text-danger"></span>
-                            <input type="hidden" asp-for="NgayXoa" class="form-control" value="@DateTime.Now" />
-                            <span type="hidden" asp-validation-for="NgayXoa" class="text-danger"></span>
-                            <input type="hidden" asp-for="XoaTam" class="form-control" value="1" />
-                            <span type="hidden" asp-validation-for="XoaTam" class="text-danger"></span>
-                            <input type="hidden" asp-for="TrangThai" class="form-control" value="1" />
-                            <span type="hidden" asp-validation-for="TrangThai" class="text-danger"></span>
                             <div class="form-group">
                                 <input type="submit" value="Create" class="btn btn-primary" />
                             </div>
                         </form>
-                       @* <form asp-action="ImportDataExcel" method="post" enctype="multipart/form-data">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label class="control-label"></label>
-                                <input type="file" name="fileExcel" class="form-control-file form-control" />
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="ImportDataExcel" class="btn btn-primary" />
-                            </div>
-                        </form>*@
                     </div>
                 </div>
             </div>

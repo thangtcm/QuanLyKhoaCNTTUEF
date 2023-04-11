@@ -17,9 +17,11 @@ using System.IO;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class EventController : Controller
     {
+        
         //private readonly ApplicationDbContext _context;
         private readonly ApplicationDbContext _context;
         private readonly INotyfService _toastNotification;
@@ -33,21 +35,14 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
         }
-
-        //[Authorize("")]
         // GET: DemoSuKien
         public async Task<IActionResult> Index(string SearchString)
         {
-            //ViewData["MaxEvent"] = (from x in _context.SuKien select x).Count();
             ViewData["MaxEvent"] = _context.Event is not null ? _context.Event.Count() : 0;
             ViewData["CurrentFilter"] = SearchString; // Search hiện tại
 
             var sk = from m in _context.Event
-                     //where m.TrangThai == 1 // Lấy những sự kiện  được duyệt
                      select m;
-            //var e = from x in _context.Event
-            //         where x.TrangThai == 0 // Lấy những sự kiện chưa được duyệt
-            //         select x;
 
             if (!string.IsNullOrEmpty(SearchString))
             {
@@ -56,19 +51,6 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
             return View(await sk.ToListAsync());
         }
-        //[HttpPost]
-        //public async Task<IActionResult> Index(int? approveId)
-        //{
-        //    var ev = await _context.Event!.FindAsync(approveId);
-        //    if (ev != null)
-        //    {
-        //        ev.TrangThai = 1;
-        //        _context.Update(ev);
-        //        await _context.SaveChangesAsync();
-        //    }
-
-        //    return RedirectToAction(nameof(Index));
-        //}
         // GET: DemoSuKien/Details/5
         public async Task<IActionResult> Details(int? id, string? groupName = null, string? taskName = null)
         {
@@ -104,19 +86,13 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            //try
-            //{
-            //    var user = _httpContextAccessor?.HttpContext?.User;
-            //    if (user?.Identity?.IsAuthenticated is false)
-            //    {
-            //        return RedirectToAction("ERROR", "Home", new { Area = "" });
-            //    }
-            //}
-            //catch
-            //{
-
-            //}
-
+            var planlist = _context.Plan
+                .Select(m => new SelectListItem
+                {
+                    Value = m.PlanID.ToString(),
+                    Text = m.TenKeHoach
+                }).ToList();
+            ViewData["PlanList"] = planlist;
             return View();
         }
 
@@ -366,31 +342,5 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             }
         }
      
-        //public ActionResult DowloadData(string filename)
-        //{
-        //    if (_context.Event is null)
-        //        return NotFound();
-        //    var customers = _context.Event.ToList();
-        //    try
-        //    {
-        //        _toastNotification.Success("Tải Dữ Liệu Thành Công");
-        //        var stream = new MemoryStream();
-        //        using (var package = new ExcelPackage(stream))
-        //        {
-        //            var worksheet = package.Workbook.Worksheets.Add("Sheet1");
-        //            worksheet.Cells.LoadFromDataTable(DownloadFileControllerHelpers.ToDataTable(customers.ToList()), true);
-        //            worksheet.Cells.AutoFitColumns();
-        //            package.Save();
-        //        }
-        //        stream.Position = 0;
-        //        string excelname = $"{filename} - {DateTime.Now.ToString(string.Format("dd-M-yy"))}.xlsx";
-        //        return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelname);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
-        //        return NotFound();
-        //    }
-        //}
     }
 }

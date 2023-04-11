@@ -48,8 +48,11 @@
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                         aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" asp-action="EditMember" asp-route-id="@idmember">
+                                                <a class="dropdown-item" asp-action="EditMember" asp-route-id="@idmember">
                                                     <i class="fas fa-trash-alt m-r-5"></i>Chỉnh Sửa
+                                                </a>
+                                                <a class="dropdown-item" asp-action="UpdateMember" asp-route-id="@idmember">
+                                                    <i class="fas fa-trash-alt m-r-5"></i>Cập Nhật Tiến Độ Nhiệm Vụ
                                                 </a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target">
                                                     <i class="fas fa-trash-alt m-r-5"></i>Xóa thành viên

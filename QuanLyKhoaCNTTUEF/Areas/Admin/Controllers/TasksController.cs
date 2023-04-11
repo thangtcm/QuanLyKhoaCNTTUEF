@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,6 +17,7 @@ using QuanLyKhoaCNTTUEF.Models;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class TasksController : Controller
     {

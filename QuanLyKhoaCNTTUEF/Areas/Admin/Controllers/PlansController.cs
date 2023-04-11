@@ -16,9 +16,11 @@ using QuanLyKhoaCNTTUEF.Models.Files;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IWebHostEnvironment;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class PlansController : Controller
     {

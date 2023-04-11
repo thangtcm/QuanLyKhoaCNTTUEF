@@ -1,8 +1,10 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Versioning;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using QuanLyKhoaCNTTUEF.Data;
@@ -14,6 +16,7 @@ using System.Diagnostics.Metrics;
 
 namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class GroupController : Controller
     {
@@ -237,6 +240,65 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             return View(@group);
         }
 
+        public async Task<IActionResult> UpdateMember(int? id)
+        {
+            if (id == null || _context.MembersGroups == null)
+            {
+                return NotFound();
+            }
+            var membersGroups = await _context.MembersGroups.FindAsync(id);
+            if (membersGroups == null)
+            {
+                return NotFound();
+            }
+            var assignTask = await _context.Task_Assignments.Include(x => x.Tasks)
+                .Include(x => x.MembersGroups)
+                    .ThenInclude(x => x.ApplicationUser)
+                .Where(x => x.MemberGroupID == id).FirstOrDefaultAsync();
+
+            return View(assignTask);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateMember(int id, TaskAssignments taskAssignments)
+        {
+            if (id != taskAssignments.MemberGroupID)
+            {
+                return NotFound();
+            }
+            var member =  _context.MembersGroups.Where(x => x.MemberGroupID == id).FirstOrDefault();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        _context.Update(taskAssignments);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!Task_AssignmentsExists(taskAssignments.MemberGroupID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                    return RedirectToAction("Details", "Group", new { id = member .GroupID});
+                }
+            }
+            catch (Exception ex)
+            {
+                _toastNotification.Error(ex.ToString());
+            }
+
+            return View(taskAssignments);
+        }
+
         public async Task<IActionResult> EditMember(int? id)
         {
             if (id == null || _context.MembersGroups == null)
@@ -258,12 +320,6 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             var unassignedTaskNames = await _context!.Task
             .Where(gt => gt.GroupID == group && !_context.Task_Assignments.Any(ta => ta.TaskID == gt.TaskID)
             )
-            //.Join(_context.Task,
-            //    gt => gt.TaskID,
-            //    t => t.TaskID,
-            //    (gt, t) => new { GroupTask = gt, Task = t })
-            //.Where(gt => !_context.Task_Assignments.Any(ta => ta.TaskID == gt.Task.TaskID && gt.GroupTask.Group!.MembersGroups
-            //.Any(mg => mg.MemberGroupID == ta.MemberID)))
             .Select(t => new SelectListItem
             {
                 Value = t.TaskID.ToString(),
@@ -500,6 +556,11 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                     return View("Index");
                 }
             }
+        }
+
+        private bool Task_AssignmentsExists(int id)
+        {
+            return (_context.Task_Assignments?.Any(e => e.MemberGroupID == id)).GetValueOrDefault();
         }
     }
 }
