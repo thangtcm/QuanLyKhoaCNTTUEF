@@ -52,7 +52,6 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
             {
                 sk = sk.Where(s => s.TenSuKien!.Contains(SearchString));
             }
-
             return View(await sk.ToListAsync());
         }
         [HttpPost]
@@ -176,20 +175,20 @@ namespace QuanLyKhoaCNTTUEF.Areas.Admin.Controllers
                         int rowCount = worksheet.Dimension.End.Row;     //get row count
                         for (int row = 2; row <= rowCount; row++)
                         {
-                            DataExcel dt = new();
-                            Event @event = new()
+                            //DataExcel dt = new();
+                            Event event_temp = new()
                             {
                                 TenSuKien = worksheet.Cells[row, 2].Value.ToString(),
                                 StartTime = DateTime.Parse(worksheet.Cells[row, 3].Value.ToString()),
                                 EndTime = DateTime.Parse(worksheet.Cells[row, 4].Value.ToString()),
                                 Description = worksheet.Cells[row, 5].Value.ToString(),
                                 NgayTao = DateTime.Parse(worksheet.Cells[row, 6].Value.ToString()),
-                                NgayCapNhat = DateTime.Parse(worksheet.Cells[row, 7].Value.ToString()),
+                                NgayCapNhat = DateTime.Parse(worksheet.Cells[row, 6].Value.ToString()),
                                 IDNguoiTao = user.FullName,
                                 IDNguoiCapNhat = user.FullName
                                 
                             };
-                            _context.Add(@event);
+                            _context.Add(event_temp);
                         }
                         ViewBag.data = data;
                     }

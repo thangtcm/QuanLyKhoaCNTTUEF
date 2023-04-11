@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Quản lý sự kiện";
-    var count =1;
+    var count = 1;
     int? idEvent = -1;
 }
 
@@ -48,19 +48,19 @@
                 </div>
             </div>
         </div>
-         
+
         <div class="row">
-                <div class="col-sm-3">
-                    <form asp-action="Index" method="get">
-                        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                            <div class="input-group">
-                                <input type="search" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Nhập từ bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
-                                <div class="input-group-append">
-                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
-                                </div>
+            <div class="col-sm-3">
+                <form asp-action="Index" method="get">
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                        <div class="input-group">
+                            <input type="search" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Nhập từ bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                            <div class="input-group-append">
+                                <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                </form>
             </div>
             <div class="col-sm-12">
                 <div class="card card-table">
@@ -72,8 +72,37 @@
                                     <h3 class="page-title">Sự kiện</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn bg-primary btn-outline-primary text-white me-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-plus"></i>  Options
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" asp-controller="Group" asp-action="Create"><i class="fas fa-plus"></i> Create a event</a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#createmulti"><i class="fas fa-plus"></i> Create multi event</a>
+                                        </div>
+                                    </div>
+                                    <div id="createmulti" class="modal fade delete-modal" role="dialog">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body text-center">
+                                                    <label>Tạo nhiều sự kiện bằng file Excel</label>
+                                                    <form asp-controller="Event" asp-action="ImportDataExcel" method="post" enctype="multipart/form-data">
+                                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                        <div class="form-group">
+                                                            <label class="control-label"></label>
+
+                                                            <input type="file" name="fileExcel" class="form-control-file form-control" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="submit" value="Upload file" class="btn btn-primary" />
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <a asp-action="ExcelExport" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
-                                    <a asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
+                                    @*<a asp-controller="Group" asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>*@
                                 </div>
                             </div>
                         </div>
@@ -95,91 +124,92 @@
                                         <th>
                                             @Html.DisplayNameFor(model => model.EndTime)
                                         </th>
-            
+
                                         <th>Tình trạng</th>
                                         <th class="text-right">Chức năng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model) {
+                                    @foreach (var item in Model)
+                                    {
                                         idEvent = item.EventID;
                                         var target = "delete_asset" + item.EventID;
                                         <tr>
-                                        <td>
-                                            @count
-                                            @{
-                                                count++;
-                                            }
-                                        </td>
-                                        <td>
-                                                    @item.EventID
-                                        </td>
-                                        <td>
-                                            @item.TenSuKien
-                                        </td>
-                                        <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => item.Description)</textarea></td>
+                                            <td>
+                                                @count
+                                                @{
+                                                    count++;
+                                                }
+                                            </td>
+                                            <td>
+                                                @item.EventID
+                                            </td>
+                                            <td>
+                                                @item.TenSuKien
+                                            </td>
+                                            <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => item.Description)</textarea></td>
 
-                                        <td>
-                                            @item.StartTime
-                                        </td>
-                                        <td>
-                                            @item.EndTime
-                                        </td>
-                                     
+                                            <td>
+                                                @item.StartTime
+                                            </td>
+                                            <td>
+                                                @item.EndTime
+                                            </td>
 
 
-                                        <td>
-                                            @{
-                                                if(item.TrangThai == 0)
-                                                {
-                                                    <div class="actions">
-                                                        <a href="#" class="btn btn-sm bg-danger-light mr-2">
+
+                                            <td>
+                                                @{
+                                                    if (item.TrangThai == 0)
+                                                    {
+                                                        <div class="actions">
+                                                            <a href="#" class="btn btn-sm bg-danger-light mr-2">
                                                                 No Active
-                                                        </a>
-                                                    </div>
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="actions">
+                                                            <a href="#" class="btn btn-sm bg-success-light mr-2">
+                                                                Active
+                                                            </a>
+                                                        </div>
+                                                    }
                                                 }
-                                                else
-                                                {
-                                                    <div class="actions">
-                                                        <a href="#" class="btn btn-sm bg-success-light mr-2">
-                                                             Active
-                                                        </a>
-                                                    </div>
-                                                }
-                                            }
-                                            
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
+
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="dropdown dropdown-action">
+                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
                                                         <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.EventID"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
                                                         <a class="dropdown-item" asp-action="Details" asp-route-id="@item.EventID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
                                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>
-                                                </div>
-                                                <div id="@target" class="modal fade delete-modal" role="dialog">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body text-center">
-                                                                <img src="~/img/sent.png" alt="" width="50" height="46">
-                                                                <h3 class="delete_class">Chắc chắn xoá?</h3>
-                                                                <div class="m-t-20">                                                                   
-                                                                    <form asp-action="Delete" asp-route-id="@idEvent" method="post">
-                                                                        <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
-                                                                        <div class="form-group">
-                                                                            <input type="submit" value="Delete" class="btn btn-danger" id="delete-button" />
-                                                                            <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                                                                        </div>
-                                                                    </form>
+                                                    </div>
+                                                    <div id="@target" class="modal fade delete-modal" role="dialog">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body text-center">
+                                                                    <img src="~/img/sent.png" alt="" width="50" height="46">
+                                                                    <h3 class="delete_class">Chắc chắn xoá?</h3>
+                                                                    <div class="m-t-20">
+                                                                        <form asp-action="Delete" asp-route-id="@idEvent" method="post">
+                                                                            <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+                                                                            <div class="form-group">
+                                                                                <input type="submit" value="Delete" class="btn btn-danger" id="delete-button" />
+                                                                                <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                            </div>  
-                                        </td>
-                                    </tr>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -187,151 +217,151 @@
                     </div>
                 </div>
             </div>
-        @*
-   
-<div class="col-sm-12">
-    <div class="card card-table">
+            @*
 
-        <div class="card-body booking_card">
+            <div class="col-sm-12">
+            <div class="card card-table">
+
+            <div class="card-body booking_card">
             <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                                    <h3 class="page-title">Unapproved Student</h3>
-                    </div>
-                    <div class="col-auto text-end float-end ms-auto download-grp">
-                        <a asp-action="ExcelExport" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
-                        <a asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
-                    </div>
-                </div>
+            <div class="row align-items-center">
+            <div class="col">
+            <h3 class="page-title">Unapproved Student</h3>
+            </div>
+            <div class="col-auto text-end float-end ms-auto download-grp">
+            <a asp-action="ExcelExport" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
+            <a asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
+            </div>
+            </div>
             </div>
             <div class="table-responsive"><form method="post">
-                <table class="datatable table table-stripped table-hover table-center mb-0">
-                    <thead>
-                        <tr>
-                            <th>Thứ tự</th>
-                            <th>ID</th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.TenSuKien)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Description)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.StartTime)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.EndTime)
-                            </th>
+            <table class="datatable table table-stripped table-hover table-center mb-0">
+            <thead>
+            <tr>
+            <th>Thứ tự</th>
+            <th>ID</th>
+            <th>
+            @Html.DisplayNameFor(model => model.TenSuKien)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+            </th>
 
-                            <th>Tình trạng</th>
-                            <th class="text-right">Chức năng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var e in Model)
-                        {
-                            idEvent = e.EventID;
-                            var target = "delete_asset" + e.EventID;
-                            <tr>
-                                <td>
-                                    @count
-                                    @{
-                                        count++;
-                                    }
-                                </td>
-                                <td>
-                                    @e.EventID
-                                </td>
-                                <td>
-                                    @e.TenSuKien
-                                </td>
-                                <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => e.Description)</textarea></td>
+            <th>Tình trạng</th>
+            <th class="text-right">Chức năng</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var e in Model)
+            {
+            idEvent = e.EventID;
+            var target = "delete_asset" + e.EventID;
+            <tr>
+            <td>
+            @count
+            @{
+            count++;
+            }
+            </td>
+            <td>
+            @e.EventID
+            </td>
+            <td>
+            @e.TenSuKien
+            </td>
+            <td><textarea class="form-control" disabled> @Html.DisplayFor(modelItem => e.Description)</textarea></td>
 
-                                <td>
-                                    @e.StartTime
-                                </td>
-                                <td>
-                                    @e.EndTime
-                                </td>
+            <td>
+            @e.StartTime
+            </td>
+            <td>
+            @e.EndTime
+            </td>
 
 
 
-                                <td>
-                                    @{
-                                        if (e.TrangThai == 0)
-                                        {
-                                            <div class="actions">
-                                                <a href="#" class="btn btn-sm bg-danger-light mr-2">
-                                                    No Active
-                                                </a>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="actions">
-                                                <a href="#" class="btn btn-sm bg-success-light mr-2">
-                                                    Active
-                                                </a>
-                                            </div>
-                                        }
-                                    }
+            <td>
+            @{
+            if (e.TrangThai == 0)
+            {
+            <div class="actions">
+            <a href="#" class="btn btn-sm bg-danger-light mr-2">
+            No Active
+            </a>
+            </div>
+            }
+            else
+            {
+            <div class="actions">
+            <a href="#" class="btn btn-sm bg-success-light mr-2">
+            Active
+            </a>
+            </div>
+            }
+            }
 
-                                </td>
-                                <td class="text-right">
-                                            <td>
-                                                <button type="submit" name="approveId" value="@e.EventID">Duyệt</button>
-                                            </td>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table></form>
+            </td>
+            <td class="text-right">
+            <td>
+            <button type="submit" name="approveId" value="@e.EventID">Duyệt</button>
+            </td>
+            </td>
+            </tr>
+            }
+            </tbody>
+            </table></form>
 
             </div>
-        </div>
-    </div>
-</div>*@
-<div class="modal fade themsukien" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Thêm sự kiện</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
-            <div class="modal-body">
-                <div class="col-12">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="form-group">
-                            <label for="">Tên sự kiện</label>
-                            <input type="text" class="form-control" placeholder="Nhập tên sự kiện">
+            </div>
+            </div>*@
+            <div class="modal fade themsukien" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Thêm sự kiện</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="form-group">
-                            <label for="">Mô tả</label>
-                            <textarea type="text" class="form-control" placeholder="Nhập mô tả" cols="3" rows="3"></textarea>
+                        <div class="modal-body">
+                            <div class="col-12">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="">Tên sự kiện</label>
+                                        <input type="text" class="form-control" placeholder="Nhập tên sự kiện">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="">Mô tả</label>
+                                        <textarea type="text" class="form-control" placeholder="Nhập mô tả" cols="3" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="">Ngày bắt đầu</label>
+                                        <input type="text" class="form-control" placeholder="Nhập ngày bắt đầu">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="">Ngày kết thúc</label>
+                                        <input type="text" class="form-control" placeholder="Nhập ngày kết thúc">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="form-group">
-                            <label for="">Ngày bắt đầu</label>
-                            <input type="text" class="form-control" placeholder="Nhập ngày bắt đầu">
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="form-group">
-                            <label for="">Ngày kết thúc</label>
-                            <input type="text" class="form-control" placeholder="Nhập ngày kết thúc">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Cập nhật</button>
-            </div>
-        </div>
-    </div>
-</div>
