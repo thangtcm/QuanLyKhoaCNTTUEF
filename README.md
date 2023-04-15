@@ -28,6 +28,7 @@ Group management page:
 Task management page:
 
 <img width="1920" alt="image" src="https://user-images.githubusercontent.com/22448178/232231304-3dd871f1-2c99-4abe-840c-8245a717a756.png">
+
 ![image](https://user-images.githubusercontent.com/22448178/232231327-d0e48f36-5e36-4e1c-9bca-a434a5edd9c5.png)
 
 ToastR notifications:
