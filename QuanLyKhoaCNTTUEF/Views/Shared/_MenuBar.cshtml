@@ -7,7 +7,7 @@
             <img src="~/img/logo_small.png" width="50" height="70" alt="logo">
             <span class="logoclass">Dashboard</span>
         </a>
-        <a href="index.html" class="logo logo-small" style="padding-top: 30px;">
+        <a asp-controller="Home" asp-action="Index" class="logo logo-small" style="padding-top: 30px;">
             <img src="~/img/logo_small.png" alt="Logo" width="30" height="30">
         </a>
     </div>
@@ -61,7 +61,7 @@
                 <li class="active">
                     <a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> <span>Trang chủ</span></a>
                 </li>
-                <li class="list-divider"></li>
+               @* <li class="list-divider"></li>
                 <li class="submenu">
                     <a href="#"><i class="fas fa-user"></i> <span> Quản lý giảng viên  </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
@@ -84,21 +84,21 @@
                         <li><a href="add-booking.html"> Cập nhật sửa đổi đối với các học phần </a></li>
 
                     </ul>
-                </li>
+                </li>*@
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-calendar-alt"></i> <span> Quản lý sự kiện  </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fas fa-calendar-alt"></i> <span> Cố vấn học tập  </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a asp-area="Admin" asp-controller="Event" asp-action="Index"> Quản lý sự kiện </a></li>
-                        <li><a asp-area="Admin" asp-controller="Plans" asp-action="Index"> Quản lý kế hoạch </a></li>
-                        <li><a asp-area="Admin" asp-controller="Group" asp-action="Index"> Quản lý nhóm </a></li>
-                        <li><a asp-area="Admin" asp-controller="Task" asp-action="Index"> Quản lý nhiệm vụ </a></li>
-                        <li><a asp-controller="Adminstrator" asp-action="TaskList"> Danh sách nhiệm vụ </a></li>
-                        <li><a asp-controller="Adminstrator" asp-action="Member"> Quản lý thành viên </a></li>
-                        <li><a asp-controller="Adminstrator" asp-action="List"> Danh sách thông tin </a></li>
+                        <li><a  asp-controller="Event" asp-action="Index"> Quản lý sự kiện </a></li>
+                        <li><a  asp-controller="Plans" asp-action="Index"> Quản lý kế hoạch </a></li>
+                  @*      <li><a  asp-controller="Group" asp-action="Index"> Quản lý nhóm </a></li>
+                        <li><a  asp-controller="Task" asp-action="Index"> Quản lý nhiệm vụ </a></li>
+                        <li><a asp-controller="TaskList" asp-action="Index"> Danh sách nhiệm vụ </a></li>
+                        <li><a asp-controller="Members" asp-action="Index"> Quản lý thành viên </a></li>
+                        <li><a asp-controller="Information" asp-action="Index"> Danh sách thông tin </a></li>*@
 
                     </ul>
                 </li>
-                <li class="submenu">
+             @*   <li class="submenu">
                     <a href="#"><i class="fas fa-book"></i> <span> Quản lý công việc  </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
                         <li><a href="all-booking.html">   Giảng viên đăng ký, cập nhật thông tin, tiến độ trực tuyến </a></li>
@@ -127,7 +127,7 @@
                         <li><a href="all-booking.html">Xuất báo cáo, dữ liệu phục vụ công tác đánh giá cuối năm hoặc các hoạt động khác cho giảng viên</a></li>
 
                     </ul>
-                </li>
+                </li>*@
             </ul>
         </div>
     </div>

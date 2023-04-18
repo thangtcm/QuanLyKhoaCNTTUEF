@@ -1,0 +1,88 @@
+﻿@model QuanLyKhoaCNTTUEF.Models.TaskAssignments
+
+@{
+    ViewData["Title"] = "UpdateMember";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <div class="mt-5">
+                            <h4 class="card-title float-left mt-2">@ViewData["Title"] @Html.DisplayFor(model => model.MembersGroups!.ApplicationUser!.FullName)</h4>
+                            <a asp-action="Details" asp-route-id="@Model.MembersGroups!.GroupID" class="btn btn-primary float-right veiwbutton">Quay về</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            <form asp-action="UpdateMember">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="TaskAssignmentId" />
+                                <div class="form-group">
+                                    <label asp-for="MemberGroupID" class="control-label"></label>
+                                    <input asp-for="MemberGroupID" class="form-control" value="@Model.MemberGroupID" readonly/>
+                                    <span asp-validation-for="MemberGroupID" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="TaskID" class="control-label"></label>
+                                    <input asp-for="TaskID" class="form-control" value="@Model.TaskID" readonly />
+                                    <span asp-validation-for="TaskID" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="StartTime" class="control-label"></label>
+                                    <input asp-for="StartTime" class="form-control" />
+                                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EndTime" class="control-label"></label>
+                                    <input asp-for="EndTime" class="form-control" />
+                                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Progress" class="control-label"></label>
+                                    <span class="number form-control" asp-validation-for="Progress">@Model.Progress</span>
+                                    <input type="range" asp-for="Progress" id="Progress" class="form-control"/>
+                                    <span asp-validation-for="Progress" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label"></label>
+                                    <input asp-for="Description" class="form-control" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Note" class="control-label"></label>
+                                    <input asp-for="Note" class="form-control" />
+                                    <span asp-validation-for="Note" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Save" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        const input = document.querySelector("#Progress"),
+        number = document.querySelector(".number");
+
+        input.addEventListener("input", () => {
+            number.textContent = input.value;
+        })
+    </script>
+}

@@ -1,0 +1,65 @@
+﻿@model QuanLyKhoaCNTTUEF.Models.Event
+
+@{
+    ViewData["Title"] = "Thêm sự kiện";
+    Console.WriteLine(ViewData["IDSuKien"]);
+}
+
+<div class="page-wrapper" style="min-height: 941px;">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="mt-5">
+                        <h4 class="card-title float-left mt-2">@ViewData["Title"]</h4>
+                        <a asp-action="Index" class="btn btn-primary float-right veiwbutton">Quay Về</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="EventName" class="control-label"></label>
+                                <input asp-for="EventName" class="form-control" />
+                                <span asp-validation-for="EventName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="StartTime" class="control-label"></label>
+                                <input asp-for="StartTime" class="form-control" />
+                                <span asp-validation-for="StartTime" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="EndTime" class="control-label"></label>
+                                <input asp-for="EndTime" class="form-control" />
+                                <span asp-validation-for="EndTime" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PlanID" class="control-label"></label>
+                                <select asp-for="PlanID" class="form-control" asp-items="@ViewBag.PlanList">
+                                    <option value="">Chọn Kế Hoạch</option>
+                                </select>
+                                <span asp-validation-for="PlanID" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                                <textarea asp-for="Description" class="form-control" placeholder="Nhập mô tả" cols="4" rows="4"> </textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

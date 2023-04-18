@@ -53,7 +53,7 @@ namespace QuanLyKhoaCNTTUEF.Data
                 new ApplicationUser
                 {
                     Id = "1",
-                    UserName = "user1@example.com",
+                    UserName = "admin",
                     NormalizedUserName = "USER1@EXAMPLE.COM",
                     Email = "user1@example.com",
                     NormalizedEmail = "USER1@EXAMPLE.COM",

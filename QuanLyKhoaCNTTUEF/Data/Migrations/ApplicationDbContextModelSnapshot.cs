@@ -51,36 +51,31 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2242c515-36e8-4fb7-8b30-f7d98f1af35a",
-                            ConcurrencyStamp = "d03c349c-9998-4fba-8404-9759ce23696c",
+                            Id = "e21ff63f-311d-4948-8ae5-bd46afa083e2",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         },
                         new
                         {
-                            Id = "babb6f3e-955a-41bb-b6fa-e16877a0698c",
-                            ConcurrencyStamp = "fe041e27-4f2d-4849-b111-d810b1dc09bb",
+                            Id = "fa173d6a-1a1a-43e5-8d93-72ad5bdabb85",
                             Name = "Manager",
                             NormalizedName = "Manager"
                         },
                         new
                         {
-                            Id = "776902cc-5cb3-49f5-9af9-8f20bc0e16a6",
-                            ConcurrencyStamp = "46656462-faa3-44e2-ad33-071e0c792211",
+                            Id = "05954a7f-a4dc-43f1-b590-92f0a41e0cc3",
                             Name = "Teacher",
                             NormalizedName = "Teacher"
                         },
                         new
                         {
-                            Id = "448ba368-3084-4bf3-940a-d44fc8012160",
-                            ConcurrencyStamp = "9af105b2-cc23-4abe-8af0-513962bf1ad7",
+                            Id = "02dbc3d4-18fc-4b6c-a2e4-683956cea69a",
                             Name = "Staff",
                             NormalizedName = "Staff"
                         },
                         new
                         {
-                            Id = "da58c18b-fa75-4d3d-993c-a7271a1c0b30",
-                            ConcurrencyStamp = "0d0d953f-7e47-401e-8f84-efb9cdea0479",
+                            Id = "429659e6-161a-4cd6-a950-d4e71b3dee5b",
                             Name = "Student",
                             NormalizedName = "Student"
                         });
@@ -298,7 +293,7 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                             SecurityStamp = "ZD5UZJQK6Q5W6N7O6RBRF6DB2Q2G2AIJ",
                             TwoFactorEnabled = false,
                             UrlAvartar = "/img/Admin.png",
-                            UserName = "user1@example.com"
+                            UserName = "admin"
                         },
                         new
                         {
@@ -390,26 +385,18 @@ namespace QuanLyKhoaCNTTUEF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("EventID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("IDNguoiCapNhat")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IDNguoiTao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IDNguoiXoa")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("NgayCapNhat")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("NgayTao")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("EventName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("NgayXoa")
                         .HasColumnType("datetime2");
@@ -420,12 +407,20 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TenSuKien")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserCreate")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserDelete")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserUpdate")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("XoaTam")
                         .HasColumnType("int");
@@ -433,6 +428,12 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                     b.HasKey("EventID");
 
                     b.HasIndex("PlanID");
+
+                    b.HasIndex("UserCreate");
+
+                    b.HasIndex("UserDelete");
+
+                    b.HasIndex("UserUpdate");
 
                     b.ToTable("Event");
                 });
@@ -472,20 +473,20 @@ namespace QuanLyKhoaCNTTUEF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("GroupID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<int?>("EventID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("NgayCapNhat")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("NgayTao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TenNhom")
+                    b.Property<string>("GroupName")
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("GroupID");
 
@@ -528,22 +529,26 @@ namespace QuanLyKhoaCNTTUEF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("PlanID"), 1L, 1);
 
-                    b.Property<DateTime>("NgayDuyet")
+                    b.Property<DateTime>("ApprovalDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("NgayTrinh")
+                    b.Property<string>("Approver")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PlanName")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("PresenDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NguoiDuyet")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NguoiTrinh")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("TenKeHoach")
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Presenter")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("PlanID");
+
+                    b.HasIndex("Approver");
+
+                    b.HasIndex("Presenter");
 
                     b.ToTable("Plan");
                 });
@@ -598,7 +603,7 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("TaskID"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
@@ -684,7 +689,25 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                         .WithMany("Events")
                         .HasForeignKey("PlanID");
 
+                    b.HasOne("QuanLyKhoaCNTTUEF.Data.ApplicationUser", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreate");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Data.ApplicationUser", "UserDeleted")
+                        .WithMany()
+                        .HasForeignKey("UserDelete");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Data.ApplicationUser", "UserUpdated")
+                        .WithMany()
+                        .HasForeignKey("UserUpdate");
+
                     b.Navigation("Plan");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserDeleted");
+
+                    b.Navigation("UserUpdated");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Files.PdfFile", b =>
@@ -718,6 +741,21 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Group");
+                });
+
+            modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.Plan", b =>
+                {
+                    b.HasOne("QuanLyKhoaCNTTUEF.Data.ApplicationUser", "UserApprover")
+                        .WithMany()
+                        .HasForeignKey("Approver");
+
+                    b.HasOne("QuanLyKhoaCNTTUEF.Data.ApplicationUser", "UserPresenter")
+                        .WithMany()
+                        .HasForeignKey("Presenter");
+
+                    b.Navigation("UserApprover");
+
+                    b.Navigation("UserPresenter");
                 });
 
             modelBuilder.Entity("QuanLyKhoaCNTTUEF.Models.TaskAssignments", b =>

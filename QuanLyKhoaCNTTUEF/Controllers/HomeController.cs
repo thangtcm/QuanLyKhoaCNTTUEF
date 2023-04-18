@@ -1,34 +1,30 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using QuanLyKhoaCNTTUEF.Models;
-using System.Diagnostics;
-using static QuanLyKhoaCNTTUEF.Core.Constants;
+﻿using Microsoft.AspNetCore.Mvc;
+using QuanLyKhoaCNTTUEF.Data;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext _context)
         {
-            _logger = logger;
+            this._context = _context;
         }
+
         public IActionResult Index()
         {
+            int countevent = _context.Event.Count();
+            int counttask = _context.Task.Count();
+            int countplan = _context.Plan.Count();
+            int countgroup = _context.Group.Count();
+            ViewBag.EventCount = countevent;
+            ViewBag.TaskCount = counttask;
+            ViewBag.PlanCount = countplan;
+            ViewBag.GroupCount = countgroup;
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
+
 }

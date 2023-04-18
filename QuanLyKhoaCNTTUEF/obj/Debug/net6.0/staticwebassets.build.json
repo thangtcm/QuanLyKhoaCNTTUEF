@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YqgoRIdKlUw3DSrGf3XO1Xvx9ZCU4BWU5FZph2vRnwA=",
+  "Hash": "INKgfXDMKOlYhri42XOhT1VAnqjZw8v5CvJsXItIXik=",
   "Source": "QuanLyKhoaCNTTUEF",
   "BasePath": "_content/QuanLyKhoaCNTTUEF",
   "Mode": "Default",
@@ -1341,6 +1341,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\files\\PdfFiles11-08-2023.pdf"
+    },
+    {
+      "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles16-31-2023.pdf",
+      "SourceId": "QuanLyKhoaCNTTUEF",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\",
+      "BasePath": "_content/QuanLyKhoaCNTTUEF",
+      "RelativePath": "files/PdfFiles16-31-2023.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\PdfFiles16-31-2023.pdf"
+    },
+    {
+      "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles16-38-2023.pdf",
+      "SourceId": "QuanLyKhoaCNTTUEF",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\",
+      "BasePath": "_content/QuanLyKhoaCNTTUEF",
+      "RelativePath": "files/PdfFiles16-38-2023.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\PdfFiles16-38-2023.pdf"
     },
     {
       "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles18-09-2023.pdf",

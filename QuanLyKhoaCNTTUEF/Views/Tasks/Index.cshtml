@@ -1,0 +1,178 @@
+﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Quản lý Task";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int? idTask = -1;
+}
+
+<h1>Index</h1>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center pageheader-title">
+                <div class="col-sm-12">
+                    <div class="mt-5">
+                        <div class="page-sub-header">
+                            <h3 class="page-title float-left mt-2">@ViewData["Title"]</h3>
+                            <ul class="breadcrumb float-right mt-3">
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                                <li class="breadcrumb-item text-secondary">Quản Lý Task</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card board1 fill">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <div>
+                                <h3 class="card_widget_header">@ViewData["MaxTask"]</h3>
+                                <h6 class="text-muted">Số lượng Task</h6>
+                            </div>
+                            <div class="ml-auto mt-md-3 mt-lg-0">
+                                <span class="opacity-7 text-muted">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <form asp-action="Index" method="get">
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                        <div class="input-group">
+                            <input type="search" name="SearchString" value="@ViewData["CurrentFilter"]" placeholder="Nhập từ bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                            <div class="input-group-append">
+                                <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-12">
+                <div class="card card-table">
+
+                    <div class="card-body booking_card">
+                        <div class="page-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="page-title">Task</h3>
+                                </div>
+                                <div class="col-auto text-end float-end ms-auto download-grp">
+                                    <a asp-action="ExcelExportTask" class="btn bg-primary btn-outline-primary text-white me-2" role="button"><i class="fas fa-download"></i> Download</a>
+                                    <a asp-action="Create" class="btn bg-primary text-white btn-lg me-2" role="button"><i class="fas fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped table table-hover table-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.TaskName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.StartTime)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EndTime)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </th>
+
+                                        <th class="text-right">Chức năng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        idTask = item.TaskID;
+                                        var target = "delete_asset" + item.TaskID;
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.TaskID)</td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TaskName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.StartTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EndTime)
+                                            </td>
+                                            @{
+                                                if (item.Status is false)
+                                                {
+                                                    <td class="text-primary">Đang Xét Duyệt</td>
+
+                                                }
+                                                else
+                                                {
+                                                    <td class="text-primary">Đã duyệt</td>
+                                                }
+
+                                            }
+
+                                            <td class="text-right">
+                                                <div class="dropdown dropdown-action">
+                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.TaskID"><i class="fas fa-pencil-alt m-r-5"></i> Chỉnh sửa</a>
+                                                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.TaskID"><i class="fas fa-pencil-alt m-r-5"></i> Chi tiết</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target"><i class="fas fa-trash-alt m-r-5"></i> Xoá</a>
+                                                    </div>
+                                                    <div id="@target" class="modal fade delete-modal" role="dialog">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body text-center">
+                                                                    <img src="~/img/sent.png" alt="" width="50" height="46">
+                                                                    <h3 class="delete_class">Chắc chắn xoá?</h3>
+                                                                    <div class="m-t-20">
+                                                                        <form asp-action="Delete" asp-route-id="@idTask" method="post">
+                                                                            <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+                                                                            <div class="form-group">
+                                                                                <input type="submit" value="Delete" class="btn btn-danger" id="delete-button" />
+                                                                                <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

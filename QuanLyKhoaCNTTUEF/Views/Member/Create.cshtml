@@ -1,0 +1,125 @@
+﻿@model QuanLyKhoaCNTTUEF.Models.MembersGroups
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper" style="min-height: 941px;">
+    <div class="content container-fluid ">
+        <div class="page-header">
+            <div class="row align-items-center mt-5">
+                <div class="col">
+                    <h3 class="page-title">@ViewData["Title"]</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                        <li class="breadcrumb-item active">@ViewBag.GroupName</li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <a asp-action="DowloadData" asp-route-filename="SuKien" class="btn btn-primary me-1" role="button">
+                        <i class="fas fa-download"> Download</i>
+                    </a>
+                    @*                    <a asp-action="Create" class="btn btn-primary me-1" role="button">
+
+                    </a>*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create" asp-route-id="@ViewBag.GroupId" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label for="UserId" class="control-label"></label>
+                        <select name="userId" id="mySelect" class="js-select2 w-100 form-control" multiple data-placeholder="Choose anything" asp-items="ViewBag.UserId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="GroupID" class="control-label"></label>
+                        <input asp-for="GroupID" class="form-control" value="@ViewBag.GroupID" readonly />
+                        <span asp-validation-for="GroupID" class="text-danger"></span>
+                    </div>
+@*                    <div class="form-group">
+                        <label asp-for="TaskID" class="control-label"></label>
+                        <select asp-for="TaskID" class ="form-control" asp-items="ViewBag.TaskID"></select>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="RoleName" class="control-label"></label>
+                        <input asp-for="RoleName" class="form-control" />
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <table id="table-show" class="table table-hover table-stripped table-center">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Họ và tên</th>
+                    <th>Chức Năng</th>
+                    </tr>
+                </thead>
+                <tbody id="table-item">
+                    <!-- Add item được chọn -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+<script>
+    $(".js-select2").select2({
+        closeOnSelect: false,
+        //allowHtml: true,
+        tags: false, // создает новые опции на лету
+        allowClear: true,
+        templateSelection: function (selected, allSelected) {
+            if (allSelected.length === 0) {
+                return "Choose anything";
+            } else {
+                var selectedLabels = $.map(allSelected, function (option) {
+                    return $(option.element).text();
+                });
+                return selectedLabels.join(", ");
+            }
+        }
+    });
+
+    const myTable = document.getElementById("table-show");
+    const myTableBody = document.getElementById("table-item");
+    const mySelect = document.getElementById("mySelect");
+    // Lắng nghe sự kiện 'change' từ select2 thay vì từ phần tử select
+    $(".js-select2").on("change", function () {
+        myTableBody.innerHTML = "";
+        const selectedOptions = Array.from(this.selectedOptions);
+        selectedOptions.forEach(function (option, index) {
+            const row = myTableBody.insertRow();
+            const indexCell = row.insertCell();
+            const nameCell = row.insertCell();
+            const deleteCell = row.insertCell();
+            indexCell.innerText = index + 1;
+            nameCell.innerText = option.text;
+            const deleteButton = document.createElement("a");
+            deleteButton.href = "#!";
+            deleteButton.classList.add("btn", "btn-danger", "btn-sm");
+            const deleteIcon = document.createElement("i");
+            deleteIcon.classList.add("fas", "fa-times");
+            deleteButton.appendChild(deleteIcon);
+            deleteButton.addEventListener("click", function () {
+                option.selected = false;
+                row.remove();
+                $(".js-select2").trigger("change"); // Cập nhật lại danh sách khi xóa một mục
+
+            });
+            deleteCell.appendChild(deleteButton);
+        });
+
+    });
+</script>
+
+}

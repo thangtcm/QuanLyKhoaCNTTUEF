@@ -1,0 +1,133 @@
+﻿@model IEnumerable<QuanLyKhoaCNTTUEF.Models.MembersGroups>
+
+@*@{
+    ViewData["Title"] = "Management Members";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var idmember = -1;
+}
+
+<div class="page-wrapper" style="min-height: 941px;">
+    <div class="content container-fluid ">
+        <div class="page-header">
+            <div class="row align-items-center mt-5">
+                <div class="col">
+                    <h3 class="page-title">@ViewData["Title"]</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                        <li class="breadcrumb-item active">@ViewBag.GroupName</li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <a asp-action="DowloadData" asp-route-filename="SuKien" class="btn btn-primary me-1" role="button">
+                        <i class="fas fa-download"> Download</i>
+                    </a>
+                    <a asp-action="Create" asp-route-id="@ViewBag.GroupID" class="btn btn-primary me-1" role="button">
+                        <i class="fas fa-plus"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row pl-3">
+            @{
+                if (Model is not null)
+                {
+                    foreach (var item in Model)
+                    {
+                        idmember = item.MemberGroupID;
+                        var target = "delete_asset" + item.MemberGroupID;
+                        <div class="col-sm-6 col-lg-4 col-xl-3">
+                            <div class="m-3 card card_hover shadow-sm center" style="border-radius: 1rem;">
+                                <input class="card_checkbox" type="checkbox" id="1" value="1">
+                                <div class="card-body text-center">
+                                    <div class="clearfix mb-2">
+                                        @if (@item.RoleName == "Leader")
+                                        {
+                                            <img src="~/img/Vector.png" class="float-left avatar avatar-xs" alt="" style="background-color: transparent;">
+                                        }
+                                        <div class="float-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                           aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@idmember">
+                                                        <i class="fas fa-trash-alt m-r-5"></i>Chỉnh Sửa
+                                                    </a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target">
+                                                        <i class="fas fa-trash-alt m-r-5"></i>Xóa thành viên
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div class="mb-3">
+                                        <img src="@((item.ApplicationUser?.UrlAvartar != null) ? item.ApplicationUser.UrlAvartar : "/img/avatar.jpg")" class="card-img-top rounded-circle" alt="" style="width: 7rem; height: 7rem; object-fit: cover;">
+                                    </div>
+
+                                    <h5 class="card-title">@item.ApplicationUser?.FullName</h5>
+                                    <p class="card-text text-dimgray">Mã số sinh viên: 5</p>
+                                   
+                                    <p class="card-text mb-4 text-dimgray">Chức vụ: Trưởng nhóm</p>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-2 col-lg-2 col-xl-2"></div>
+                                        <div class="col-sm-8 col-lg-8 col-xl-8">
+                                            <a href="" class="btn btn-outline-primary w-100" style="border-radius: 5rem;">Chi tiết</a>
+                                        </div>
+                                        <div class="col-sm-2 col-lg-2 col-xl-2 text-center" style="padding-left: 0;">
+                                            <div class="bg-primary rounded-circle card-checked text-white bg-primary" style="width: 2rem; height: 2rem; font-size: 1.5rem; line-height: 2rem; margin-left: -0.5rem;">
+                                                <i class="fa fa-check" aria-hidden="true" style="line-height: 2rem;"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="@target" class="modal fade delete-modal" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+                                        <img src="~/img/sent.png" alt="" width="50" height="46">
+                                        <h3 class="delete_class">Chắc chắn xoá?</h3>
+                                        <div class="m-t-20">
+                                            <form asp-action="Delete" asp-route-id="@idmember" method="post">
+                                                <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+                                                <div class="form-group">
+                                                    <input type="submit" value="Delete" class="btn btn-danger" id="delete-button" />
+                                                    <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        //<div id="@target" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+                        //    <div class="modal-dialog modal-dialog-centered">
+                        //        <div class="modal-content">
+                        //            @await Html.PartialAsync("EditMember", item)
+                        //        </div>
+                        //    </div>
+                        //</div>
+                    }
+                }
+
+            }
+
+        </div>
+    </div>
+</div>*@
+
+@*@section Scripts {
+    <script>
+        $(function () {
+            $('#addMembersModal').on('shown.bs.modal', function () {
+                $.get('@Url.Action("GetNonMembersPartial", "Group", new { groupId = ViewBag.GroupId }))', function (result) {
+                    $('#addMembersModalBody').html(result);
+                    $('#selectedUserIds').multiselect();
+                });
+            });
+        });
+    </script>
+}*@
+

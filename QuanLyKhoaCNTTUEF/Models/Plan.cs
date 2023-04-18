@@ -1,4 +1,5 @@
-﻿using QuanLyKhoaCNTTUEF.Models.Files;
+﻿using QuanLyKhoaCNTTUEF.Data;
+using QuanLyKhoaCNTTUEF.Models.Files;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,21 +14,23 @@ namespace QuanLyKhoaCNTTUEF.Models
 
         [DisplayName("Tên Kế Hoạch")]
         [Column(TypeName = "nvarchar(50)")]
-        public string? TenKeHoach { get; set; }
+        public string? PlanName { get; set; }
 
         [DisplayName("Ngày Trình")]
-        public DateTime NgayTrinh { get; set; }
+        public DateTime PresenDate { get; set; }
 
         [DisplayName("Ngày Duyệt")]
-        public DateTime NgayDuyet { get; set; }
+        public DateTime ApprovalDate { get; set; }
 
         [DisplayName("Người Trình")]
-        [Column(TypeName = "nvarchar(50)")]
-        public string? NguoiTrinh { get; set; }
+        public string? Presenter { get; set; }
+        [ForeignKey("Presenter")]
+        public virtual ApplicationUser? UserPresenter { get; set; }
 
         [DisplayName("Người Duyệt")]
-        [Column(TypeName = "nvarchar(50)")]
-        public string? NguoiDuyet { get; set; }
+        public string? Approver { get; set; }
+        [ForeignKey("Approver")]
+        public virtual ApplicationUser? UserApprover { get; set; }
 
         public virtual ICollection<PdfFile>? PdfFiles { get; set; }
 

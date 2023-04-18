@@ -1,0 +1,78 @@
+﻿@model QuanLyKhoaCNTTUEF.Models.Group
+
+@{
+    ViewData["Title"] = "Create";
+}
+<hr />
+<div class="page-wrapper" style="min-height: 941px;">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="mt-5">
+                        <h4 class="card-title float-left mt-2">@ViewData["Title"]</h4>
+                        <a asp-action="Index" class="btn btn-primary float-right veiwbutton">Quay Về</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+
+                    <div class="card-body">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="EventID" class="control-label"></label>
+                                <select asp-for="EventID" class="form-control" asp-items="ViewBag.EventID"></select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="GroupName" class="control-label"></label>
+                                <input asp-for="GroupName" class="form-control" />
+                                <span asp-validation-for="GroupName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <input asp-for="Description" class="form-control" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CreateDate" class="control-label"></label>
+                                <input asp-for="CreateDate" class="form-control" />
+                                <span asp-validation-for="CreateDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdateDate" class="control-label"></label>
+                                <input asp-for="UpdateDate" class="form-control" />
+                                <span asp-validation-for="UpdateDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Chọn trưởng nhóm</label>
+                                <select name="userId" id="mySelect" class="js-select2 w-100 form-control" asp-items="ViewBag.UserId">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+<script>
+    $(".js-select2").select2({
+        closeOnSelect: false,
+        placeholder: "Choose Anything",
+        allowHtml: true,
+        tags: false, // создает новые опции на лету
+        allowClear: true,
+    });
+</script>
+}

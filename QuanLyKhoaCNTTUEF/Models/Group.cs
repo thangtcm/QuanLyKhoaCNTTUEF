@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyKhoaCNTTUEF.Models
@@ -13,13 +14,19 @@ namespace QuanLyKhoaCNTTUEF.Models
         [ForeignKey("EventID")]
         public virtual Event? Event { get; set; }
 
+        [DisplayName("Tên Nhóm")]
         [Column(TypeName = "nvarchar(50)")]
-        public string? TenNhom { get; set; }
+        public string? GroupName { get; set; }
 
+        [DisplayName("Mô tả")]
         [Column(TypeName = "nvarchar(1000)")]
         public string? Description { get; set; }
-        public DateTime NgayTao { get; set; }
-        public DateTime NgayCapNhat { get; set; }
+
+        [DisplayName("Ngày Tạo")]
+        public DateTime CreateDate { get; set; }
+
+        [DisplayName("Ngày Cập Nhật")]
+        public DateTime UpdateDate { get; set; }
 
         public virtual ICollection<MembersGroups>? MembersGroups { get; set; }
         public virtual ICollection<Tasks>? Tasks { get; set; }

@@ -2,12 +2,10 @@
 @using QuanLyKhoaCNTTUEF.Data;
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-@using Microsoft.AspNetCore.Authorization
-@inject IAuthorizationService AuthorizationService
 
 <ul class="nav user-menu">
-    @if (SignInManager.IsSignedIn(User))
-    {
+@if (SignInManager.IsSignedIn(User))
+{
         <!-- Thanh thông báo -->
         <li class="nav-item dropdown noti-dropdown">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
@@ -122,12 +120,8 @@
                         <img src="~/img/logo_small.png" alt="User Image" class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">
-                        <h6>@UserManager.GetUserAsync(User).Result.FullName</h6>
-                        @*<h6>@User.Identity?.Name!</h6>*@
-                        @*@if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
-                        {
-                            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="text-muted mb-0">Administrator</a>
-                        }*@
+                        <h6>@User.Identity?.Name!</h6>
+                        <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
                 <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">My Profile</a>
@@ -137,23 +131,23 @@
                 </form>
             </div>
         </li>
-
-        <!--<li class="nav-item">
-            <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-        </li>
-        <li class="nav-item">
-            <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-            </form>
-            </li>-->
-    }
-    else
-    {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-        </li>
-    }
+                        
+    <!--<li class="nav-item">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+        </li>-->
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
 </ul>

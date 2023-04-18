@@ -1717,7 +1717,6 @@ D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\staticwebassets\msbuild.
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\staticwebassets.pack.json
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\staticwebassets.build.json
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\staticwebassets.development.json
-D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\scopedcss\bundle\QuanLyKhoaCNTTUEF.styles.css
 D:\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\scopedcss\projectbundle\QuanLyKhoaCNTTUEF.bundle.scp.css
