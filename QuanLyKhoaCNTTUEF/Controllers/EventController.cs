@@ -13,6 +13,7 @@ using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 
@@ -83,7 +84,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             }
 
             TempData["IDSuKien"] = id;
-            ViewBag.GroupName = groupName;
+            ViewBag.GroupName = groupName!;
             ViewBag.TaskName = taskName;
             ViewBag.AssignTask = _context.Task.Include(x => x.Group).Where(x => x.GroupID != null).ToList();
             return View(@event);
@@ -202,12 +203,18 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             {
                 return NotFound();
             }
-
             var @event = await _context.Event.FindAsync(id);
             if (@event == null)
             {
                 return NotFound();
             }
+            var planlist = _context.Plan
+                .Select(m => new SelectListItem
+                {
+                    Value = m.PlanID.ToString(),
+                    Text = m.PlanName
+                }).ToList();
+            ViewData["PlanList"] = new SelectList(planlist, "Value", "Text", @event?.PlanID.ToString());
             return View(@event);
         }
 

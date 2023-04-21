@@ -10,6 +10,7 @@ namespace QuanLyKhoaCNTTUEF.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? GroupID { get; set; }
 
+        [DisplayName("Sự Kiện")]
         public int? EventID { get; set; }
         [ForeignKey("EventID")]
         public virtual Event? Event { get; set; }

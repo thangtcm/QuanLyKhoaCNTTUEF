@@ -18,10 +18,7 @@
                     </ul>
                 </div>
                 <div class="col-auto">
-                    <a asp-action="DowloadData" asp-route-filename="SuKien" class="btn btn-primary me-1" role="button">
-                        <i class="fas fa-download"> Download</i>
-                    </a>
-                    <a asp-action="AddMember" asp-route-id="@ViewBag.GroupID" class="btn btn-primary me-1" role="button">
+                    <a asp-controller="Member" asp-action="AddMember" asp-route-id="@ViewBag.GroupID" class="btn btn-primary me-1" role="button">
                         <i class="fas fa-plus"></i>
                     </a>
                 </div>
@@ -48,10 +45,10 @@
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                         aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" asp-action="EditMember" asp-route-id="@idmember">
+                                                    <a class="dropdown-item" asp-controller="Member" asp-action="EditMember" asp-route-id="@idmember">
                                                     <i class="fas fa-trash-alt m-r-5"></i>Chỉnh Sửa
                                                 </a>
-                                                <a class="dropdown-item" asp-action="UpdateMember" asp-route-id="@idmember">
+                                                    <a class="dropdown-item" asp-controller="Member" asp-action="UpdateMember" asp-route-id="@idmember">
                                                     <i class="fas fa-trash-alt m-r-5"></i>Cập Nhật Tiến Độ Nhiệm Vụ
                                                 </a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#@target">
@@ -75,7 +72,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-sm-2 col-lg-2 col-xl-2"></div>
                                     <div class="col-sm-8 col-lg-8 col-xl-8">
-                                            <a asp-action="DetailsMember" asp-route-id="@item.MemberGroupID" class="btn btn-outline-primary w-100" style="border-radius: 5rem;">Chi tiết</a>
+                                            <a asp-controller="Member" asp-action="Details" asp-route-id="@item.MemberGroupID" class="btn btn-outline-primary w-100" style="border-radius: 5rem;">Chi tiết</a>
                                     </div>
                                     <div class="col-sm-2 col-lg-2 col-xl-2 text-center" style="padding-left: 0;">
                                         <div class="bg-primary rounded-circle card-checked text-white bg-primary" style="width: 2rem; height: 2rem; font-size: 1.5rem; line-height: 2rem; margin-left: -0.5rem;">
@@ -93,7 +90,7 @@
                                     <img src="~/img/sent.png" alt="" width="50" height="46">
                                     <h3 class="delete_class">Chắc chắn xoá?</h3>
                                     <div class="m-t-20">
-                                        <form asp-action="Delete" asp-route-id="@idmember" method="post">
+                                        <form asp-controller="Member" asp-action="Delete" asp-route-id="@idmember" method="post">
                                             <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
                                             <div class="form-group">
                                                 <input type="submit" value="Delete" class="btn btn-danger" id="delete-button" />

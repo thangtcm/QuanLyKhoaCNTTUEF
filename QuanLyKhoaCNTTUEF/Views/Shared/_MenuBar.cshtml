@@ -20,38 +20,14 @@
         <i class="fas fa-bars"></i>
     </a>
 
-
-   <!-- <ul class="nav user-menu">
-
-        <li class="nav-item dropdown has-arrow">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <span class="user-img"><img class="rounded-circle" src="~/img/logo.png" width="31" alt=""></span>
-            </a>
-            <div class="dropdown-menu">
-                <div class="user-header">
-                    <div class="avatar avatar-sm">
-                        <img src="~/img/logo_small.png" alt="User Image" class="avatar-img rounded-circle">
-                    </div>
-                    <div class="user-text">
-                        <h6>Dexter Smith</h6>
-                        <p class="text-muted mb-0">Administrator</p>
-                    </div>
-                </div>
-                <a class="dropdown-item" href="profile.html">My Profile</a>
-                <a class="dropdown-item" href="settings.html">Account Settings</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
-            </div>
-        </li>
-
-    </ul>-->
     <partial name="_LoginPartial" />
 
-    <div class="top-nav-search">
+@*    <div class="top-nav-search">
         <form>
             <input type="text" class="form-control" placeholder="">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
         </form>
-    </div>
+    </div>*@
 </div>
 
 <div class="sidebar" id="sidebar">
@@ -61,73 +37,13 @@
                 <li class="active">
                     <a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> <span>Trang chủ</span></a>
                 </li>
-               @* <li class="list-divider"></li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-user"></i> <span> Quản lý giảng viên  </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-booking.html">  Hồ sơ giảng viên </a></li>
-                        <li><a href="edit-booking.html"> Quá trình giảng dạy </a></li>
-                        <li><a href="add-booking.html"> Nhiệm vụ </a></li>
-                        <li><a href="add-booking.html"> Các hoạt động </a></li>
-                        <li><a href="add-booking.html"> Chất lượng giảng dạy </a></li>
-                        <li><a href="add-booking.html"> Công tác nghiên cứu </a></li>
-                        <li><a href="add-booking.html"> Quá trình công tác </a></li>
-                        <li><a href="add-booking.html"> Nhiệm vụ </a></li>
-
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-book"></i> <span> Quản lý môn học  </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-booking.html">  Thông tin các môn học Khoa quản lý </a></li>
-                        <li><a href="edit-booking.html"> Thông tin các môn học theo năm, kì </a></li>
-                        <li><a href="add-booking.html"> Cập nhật sửa đổi đối với các học phần </a></li>
-
-                    </ul>
-                </li>*@
                 <li class="submenu">
                     <a href="#"><i class="fas fa-calendar-alt"></i> <span> Cố vấn học tập  </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
                         <li><a  asp-controller="Event" asp-action="Index"> Quản lý sự kiện </a></li>
-                        <li><a  asp-controller="Plans" asp-action="Index"> Quản lý kế hoạch </a></li>
-                  @*      <li><a  asp-controller="Group" asp-action="Index"> Quản lý nhóm </a></li>
-                        <li><a  asp-controller="Task" asp-action="Index"> Quản lý nhiệm vụ </a></li>
-                        <li><a asp-controller="TaskList" asp-action="Index"> Danh sách nhiệm vụ </a></li>
-                        <li><a asp-controller="Members" asp-action="Index"> Quản lý thành viên </a></li>
-                        <li><a asp-controller="Information" asp-action="Index"> Danh sách thông tin </a></li>*@
-
-                    </ul>
+                        <li><a  asp-controller="Plan" asp-action="Index"> Quản lý kế hoạch </a></li>
+                     </ul>
                 </li>
-             @*   <li class="submenu">
-                    <a href="#"><i class="fas fa-book"></i> <span> Quản lý công việc  </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-booking.html">   Giảng viên đăng ký, cập nhật thông tin, tiến độ trực tuyến </a></li>
-                        <li><a href="edit-booking.html">Bộ phận quản lý dễ dàng theo dõi tiến độ và đánh giá chất lượng công việc</a></li>
-                        <li><a href="add-booking.html"> Đánh giá </a></li>
-
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-book"></i> <span> Báo cáo, thống kê  </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-booking.html">Xuất báo cáo, dữ liệu phục vụ công tác đánh giá cuối năm hoặc các hoạt động khác cho giảng viên</a></li>
-
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-book"></i> <span> Báo cáo, thống kê  </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-booking.html">Xuất báo cáo, dữ liệu phục vụ công tác đánh giá cuối năm hoặc các hoạt động khác cho giảng viên</a></li>
-
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-book"></i> <span> Báo cáo, thống kê  </span> <span class="menu-arrow"></span></a>
-                    <ul class="submenu_class" style="display: none;">
-                        <li><a href="all-booking.html">Xuất báo cáo, dữ liệu phục vụ công tác đánh giá cuối năm hoặc các hoạt động khác cho giảng viên</a></li>
-
-                    </ul>
-                </li>*@
             </ul>
         </div>
     </div>

@@ -51,31 +51,31 @@ namespace QuanLyKhoaCNTTUEF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e21ff63f-311d-4948-8ae5-bd46afa083e2",
+                            Id = "d31d0e88-87a9-44a0-bfa9-75a0c21b92cb",
                             Name = "Administrator",
                             NormalizedName = "Administrator"
                         },
                         new
                         {
-                            Id = "fa173d6a-1a1a-43e5-8d93-72ad5bdabb85",
+                            Id = "8a6a0983-3636-47ce-9765-3fba2a7afe49",
                             Name = "Manager",
                             NormalizedName = "Manager"
                         },
                         new
                         {
-                            Id = "05954a7f-a4dc-43f1-b590-92f0a41e0cc3",
+                            Id = "3d1269f2-cb75-4254-9b2c-f1a0115e1f31",
                             Name = "Teacher",
                             NormalizedName = "Teacher"
                         },
                         new
                         {
-                            Id = "02dbc3d4-18fc-4b6c-a2e4-683956cea69a",
+                            Id = "de0c4125-a09d-418f-b652-eccf49681ccb",
                             Name = "Staff",
                             NormalizedName = "Staff"
                         },
                         new
                         {
-                            Id = "429659e6-161a-4cd6-a950-d4e71b3dee5b",
+                            Id = "93283c08-dee5-44af-b151-eff73ad78d74",
                             Name = "Student",
                             NormalizedName = "Student"
                         });
