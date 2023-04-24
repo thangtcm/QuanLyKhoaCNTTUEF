@@ -19,7 +19,7 @@ using System.IO;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
-    [Authorize(Roles = (Constants.Roles.Administrator + "," + Constants.Roles.Teacher + "," + Constants.Roles.Manager))]
+    [Authorize(Roles = (Constants.Roles.Administrator + "," + Constants.Roles.Teacher))]
     public class EventController : Controller
     {
 
@@ -109,8 +109,11 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Event @event)
         {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             try
             {
+                @event.UserCreate = user.Id;
+                @event.UserUpdate = user.Id;
                 _context.Add(@event);
                 await _context.SaveChangesAsync();
                 _toastNotification.Success("Tạo Sự Kiện Thành Công");
@@ -223,32 +226,29 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventID,EventName,StartTime,EndTime,Description,TrangThai,XoaTam,UserCreate,CreateDate,UserUpdate,UpdateDate,IDNguoiXoa,NgayXoa")] Event @event)
+        public async Task<IActionResult> Edit(int id, Event @event)
         {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             if (id != @event.EventID)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(@event);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SuKienExists(@event.EventID))
-                    {
-                        return RedirectToAction("Details", "Event");
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _context.Update(@event);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!SuKienExists(@event.EventID))
+                {
+                    _toastNotification.Error("Có lỗi xảy ra!!!");
+                }
+                else
+                {
+                    throw;
+                }
             }
             return View(@event);
         }

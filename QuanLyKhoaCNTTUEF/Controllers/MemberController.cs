@@ -47,6 +47,10 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // GET: Admin/Member/Create
         public async Task<IActionResult> AddMember(int? id)
         {
+            if (!(await IsLeader()))
+            {
+                return Forbid();
+            }
             if (id == null || _context.Group == null)
             {
                 return NotFound();

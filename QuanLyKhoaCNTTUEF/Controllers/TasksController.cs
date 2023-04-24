@@ -12,12 +12,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
+using QuanLyKhoaCNTTUEF.Core;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles =Constants.Roles.Administrator + "," + Constants.Roles.Teacher)]
     public class TasksController : Controller
     {
         private readonly ApplicationDbContext _context;

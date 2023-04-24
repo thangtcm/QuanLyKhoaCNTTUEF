@@ -40,8 +40,9 @@
                 <li class="submenu">
                     <a href="#"><i class="fas fa-calendar-alt"></i> <span> Cố vấn học tập  </span> <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none;">
-                        <li><a  asp-controller="Event" asp-action="Index"> Quản lý sự kiện </a></li>
-                        <li><a  asp-controller="Plan" asp-action="Index"> Quản lý kế hoạch </a></li>
+                        <li><a asp-area="" asp-controller="Event" asp-action="Index"> Quản lý sự kiện </a></li>
+                        <li><a asp-area="" asp-controller="Plan" asp-action="Index"> Quản lý kế hoạch </a></li>
+                        <li><a asp-area="" asp-controller="Group" asp-action="Index"> Quản lý nhóm </a></li>
                      </ul>
                 </li>
             </ul>

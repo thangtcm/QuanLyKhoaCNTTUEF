@@ -46,17 +46,34 @@
                                     <input asp-for="ApprovalDate" class="form-control" />
                                     <span asp-validation-for="ApprovalDate" class="text-danger"></span>
                                 </div>
-                                <div class="form-group">
-                                    <label asp-for="Presenter" class="control-label"></label>
-                                    <input asp-for="Presenter" class="form-control" />
+                                <div class="form-group" hidden>
+                                    <label asp-for="Presenter" class="control-label" ></label>
+                                    <input asp-for="Presenter" class="form-control" readonly  />
                                     <span asp-validation-for="Presenter" class="text-danger"></span>
                                 </div>
-                                <div class="form-group">
-                                    <label asp-for="Approver" class="control-label"></label>
-                                    <input asp-for="Approver" class="form-control" />
+                                <div class="form-group" hidden>
+                                    <label asp-for="Approver" class="control-label" ></label>
+                                    <input asp-for="Approver" class="form-control" readonly />
                                     <span asp-validation-for="Approver" class="text-danger"></span>
                                 </div>
-
+                                @{
+                                    if((bool)ViewBag.isAdmin)
+                                    {
+                                        <div class="form-group">
+                                        @{
+                                            if(Model.Approver is null)
+                                            {
+                                                <input id="stackedCheck1" name="isActivity" class="form-control" type="checkbox" data-toggle="toggle" data-on="Duyệt" data-off="Không Duyệt" data-width="100%" data-onstyle="primary" data-offstyle="secondary">
+                                            }
+                                            else
+                                            {
+                                                <input id="stackedCheck1" name="isActivity" class="form-control" type="checkbox" checked data-toggle="toggle" data-on="Duyệt" data-off="Không Duyệt" data-width="100%" data-onstyle="primary" data-offstyle="secondary">
+                                            }
+                                        }
+                                        </div>
+                                    }
+                                }
+                                
                                 <div class="form-group">
                                     <input type="submit" value="Save" class="btn btn-primary" />
                                 </div>

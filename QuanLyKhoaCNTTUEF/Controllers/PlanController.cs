@@ -22,7 +22,7 @@ using QuanLyKhoaCNTTUEF.Core;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = Constants.Roles.Administrator + "," + Constants.Roles.Teacher)]
     public class PlanController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -45,12 +45,20 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             ViewData["MaxPlan"] = _context.Plan is not null ? _context.Plan.Count() : 0;
             ViewData["CurrentFilter"] = SearchString; // Search hiện tại
 
-            var plans = await _context.Plan.Include(u => u.UserPresenter).Where(x => x.Presenter == user.Id).ToListAsync();
+            //var plans = await _context.Plan
+            //    .Include(u => u.UserPresenter)
+            //    .Include(u => u.Approver)
+            //    .Where(x => x.Presenter == user.Id).ToListAsync();
 
-            if(await _userManager.IsInRoleAsync(user, Constants.Roles.Administrator))
-            {
-                plans = await _context.Plan.ToListAsync();
-            }
+            //if(await _userManager.IsInRoleAsync(user, Constants.Roles.Administrator))
+            //{
+                
+            //}
+
+            var plans = await _context.Plan
+                    .Include(u => u.UserApprover)
+                    .Include(u => u.UserPresenter)
+                    .ToListAsync();
 
             if (!string.IsNullOrEmpty(SearchString))
             {
@@ -63,6 +71,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // GET: Admin/Plans/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var userID = await _userManager.GetUserAsync(HttpContext.User);
             if (id == null || _context.Plan == null)
             {
                 return NotFound();
@@ -75,6 +84,13 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             {
                 return NotFound();
             }
+            //if (!(await IsAdmin()))
+            //{
+            //    if (plan.Presenter != userID.Id)
+            //    {
+            //        return NotFound();
+            //    }
+            //}
 
             return View(plan);
         }
@@ -134,6 +150,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // GET: Admin/Plans/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             if (id == null || _context.Plan == null)
             {
                 return NotFound();
@@ -144,6 +161,12 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             {
                 return NotFound();
             }
+            ViewData["isAdmin"] = await IsAdmin();
+
+            if(!(await IsAdmin()) && plan.Presenter != user.Id)
+            {
+                return Forbid();
+            }    
             return View(plan);
         }
 
@@ -152,61 +175,69 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Plan plan, List<IFormFile> PdfFiles)
+        public async Task<IActionResult> Edit(int id, Plan plan, List<IFormFile> PdfFiles, bool isActivity)
         {
             if (id != plan.PlanID)
             {
                 return NotFound();
             }
-            if (ModelState.IsValid)
+            try
             {
-                try
+                isActivity = Request.Form["isActivity"] == "on";
+                if ((await IsAdmin()) && plan.Approver is null && isActivity)
                 {
-                    _context.Update(plan);
-                    if (PdfFiles != null && PdfFiles.Count > 0)
+                    var user = await _userManager.GetUserAsync(HttpContext.User);
+                    plan.Approver = user.Id;
+                }
+                else
+                {
+                    plan.Approver = null;
+                }    
+                _context.Update(plan);
+                if (PdfFiles != null && PdfFiles.Count > 0)
+                {
+                    foreach (var pdfFile in PdfFiles)
                     {
-                        foreach (var pdfFile in PdfFiles)
+                        if (pdfFile.FileName.EndsWith("pdf"))
                         {
-                            if (pdfFile.FileName.EndsWith("pdf"))
+                            var folder = "files/";
+                            var fileName = Path.GetFileName(pdfFile.Name + DateTime.Now.ToString("dd-mm-yyyy") + ".pdf");
+                            var filesPath = folder + fileName;
+
+                            var filePath = Path.Combine(_hostingEnvironment?.WebRootPath, filesPath);
+
+                            using (var stream = new FileStream(filePath, FileMode.Create))
                             {
-                                var folder = "files/";
-                                var fileName = Path.GetFileName(pdfFile.Name + DateTime.Now.ToString("dd-mm-yyyy") + ".pdf");
-                                var filesPath = folder + fileName;
-
-                                var filePath = Path.Combine(_hostingEnvironment?.WebRootPath, filesPath);
-
-                                using (var stream = new FileStream(filePath, FileMode.Create))
-                                {
-                                    await pdfFile.CopyToAsync(stream);
-                                }
-
-                                var pdfFileInfo = new PdfFile
-                                {
-                                    FileName = fileName,
-                                    DateUpload = DateTime.Now,
-                                    FilePath = "/" + filesPath,
-                                    PlanID = plan.PlanID
-                                };
-                                _context.Add(pdfFileInfo);
+                                await pdfFile.CopyToAsync(stream);
                             }
+
+                            var pdfFileInfo = new PdfFile
+                            {
+                                FileName = fileName,
+                                DateUpload = DateTime.Now,
+                                FilePath = "/" + filesPath,
+                                PlanID = plan.PlanID
+                            };
+                            _context.Add(pdfFileInfo);
                         }
                     }
-                    await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PlanExists((int)plan.PlanID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _context.SaveChangesAsync();
+                _toastNotification.Success("Cập nhật thành công");
                 return RedirectToAction(nameof(Index));
             }
-            return View(plan);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PlanExists((int)plan.PlanID))
+                {
+                    _toastNotification.Error("Đã có lỗi xảy ra");
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
 
         // GET: Admin/Plans/Delete/5
@@ -239,18 +270,19 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             var plan = await _context.Plan.FindAsync(id);
             if (plan != null)
             {
-                if (plan.PdfFiles != null)
+                var PdfFiles = _context.PdfFile.Where(u => u.PlanID == plan.PlanID).ToList();
+                if (PdfFiles != null)
                 {
-                    foreach (var filepdf in plan.PdfFiles)
+                    foreach (var filepdf in PdfFiles)
                     {
-                        plan.PdfFiles.Remove(filepdf);
-                        _context?.PdfFile?.Remove(filepdf);
+                        _context!.PdfFile!.Remove(filepdf);
                     }
                 }
                 _context.Plan.Remove(plan);
             }
 
             await _context.SaveChangesAsync();
+            _toastNotification.Success("Xóa Kế Hoạch " + plan!.PlanName + " thành công");
             return RedirectToAction(nameof(Index));
         }
 
@@ -387,6 +419,18 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                 _toastNotification.Success("Tải Dữ Liệu Không Thành Công - Lỗi " + ex.Message);
                 return NotFound();
             }
+        }
+
+        private async Task<bool> IsAdmin()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            if (await _userManager.IsInRoleAsync(user, Constants.Roles.Administrator))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

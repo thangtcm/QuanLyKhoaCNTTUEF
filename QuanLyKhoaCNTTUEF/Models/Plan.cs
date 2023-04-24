@@ -32,6 +32,7 @@ namespace QuanLyKhoaCNTTUEF.Models
         [ForeignKey("Approver")]
         public virtual ApplicationUser? UserApprover { get; set; }
 
+        [DisplayName("Tài liệu")]
         public virtual ICollection<PdfFile>? PdfFiles { get; set; }
 
         public virtual ICollection<Event>? Events { get; set; }

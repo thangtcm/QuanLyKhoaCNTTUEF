@@ -125,7 +125,7 @@
                                             @{
                                                 if (item.Approver is not null)
                                                 {
-                                                    <td class="text-primary">@Html.DisplayFor(modelItem => item.Approver)</td>
+                                                    <td class="text-primary">@Html.DisplayFor(modelItem => item.UserApprover!.FullName)</td>
                                                 }
                                                 else
                                                 {

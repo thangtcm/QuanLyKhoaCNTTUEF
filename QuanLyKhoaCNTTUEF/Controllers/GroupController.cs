@@ -11,6 +11,7 @@ using QuanLyKhoaCNTTUEF.Core;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Models;
 using QuanLyKhoaCNTTUEF.ViewModel;
+using System.Collections;
 using System.Data;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
@@ -34,13 +35,16 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            var eventsWithUserGroups = await _context.Event.AsNoTracking()
+            List<Event> eventsWithUserGroups = new();
+            if((await _userManager.IsInRoleAsync(user, Constants.Roles.Administrator + "," + Constants.Roles.Teacher)))
+            {
+                eventsWithUserGroups = await _context.Event.AsNoTracking()
                     .Include(x => x.Groups!)
                         .ThenInclude(g => g.MembersGroups!)
                             .ThenInclude(mg => mg.ApplicationUser)
                     .ToListAsync();
-
-            if (!(await _userManager.IsInRoleAsync(user, Constants.Roles.Administrator)))
+            }    
+            else
             {
                 eventsWithUserGroups = await _context.Event
                     .Where(e => e.Groups.Any(g => g.MembersGroups.Any(mg => mg.UserID == user.Id)))
