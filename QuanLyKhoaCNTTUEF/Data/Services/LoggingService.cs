@@ -14,7 +14,12 @@ public class LoggingService : ILoggingService
         // Tạo thư mục lưu trữ log nếu chưa tồn tại
         if (!Directory.Exists(logDirectory))
         {
+<<<<<<< HEAD
             Directory.CreateDirectory(logDirectory);
+=======
+            // Nếu chưa tồn tại, tạo mới file log
+            //using var sw = new StreamWriter(logFile);
+>>>>>>> 92e9492a83a0c027f20d797957b028680590cdcd
         }
     }
 
