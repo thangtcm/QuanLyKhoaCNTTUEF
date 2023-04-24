@@ -7,7 +7,6 @@ using QuanLyKhoaCNTTUEF.Core;
 using QuanLyKhoaCNTTUEF.Core.Repositories;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Data.Interfaces;
-using QuanLyKhoaCNTTUEF.Data.Services;
 using QuanLyKhoaCNTTUEF.Hubs;
 using QuanLyKhoaCNTTUEF.Repositories;
 

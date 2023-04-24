@@ -2409,7 +2409,6 @@ G:\FIX\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\QuanLyKhoaCNTTUEF.Ra
 G:\FIX\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\QuanLyKhoaCNTTUEF.RazorAssemblyInfo.cs
 G:\FIX\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\staticwebassets.build.json
 G:\FIX\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\staticwebassets.development.json
-G:\FIX\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 G:\FIX\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 G:\FIX\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\scopedcss\bundle\QuanLyKhoaCNTTUEF.styles.css
 G:\FIX\QuanLyKhoaCNTTUEF\QuanLyKhoaCNTTUEF\obj\Debug\net6.0\scopedcss\projectbundle\QuanLyKhoaCNTTUEF.bundle.scp.css

@@ -1,3 +1,5 @@
+using QuanLyKhoaCNTTUEF.Data.Interfaces;
+
 public class LoggingService : ILoggingService
 {
     public void Log(string userName, string action)
@@ -24,7 +26,7 @@ public class LoggingService : ILoggingService
         if (!File.Exists(logFile))
         {
             // Nếu chưa tồn tại, tạo mới file log
-            using var sw = new StreamWriter(logFile);
+            //using var sw = new StreamWriter(logFile);
         }
 
         // Mở file log để ghi thông tin
