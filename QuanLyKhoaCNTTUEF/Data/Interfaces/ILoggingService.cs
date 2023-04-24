@@ -2,6 +2,6 @@ namespace QuanLyKhoaCNTTUEF.Data.Interfaces
 {
     public interface ILoggingService
     {
-        void Log(string userName, string action);
+        void Write(string userName, string action);
     }
 }

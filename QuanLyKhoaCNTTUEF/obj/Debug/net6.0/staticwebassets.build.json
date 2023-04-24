@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QVbkekwxYt2sHB1Trfgm7pPXrhx7KK+33wNs90erIGQ=",
+  "Hash": "Bqr6qE0JsGeA8viYx+0eZsMH28K2otoOAv9WQzoFdz0=",
   "Source": "QuanLyKhoaCNTTUEF",
   "BasePath": "_content/QuanLyKhoaCNTTUEF",
   "Mode": "Default",
@@ -1428,6 +1428,23 @@
       "OriginalItemSpec": "wwwroot\\files\\PdfFiles23-23-2023.pdf"
     },
     {
+      "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles24-24-2023.pdf",
+      "SourceId": "QuanLyKhoaCNTTUEF",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\",
+      "BasePath": "_content/QuanLyKhoaCNTTUEF",
+      "RelativePath": "files/PdfFiles24-24-2023.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\files\\PdfFiles24-24-2023.pdf"
+    },
+    {
       "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles27-16-2023.pdf",
       "SourceId": "QuanLyKhoaCNTTUEF",
       "SourceType": "Discovered",
@@ -1970,6 +1987,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\product\\product-08.jpg"
+    },
+    {
+      "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\Rectangle 4336.png",
+      "SourceId": "QuanLyKhoaCNTTUEF",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\",
+      "BasePath": "_content/QuanLyKhoaCNTTUEF",
+      "RelativePath": "img/Rectangle 4336.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Rectangle 4336.png"
     },
     {
       "Identity": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\sent.png",

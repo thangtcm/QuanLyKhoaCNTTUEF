@@ -7,7 +7,6 @@ using QuanLyKhoaCNTTUEF.Core;
 using QuanLyKhoaCNTTUEF.Core.Repositories;
 using QuanLyKhoaCNTTUEF.Data;
 using QuanLyKhoaCNTTUEF.Data.Interfaces;
-using QuanLyKhoaCNTTUEF.Data.Services;
 using QuanLyKhoaCNTTUEF.Hubs;
 using QuanLyKhoaCNTTUEF.Repositories;
 
@@ -152,5 +151,5 @@ void AddScoped()
     builder.Services.AddScoped<IUserRepository, UserRepository>();
     builder.Services.AddScoped<IRoleRepository, RoleRepository>();
     builder.Services.AddScoped<IUnitOfWork, UnitOfWorks>();
-    builder.Services.AddScoped<ILoggingService, LoggingService>();
+    //builder.Services.AddScoped<ILoggingService, LoggingService>();
 }

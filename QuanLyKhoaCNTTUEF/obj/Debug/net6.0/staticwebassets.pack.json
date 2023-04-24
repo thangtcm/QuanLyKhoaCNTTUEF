@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\files\\PdfFiles23-23-2023.pdf"
     },
     {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles24-24-2023.pdf",
+      "PackagePath": "staticwebassets\\files\\PdfFiles24-24-2023.pdf"
+    },
+    {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\files\\PdfFiles27-16-2023.pdf",
       "PackagePath": "staticwebassets\\files\\PdfFiles27-16-2023.pdf"
     },
@@ -135,6 +139,10 @@
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\New Text Document.txt",
       "PackagePath": "staticwebassets\\img\\New Text Document.txt"
+    },
+    {
+      "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\Rectangle 4336.png",
+      "PackagePath": "staticwebassets\\img\\Rectangle 4336.png"
     },
     {
       "Id": "D:\\QuanLyKhoaCNTTUEF\\QuanLyKhoaCNTTUEF\\wwwroot\\img\\Vector.png",

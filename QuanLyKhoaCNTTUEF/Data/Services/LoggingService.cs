@@ -1,37 +1,30 @@
+using QuanLyKhoaCNTTUEF.Data.Interfaces;
+
 public class LoggingService : ILoggingService
 {
-    public void Log(string userName, string action)
+    private readonly string _logFilePath;
+
+    public LoggingService()
     {
-        // Lấy ngày hiện tại
-        var today = DateTime.Today;
-
-        // Tạo tên file log với định dạng yyyy_MM_dd_server_log.txt
-        var fileName = $"{today:yyyy_MM_dd}_server_log.txt";
-
-        // Lấy đường dẫn đến thư mục lưu trữ file log
-        var logPath = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
-
-        // Tạo thư mục lưu trữ file log nếu chưa tồn tại
-        if (!Directory.Exists(logPath))
-        {
-            Directory.CreateDirectory(logPath);
-        }
-
         // Tạo đường dẫn đến file log
-        var logFile = Path.Combine(logPath, fileName);
+        var logDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Server_Logs");
+        var logFileName = $"{DateTime.Now:yyyy-MM-dd}_Log.txt";
+        _logFilePath = Path.Combine(logDirectory, logFileName);
 
-        // Kiểm tra xem file log đã tồn tại hay chưa
-        if (!File.Exists(logFile))
+        // Tạo thư mục lưu trữ log nếu chưa tồn tại
+        if (!Directory.Exists(logDirectory))
         {
-            // Nếu chưa tồn tại, tạo mới file log
-            using var sw = new StreamWriter(logFile);
+            Directory.CreateDirectory(logDirectory);
         }
+    }
 
-        // Mở file log để ghi thông tin
-        using var sw = new StreamWriter(logFile, append: true);
-
-        // Ghi thông tin vào file log
-        var logMessage = $"{DateTime.Now} - {userName} - {action}";
-        sw.WriteLine(logMessage);
+    public void Write(string user, string message)
+    {
+        // Ghi dữ liệu vào file
+        using (var writer = new StreamWriter(_logFilePath, true))
+        {
+            writer.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {user} : {message}");
+            writer.Flush();
+        }
     }
 }

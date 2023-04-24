@@ -171,6 +171,7 @@ namespace QuanLyKhoaCNTTUEF.Areas.Identity.Pages.Account
                 user.FirstName = Input.FirstName;
                 user.MiddleName = Input.MiddleName;
                 user.LastName = Input.LastName;
+                user.UrlAvartar = "/img/avatar.jpg";
                // await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 

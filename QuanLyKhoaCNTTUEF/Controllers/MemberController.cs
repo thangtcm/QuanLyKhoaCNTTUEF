@@ -30,7 +30,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.MembersGroups == null)
+            if (id == null || _context.MembersGroups == null || _context.Task_Assignments == null)
             {
                 return NotFound();
             }
@@ -41,16 +41,18 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                 .Include(x => x.Tasks)
                 .FirstOrDefaultAsync(x => x.MemberGroupID == member!.MemberGroupID);
 
+            if(detailMember == null)
+            {
+                return NotFound();
+            }    
+
             return View(detailMember);
         }
 
         // GET: Admin/Member/Create
         public async Task<IActionResult> AddMember(int? id)
         {
-            if (!(await IsLeader()))
-            {
-                return Forbid();
-            }
+            
             if (id == null || _context.Group == null)
             {
                 return NotFound();
@@ -59,6 +61,10 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             if (group == null)
             {
                 return NotFound();
+            }
+            if (!(await IsLeader(group.GroupID)))
+            {
+                return Forbid();
             }
             var members = await _context.MembersGroups
                 .Where(m => m.GroupID == id)
@@ -102,6 +108,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
 
         public async Task<IActionResult> UpdateMember(int? id)
         {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             if (id == null || _context.MembersGroups == null)
             {
                 return NotFound();
@@ -111,10 +118,21 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             {
                 return NotFound();
             }
-            var assignTask = await _context.Task_Assignments.Include(x => x.Tasks)
+            var assignTask = await _context.Task_Assignments
+                .Include(x => x.Tasks)
                 .Include(x => x.MembersGroups)
                     .ThenInclude(x => x!.ApplicationUser)
-                .Where(x => x.MemberGroupID == id).FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(x => x.MemberGroupID == membersGroups.MemberGroupID);
+            if(user.Id != membersGroups.UserID)
+            {
+                _toastNotification.Error("Bạn chỉ phép được cập nhật tiến độ của bạn");
+                return Forbid();
+            }    
+            if(assignTask == null)
+            {
+                _toastNotification.Error("Bạn chưa được phân nhiệm vụ");
+                return RedirectToAction("Details", "Group", new { id = membersGroups.GroupID });
+            }    
 
             return View(assignTask);
         }
@@ -162,19 +180,22 @@ namespace QuanLyKhoaCNTTUEF.Controllers
 
         public async Task<IActionResult> EditMember(int? id)
         {
-            if (!(await IsLeader()))
-            {
-                return Forbid();
-            }
+            
             if (id == null || _context.MembersGroups == null)
             {
                 return NotFound();
             }
 
             var membersGroups = await _context.MembersGroups.FindAsync(id);
+
             if (membersGroups == null)
             {
                 return NotFound();
+            }
+            Console.WriteLine(await IsLeader(membersGroups.GroupID));
+            if (!(await IsLeader(membersGroups.GroupID)))
+            {
+                return Forbid();
             }
             var group = membersGroups.GroupID!;
             var user = _context.Users.Where(u => membersGroups.UserID == u.Id).FirstOrDefault();
@@ -230,60 +251,51 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             }
             try
             {
-                if (ModelState.IsValid)
+                var assignTask = _context.Task_Assignments
+                    .Where(m => m.MembersGroups!.GroupID == membersGroups.GroupID && m.MemberGroupID == membersGroups.MemberGroupID)
+                    .Include(m => m.MembersGroups)
+                    .FirstOrDefault();
+                Console.WriteLine("ss      " + assignTask);
+                if (assignTask != null)
                 {
-                    try
+                    if(TaskID == 0)
                     {
-                        if (TaskID != 0)
-                        {
-                            var assignTask = _context.Task_Assignments
-                                .Where(m => m.MembersGroups!.GroupID == membersGroups.GroupID && m.MemberGroupID == membersGroups.MemberGroupID)
-                                .Include(m => m.MembersGroups)
-                                .FirstOrDefault();
-                            Console.WriteLine("ss      " + assignTask);
-                            if (assignTask != null)
-                            {
-                                assignTask.TaskID = TaskID;
-                                assignTask.StartTime = StartTime;
-                                assignTask.EndTime = EndTime;
-                                _context.Update(assignTask);
-                            }
-                            else
-                            {
-                                var newAssignTask = new TaskAssignments
-                                {
-                                    MemberGroupID = membersGroups.MemberGroupID,
-                                    TaskID = TaskID,
-                                    StartTime = StartTime,
-                                    EndTime = EndTime
-                                };
-                                _context.Add(newAssignTask);
-                            }
-                        }
-                        _context.Update(membersGroups);
-                        await _context.SaveChangesAsync();
-                        _toastNotification.Success("Chỉnh sửa thông tin thành viên thành công");
+                        _context.Remove(assignTask);
                     }
-                    catch (DbUpdateConcurrencyException)
+                    else
                     {
-                        if (!MemberExists(membersGroups.MemberGroupID))
-                        {
-                            return NotFound();
-                        }
-                        else
-                        {
-                            throw;
-                        }
+                        assignTask.TaskID = TaskID;
+                        assignTask.StartTime = StartTime;
+                        assignTask.EndTime = EndTime;
+                        _context.Update(assignTask);
                     }
-                    return RedirectToAction("Details", new { id = membersGroups.GroupID });
-                } 
+                }
+                else
+                {
+                    if(TaskID != 0)
+                    {
+                        var newAssignTask = new TaskAssignments
+                        {
+                            MemberGroupID = membersGroups.MemberGroupID,
+                            TaskID = TaskID,
+                            StartTime = StartTime,
+                            EndTime = EndTime
+                        };
+                        _context.Add(newAssignTask);
+                    }
+                    
+                }
+                await _context.SaveChangesAsync();
+                _toastNotification.Success("Chỉnh sửa thông tin thành viên thành công");
+                return RedirectToAction("Details", "Group", new { id = membersGroups.GroupID });
+                
             }
             catch (Exception ex)
             {
                 _toastNotification.Error("Đã có lỗi xảy ra");
                 Console.WriteLine(ex.Message);
+                return NotFound();
             }
-            return RedirectToAction("Details", new { id = membersGroups.GroupID });
         }
 
 
@@ -327,7 +339,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", new { id = membersGroups?.GroupID });
+            return RedirectToAction("Details", "Group", new { id = membersGroups?.GroupID });
         }
 
         private bool Task_AssignmentsExists(int id)
@@ -340,12 +352,12 @@ namespace QuanLyKhoaCNTTUEF.Controllers
             return (_context.MembersGroups?.Any(e => e.MemberGroupID == id)).GetValueOrDefault();
         }
 
-        private async Task<bool> IsLeader()
+        private async Task<bool> IsLeader(int? groupid)
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            var memberLeader = await _context.MembersGroups.FirstOrDefaultAsync(x => x.UserID == user.Id && x.RoleName == "Leader");
-            if (memberLeader != null)
+            var memberLeader = await _context.MembersGroups.FirstOrDefaultAsync(x => x.UserID == user.Id && x.GroupID == groupid);
+            if (memberLeader != null && memberLeader.RoleName == "Leader")
             {
                 return true;
             }

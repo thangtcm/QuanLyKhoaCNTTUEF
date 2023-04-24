@@ -29,13 +29,16 @@ namespace QuanLyKhoaCNTTUEF.Controllers
         private readonly INotyfService _toastNotification;
         private readonly IHostingEnvironment? _hostingEnvironment = null;
         private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly LoggingService _Log;
 
-        public PlanController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, INotyfService toastNotification, IHostingEnvironment? hostingEnvironment)
+        public PlanController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+            INotyfService toastNotification, IHostingEnvironment? hostingEnvironment)
         {
             _userManager = userManager;
             _context = context;
             _toastNotification = toastNotification;
             _hostingEnvironment = hostingEnvironment;
+            //_Log = log;
         }
 
         // GET: Admin/Plans
@@ -139,6 +142,7 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                             PlanID = plan.PlanID
                         };
                         _context.Add(pdfFileInfo);
+                       // _Log.Write($"{userID.FullName} (Id : {userID.Id} )" , $"Đã upload file PDF có tên là : {pdfFileInfo.FileName}");
                     }
                 }
                 await _context.SaveChangesAsync();

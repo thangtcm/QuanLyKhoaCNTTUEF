@@ -171,8 +171,8 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                                 Description = worksheet.Cells[row, 5].Value?.ToString(),
                                 CreateDate = DateTime.Now,
                                 UpdateDate = DateTime.Now,
-                                UserCreate = user.FullName,
-                                UserUpdate = user.FullName,
+                                UserCreate = user.Id,
+                                UserUpdate = user.Id,
                                 TrangThai = 0,
                                 XoaTam = 0
                             };

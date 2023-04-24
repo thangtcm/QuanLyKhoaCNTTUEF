@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using NuGet.Versioning;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
@@ -15,6 +16,7 @@ using System.Collections;
 using System.Data;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
+using System.Linq;
 
 namespace QuanLyKhoaCNTTUEF.Controllers
 {
@@ -43,19 +45,24 @@ namespace QuanLyKhoaCNTTUEF.Controllers
                         .ThenInclude(g => g.MembersGroups!)
                             .ThenInclude(mg => mg.ApplicationUser)
                     .ToListAsync();
+                ViewData["groups"] = null;
             }    
             else
             {
                 eventsWithUserGroups = await _context.Event
-                    .Where(e => e.Groups.Any(g => g.MembersGroups.Any(mg => mg.UserID == user.Id)))
-                    .Include(e => e.Groups!)
-                        .ThenInclude(g => g.MembersGroups!)
+                    //.Include(e => e.Groups!)
+                    //    .ThenInclude(g => g.MembersGroups!)
+                    //        .ThenInclude(mg => mg.ApplicationUser)
+                    //.Where(e => e.Groups.Any(g => g.MembersGroups.Any(mg => mg.UserID == user.Id)))
+                    //.Take(4)
+                    .ToListAsync();
+                ViewData["groups"] = await _context.Group
+                    .Include(g => g.MembersGroups!)
                             .ThenInclude(mg => mg.ApplicationUser)
-                    .Take(4)
+                    .Where(g => g.MembersGroups.Any(mg => mg.UserID == user.Id))
                     .ToListAsync();
             }
             return View(eventsWithUserGroups);
-
         }
 
         public async Task<IActionResult> Details(int? id)
